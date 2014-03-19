@@ -78,12 +78,20 @@
 -(NSInteger)hoursFrom:(NSDate *)date;
 -(NSInteger)secondsFrom:(NSDate *)date;
 -(NSInteger)millisecondsFrom:(NSDate *)date;
--(NSInteger)yearsFromNow;
--(NSInteger)weeksFromNow;
--(NSInteger)daysFromNow;
--(NSInteger)hoursFromNow;
--(NSInteger)secondsFromNow;
--(NSInteger)millisecondsFromNow;
+#pragma mark Time Until
+-(NSInteger)yearsUntil;
+-(NSInteger)weeksUntil;
+-(NSInteger)daysUntil;
+-(NSInteger)hoursUntil;
+-(NSInteger)secondsUntil;
+-(NSInteger)millisecondsUntil;
+#pragma mark Time Ago
+-(NSInteger)yearsAgo;
+-(NSInteger)weeksAgo;
+-(NSInteger)daysAgo;
+-(NSInteger)hoursAgo;
+-(NSInteger)secondsAgo;
+-(NSInteger)millisecondsAgo;
 #pragma mark Older Than
 -(NSInteger)yearsOlderThan:(NSDate *)date;
 -(NSInteger)weeksOlderThan:(NSDate *)date;

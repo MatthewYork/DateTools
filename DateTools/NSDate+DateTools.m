@@ -428,28 +428,54 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return [self timeIntervalSinceDate:date]*1000;
 }
 
--(NSInteger)yearsFromNow{
-    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_YEAR;
+#pragma mark Time Until
+-(NSInteger)yearsUntil{
+    return MAX(0, ([self timeIntervalSinceNow])/SECONDS_IN_YEAR);
 }
 
--(NSInteger)weeksFromNow{
-    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_WEEK;
+-(NSInteger)weeksUntil{
+    return MAX(0, ([self timeIntervalSinceNow])/SECONDS_IN_WEEK);
 }
 
--(NSInteger)daysFromNow{
-    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_DAY;
+-(NSInteger)daysUntil{
+    return MAX(0, ([self timeIntervalSinceNow])/SECONDS_IN_DAY);
 }
 
--(NSInteger)hoursFromNow{
-    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_HOUR;
+-(NSInteger)hoursUntil{
+    return MAX(0, ([self timeIntervalSinceNow])/SECONDS_IN_HOUR);
 }
 
--(NSInteger)secondsFromNow{
-    return [self timeIntervalSinceDate:[NSDate date]];
+-(NSInteger)secondsUntil{
+    return MAX(0, [self timeIntervalSinceNow]);
 }
 
--(NSInteger)millisecondsFromNow{
-    return [self timeIntervalSinceDate:[NSDate date]]*1000;
+-(NSInteger)millisecondsUntil{
+    return MAX(0, [self timeIntervalSinceNow]*1000);
+}
+
+#pragma mark Time Ago
+-(NSInteger)yearsAgo{
+    return ABS(MIN(0, ([self timeIntervalSinceNow])/SECONDS_IN_YEAR));
+}
+
+-(NSInteger)weeksAgo{
+    return ABS(MIN(0, ([self timeIntervalSinceNow])/SECONDS_IN_WEEK));
+}
+
+-(NSInteger)daysAgo{
+    return ABS(MIN(0, ([self timeIntervalSinceNow])/SECONDS_IN_DAY));
+}
+
+-(NSInteger)hoursAgo{
+    return ABS(MIN(0, ([self timeIntervalSinceNow])/SECONDS_IN_HOUR));
+}
+
+-(NSInteger)secondsAgo{
+    return ABS(MIN(0, [self timeIntervalSinceNow]));
+}
+
+-(NSInteger)millisecondsAgo{
+    return ABS(MIN(0, [self timeIntervalSinceNow]*1000));
 }
 
 #pragma mark Older Than
