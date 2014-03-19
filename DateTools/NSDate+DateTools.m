@@ -47,12 +47,12 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return [self timeAgoSinceDate:[NSDate date] shortformatting:NO];
 }
 
--(NSString *)shortTimeAgoSinceNow{
-    return [self timeAgoSinceDate:[NSDate date] shortformatting:YES];
-}
-
 - (NSString*)timeAgoSinceDate:(NSDate*)date{
     return [self timeAgoSinceDate:date shortformatting:NO];
+}
+
+-(NSString *)shortTimeAgoSinceNow{
+    return [self timeAgoSinceDate:[NSDate date] shortformatting:YES];
 }
 
 -(NSString *)shortTimeAgoSinceDate:(NSDate *)date{
@@ -185,6 +185,14 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return [self componentForDate:self type:DTDateComponentDayOfYear calendar:nil];
 }
 
+- (NSInteger)daysInMonth{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit
+                           inUnit:NSMonthCalendarUnit
+                          forDate:self];
+    return days.length;
+}
+
 #pragma mark - Date Components With Calendar
 
 - (NSInteger)eraWithcalendar:(NSCalendar *)calendar{
@@ -286,7 +294,7 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 }
 
 #pragma mark - Date Editing
-
+#pragma mark Date By Adding
 - (NSDate *)dateByAddingYears:(NSInteger)years{
     return [self dateByAddingTimeInterval:SECONDS_IN_YEAR*years];
 }
@@ -316,6 +324,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return self;
 }
 
+- (NSDate *)dateByAddingWeeks:(NSInteger)weeks{
+    return [self dateByAddingTimeInterval:SECONDS_IN_WEEK*weeks];
+}
+
 - (NSDate *)dateByAddingDays:(NSInteger)days{
     return [self dateByAddingTimeInterval:SECONDS_IN_DAY*days];
 }
@@ -332,6 +344,7 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return [self dateByAddingTimeInterval:seconds];
 }
 
+#pragma mark Date By Subtracting
 - (NSDate *)dateBySubtractingYears:(NSInteger)years{
     return [self dateByAddingTimeInterval:-1*SECONDS_IN_YEAR*years];
 }
@@ -361,6 +374,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return self;
 }
 
+- (NSDate *)dateBySubtractingWeeks:(NSInteger)weeks{
+    return [self dateByAddingTimeInterval:-1*SECONDS_IN_WEEK*weeks];
+}
+
 - (NSDate *)dateBySubtractingDays:(NSInteger)days{
     return [self dateByAddingTimeInterval:-1*SECONDS_IN_DAY*days];
 }
@@ -375,6 +392,112 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds{
     return [self dateByAddingTimeInterval:-1*seconds];
+}
+
+#pragma mark - Date Comparison
+#pragma mark Time From
+-(NSInteger)yearsFrom:(NSDate *)date{
+    return ([self timeIntervalSinceDate:date])/SECONDS_IN_YEAR;
+}
+
+-(NSInteger)weeksFrom:(NSDate *)date{
+    return ([self timeIntervalSinceDate:date])/SECONDS_IN_WEEK;
+}
+
+-(NSInteger)daysFrom:(NSDate *)date{
+    return ([self timeIntervalSinceDate:date])/SECONDS_IN_DAY;
+}
+
+-(NSInteger)hoursFrom:(NSDate *)date{
+    return ([self timeIntervalSinceDate:date])/SECONDS_IN_HOUR;
+}
+
+-(NSInteger)secondsFrom:(NSDate *)date{
+    return [self timeIntervalSinceDate:date];
+}
+
+-(NSInteger)yearsFromNow{
+    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_YEAR;
+}
+
+-(NSInteger)weeksFromNow{
+    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_WEEK;
+}
+
+-(NSInteger)daysFromNow{
+    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_DAY;
+}
+
+-(NSInteger)hoursFromNow{
+    return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_HOUR;
+}
+
+-(NSInteger)secondsFromNow{
+    return [self timeIntervalSinceDate:[NSDate date]];
+}
+
+#pragma mark Older Than
+-(NSInteger)yearsOlderThan:(NSDate *)date{
+    return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0));
+}
+
+-(NSInteger)weeksOlderThan:(NSDate *)date{
+    return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_WEEK, 0));
+}
+
+-(NSInteger)daysOlderThan:(NSDate *)date{
+    return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_DAY, 0));
+}
+
+-(NSInteger)hoursOlderThan:(NSDate *)date{
+    return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_HOUR, 0));
+}
+
+-(NSInteger)minutesOlderThan:(NSDate *)date{
+    return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_MINUTE, 0));
+}
+
+-(NSInteger)secondsOlderThan:(NSDate *)date{
+    return ABS(MIN([self timeIntervalSinceDate:date], 0));
+}
+
+#pragma mark Younger Than
+-(NSInteger)yearsYoungerThan:(NSDate *)date{
+    return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0);
+}
+
+-(NSInteger)weeksYoungerThan:(NSDate *)date{
+    return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_WEEK, 0);
+}
+
+-(NSInteger)daysYoungerThan:(NSDate *)date{
+    return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0);
+}
+
+-(NSInteger)hoursYoungerThan:(NSDate *)date{
+    return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_HOUR, 0);
+}
+
+-(NSInteger)minutesYoungerThan:(NSDate *)date{
+    return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_MINUTE, 0);
+}
+
+-(NSInteger)secondsYoungerThan:(NSDate *)date{
+    return MAX([self timeIntervalSinceDate:date], 0);
+}
+
+#pragma mark - Helpers
+
+- (BOOL)isYearLeapYear:(NSDate *) aDate {
+    NSInteger year = [self yearFromDate:aDate];
+    return (( year%100 != 0) && (year%4 == 0)) || year%400 == 0;
+}
+
+- (NSInteger)yearFromDate:(NSDate *)aDate {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"yyyy";
+    NSInteger year = [[dateFormatter stringFromDate:aDate] integerValue];
+    return year;
 }
 
 @end
