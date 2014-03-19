@@ -486,18 +486,62 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return MAX([self timeIntervalSinceDate:date], 0);
 }
 
-#pragma mark - Helpers
-
-- (BOOL)isYearLeapYear:(NSDate *) aDate {
-    NSInteger year = [self yearFromDate:aDate];
-    return (( year%100 != 0) && (year%4 == 0)) || year%400 == 0;
+#pragma mark - Formatted Dates
+#pragma mark Formatted With Style
+-(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:style];
+    return [formatter stringFromDate:self];
 }
 
-- (NSInteger)yearFromDate:(NSDate *)aDate {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"yyyy";
-    NSInteger year = [[dateFormatter stringFromDate:aDate] integerValue];
-    return year;
+-(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style timeZone:(NSTimeZone *)timeZone{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:style];
+    [formatter setTimeZone:timeZone];
+    return [formatter stringFromDate:self];
 }
 
+-(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style locale:(NSLocale *)locale{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:style];
+    [formatter setLocale:locale];
+    return [formatter stringFromDate:self];
+}
+
+-(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:style];
+    [formatter setTimeZone:timeZone];
+    [formatter setLocale:locale];
+    return [formatter stringFromDate:self];
+}
+
+#pragma mark Formatted With Format
+-(NSString *)formattedDateWithFormat:(NSString *)format{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    return [formatter stringFromDate:self];
+}
+
+-(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    [formatter setTimeZone:timeZone];
+    return [formatter stringFromDate:self];
+}
+
+-(NSString *)formattedDateWithFormat:(NSString *)format locale:(NSLocale *)locale{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    [formatter setLocale:locale];
+    return [formatter stringFromDate:self];
+}
+
+-(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+     [formatter setTimeZone:timeZone];
+    [formatter setLocale:locale];
+    return [formatter stringFromDate:self];
+}
 @end
