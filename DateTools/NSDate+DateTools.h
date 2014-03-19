@@ -59,6 +59,7 @@
 - (NSDate *)dateByAddingHours:(NSInteger)hours;
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes;
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds;
+- (NSDate *)dateByAddingMilliseconds:(NSInteger)milliseconds;
 #pragma mark Date By Subtracting
 - (NSDate *)dateBySubtractingYears:(NSInteger)years;
 - (NSDate *)dateBySubtractingMonths:(NSInteger)months;
@@ -67,6 +68,7 @@
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours;
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes;
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds;
+- (NSDate *)dateBySubtractingMilliseconds:(NSInteger)milliseconds;
 
 #pragma mark - Date Comparison
 #pragma mark Time From
@@ -75,11 +77,13 @@
 -(NSInteger)daysFrom:(NSDate *)date;
 -(NSInteger)hoursFrom:(NSDate *)date;
 -(NSInteger)secondsFrom:(NSDate *)date;
+-(NSInteger)millisecondsFrom:(NSDate *)date;
 -(NSInteger)yearsFromNow;
 -(NSInteger)weeksFromNow;
 -(NSInteger)daysFromNow;
 -(NSInteger)hoursFromNow;
 -(NSInteger)secondsFromNow;
+-(NSInteger)millisecondsFromNow;
 #pragma mark Older Than
 -(NSInteger)yearsOlderThan:(NSDate *)date;
 -(NSInteger)weeksOlderThan:(NSDate *)date;
@@ -87,6 +91,7 @@
 -(NSInteger)hoursOlderThan:(NSDate *)date;
 -(NSInteger)minutesOlderThan:(NSDate *)date;
 -(NSInteger)secondsOlderThan:(NSDate *)date;
+-(NSInteger)millisecondsOlderThan:(NSDate *)date;
 #pragma mark Younger Than
 -(NSInteger)yearsYoungerThan:(NSDate *)date;
 -(NSInteger)weeksYoungerThan:(NSDate *)date;
@@ -94,6 +99,7 @@
 -(NSInteger)hoursYoungerThan:(NSDate *)date;
 -(NSInteger)minutesYoungerThan:(NSDate *)date;
 -(NSInteger)secondsYoungerThan:(NSDate *)date;
+-(NSInteger)millisecondsYoungerThan:(NSDate *)date;
 
 #pragma mark - Formatted Dates
 #pragma mark Formatted With Style

@@ -26,6 +26,22 @@ NS_ENUM(NSUInteger, DTTimePeriodRelation){
 
 @interface DTTimePeriod : NSObject
 
+@property NSDate *StartDate;
+@property NSDate *EndDate;
+
+#pragma mark - Custom Inits
+-(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
+
+#pragma mark - Time Period Information
+-(BOOL)hasStartDate;
+-(BOOL)hasEndDate;
+-(NSInteger)durationInYears;
+-(NSInteger)durationInWeeks;
+-(NSInteger)durationInDays;
+-(NSInteger)durationInHours;
+-(NSInteger)durationInSeconds;
+-(NSInteger)durationInMilliseconds;
+
 #pragma mark - Time Period Relationship
 -(BOOL)isSamePeriod:(DTTimePeriod *)period;
 -(BOOL)isInside:(DTTimePeriod *)period;

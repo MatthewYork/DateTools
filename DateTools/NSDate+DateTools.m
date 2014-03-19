@@ -344,6 +344,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return [self dateByAddingTimeInterval:seconds];
 }
 
+- (NSDate *)dateByAddingMilliseconds:(NSInteger)milliseconds{
+    return [self dateByAddingTimeInterval:((double)milliseconds)/1000];
+}
+
 #pragma mark Date By Subtracting
 - (NSDate *)dateBySubtractingYears:(NSInteger)years{
     return [self dateByAddingTimeInterval:-1*SECONDS_IN_YEAR*years];
@@ -394,6 +398,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return [self dateByAddingTimeInterval:-1*seconds];
 }
 
+- (NSDate *)dateBySubtractingMilliseconds:(NSInteger)milliseconds{
+    return [self dateByAddingTimeInterval:((double)milliseconds)/1000];
+}
+
 #pragma mark - Date Comparison
 #pragma mark Time From
 -(NSInteger)yearsFrom:(NSDate *)date{
@@ -416,6 +424,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return [self timeIntervalSinceDate:date];
 }
 
+-(NSInteger)millisecondsFrom:(NSDate *)date{
+    return [self timeIntervalSinceDate:date]*1000;
+}
+
 -(NSInteger)yearsFromNow{
     return ([self timeIntervalSinceDate:[NSDate date]])/SECONDS_IN_YEAR;
 }
@@ -434,6 +446,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
 -(NSInteger)secondsFromNow{
     return [self timeIntervalSinceDate:[NSDate date]];
+}
+
+-(NSInteger)millisecondsFromNow{
+    return [self timeIntervalSinceDate:[NSDate date]]*1000;
 }
 
 #pragma mark Older Than
@@ -461,6 +477,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return ABS(MIN([self timeIntervalSinceDate:date], 0));
 }
 
+-(NSInteger)millisecondsOlderThan:(NSDate *)date{
+    return ABS(MIN([self timeIntervalSinceDate:date]*1000, 0));
+}
+
 #pragma mark Younger Than
 -(NSInteger)yearsYoungerThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0);
@@ -484,6 +504,10 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
 -(NSInteger)secondsYoungerThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date], 0);
+}
+
+-(NSInteger)millisecondsYoungerThan:(NSDate *)date{
+    return MAX([self timeIntervalSinceDate:date]*1000, 0);
 }
 
 #pragma mark - Formatted Dates
