@@ -1,6 +1,6 @@
 //
-//  DateToolsExampleTests.m
-//  DateToolsExampleTests
+//  DTTimePeriodTests.m
+//  DateToolsExample
 //
 //  Created by Matthew York on 3/19/14.
 //
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface DateToolsExampleTests : XCTestCase
+@interface DTTimePeriodTests : XCTestCase
 
 @end
 
-@implementation DateToolsExampleTests
+@implementation DTTimePeriodTests
 
 - (void)setUp
 {
@@ -26,9 +26,5 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-}
 
 @end

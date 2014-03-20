@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ENUM(NSUInteger, DTTimePeriodRelation){
+typedef NS_ENUM(NSUInteger, DTTimePeriodRelation){
     DTTimePeriodRelationAfter,
     DTTimePeriodRelationStartTouching,
     DTTimePeriodRelationStartInside,
@@ -48,4 +48,5 @@ NS_ENUM(NSUInteger, DTTimePeriodRelation){
 -(BOOL)contains:(DTTimePeriod *)period;
 -(BOOL)overlapsWith:(DTTimePeriod *)period;
 -(BOOL)intersects:(DTTimePeriod *)period;
+-(DTTimePeriodRelation)relationToPeriod:(DTTimePeriod *)period;
 @end

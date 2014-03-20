@@ -36,19 +36,19 @@
 - (NSInteger)daysInMonth;
 
 #pragma mark - Date Components With Calendar
-- (NSInteger)eraWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)yearWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)monthWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)dayWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)hourWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)minuteWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)secondWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)weekdayWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)weekdayOrdinalWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)quarterWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)weekOfMonthWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)weekOfYearWithcalendar:(NSCalendar *)calendar;
-- (NSInteger)yearForWeekOfYearWithcalendar:(NSCalendar *)calendar;
+- (NSInteger)eraWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)yearWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)monthWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)dayWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)hourWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)minuteWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)secondWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)weekdayWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)weekdayOrdinalWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)quarterWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)weekOfMonthWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)weekOfYearWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)yearForWeekOfYearWithCalendar:(NSCalendar *)calendar;
 
 #pragma mark - Date Editing
 #pragma mark Date By Adding
@@ -59,7 +59,6 @@
 - (NSDate *)dateByAddingHours:(NSInteger)hours;
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes;
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds;
-- (NSDate *)dateByAddingMilliseconds:(NSInteger)milliseconds;
 #pragma mark Date By Subtracting
 - (NSDate *)dateBySubtractingYears:(NSInteger)years;
 - (NSDate *)dateBySubtractingMonths:(NSInteger)months;
@@ -68,7 +67,6 @@
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours;
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes;
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds;
-- (NSDate *)dateBySubtractingMilliseconds:(NSInteger)milliseconds;
 
 #pragma mark - Date Comparison
 #pragma mark Time From

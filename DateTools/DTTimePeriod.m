@@ -37,7 +37,7 @@
 
 -(NSInteger)durationInYears {
     if (self.StartDate && self.EndDate) {
-        return [self.StartDate yearsOlderThan:self.EndDate];
+        return [self.StartDate yearsEarlierThan:self.EndDate];
     }
     
     return 0;
@@ -45,7 +45,7 @@
 
 -(NSInteger)durationInWeeks {
     if (self.StartDate && self.EndDate) {
-        return [self.StartDate weeksOlderThan:self.EndDate];
+        return [self.StartDate weeksEarlierThan:self.EndDate];
     }
     
     return 0;
@@ -53,7 +53,7 @@
 
 -(NSInteger)durationInDays {
     if (self.StartDate && self.EndDate) {
-        return [self.StartDate daysOlderThan:self.EndDate];
+        return [self.StartDate daysEarlierThan:self.EndDate];
     }
     
     return 0;
@@ -61,7 +61,7 @@
 
 -(NSInteger)durationInHours {
     if (self.StartDate && self.EndDate) {
-        return [self.StartDate hoursOlderThan:self.EndDate];
+        return [self.StartDate hoursEarlierThan:self.EndDate];
     }
     
     return 0;
@@ -69,7 +69,7 @@
 
 -(NSInteger)durationInSeconds {
     if (self.StartDate && self.EndDate) {
-        return [self.StartDate secondsOlderThan:self.EndDate];
+        return [self.StartDate secondsEarlierThan:self.EndDate];
     }
     
     return 0;
@@ -77,7 +77,7 @@
 
 -(NSInteger)durationInMilliseconds {
     if (self.StartDate && self.EndDate) {
-        return [self.StartDate millisecondsOlderThan:self.EndDate];
+        return [self.StartDate millisecondsEarlierThan:self.EndDate];
     }
     
     return 0;
@@ -123,12 +123,31 @@
     else if([period.StartDate timeIntervalSinceDate:self.EndDate] < 0 && period.durationInMilliseconds > 0){
         return YES;
     }
-    
     return NO;
 }
 
 -(BOOL)intersects:(DTTimePeriod *)period{
+    //Outside -> Inside
+    if ([self.StartDate timeIntervalSinceDate:period.EndDate] <= 0 && period.durationInMilliseconds > 0) {
+        return YES;
+    }
+    //Enclosing (hugs left)
+    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInMilliseconds > 0){
+        return YES;
+    }
+    //Enclosing (hugs right)
+    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInMilliseconds > 0){
+        return YES;
+    }
+    //Inside -> Out
+    else if([period.StartDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInMilliseconds > 0){
+        return YES;
+    }
     return NO;
+}
+
+-(DTTimePeriodRelation)relationToPeriod:(DTTimePeriod *)period{
+    return DTTimePeriodRelationAfter;
 }
 
 @end

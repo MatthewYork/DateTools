@@ -195,59 +195,59 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
 #pragma mark - Date Components With Calendar
 
-- (NSInteger)eraWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)eraWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentEra calendar:calendar];
 }
 
-- (NSInteger)yearWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)yearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentYear calendar:calendar];
 }
 
-- (NSInteger)monthWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)monthWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentMonth calendar:calendar];
 }
 
-- (NSInteger)dayWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)dayWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentDay calendar:calendar];
 }
 
-- (NSInteger)hourWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)hourWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentHour calendar:calendar];
 }
 
-- (NSInteger)minuteWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)minuteWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentMinute calendar:calendar];
 }
 
-- (NSInteger)secondWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)secondWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentSecond calendar:calendar];
 }
 
-- (NSInteger)weekdayWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)weekdayWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekday calendar:calendar];
 }
 
-- (NSInteger)weekdayOrdinalWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)weekdayOrdinalWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekdayOrdinal calendar:calendar];
 }
 
-- (NSInteger)quarterWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)quarterWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentQuarter calendar:calendar];
 }
 
-- (NSInteger)weekOfMonthWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)weekOfMonthWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekOfMonth calendar:calendar];
 }
 
-- (NSInteger)weekOfYearWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)weekOfYearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekOfYear calendar:calendar];
 }
 
-- (NSInteger)yearForWeekOfYearWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)yearForWeekOfYearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentYearForWeekOfYear calendar:calendar];
 }
 
-- (NSInteger)dayOfYearWithcalendar:(NSCalendar *)calendar{
+- (NSInteger)dayOfYearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentDayOfYear calendar:calendar];
 }
 
@@ -255,37 +255,39 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     }
-    NSDateComponents *weekdayComponents =[calendar components:NSWeekdayCalendarUnit fromDate:date];
+    
+    unsigned int unitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit | NSYearForWeekOfYearCalendarUnit;
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
     
     switch (component) {
         case DTDateComponentEra:
-            return [weekdayComponents era];
+            return [dateComponents era];
         case DTDateComponentYear:
-            return [weekdayComponents year];
+            return [dateComponents year];
         case DTDateComponentMonth:
-            return [weekdayComponents month];
+            return [dateComponents month];
         case DTDateComponentDay:
-            return [weekdayComponents day];
+            return [dateComponents day];
         case DTDateComponentHour:
-            return [weekdayComponents hour];
+            return [dateComponents hour];
         case DTDateComponentMinute:
-            return [weekdayComponents minute];
+            return [dateComponents minute];
         case DTDateComponentSecond:
-            return [weekdayComponents second];
+            return [dateComponents second];
         case DTDateComponentWeekday:
-            return [weekdayComponents weekday];
+            return [dateComponents weekday];
         case DTDateComponentWeekdayOrdinal:
-            return [weekdayComponents weekdayOrdinal];
+            return [dateComponents weekdayOrdinal];
         case DTDateComponentQuarter:
-            return [weekdayComponents quarter];
+            return [dateComponents quarter];
         case DTDateComponentWeekOfMonth:
-            return [weekdayComponents month];
+            return [dateComponents weekOfMonth];
         case DTDateComponentWeekOfYear:
-            return [weekdayComponents year];
+            return [dateComponents weekOfYear];
         case DTDateComponentYearForWeekOfYear:
-            return [weekdayComponents weekOfYear];
+            return [dateComponents yearForWeekOfYear];
         case DTDateComponentDayOfYear:
-            return [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSYearCalendarUnit forDate:self];
+            return [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSYearCalendarUnit forDate:date];
         default:
             break;
     }
@@ -296,110 +298,116 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 #pragma mark - Date Editing
 #pragma mark Date By Adding
 - (NSDate *)dateByAddingYears:(NSInteger)years{
-    return [self dateByAddingTimeInterval:SECONDS_IN_YEAR*years];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setYear:years];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateByAddingMonths:(NSInteger)months{
-    //Create a date formatter for manipulation
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy MM"];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setMonth:months];
     
-    //Calculate how many years and months to add
-    NSInteger yearsToAdd = months/12;
-    NSInteger monthsToAdd = months%12;
-    
-    NSArray *dateComponents = [[formatter stringFromDate:self] componentsSeparatedByString:@" "];
-    if (dateComponents.count == 2) {
-        //Convert back to years for manipulations
-        NSInteger currentYear = [dateComponents[0] integerValue];
-        NSInteger currentMonth = [dateComponents[1] integerValue];
-        
-        //Create new string with years and months added
-        NSString *newDateString = [NSString stringWithFormat:@"%d %d", currentYear+yearsToAdd, currentMonth+monthsToAdd];
-        
-        //Return the updated date
-        return [formatter dateFromString:newDateString];
-    }
-    
-    return self;
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateByAddingWeeks:(NSInteger)weeks{
-    return [self dateByAddingTimeInterval:SECONDS_IN_WEEK*weeks];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setWeek:weeks];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateByAddingDays:(NSInteger)days{
-    return [self dateByAddingTimeInterval:SECONDS_IN_DAY*days];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setDay:days];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateByAddingHours:(NSInteger)hours{
-    return [self dateByAddingTimeInterval:SECONDS_IN_HOUR*hours];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setHour:hours];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes{
-    return [self dateByAddingTimeInterval:SECONDS_IN_MINUTE*minutes];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setMinute:minutes];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds{
-    return [self dateByAddingTimeInterval:seconds];
-}
-
-- (NSDate *)dateByAddingMilliseconds:(NSInteger)milliseconds{
-    return [self dateByAddingTimeInterval:((double)milliseconds)/1000];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setSecond:seconds];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 #pragma mark Date By Subtracting
 - (NSDate *)dateBySubtractingYears:(NSInteger)years{
-    return [self dateByAddingTimeInterval:-1*SECONDS_IN_YEAR*years];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setYear:-1*years];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateBySubtractingMonths:(NSInteger)months{
-    //Create a date formatter for manipulation
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy MM"];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setMonth:-1*months];
     
-    //Calculate how many years and months to add
-    NSInteger yearsToSubtract = months/12;
-    NSInteger monthsToSubtract = months%12;
-    
-    NSArray *dateComponents = [[formatter stringFromDate:self] componentsSeparatedByString:@" "];
-    if (dateComponents.count == 2) {
-        //Convert back to years for manipulations
-        NSInteger currentYear = [dateComponents[0] integerValue];
-        NSInteger currentMonth = [dateComponents[1] integerValue];
-        
-        //Create new string with years and months added
-        NSString *newDateString = [NSString stringWithFormat:@"%d %d", currentYear-yearsToSubtract, currentMonth-monthsToSubtract];
-        
-        //Return the updated date
-        return [formatter dateFromString:newDateString];
-    }
-    
-    return self;
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateBySubtractingWeeks:(NSInteger)weeks{
-    return [self dateByAddingTimeInterval:-1*SECONDS_IN_WEEK*weeks];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setWeek:-1*weeks];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateBySubtractingDays:(NSInteger)days{
-    return [self dateByAddingTimeInterval:-1*SECONDS_IN_DAY*days];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setDay:-1*days];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours{
-    return [self dateByAddingTimeInterval:-1*SECONDS_IN_HOUR*hours];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setHour:-1*hours];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes{
-    return [self dateByAddingTimeInterval:-1*SECONDS_IN_MINUTE*minutes];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setMinute:-1*minutes];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds{
-    return [self dateByAddingTimeInterval:-1*seconds];
-}
-
-- (NSDate *)dateBySubtractingMilliseconds:(NSInteger)milliseconds{
-    return [self dateByAddingTimeInterval:((double)milliseconds)/1000];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setSecond:-1*seconds];
+    
+    return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
 #pragma mark - Date Comparison
