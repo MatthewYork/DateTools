@@ -195,6 +195,23 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return days.length;
 }
 
+-(BOOL)isInLeapYear{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *dateComponents = [calendar components:allCalendarUnitFlags fromDate:self];
+    
+    if (dateComponents.year%400 == 0){
+        return YES;
+    }
+    else if (dateComponents.year%100 == 0){
+        return NO;
+    }
+    else if (dateComponents.year%4 == 0){
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark - Date Components With Calendar
 
 - (NSInteger)eraWithCalendar:(NSCalendar *)calendar{
@@ -446,6 +463,8 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     NSInteger yearsFrom = [self yearsFrom:date];
     
     if (yearsFrom == 0) {
+        NSInteger currentLeapOffset = 0;
+        
         if (currentComponents.year - compareComponents.year < 0) {
             return (365-[self dayOfYear] + [date dayOfYear])/7;
         }
@@ -472,23 +491,32 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
     
     NSInteger yearsFrom = [self yearsFrom:date];
+    NSInteger currentDayOfTheYear = self.dayOfYear;
+    NSInteger compareDayOfYear = date.dayOfYear;
+    
+    if (self.isInLeapYear && !date.isInLeapYear) {
+        currentDayOfTheYear = (currentDayOfTheYear > 29)? currentDayOfTheYear-1:currentDayOfTheYear;
+    }
+    else if (!self.isInLeapYear && date.isInLeapYear){
+        compareDayOfYear = (compareDayOfYear > 29)? compareDayOfYear-1:compareDayOfYear;
+    }
     
     if (yearsFrom == 0) {
         if (currentComponents.year - compareComponents.year < 0) {
-            return (365-[self dayOfYear] + [date dayOfYear]);
+            return (365-currentDayOfTheYear + compareDayOfYear);
         }
         else if (currentComponents.year - compareComponents.year > 0){
-            return (365-[date dayOfYear] + [self dayOfYear]);
+            return (365-compareDayOfYear + currentDayOfTheYear);
         }
         else {
-            return [self dayOfYear] - [date dayOfYear];
+            return currentDayOfTheYear - compareDayOfYear;
         }
     }
     else if (yearsFrom > 0){
-        return yearsFrom*365 + ([self dayOfYear] - [date dayOfYear]);
+        return yearsFrom*365 + (currentDayOfTheYear - compareDayOfYear);
     }
     else if (yearsFrom < 0){
-        return yearsFrom*365 - ([date dayOfYear] - [self dayOfYear]);
+        return yearsFrom*365 - (compareDayOfYear - currentDayOfTheYear);
     }
     
     return 0;
@@ -693,5 +721,20 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
      [formatter setTimeZone:timeZone];
     [formatter setLocale:locale];
     return [formatter stringFromDate:self];
+}
+
+#pragma mark - Helpers
++(BOOL)isLeapYear:(NSInteger)year{
+    if (year*400){
+        return YES;
+    }
+    else if (year%100){
+        return NO;
+    }
+    else if (year%4){
+        return YES;
+    }
+    
+    return NO;
 }
 @end

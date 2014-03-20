@@ -151,6 +151,14 @@
     return 0;
 }
 
+-(NSInteger)durationInMinutes {
+    if (self.StartDate && self.EndDate) {
+        return [self.StartDate minutesEarlierThan:self.EndDate];
+    }
+    
+    return 0;
+}
+
 -(NSInteger)durationInSeconds {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate secondsEarlierThan:self.EndDate];

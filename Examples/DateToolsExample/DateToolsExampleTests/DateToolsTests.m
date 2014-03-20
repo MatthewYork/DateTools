@@ -77,6 +77,13 @@
 - (void)testDaysInMonth{
     XCTAssertEqual(30, self.controlDate.daysInMonth, @"%s Failed", __PRETTY_FUNCTION__);
 }
+-(void)testIsInLeapYear{
+    //Not leap year
+    XCTAssertFalse([self.controlDate isInLeapYear],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Is leap year
+    XCTAssertTrue([[self.controlDate dateByAddingYears:2] isInLeapYear],  @"%s Failed", __PRETTY_FUNCTION__);
+}
 
 #pragma mark - Date Editing
 #pragma mark Date By Adding

@@ -61,6 +61,7 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodInterval) {
 -(NSInteger)durationInWeeks;
 -(NSInteger)durationInDays;
 -(NSInteger)durationInHours;
+-(NSInteger)durationInMinutes;
 -(NSInteger)durationInSeconds;
 
 #pragma mark - Time Period Relationship
