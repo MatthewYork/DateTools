@@ -139,7 +139,56 @@
 }
 
 -(DTTimePeriodRelation)relationToPeriod:(DTTimePeriod *)period{
-    return DTTimePeriodRelationAfter;
+    
+    //Make sure that all start and end points exist for comparison
+    if (self.StartDate && self.EndDate && period.StartDate && period.EndDate) {
+        //Make sure time periods are of positive durations
+        if ([self.StartDate isEarlierThan:self.EndDate] && [period.StartDate isEarlierThan:period.EndDate]) {
+            
+            //Make comparisons
+            if ([period.EndDate isEarlierThan:self.StartDate]) {
+                return DTTimePeriodRelationAfter;
+            }
+            else if ([period.EndDate isEqualToDate:self.StartDate]){
+                return DTTimePeriodRelationStartTouching;
+            }
+            else if ([period.StartDate isEarlierThan:self.StartDate] && [period.EndDate isEarlierThan:self.EndDate]){
+                return DTTimePeriodRelationStartInside;
+            }
+            else if ([period.StartDate isEqualToDate:self.StartDate] && [period.EndDate isLaterThan:self.EndDate]){
+                return DTTimePeriodRelationInsideStartTouching;
+            }
+            else if ([period.StartDate isEqualToDate:self.StartDate] && [period.EndDate isEarlierThan:self.EndDate]){
+                return DTTimePeriodRelationEnclosingStartTouching;
+            }
+            else if ([period.StartDate isLaterThan:self.StartDate] && [period.EndDate isEarlierThan:self.EndDate]){
+                return DTTimePeriodRelationEnclosing;
+            }
+            else if ([period.StartDate isLaterThan:self.StartDate] && [period.EndDate isEqualToDate:self.EndDate]){
+                return DTTimePeriodRelationEnclosingEndTouching;
+            }
+            else if ([period.StartDate isEqualToDate:self.StartDate] && [period.EndDate isEqualToDate:self.EndDate]){
+                return DTTimePeriodRelationExactMatch;
+            }
+            else if ([period.StartDate isEarlierThan:self.StartDate] && [period.EndDate isLaterThan:self.EndDate]){
+                return DTTimePeriodRelationInside;
+            }
+            else if ([period.StartDate isEarlierThan:self.StartDate] && [period.EndDate isEqualToDate:self.EndDate]){
+                return DTTimePeriodRelationInsideEndTouching;
+            }
+            else if ([period.StartDate isEarlierThan:self.EndDate] && [period.EndDate isLaterThan:self.EndDate]){
+                return DTTimePeriodRelationEndInside;
+            }
+            else if ([period.StartDate isEqualToDate:self.EndDate] && [period.EndDate isLaterThan:self.EndDate]){
+                return DTTimePeriodRelationEndTouching;
+            }
+            else if ([period.StartDate isLaterThan:self.EndDate]){
+                return DTTimePeriodRelationBefore;
+            }
+        }
+    }
+    
+    return DTTimePeriodRelationNone;
 }
 
 @end

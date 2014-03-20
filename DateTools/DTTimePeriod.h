@@ -21,7 +21,8 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodRelation){
     DTTimePeriodRelationInsideEndTouching,
     DTTimePeriodRelationEndInside,
     DTTimePeriodRelationEndTouching,
-    DTTimePeriodRelationBefore
+    DTTimePeriodRelationBefore,
+    DTTimePeriodRelationNone //One or more of the dates does not exist
 };
 
 @interface DTTimePeriod : NSObject
