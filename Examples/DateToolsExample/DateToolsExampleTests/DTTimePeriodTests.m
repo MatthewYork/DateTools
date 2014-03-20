@@ -166,7 +166,20 @@
 
 #pragma mark - Time Period Relationship
 -(void)testIsSamePeriod{
+    //Same
+    XCTAssertTrue([self.controlTimePeriod isSamePeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
     
+    //Different ending
+    DTTimePeriod *differentEndPeriod = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:[self.controlTimePeriod.EndDate dateByAddingYears:1]];
+    XCTAssertFalse([self.controlTimePeriod isSamePeriod:differentEndPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Different beginning
+    DTTimePeriod *differentStartPeriod = [DTTimePeriod timePeriodWithStartDate:[self.controlTimePeriod.StartDate dateBySubtractingYears:1] endDate:self.controlTimePeriod.EndDate];
+    XCTAssertFalse([self.controlTimePeriod isSamePeriod:differentStartPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Both endings different
+    DTTimePeriod *differentStartAndEndPeriod = [DTTimePeriod timePeriodWithStartDate:[self.controlTimePeriod.StartDate dateBySubtractingYears:1] endDate:[self.controlTimePeriod.EndDate dateBySubtractingWeeks:1]];
+    XCTAssertFalse([self.controlTimePeriod isSamePeriod:differentStartAndEndPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testIsInside{
     
