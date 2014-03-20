@@ -16,7 +16,7 @@
 
 @implementation DTTimePeriod
 
-#pragma mark - Custom Inits
+#pragma mark - Custom Init / Factory Methods
 -(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate{
     if (self = [super init]) {
         self.StartDate = startDate;
@@ -24,6 +24,90 @@
     }
     
     return self;
+}
+
++(instancetype)timePeriodWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate{
+    return [[DTTimePeriod alloc] initWithStartDate:startDate endDate:endDate];
+}
+
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size startingAt:(NSDate *)date{
+    return [[DTTimePeriod alloc] initWithStartDate:date endDate:[DTTimePeriod dateWithAddedTime:size amount:1 baseDate:date]];
+}
+
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount startingAt:(NSDate *)date{
+    return [[DTTimePeriod alloc] initWithStartDate:date endDate:[DTTimePeriod dateWithAddedTime:size amount:amount baseDate:date]];
+}
+
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size endingAt:(NSDate *)date{
+    return [[DTTimePeriod alloc] initWithStartDate:[DTTimePeriod dateWithSubtractedTime:size amount:1 baseDate:date] endDate:date];
+}
+
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount endingAt:(NSDate *)date{
+    return [[DTTimePeriod alloc] initWithStartDate:[DTTimePeriod dateWithSubtractedTime:size amount:amount baseDate:date] endDate:date];
+}
+
++(instancetype)timePeriodWithAllTime{
+    return [[DTTimePeriod alloc] initWithStartDate:[NSDate distantPast] endDate:[NSDate distantFuture]];
+}
+
++(NSDate *)dateWithAddedTime:(DTTimePeriodSize)size amount:(NSInteger)amount baseDate:(NSDate *)date{
+    switch (size) {
+        case DTTimePeriodSizeSecond:
+            return [date dateByAddingSeconds:amount];
+            break;
+        case DTTimePeriodSizeMinute:
+            return [date dateByAddingMinutes:amount];
+            break;
+        case DTTimePeriodSizeHour:
+            return [date dateByAddingHours:amount];
+            break;
+        case DTTimePeriodSizeDay:
+            return [date dateByAddingDays:amount];
+            break;
+        case DTTimePeriodSizeWeek:
+            return [date dateByAddingWeeks:amount];
+            break;
+        case DTTimePeriodSizeMonth:
+            return [date dateByAddingMonths:amount];
+            break;
+        case DTTimePeriodSizeYear:
+            return [date dateByAddingYears:amount];
+            break;
+        default:
+            break;
+    }
+    
+    return date;
+}
+
++(NSDate *)dateWithSubtractedTime:(DTTimePeriodSize)size amount:(NSInteger)amount baseDate:(NSDate *)date{
+    switch (size) {
+        case DTTimePeriodSizeSecond:
+            return [date dateBySubtractingSeconds:amount];
+            break;
+        case DTTimePeriodSizeMinute:
+            return [date dateBySubtractingMinutes:amount];
+            break;
+        case DTTimePeriodSizeHour:
+            return [date dateBySubtractingHours:amount];
+            break;
+        case DTTimePeriodSizeDay:
+            return [date dateBySubtractingDays:amount];
+            break;
+        case DTTimePeriodSizeWeek:
+            return [date dateBySubtractingWeeks:amount];
+            break;
+        case DTTimePeriodSizeMonth:
+            return [date dateBySubtractingMonths:amount];
+            break;
+        case DTTimePeriodSizeYear:
+            return [date dateBySubtractingYears:amount];
+            break;
+        default:
+            break;
+    }
+    
+    return date;
 }
 
 #pragma mark - Time Period Information

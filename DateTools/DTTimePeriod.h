@@ -25,13 +25,29 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodRelation){
     DTTimePeriodRelationNone //One or more of the dates does not exist
 };
 
+typedef NS_ENUM(NSUInteger, DTTimePeriodSize) {
+    DTTimePeriodSizeSecond,
+    DTTimePeriodSizeMinute,
+    DTTimePeriodSizeHour,
+    DTTimePeriodSizeDay,
+    DTTimePeriodSizeWeek,
+    DTTimePeriodSizeMonth,
+    DTTimePeriodSizeYear
+};
+
 @interface DTTimePeriod : NSObject
 
 @property NSDate *StartDate;
 @property NSDate *EndDate;
 
-#pragma mark - Custom Inits
+#pragma mark - Custom Init / Factory Methods
 -(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
++(instancetype)timePeriodWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size startingAt:(NSDate *)date;
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount startingAt:(NSDate *)date;
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size endingAt:(NSDate *)date;
++(instancetype)timePeriodWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount endingAt:(NSDate *)date;
++(instancetype)timePeriodWithAllTime;
 
 #pragma mark - Time Period Information
 -(BOOL)hasStartDate;
