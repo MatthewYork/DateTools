@@ -494,40 +494,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 -(NSInteger)daysFrom:(NSDate *)date{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
-    NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
-    
-    NSInteger yearsFrom = [self yearsFrom:date];
-    NSInteger currentDayOfTheYear = self.dayOfYear;
-    NSInteger compareDayOfYear = date.dayOfYear;
-    
-    if (self.isInLeapYear && !date.isInLeapYear) {
-        currentDayOfTheYear = (currentDayOfTheYear > 29)? currentDayOfTheYear-1:currentDayOfTheYear;
-    }
-    else if (!self.isInLeapYear && date.isInLeapYear){
-        compareDayOfYear = (compareDayOfYear > 29)? compareDayOfYear-1:compareDayOfYear;
-    }
-    
-    if (yearsFrom == 0) {
-        if (currentComponents.year - compareComponents.year < 0) {
-            return (365-currentDayOfTheYear + compareDayOfYear);
-        }
-        else if (currentComponents.year - compareComponents.year > 0){
-            return (365-compareDayOfYear + currentDayOfTheYear);
-        }
-        else {
-            return currentDayOfTheYear - compareDayOfYear;
-        }
-    }
-    else if (yearsFrom > 0){
-        return yearsFrom*365 + (currentDayOfTheYear - compareDayOfYear);
-    }
-    else if (yearsFrom < 0){
-        return yearsFrom*365 - (compareDayOfYear - currentDayOfTheYear);
-    }
-    
-    return 0;
+    return ([self timeIntervalSinceDate:date])/SECONDS_IN_DAY;
 }
 
 -(NSInteger)hoursFrom:(NSDate *)date{
