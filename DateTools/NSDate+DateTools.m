@@ -536,6 +536,35 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return MAX([self timeIntervalSinceDate:date]*1000, 0);
 }
 
+#pragma mark Comparators
+-(BOOL)isOlderThan:(NSDate *)date{
+    if ([[self earlierDate:date] isEqualToDate:self]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isYoungerThan:(NSDate *)date{
+    if ([[self laterDate:date] isEqualToDate:self]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isOlderThanOrEqualToDate:(NSDate *)date{
+    if ([[self earlierDate:date] isEqualToDate:self] || [self isEqualToDate:date]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isYoungerOrEqualToDate:(NSDate *)date{
+    if ([[self laterDate:date] isEqualToDate:self] || [self isEqualToDate:date]) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - Formatted Dates
 #pragma mark Formatted With Style
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style{

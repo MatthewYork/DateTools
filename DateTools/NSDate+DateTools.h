@@ -108,6 +108,11 @@
 -(NSInteger)minutesYoungerThan:(NSDate *)date;
 -(NSInteger)secondsYoungerThan:(NSDate *)date;
 -(NSInteger)millisecondsYoungerThan:(NSDate *)date;
+#pragma mark Comparators
+-(BOOL)isOlderThan:(NSDate *)date;
+-(BOOL)isYoungerThan:(NSDate *)date;
+-(BOOL)isOlderThanOrEqualToDate:(NSDate *)date;
+-(BOOL)isYoungerOrEqualToDate:(NSDate *)date;
 
 #pragma mark - Formatted Dates
 #pragma mark Formatted With Style
