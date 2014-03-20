@@ -164,5 +164,28 @@
     XCTAssertEqual(14400, [testPeriod durationInSeconds],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 
+#pragma mark - Time Period Relationship
+-(void)testIsSamePeriod{
+    
+}
+-(void)testIsInside{
+    
+}
+-(void)testContains{
+    
+}
+-(void)testOverlapsWith{
+    
+}
+-(void)testIntersects{
+    
+}
+-(void)testRelationToPeriod{
+    
+}
 
+#pragma mark - Date Relationships
+-(void)testContainsDate{
+    
+}
 @end
