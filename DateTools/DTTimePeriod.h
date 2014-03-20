@@ -45,6 +45,7 @@ NS_ENUM(NSUInteger, DTTimePeriodRelation){
 #pragma mark - Time Period Relationship
 -(BOOL)isSamePeriod:(DTTimePeriod *)period;
 -(BOOL)isInside:(DTTimePeriod *)period;
+-(BOOL)contains:(DTTimePeriod *)period;
 -(BOOL)overlapsWith:(DTTimePeriod *)period;
 -(BOOL)intersects:(DTTimePeriod *)period;
 @end

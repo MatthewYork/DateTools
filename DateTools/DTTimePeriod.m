@@ -86,14 +86,44 @@
 #pragma mark - Time Period Relationship
 
 -(BOOL)isSamePeriod:(DTTimePeriod *)period{
+    if ([self.StartDate isEqualToDate:period.StartDate] && [self.EndDate isEqualToDate:period.EndDate]) {
+        return YES;
+    }
     return NO;
 }
 
 -(BOOL)isInside:(DTTimePeriod *)period{
+    if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && [self.EndDate timeIntervalSinceDate:period.EndDate] <= 0) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)contains:(DTTimePeriod *)period{
+    if ([self.StartDate timeIntervalSinceDate:period.StartDate] >= 0 && [period.EndDate timeIntervalSinceDate:self.EndDate] <= 0) {
+        return YES;
+    }
     return NO;
 }
 
 -(BOOL)overlapsWith:(DTTimePeriod *)period{
+    //Outside -> Inside
+    if ([self.StartDate timeIntervalSinceDate:period.EndDate] < 0 && period.durationInMilliseconds > 0) {
+        return YES;
+    }
+    //Enclosing (hugs left)
+    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInMilliseconds > 0){
+        return YES;
+    }
+    //Enclosing (hugs right)
+    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInMilliseconds > 0){
+        return YES;
+    }
+    //Inside -> Out
+    else if([period.StartDate timeIntervalSinceDate:self.EndDate] < 0 && period.durationInMilliseconds > 0){
+        return YES;
+    }
+    
     return NO;
 }
 
