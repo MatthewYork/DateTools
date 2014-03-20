@@ -275,4 +275,26 @@
     return DTTimePeriodRelationNone;
 }
 
+#pragma mark - Date Relationships
+-(BOOL)containsDate:(NSDate *)date interval:(DTTimePeriodInterval)interval{
+    if (interval == DTTimePeriodIntervalOpen) {
+        if ([self.StartDate isEarlierThan:date] && [self.EndDate isLaterThan:date]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    else if (interval == DTTimePeriodIntervalClosed){
+        if ([self.StartDate isEarlierThanOrEqualToDate:date] && [self.EndDate isLaterOrEqualToDate:date]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    
+    return NO;
+}
+
 @end

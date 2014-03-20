@@ -35,6 +35,11 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodSize) {
     DTTimePeriodSizeYear
 };
 
+typedef NS_ENUM(NSUInteger, DTTimePeriodInterval) {
+    DTTimePeriodIntervalOpen,
+    DTTimePeriodIntervalClosed
+};
+
 @interface DTTimePeriod : NSObject
 
 @property NSDate *StartDate;
@@ -65,4 +70,7 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodSize) {
 -(BOOL)overlapsWith:(DTTimePeriod *)period;
 -(BOOL)intersects:(DTTimePeriod *)period;
 -(DTTimePeriodRelation)relationToPeriod:(DTTimePeriod *)period;
+
+#pragma mark - Date Relationships
+-(BOOL)containsDate:(NSDate *)date interval:(DTTimePeriodInterval)interval;
 @end
