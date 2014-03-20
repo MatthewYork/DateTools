@@ -40,7 +40,6 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodRelation){
 -(NSInteger)durationInDays;
 -(NSInteger)durationInHours;
 -(NSInteger)durationInSeconds;
--(NSInteger)durationInMilliseconds;
 
 #pragma mark - Time Period Relationship
 -(BOOL)isSamePeriod:(DTTimePeriod *)period;

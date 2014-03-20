@@ -31,6 +31,8 @@ typedef NS_ENUM(NSUInteger, DTDateComponent){
  */
 static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
+static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit | NSYearForWeekOfYearCalendarUnit;
+
 @implementation NSDate (DateTools)
 
 #pragma mark - Time Ago
@@ -255,9 +257,8 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     }
-    
-    unsigned int unitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit | NSYearForWeekOfYearCalendarUnit;
-    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
+
+    NSDateComponents *dateComponents = [calendar components:allCalendarUnitFlags fromDate:date];
     
     switch (component) {
         case DTDateComponentEra:
@@ -413,15 +414,55 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 #pragma mark - Date Comparison
 #pragma mark Time From
 -(NSInteger)yearsFrom:(NSDate *)date{
-    return ([self timeIntervalSinceDate:date])/SECONDS_IN_YEAR;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
+    NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
+    
+    return currentComponents.year - compareComponents.year;
 }
 
 -(NSInteger)weeksFrom:(NSDate *)date{
-    return ([self timeIntervalSinceDate:date])/SECONDS_IN_WEEK;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
+    NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
+    
+    if (currentComponents.year == compareComponents.year) {
+        return currentComponents.weekOfYear - compareComponents.weekOfYear;
+    }
+    else {
+        NSInteger yearsAway = [self yearsFrom:date];
+        
+        if ([self isEarlierThan:date]) {
+            return yearsAway*52 + currentComponents.weekOfYear - compareComponents.weekOfYear;
+        }
+        else {
+            return yearsAway*52 + (currentComponents.weekOfYear - compareComponents.weekOfYear);
+        }
+    }
+    
+    return 0;
 }
 
 -(NSInteger)daysFrom:(NSDate *)date{
-    return ([self timeIntervalSinceDate:date])/SECONDS_IN_DAY;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
+    NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
+    
+    if (currentComponents.year == compareComponents.year) {
+        return [self dayOfYear] - [date dayOfYear];
+    }
+    else {
+        NSInteger yearsAway = [self yearsFrom:date];
+        
+        if ([self isEarlierThan:date]) {
+            return yearsAway*365 + [self dayOfYear] - [date dayOfYear];
+        }
+        else {
+            return yearsAway*365 + ([self dayOfYear] - [date dayOfYear]);
+        }
+    }
+    
+    return 0;
 }
 
 -(NSInteger)hoursFrom:(NSDate *)date{
@@ -430,10 +471,6 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
 -(NSInteger)secondsFrom:(NSDate *)date{
     return [self timeIntervalSinceDate:date];
-}
-
--(NSInteger)millisecondsFrom:(NSDate *)date{
-    return [self timeIntervalSinceDate:date]*1000;
 }
 
 #pragma mark Time Until
@@ -457,10 +494,6 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return MAX(0, [self timeIntervalSinceNow]);
 }
 
--(NSInteger)millisecondsUntil{
-    return MAX(0, [self timeIntervalSinceNow]*1000);
-}
-
 #pragma mark Time Ago
 -(NSInteger)yearsAgo{
     return ABS(MIN(0, ([self timeIntervalSinceNow])/SECONDS_IN_YEAR));
@@ -480,10 +513,6 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
 -(NSInteger)secondsAgo{
     return ABS(MIN(0, [self timeIntervalSinceNow]));
-}
-
--(NSInteger)millisecondsAgo{
-    return ABS(MIN(0, [self timeIntervalSinceNow]*1000));
 }
 
 #pragma mark Earlier Than
@@ -511,10 +540,6 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return ABS(MIN([self timeIntervalSinceDate:date], 0));
 }
 
--(NSInteger)millisecondsEarlierThan:(NSDate *)date{
-    return ABS(MIN([self timeIntervalSinceDate:date]*1000, 0));
-}
-
 #pragma mark Later Than
 -(NSInteger)yearsLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0);
@@ -540,9 +565,6 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return MAX([self timeIntervalSinceDate:date], 0);
 }
 
--(NSInteger)millisecondsLaterThan:(NSDate *)date{
-    return MAX([self timeIntervalSinceDate:date]*1000, 0);
-}
 
 #pragma mark Comparators
 -(BOOL)isEarlierThan:(NSDate *)date{

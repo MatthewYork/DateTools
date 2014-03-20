@@ -160,5 +160,57 @@
     XCTAssertEqual(YES, [[self.controlDate dateBySubtractingSeconds:60] isEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
 
+#pragma mark - Date Comparison
+#pragma mark Time From
+-(void)testYearsFrom{
+    NSDate *testDate = [self.formatter dateFromString:@"2015 11 05 18:15:12.000"];
+    XCTAssertEqual(-1, [self.controlDate yearsFrom:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+-(void)testWeeksFrom{
+    //Same week
+    NSDate *testSameDate = [self.formatter dateFromString:@"2014 11 06 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate weeksFrom:testSameDate], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Same year
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 12 18:15:12.000"];
+    XCTAssertEqual(-1, [self.controlDate weeksFrom:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Eariler year
+    NSDate *testDate2 = [self.formatter dateFromString:@"2013 11 12 18:15:12.000"];
+    XCTAssertEqual(51, [self.controlDate weeksFrom:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Later year
+    NSDate *testDate3 = [self.formatter dateFromString:@"2015 11 12 18:15:12.000"];
+    XCTAssertEqual(-53, [self.controlDate weeksFrom:testDate3], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+-(void)testDaysFrom{
+    //Same day
+    NSDate *testSameDate = [self.formatter dateFromString:@"2014 11 05 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate daysFrom:testSameDate], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Same year
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 12 18:15:12.000"];
+    XCTAssertEqual(-7, [self.controlDate daysFrom:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Eariler year
+    NSDate *testDate2 = [self.formatter dateFromString:@"2013 11 12 18:15:12.000"];
+    XCTAssertEqual(358, [self.controlDate daysFrom:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Later year
+    NSDate *testDate3 = [self.formatter dateFromString:@"2015 11 12 18:15:12.000"];
+    XCTAssertEqual(-372, [self.controlDate daysFrom:testDate3], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+-(void)testHoursFrom{
+    NSDate *testSameDate = [self.formatter dateFromString:@"2014 11 05 20:15:12.000"];
+    XCTAssertEqual(-2, [self.controlDate hoursFrom:testSameDate], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+-(void)testSecondsFrom{
+    NSDate *testSameDate = [self.formatter dateFromString:@"2014 11 05 15:15:12.000"];
+    XCTAssertEqual(10800, [self.controlDate secondsFrom:testSameDate], @"%s Failed", __PRETTY_FUNCTION__);
+}
 
 @end

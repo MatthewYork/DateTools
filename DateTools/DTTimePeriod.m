@@ -75,14 +75,6 @@
     return 0;
 }
 
--(NSInteger)durationInMilliseconds {
-    if (self.StartDate && self.EndDate) {
-        return [self.StartDate millisecondsEarlierThan:self.EndDate];
-    }
-    
-    return 0;
-}
-
 #pragma mark - Time Period Relationship
 
 -(BOOL)isSamePeriod:(DTTimePeriod *)period{
@@ -108,19 +100,19 @@
 
 -(BOOL)overlapsWith:(DTTimePeriod *)period{
     //Outside -> Inside
-    if ([self.StartDate timeIntervalSinceDate:period.EndDate] < 0 && period.durationInMilliseconds > 0) {
+    if ([self.StartDate timeIntervalSinceDate:period.EndDate] < 0 && period.durationInSeconds > 0) {
         return YES;
     }
     //Enclosing (hugs left)
-    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInMilliseconds > 0){
+    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInSeconds > 0){
         return YES;
     }
     //Enclosing (hugs right)
-    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInMilliseconds > 0){
+    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInSeconds > 0){
         return YES;
     }
     //Inside -> Out
-    else if([period.StartDate timeIntervalSinceDate:self.EndDate] < 0 && period.durationInMilliseconds > 0){
+    else if([period.StartDate timeIntervalSinceDate:self.EndDate] < 0 && period.durationInSeconds > 0){
         return YES;
     }
     return NO;
@@ -128,19 +120,19 @@
 
 -(BOOL)intersects:(DTTimePeriod *)period{
     //Outside -> Inside
-    if ([self.StartDate timeIntervalSinceDate:period.EndDate] <= 0 && period.durationInMilliseconds > 0) {
+    if ([self.StartDate timeIntervalSinceDate:period.EndDate] <= 0 && period.durationInSeconds > 0) {
         return YES;
     }
     //Enclosing (hugs left)
-    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInMilliseconds > 0){
+    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInSeconds > 0){
         return YES;
     }
     //Enclosing (hugs right)
-    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInMilliseconds > 0){
+    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInSeconds > 0){
         return YES;
     }
     //Inside -> Out
-    else if([period.StartDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInMilliseconds > 0){
+    else if([period.StartDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInSeconds > 0){
         return YES;
     }
     return NO;

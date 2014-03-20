@@ -75,21 +75,18 @@
 -(NSInteger)daysFrom:(NSDate *)date;
 -(NSInteger)hoursFrom:(NSDate *)date;
 -(NSInteger)secondsFrom:(NSDate *)date;
--(NSInteger)millisecondsFrom:(NSDate *)date;
 #pragma mark Time Until
 -(NSInteger)yearsUntil;
 -(NSInteger)weeksUntil;
 -(NSInteger)daysUntil;
 -(NSInteger)hoursUntil;
 -(NSInteger)secondsUntil;
--(NSInteger)millisecondsUntil;
 #pragma mark Time Ago
 -(NSInteger)yearsAgo;
 -(NSInteger)weeksAgo;
 -(NSInteger)daysAgo;
 -(NSInteger)hoursAgo;
 -(NSInteger)secondsAgo;
--(NSInteger)millisecondsAgo;
 #pragma mark Earlier Than
 -(NSInteger)yearsEarlierThan:(NSDate *)date;
 -(NSInteger)weeksEarlierThan:(NSDate *)date;
@@ -97,7 +94,6 @@
 -(NSInteger)hoursEarlierThan:(NSDate *)date;
 -(NSInteger)minutesEarlierThan:(NSDate *)date;
 -(NSInteger)secondsEarlierThan:(NSDate *)date;
--(NSInteger)millisecondsEarlierThan:(NSDate *)date;
 #pragma mark Later Than
 -(NSInteger)yearsLaterThan:(NSDate *)date;
 -(NSInteger)weeksLaterThan:(NSDate *)date;
@@ -105,7 +101,6 @@
 -(NSInteger)hoursLaterThan:(NSDate *)date;
 -(NSInteger)minutesLaterThan:(NSDate *)date;
 -(NSInteger)secondsLaterThan:(NSDate *)date;
--(NSInteger)millisecondsLaterThan:(NSDate *)date;
 #pragma mark Comparators
 -(BOOL)isEarlierThan:(NSDate *)date;
 -(BOOL)isLaterThan:(NSDate *)date;
