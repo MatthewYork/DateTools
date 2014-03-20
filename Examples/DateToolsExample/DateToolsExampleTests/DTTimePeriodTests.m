@@ -125,7 +125,6 @@
     XCTAssertTrue([testPeriodYear.StartDate isEqualToDate:endEarlierYear] && [testPeriodYear.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 
-
 #pragma mark - Time Period Information
 -(void)testHasStartDate{
     //Has start date
@@ -164,5 +163,6 @@
     DTTimePeriod *testPeriod = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:[self.controlTimePeriod.StartDate dateByAddingHours:4]];
     XCTAssertEqual(14400, [testPeriod durationInSeconds],  @"%s Failed", __PRETTY_FUNCTION__);
 }
+
 
 @end

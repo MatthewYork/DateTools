@@ -195,6 +195,14 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return days.length;
 }
 
+-(NSInteger)daysInYear{
+    if (self.isInLeapYear) {
+        return 366;
+    }
+    
+    return 365;
+}
+
 -(BOOL)isInLeapYear{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents = [calendar components:allCalendarUnitFlags fromDate:self];

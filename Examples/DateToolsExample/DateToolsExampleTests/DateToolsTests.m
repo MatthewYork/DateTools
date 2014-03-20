@@ -77,11 +77,24 @@
 - (void)testDaysInMonth{
     XCTAssertEqual(30, self.controlDate.daysInMonth, @"%s Failed", __PRETTY_FUNCTION__);
 }
--(void)testIsInLeapYear{
+- (void)testDaysInYear{
+    //Non leap year (2014)
+    XCTAssertEqual(365, self.controlDate.daysInYear, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Leap year (2000)
+    XCTAssertEqual(366, [self.controlDate dateBySubtractingYears:14].daysInYear, @"%s Failed", __PRETTY_FUNCTION__);
+}
+- (void)testIsInLeapYear{
     //Not leap year
     XCTAssertFalse([self.controlDate isInLeapYear],  @"%s Failed", __PRETTY_FUNCTION__);
     
-    //Is leap year
+    //Is leap year (%400) 2000
+    XCTAssertTrue([[self.controlDate dateBySubtractingYears:14] isInLeapYear],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Not leap year (%100) 1900
+    XCTAssertFalse([[self.controlDate dateBySubtractingYears:114] isInLeapYear],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Is leap year (%4) 2016
     XCTAssertTrue([[self.controlDate dateByAddingYears:2] isInLeapYear],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 

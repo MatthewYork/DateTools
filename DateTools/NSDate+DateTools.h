@@ -35,7 +35,9 @@
 - (NSInteger)yearForWeekOfYear;
 - (NSInteger)daysInMonth;
 - (NSInteger)dayOfYear;
+-(NSInteger)daysInYear;
 -(BOOL)isInLeapYear;
+
 
 #pragma mark - Date Components With Calendar
 - (NSInteger)eraWithCalendar:(NSCalendar *)calendar;
