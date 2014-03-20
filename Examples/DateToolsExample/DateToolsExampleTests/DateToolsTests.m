@@ -204,13 +204,13 @@
 }
 
 -(void)testHoursFrom{
-    NSDate *testSameDate = [self.formatter dateFromString:@"2014 11 05 20:15:12.000"];
-    XCTAssertEqual(-2, [self.controlDate hoursFrom:testSameDate], @"%s Failed", __PRETTY_FUNCTION__);
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 20:15:12.000"];
+    XCTAssertEqual(-2, [self.controlDate hoursFrom:testDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 -(void)testSecondsFrom{
-    NSDate *testSameDate = [self.formatter dateFromString:@"2014 11 05 15:15:12.000"];
-    XCTAssertEqual(10800, [self.controlDate secondsFrom:testSameDate], @"%s Failed", __PRETTY_FUNCTION__);
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 15:15:12.000"];
+    XCTAssertEqual(10800, [self.controlDate secondsFrom:testDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 @end
