@@ -478,87 +478,87 @@ static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
     return ABS(MIN(0, [self timeIntervalSinceNow]*1000));
 }
 
-#pragma mark Older Than
--(NSInteger)yearsOlderThan:(NSDate *)date{
+#pragma mark Earlier Than
+-(NSInteger)yearsEarlierThan:(NSDate *)date{
     return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0));
 }
 
--(NSInteger)weeksOlderThan:(NSDate *)date{
+-(NSInteger)weeksEarlierThan:(NSDate *)date{
     return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_WEEK, 0));
 }
 
--(NSInteger)daysOlderThan:(NSDate *)date{
+-(NSInteger)daysEarlierThan:(NSDate *)date{
     return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_DAY, 0));
 }
 
--(NSInteger)hoursOlderThan:(NSDate *)date{
+-(NSInteger)hoursEarlierThan:(NSDate *)date{
     return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_HOUR, 0));
 }
 
--(NSInteger)minutesOlderThan:(NSDate *)date{
+-(NSInteger)minutesEarlierThan:(NSDate *)date{
     return ABS(MIN([self timeIntervalSinceDate:date]/SECONDS_IN_MINUTE, 0));
 }
 
--(NSInteger)secondsOlderThan:(NSDate *)date{
+-(NSInteger)secondsEarlierThan:(NSDate *)date{
     return ABS(MIN([self timeIntervalSinceDate:date], 0));
 }
 
--(NSInteger)millisecondsOlderThan:(NSDate *)date{
+-(NSInteger)millisecondsEarlierThan:(NSDate *)date{
     return ABS(MIN([self timeIntervalSinceDate:date]*1000, 0));
 }
 
-#pragma mark Younger Than
--(NSInteger)yearsYoungerThan:(NSDate *)date{
+#pragma mark Later Than
+-(NSInteger)yearsLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0);
 }
 
--(NSInteger)weeksYoungerThan:(NSDate *)date{
+-(NSInteger)weeksLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_WEEK, 0);
 }
 
--(NSInteger)daysYoungerThan:(NSDate *)date{
+-(NSInteger)daysLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_YEAR, 0);
 }
 
--(NSInteger)hoursYoungerThan:(NSDate *)date{
+-(NSInteger)hoursLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_HOUR, 0);
 }
 
--(NSInteger)minutesYoungerThan:(NSDate *)date{
+-(NSInteger)minutesLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]/SECONDS_IN_MINUTE, 0);
 }
 
--(NSInteger)secondsYoungerThan:(NSDate *)date{
+-(NSInteger)secondsLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date], 0);
 }
 
--(NSInteger)millisecondsYoungerThan:(NSDate *)date{
+-(NSInteger)millisecondsLaterThan:(NSDate *)date{
     return MAX([self timeIntervalSinceDate:date]*1000, 0);
 }
 
 #pragma mark Comparators
--(BOOL)isOlderThan:(NSDate *)date{
+-(BOOL)isEarlierThan:(NSDate *)date{
     if ([[self earlierDate:date] isEqualToDate:self]) {
         return YES;
     }
     return NO;
 }
 
--(BOOL)isYoungerThan:(NSDate *)date{
+-(BOOL)isLaterThan:(NSDate *)date{
     if ([[self laterDate:date] isEqualToDate:self]) {
         return YES;
     }
     return NO;
 }
 
--(BOOL)isOlderThanOrEqualToDate:(NSDate *)date{
+-(BOOL)isEarlierThanOrEqualToDate:(NSDate *)date{
     if ([[self earlierDate:date] isEqualToDate:self] || [self isEqualToDate:date]) {
         return YES;
     }
     return NO;
 }
 
--(BOOL)isYoungerOrEqualToDate:(NSDate *)date{
+-(BOOL)isLaterOrEqualToDate:(NSDate *)date{
     if ([[self laterDate:date] isEqualToDate:self] || [self isEqualToDate:date]) {
         return YES;
     }

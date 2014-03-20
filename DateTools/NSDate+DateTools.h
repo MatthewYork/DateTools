@@ -92,27 +92,27 @@
 -(NSInteger)hoursAgo;
 -(NSInteger)secondsAgo;
 -(NSInteger)millisecondsAgo;
-#pragma mark Older Than
--(NSInteger)yearsOlderThan:(NSDate *)date;
--(NSInteger)weeksOlderThan:(NSDate *)date;
--(NSInteger)daysOlderThan:(NSDate *)date;
--(NSInteger)hoursOlderThan:(NSDate *)date;
--(NSInteger)minutesOlderThan:(NSDate *)date;
--(NSInteger)secondsOlderThan:(NSDate *)date;
--(NSInteger)millisecondsOlderThan:(NSDate *)date;
-#pragma mark Younger Than
--(NSInteger)yearsYoungerThan:(NSDate *)date;
--(NSInteger)weeksYoungerThan:(NSDate *)date;
--(NSInteger)daysYoungerThan:(NSDate *)date;
--(NSInteger)hoursYoungerThan:(NSDate *)date;
--(NSInteger)minutesYoungerThan:(NSDate *)date;
--(NSInteger)secondsYoungerThan:(NSDate *)date;
--(NSInteger)millisecondsYoungerThan:(NSDate *)date;
+#pragma mark Earlier Than
+-(NSInteger)yearsEarlierThan:(NSDate *)date;
+-(NSInteger)weeksEarlierThan:(NSDate *)date;
+-(NSInteger)daysEarlierThan:(NSDate *)date;
+-(NSInteger)hoursEarlierThan:(NSDate *)date;
+-(NSInteger)minutesEarlierThan:(NSDate *)date;
+-(NSInteger)secondsEarlierThan:(NSDate *)date;
+-(NSInteger)millisecondsEarlierThan:(NSDate *)date;
+#pragma mark Later Than
+-(NSInteger)yearsLaterThan:(NSDate *)date;
+-(NSInteger)weeksLaterThan:(NSDate *)date;
+-(NSInteger)daysLaterThan:(NSDate *)date;
+-(NSInteger)hoursLaterThan:(NSDate *)date;
+-(NSInteger)minutesLaterThan:(NSDate *)date;
+-(NSInteger)secondsLaterThan:(NSDate *)date;
+-(NSInteger)millisecondsLaterThan:(NSDate *)date;
 #pragma mark Comparators
--(BOOL)isOlderThan:(NSDate *)date;
--(BOOL)isYoungerThan:(NSDate *)date;
--(BOOL)isOlderThanOrEqualToDate:(NSDate *)date;
--(BOOL)isYoungerOrEqualToDate:(NSDate *)date;
+-(BOOL)isEarlierThan:(NSDate *)date;
+-(BOOL)isLaterThan:(NSDate *)date;
+-(BOOL)isEarlierThanOrEqualToDate:(NSDate *)date;
+-(BOOL)isLaterOrEqualToDate:(NSDate *)date;
 
 #pragma mark - Formatted Dates
 #pragma mark Formatted With Style
