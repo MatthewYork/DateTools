@@ -285,6 +285,17 @@
     return DTTimePeriodRelationNone;
 }
 
+-(NSTimeInterval)gapBetween:(DTTimePeriod *)period{
+    if ([self.EndDate isEarlierThan:period.StartDate]) {
+        return ABS([self.EndDate timeIntervalSinceDate:period.StartDate]);
+    }
+    else if ([period.EndDate isEarlierThan:self.StartDate]){
+        return ABS([period.EndDate timeIntervalSinceDate:self.StartDate]);
+    }
+    
+    return 0;
+}
+
 #pragma mark - Date Relationships
 -(BOOL)containsDate:(NSDate *)date interval:(DTTimePeriodInterval)interval{
     if (interval == DTTimePeriodIntervalOpen) {

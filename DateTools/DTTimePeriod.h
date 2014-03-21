@@ -78,6 +78,7 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 -(BOOL)overlapsWith:(DTTimePeriod *)period;
 -(BOOL)intersects:(DTTimePeriod *)period;
 -(DTTimePeriodRelation)relationToPeriod:(DTTimePeriod *)period;
+-(NSTimeInterval)gapBetween:(DTTimePeriod *)period;
 
 #pragma mark - Date Relationships
 -(BOOL)containsDate:(NSDate *)date interval:(DTTimePeriodInterval)interval;

@@ -38,24 +38,45 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 #pragma mark - Time Ago
 
 /**
- *  Returns a string with the difference in time from the current time and the desired date;
+ *  Takes in a date and returns a string with the most convenient unit of time representing
+ *  how far in the past that date is from now.
  *
- *  @param date 
+ *  @param NSDate - Date to be measured from now
  *
- *  @return <#return value description#>
+ *  @return NSString - Formatted return string
  */
 + (NSString*)timeAgoSinceDate:(NSDate*)date{
     return [date timeAgoSinceDate:[NSDate date] shortformatting:NO];
 }
 
+/**
+ *  Takes in a date and returns a shortened string with the most convenient unit of time representing
+ *  how far in the past that date is from now.
+ *
+ *  @param NSDate - Date to be measured from now
+ *
+ *  @return NSString - Formatted return string
+ */
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date{
     return [date timeAgoSinceDate:[NSDate date] shortformatting:YES];
 }
 
+/**
+ *  Returns a string with the most convenient unit of time representing
+ *  how far in the past that date is from now.
+ *
+ *  @return NSString - Formatted return string
+ */
 - (NSString*)timeAgoSinceNow{
     return [self timeAgoSinceDate:[NSDate date] shortformatting:NO];
 }
 
+/**
+ *  Returns a shortened string with the most convenient unit of time representing
+ *  how far in the past that date is from now.
+ *
+ *  @return NSString - Formatted return string
+ */
 -(NSString *)shortTimeAgoSinceNow{
     return [self timeAgoSinceDate:[NSDate date] shortformatting:YES];
 }
@@ -129,71 +150,150 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 #pragma mark - Date Components Without Calendar
-
+/**
+ *  Returns the era of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)era{
     return [self componentForDate:self type:DTDateComponentEra calendar:nil];
 }
 
+/**
+ *  Returns the year of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)year{
     return [self componentForDate:self type:DTDateComponentYear calendar:nil];
 }
 
+/**
+ *  Returns the month of the year of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)month{
     return [self componentForDate:self type:DTDateComponentMonth calendar:nil];
 }
 
+/**
+ *  Returns the day of the month of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)day{
     return [self componentForDate:self type:DTDateComponentDay calendar:nil];
 }
 
+/**
+ *  Returns the hour of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)hour{
     return [self componentForDate:self type:DTDateComponentHour calendar:nil];
 }
 
+/**
+ *  Returns the minute of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)minute{
     return [self componentForDate:self type:DTDateComponentMinute calendar:nil];
 }
 
+/**
+ *  Returns the second of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)second{
     return [self componentForDate:self type:DTDateComponentSecond calendar:nil];
 }
 
+/**
+ *  Returns the day of the week of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)weekday{
     return [self componentForDate:self type:DTDateComponentWeekday calendar:nil];
 }
 
+/**
+ *  Returns the ordinal for the day of the week of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)weekdayOrdinal{
     return [self componentForDate:self type:DTDateComponentWeekdayOrdinal calendar:nil];
 }
 
+/**
+ *  Returns the quarter of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)quarter{
     return [self componentForDate:self type:DTDateComponentQuarter calendar:nil];
 }
 
+/**
+ *  Returns the week of the month of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)weekOfMonth{
     return [self componentForDate:self type:DTDateComponentWeekOfMonth calendar:nil];
 }
 
+/**
+ *  Returns the week of the year of the receiver.
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)weekOfYear{
     return [self componentForDate:self type:DTDateComponentWeekOfYear calendar:nil];
 }
 
+/**
+ *  I honestly don't know much about this value...
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)yearForWeekOfYear{
     return [self componentForDate:self type:DTDateComponentYearForWeekOfYear calendar:nil];
 }
 
+/**
+ *  Returns how many days are in the month of the receiver.
+ *
+ *  @return NSInteger
+ */
+- (NSInteger)daysInMonth{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit
+                                  inUnit:NSMonthCalendarUnit
+                                 forDate:self];
+    return days.length;
+}
+
+/**
+ *  Returns the day of the year of the receiver. (0-365 or 0-366 for leap year)
+ *
+ *  @return NSInteger
+ */
 - (NSInteger)dayOfYear{
     return [self componentForDate:self type:DTDateComponentDayOfYear calendar:nil];
 }
 
-- (NSInteger)daysInMonth{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit
-                           inUnit:NSMonthCalendarUnit
-                          forDate:self];
-    return days.length;
-}
-
+/**
+ *  Returns how many days are in the year of the receiver.
+ *
+ *  @return NSInteger
+ */
 -(NSInteger)daysInYear{
     if (self.isInLeapYear) {
         return 366;
@@ -202,6 +302,11 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return 365;
 }
 
+/**
+ *  Returns whether the receiver falls in a leap year.
+ *
+ *  @return NSInteger
+ */
 -(BOOL)isInLeapYear{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents = [calendar components:allCalendarUnitFlags fromDate:self];

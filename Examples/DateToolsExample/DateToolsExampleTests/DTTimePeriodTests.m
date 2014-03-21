@@ -404,6 +404,28 @@
     DTTimePeriod *testTimePeriodAfter = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 10 18:15:12.000"]];
     XCTAssertEqual(DTTimePeriodRelationAfter, [testTimePeriodAfter relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
 }
+-(void)testGapBetween{
+    //We are going to treat some of these as False=noGap and True=gap
+    
+    //No Gap Same
+    XCTAssertFalse([self.controlTimePeriod gapBetween:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //No Gap End Inside
+    DTTimePeriod *testPeriodNoGap = [DTTimePeriod timePeriodWithStartDate:[self.controlTimePeriod.StartDate dateBySubtractingDays:1] endDate:[self.controlTimePeriod.EndDate dateBySubtractingDays:1]];
+    XCTAssertFalse([self.controlTimePeriod gapBetween:testPeriodNoGap],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Gap receiver early
+    DTTimePeriod *testPeriodReceiverEarly = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeWeek startingAt:[self.controlTimePeriod.EndDate dateByAddingYears:1]];
+    XCTAssertTrue([self.controlTimePeriod gapBetween:testPeriodReceiverEarly],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Gap parameter early
+    DTTimePeriod *testPeriodParameterEarly = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeWeek endingAt:[self.controlTimePeriod.StartDate dateBySubtractingYears:1]];
+    XCTAssertTrue([self.controlTimePeriod gapBetween:testPeriodParameterEarly],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Gap of 1 minute
+    DTTimePeriod *testPeriodParameter1MinuteEarly = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeSecond endingAt:[self.controlTimePeriod.StartDate dateBySubtractingMinutes:1]];
+    XCTAssertEqual(60, [self.controlTimePeriod gapBetween:testPeriodParameter1MinuteEarly],  @"%s Failed", __PRETTY_FUNCTION__);
+}
 
 #pragma mark - Date Relationships
 -(void)testContainsDate{
