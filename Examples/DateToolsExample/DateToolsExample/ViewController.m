@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "NSDate+DateTools.h"
+#import "DTTimePeriodCollection.h"
+
 @interface ViewController ()
 
 @end
@@ -18,7 +20,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [[NSDate date] timeAgoSinceNow];
 }
 
 - (void)didReceiveMemoryWarning

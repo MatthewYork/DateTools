@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 typedef NS_ENUM(NSUInteger, DTTimePeriodRelation){
     DTTimePeriodRelationAfter,
     DTTimePeriodRelationStartTouching,
@@ -48,7 +49,14 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 
 @interface DTTimePeriod : NSObject
 
+/**
+ *  The start date for a DTTimePeriod representing the starting boundary of the time period
+ */
 @property NSDate *StartDate;
+
+/**
+ *  The end date for a DTTimePeriod representing the ending boundary of the time period
+ */
 @property NSDate *EndDate;
 
 #pragma mark - Custom Init / Factory Methods
