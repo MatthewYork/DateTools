@@ -40,6 +40,12 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodInterval) {
     DTTimePeriodIntervalClosed
 };
 
+typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
+    DTTimePeriodAnchorStart,
+    DTTimePeriodAnchorCenter,
+    DTTimePeriodAnchorEnd
+};
+
 @interface DTTimePeriod : NSObject
 
 @property NSDate *StartDate;
@@ -81,4 +87,10 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodInterval) {
 -(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size;
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
+
+#pragma mark Lengthen / Shorten
+-(void)lengthenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size;
+-(void)lengthenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size amount:(NSInteger)amount;
+-(void)shortenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size;
+-(void)shortenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size amount:(NSInteger)amount;
 @end
