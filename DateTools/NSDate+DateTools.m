@@ -747,6 +747,14 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 
 #pragma mark - Date Comparison
 #pragma mark Time From
+/**
+ *  Returns an NSInteger representing the amount of time in years between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return NSInteger - The NSInteger representation of the years between receiver and provided date
+ */
 -(NSInteger)yearsFrom:(NSDate *)date{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
@@ -772,6 +780,14 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return 0;
 }
 
+/**
+ *  Returns an NSInteger representing the amount of time in weeks between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return NSInteger - The NSInteger representation of the weeks between receiver and provided date
+ */
 -(NSInteger)weeksFrom:(NSDate *)date{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
@@ -800,124 +816,319 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return 0;
 }
 
+/**
+ *  Returns an NSInteger representing the amount of time in days between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return NSInteger - The NSInteger representation of the days between receiver and provided date
+ */
 -(NSInteger)daysFrom:(NSDate *)date{
     return ([self timeIntervalSinceDate:date])/SECONDS_IN_DAY;
 }
 
+/**
+ *  Returns an NSInteger representing the amount of time in hours between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return NSInteger - The NSInteger representation of the hours between receiver and provided date
+ */
 -(NSInteger)hoursFrom:(NSDate *)date{
     return ([self timeIntervalSinceDate:date])/SECONDS_IN_HOUR;
 }
 
+/**
+ *  Returns an NSInteger representing the amount of time in minutes between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return NSInteger - The NSInteger representation of the minutes between receiver and provided date
+ */
 -(NSInteger)minutesFrom:(NSDate *)date{
     return ([self timeIntervalSinceDate:date])/SECONDS_IN_MINUTE;
 }
 
+/**
+ *  Returns an NSInteger representing the amount of time in seconds between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return NSInteger - The NSInteger representation of the seconds between receiver and provided date
+ */
 -(NSInteger)secondsFrom:(NSDate *)date{
     return [self timeIntervalSinceDate:date];
 }
 
 #pragma mark Time Until
+/**
+ *  Returns the number of years until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
+ *
+ *  @return NSInteger representiation of years
+ */
 -(NSInteger)yearsUntil{
     return [self yearsLaterThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of weeks until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
+ *
+ *  @return NSInteger representiation of weeks
+ */
 -(NSInteger)weeksUntil{
     return [self weeksLaterThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of days until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
+ *
+ *  @return NSInteger representiation of days
+ */
 -(NSInteger)daysUntil{
     return [self daysLaterThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of hours until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
+ *
+ *  @return NSInteger representiation of hours
+ */
 -(NSInteger)hoursUntil{
     return [self hoursLaterThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of minutes until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
+ *
+ *  @return NSInteger representiation of minutes
+ */
 -(NSInteger)minutesUntil{
     return [self minutesLaterThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of seconds until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
+ *
+ *  @return NSInteger representiation of seconds
+ */
 -(NSInteger)secondsUntil{
     return [self secondsLaterThan:[NSDate date]];
 }
 
 #pragma mark Time Ago
+/**
+ *  Returns the number of years the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
+ *
+ *  @return NSInteger representiation of years
+ */
 -(NSInteger)yearsAgo{
     return [self yearsEarlierThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of weeks the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
+ *
+ *  @return NSInteger representiation of weeks
+ */
 -(NSInteger)weeksAgo{
     return [self weeksEarlierThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of days the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
+ *
+ *  @return NSInteger representiation of days
+ */
 -(NSInteger)daysAgo{
     return [self daysEarlierThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of hours the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
+ *
+ *  @return NSInteger representiation of hours
+ */
 -(NSInteger)hoursAgo{
     return [self hoursEarlierThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of minutes the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
+ *
+ *  @return NSInteger representiation of minutes
+ */
 -(NSInteger)minutesAgo{
     return [self minutesEarlierThan:[NSDate date]];
 }
 
+/**
+ *  Returns the number of seconds the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
+ *
+ *  @return NSInteger representiation of seconds
+ */
 -(NSInteger)secondsAgo{
     return [self secondsEarlierThan:[NSDate date]];
 }
 
 #pragma mark Earlier Than
+/**
+ *  Returns the number of years the receiver's date is earlier than the provided comparison date. 
+ *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of years
+ */
 -(NSInteger)yearsEarlierThan:(NSDate *)date{
     return ABS(MIN([self yearsFrom:date], 0));
 }
 
+/**
+ *  Returns the number of weeks the receiver's date is earlier than the provided comparison date.
+ *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of weeks
+ */
 -(NSInteger)weeksEarlierThan:(NSDate *)date{
     return ABS(MIN([self weeksFrom:date], 0));
 }
 
+/**
+ *  Returns the number of days the receiver's date is earlier than the provided comparison date.
+ *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of days
+ */
 -(NSInteger)daysEarlierThan:(NSDate *)date{
     return ABS(MIN([self daysFrom:date], 0));
 }
 
+/**
+ *  Returns the number of hours the receiver's date is earlier than the provided comparison date.
+ *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of hours
+ */
 -(NSInteger)hoursEarlierThan:(NSDate *)date{
     return ABS(MIN([self hoursFrom:date], 0));
 }
 
+/**
+ *  Returns the number of minutes the receiver's date is earlier than the provided comparison date.
+ *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of minutes
+ */
 -(NSInteger)minutesEarlierThan:(NSDate *)date{
     return ABS(MIN([self minutesFrom:date], 0));
 }
 
+/**
+ *  Returns the number of seconds the receiver's date is earlier than the provided comparison date.
+ *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of seconds
+ */
 -(NSInteger)secondsEarlierThan:(NSDate *)date{
     return ABS(MIN([self secondsFrom:date], 0));
 }
 
 #pragma mark Later Than
+/**
+ *  Returns the number of years the receiver's date is later than the provided comparison date.
+ *  Returns 0 if the receiver's date is earlier than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of years
+ */
 -(NSInteger)yearsLaterThan:(NSDate *)date{
     return MAX([self yearsFrom:date], 0);
 }
 
+/**
+ *  Returns the number of weeks the receiver's date is later than the provided comparison date.
+ *  Returns 0 if the receiver's date is earlier than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of weeks
+ */
 -(NSInteger)weeksLaterThan:(NSDate *)date{
     return MAX([self weeksFrom:date], 0);
 }
 
+/**
+ *  Returns the number of days the receiver's date is later than the provided comparison date.
+ *  Returns 0 if the receiver's date is earlier than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of days
+ */
 -(NSInteger)daysLaterThan:(NSDate *)date{
     return MAX([self daysFrom:date], 0);
 }
 
+/**
+ *  Returns the number of hours the receiver's date is later than the provided comparison date.
+ *  Returns 0 if the receiver's date is earlier than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of hours
+ */
 -(NSInteger)hoursLaterThan:(NSDate *)date{
     return MAX([self hoursFrom:date], 0);
 }
 
+/**
+ *  Returns the number of minutes the receiver's date is later than the provided comparison date.
+ *  Returns 0 if the receiver's date is earlier than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of minutes
+ */
 -(NSInteger)minutesLaterThan:(NSDate *)date{
     return MAX([self minutesFrom:date], 0);
 }
 
+/**
+ *  Returns the number of seconds the receiver's date is later than the provided comparison date.
+ *  Returns 0 if the receiver's date is earlier than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return NSInteger representing the number of seconds
+ */
 -(NSInteger)secondsLaterThan:(NSDate *)date{
     return MAX([self secondsFrom:date], 0);
 }
 
 
 #pragma mark Comparators
+/**
+ *  Returns a YES if receiver is earlier than provided comparison date, otherwise returns NO
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return BOOL representing comparison result
+ */
 -(BOOL)isEarlierThan:(NSDate *)date{
     if (self.timeIntervalSince1970 < date.timeIntervalSince1970) {
         return YES;
@@ -925,6 +1136,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return NO;
 }
 
+/**
+ *  Returns a YES if receiver is later than provided comparison date, otherwise returns NO
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return BOOL representing comparison result
+ */
 -(BOOL)isLaterThan:(NSDate *)date{
     if (self.timeIntervalSince1970 > date.timeIntervalSince1970) {
         return YES;
@@ -932,6 +1150,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return NO;
 }
 
+/**
+ *  Returns a YES if receiver is earlier than or equal to the provided comparison date, otherwise returns NO
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return BOOL representing comparison result
+ */
 -(BOOL)isEarlierThanOrEqualToDate:(NSDate *)date{
     if (self.timeIntervalSince1970 <= date.timeIntervalSince1970) {
         return YES;
@@ -939,6 +1164,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return NO;
 }
 
+/**
+ *  Returns a YES if receiver is later than or equal to provided comparison date, otherwise returns NO
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return BOOL representing comparison result
+ */
 -(BOOL)isLaterThanOrEqualToDate:(NSDate *)date{
     if (self.timeIntervalSince1970 >= date.timeIntervalSince1970) {
         return YES;
@@ -948,12 +1180,27 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 
 #pragma mark - Formatted Dates
 #pragma mark Formatted With Style
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given style
+ *
+ *  @param style NSDateFormatterStyle - Desired date formatting style
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:style];
     return [formatter stringFromDate:self];
 }
 
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given style and time zone
+ *
+ *  @param style    NSDateFormatterStyle - Desired date formatting style
+ *  @param timeZone NSTimeZone - Desired time zone
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style timeZone:(NSTimeZone *)timeZone{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:style];
@@ -961,6 +1208,14 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [formatter stringFromDate:self];
 }
 
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given style and locale
+ *
+ *  @param style  NSDateFormatterStyle - Desired date formatting style
+ *  @param locale NSLocale - Desired locale
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style locale:(NSLocale *)locale{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:style];
@@ -968,6 +1223,15 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [formatter stringFromDate:self];
 }
 
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given style, time zone and locale
+ *
+ *  @param style    NSDateFormatterStyle - Desired date formatting style
+ *  @param timeZone NSTimeZone - Desired time zone
+ *  @param locale   NSLocale - Desired locale
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:style];
@@ -977,12 +1241,27 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 #pragma mark Formatted With Format
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given date format
+ *
+ *  @param format NSString - String representing the desired date format
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithFormat:(NSString *)format{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
     return [formatter stringFromDate:self];
 }
 
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given date format and time zone
+ *
+ *  @param format   NSString - String representing the desired date format
+ *  @param timeZone NSTimeZone - Desired time zone
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
@@ -990,6 +1269,14 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [formatter stringFromDate:self];
 }
 
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given date format and locale
+ *
+ *  @param format NSString - String representing the desired date format
+ *  @param locale NSLocale - Desired locale
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithFormat:(NSString *)format locale:(NSLocale *)locale{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
@@ -997,6 +1284,15 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [formatter stringFromDate:self];
 }
 
+/**
+ *  Convenience method that returns a formatted string representing the receiver's date formatted to a given date format, time zone and locale
+ *
+ *  @param format   NSString - String representing the desired date format
+ *  @param timeZone NSTimeZone - Desired time zone
+ *  @param locale   NSLocale - Desired locale
+ *
+ *  @return NSString representing the formatted date string
+ */
 -(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
@@ -1006,6 +1302,14 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 #pragma mark - Helpers
+/**
+ *  Class method that returns whether the given year is a leap year for the Gregorian Calendar
+ *  Returns YES if year is a leap year, otherwise returns NO
+ *
+ *  @param year NSInteger - Year to evaluate
+ *
+ *  @return BOOL evaluation of year
+ */
 +(BOOL)isLeapYear:(NSInteger)year{
     if (year*400){
         return YES;
