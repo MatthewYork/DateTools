@@ -182,23 +182,255 @@
     XCTAssertFalse([self.controlTimePeriod isSamePeriod:differentStartAndEndPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testIsInside{
+    //POSITIVE MATCHES
+    //Test exact match
+    DTTimePeriod *testTimePeriodExact = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([testTimePeriodExact isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
     
+    //Test same start
+    DTTimePeriod *testTimePeriodSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    XCTAssertTrue([testTimePeriodSameStart isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test same end
+    DTTimePeriod *testTimePeriodSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([testTimePeriodSameEnd isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test completely inside
+    DTTimePeriod *testTimePeriodCompletelyInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 04 05 18:15:12.000"]];
+    XCTAssertTrue([testTimePeriodCompletelyInside isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //NEGATIVE MATCHES
+    //Test before
+    DTTimePeriod *testTimePeriodBefore = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 04 18:15:12.000"]];
+    XCTAssertFalse([testTimePeriodBefore isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end same as start
+    DTTimePeriod *testTimePeriodEndSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2013 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"]];
+    XCTAssertFalse([testTimePeriodEndSameStart isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end inside
+    DTTimePeriod *testTimePeriodEndInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"]];
+    XCTAssertFalse([testTimePeriodEndInside isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start inside
+    DTTimePeriod *testTimePeriodStartInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"]];
+    XCTAssertFalse([testTimePeriodStartInside isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start same as end
+    DTTimePeriod *testTimePeriodStartSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 10 18:15:12.000"]];
+    XCTAssertFalse([testTimePeriodStartSameEnd isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test after
+    DTTimePeriod *testTimePeriodAfter = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 10 18:15:12.000"]];
+    XCTAssertFalse([testTimePeriodAfter isInside:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testContains{
+    //POSITIVE MATCHES
+    //Test exact match
+    DTTimePeriod *testTimePeriodExact = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod contains:testTimePeriodExact],  @"%s Failed", __PRETTY_FUNCTION__);
     
+    //Test same start
+    DTTimePeriod *testTimePeriodSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod contains:testTimePeriodSameStart],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test same end
+    DTTimePeriod *testTimePeriodSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod contains:testTimePeriodSameEnd],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test completely inside
+    DTTimePeriod *testTimePeriodCompletelyInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 04 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod contains:testTimePeriodCompletelyInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //NEGATIVE MATCHES
+    //Test before
+    DTTimePeriod *testTimePeriodBefore = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 04 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod contains:testTimePeriodBefore],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end same as start
+    DTTimePeriod *testTimePeriodEndSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2013 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod contains:testTimePeriodEndSameStart],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end inside
+    DTTimePeriod *testTimePeriodEndInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod contains:testTimePeriodEndInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start inside
+    DTTimePeriod *testTimePeriodStartInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod contains:testTimePeriodStartInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start same as end
+    DTTimePeriod *testTimePeriodStartSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 10 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod contains:testTimePeriodStartSameEnd],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test after
+    DTTimePeriod *testTimePeriodAfter = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 10 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod contains:testTimePeriodAfter],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testOverlapsWith{
+    //POSITIVE MATCHES
+    //Test exact match
+    DTTimePeriod *testTimePeriodExact = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod overlapsWith:testTimePeriodExact],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test same start
+    DTTimePeriod *testTimePeriodSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod overlapsWith:testTimePeriodSameStart],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test same end
+    DTTimePeriod *testTimePeriodSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod overlapsWith:testTimePeriodSameEnd],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test completely inside
+    DTTimePeriod *testTimePeriodCompletelyInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 04 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod overlapsWith:testTimePeriodCompletelyInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start inside
+    DTTimePeriod *testTimePeriodStartInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod overlapsWith:testTimePeriodStartInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end inside
+    DTTimePeriod *testTimePeriodEndInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod overlapsWith:testTimePeriodEndInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //NEGATIVE MATCHES
+    //Test before
+    DTTimePeriod *testTimePeriodBefore = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 04 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod overlapsWith:testTimePeriodBefore],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end same as start
+    DTTimePeriod *testTimePeriodEndSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2013 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod overlapsWith:testTimePeriodEndSameStart],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start same as end
+    DTTimePeriod *testTimePeriodStartSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 10 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod overlapsWith:testTimePeriodStartSameEnd],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test after
+    DTTimePeriod *testTimePeriodAfter = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 10 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod overlapsWith:testTimePeriodAfter],  @"%s Failed", __PRETTY_FUNCTION__);
     
 }
 -(void)testIntersects{
+    //POSITIVE MATCHES
+    //Test exact match
+    DTTimePeriod *testTimePeriodExact = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodExact],  @"%s Failed", __PRETTY_FUNCTION__);
     
+    //Test same start
+    DTTimePeriod *testTimePeriodSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodSameStart],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test same end
+    DTTimePeriod *testTimePeriodSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodSameEnd],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test completely inside
+    DTTimePeriod *testTimePeriodCompletelyInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 04 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodCompletelyInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start inside
+    DTTimePeriod *testTimePeriodStartInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodStartInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end inside
+    DTTimePeriod *testTimePeriodEndInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodEndInside],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end same as start
+    DTTimePeriod *testTimePeriodEndSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2013 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodEndSameStart],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start same as end
+    DTTimePeriod *testTimePeriodStartSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 10 18:15:12.000"]];
+    XCTAssertTrue([self.controlTimePeriod intersects:testTimePeriodStartSameEnd],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //NEGATIVE MATCHES
+    //Test before
+    DTTimePeriod *testTimePeriodBefore = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 04 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod intersects:testTimePeriodBefore],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test after
+    DTTimePeriod *testTimePeriodAfter = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 10 18:15:12.000"]];
+    XCTAssertFalse([self.controlTimePeriod intersects:testTimePeriodAfter],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testRelationToPeriod{
+    //Test exact match
+    DTTimePeriod *testTimePeriodExact = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationExactMatch, [testTimePeriodExact relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
     
+    //Test same start
+    DTTimePeriod *testTimePeriodSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationInsideStartTouching, [testTimePeriodSameStart relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test same end
+    DTTimePeriod *testTimePeriodSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationInsideEndTouching, [testTimePeriodSameEnd relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test completely inside
+    DTTimePeriod *testTimePeriodCompletelyInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 04 05 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationInside, [testTimePeriodCompletelyInside relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //NEGATIVE MATCHES
+    //Test before
+    DTTimePeriod *testTimePeriodBefore = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 04 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationBefore, [testTimePeriodBefore relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end same as start
+    DTTimePeriod *testTimePeriodEndSameStart = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2013 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationEndTouching, [testTimePeriodEndSameStart relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test end inside
+    DTTimePeriod *testTimePeriodEndInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 02 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationEndInside, [testTimePeriodEndInside relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start inside
+    DTTimePeriod *testTimePeriodStartInside = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 07 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationStartInside, [testTimePeriodStartInside relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test start same as end
+    DTTimePeriod *testTimePeriodStartSameEnd = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 10 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationStartTouching, [testTimePeriodStartSameEnd relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test after
+    DTTimePeriod *testTimePeriodAfter = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 12 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 12 10 18:15:12.000"]];
+    XCTAssertEqual(DTTimePeriodRelationAfter, [testTimePeriodAfter relationToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 #pragma mark - Date Relationships
 -(void)testContainsDate{
+    NSDate *testDateBefore = [self.formatter dateFromString:@"2014 10 05 18:15:12.000"];
+    NSDate *testDateBetween = [self.formatter dateFromString:@"2015 11 05 18:15:12.000"];
+    NSDate *testDateAfter = [self.formatter dateFromString:@"2016 12 05 18:15:12.000"];
+    
+    //Test before
+    XCTAssertFalse([self.controlTimePeriod containsDate:testDateBefore interval:DTTimePeriodIntervalOpen],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertFalse([self.controlTimePeriod containsDate:testDateBefore interval:DTTimePeriodIntervalClosed],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test on start date
+    XCTAssertFalse([self.controlTimePeriod containsDate:self.controlTimePeriod.StartDate interval:DTTimePeriodIntervalOpen],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertTrue([self.controlTimePeriod containsDate:self.controlTimePeriod.StartDate interval:DTTimePeriodIntervalClosed],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test in middle
+    XCTAssertTrue([self.controlTimePeriod containsDate:testDateBetween interval:DTTimePeriodIntervalClosed],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertTrue([self.controlTimePeriod containsDate:testDateBetween interval:DTTimePeriodIntervalClosed],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test on end date
+    XCTAssertFalse([self.controlTimePeriod containsDate:self.controlTimePeriod.EndDate interval:DTTimePeriodIntervalOpen],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertTrue([self.controlTimePeriod containsDate:self.controlTimePeriod.EndDate interval:DTTimePeriodIntervalClosed],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test after
+    XCTAssertFalse([self.controlTimePeriod containsDate:testDateAfter interval:DTTimePeriodIntervalOpen],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertFalse([self.controlTimePeriod containsDate:testDateAfter interval:DTTimePeriodIntervalClosed],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+
+#pragma mark - Period Manipulation
+#pragma mark Shifts
+-(void)testShiftEarlier{
+    
+}
+-(void)testShiftLater{
     
 }
 @end

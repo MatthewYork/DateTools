@@ -177,14 +177,14 @@
 }
 
 -(BOOL)isInside:(DTTimePeriod *)period{
-    if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && [self.EndDate timeIntervalSinceDate:period.EndDate] <= 0) {
+    if ([period.StartDate isEarlierThanOrEqualToDate:self.StartDate] && [period.EndDate isLaterThanOrEqualToDate:self.EndDate]) {
         return YES;
     }
     return NO;
 }
 
 -(BOOL)contains:(DTTimePeriod *)period{
-    if ([self.StartDate timeIntervalSinceDate:period.StartDate] >= 0 && [period.EndDate timeIntervalSinceDate:self.EndDate] <= 0) {
+    if ([self.StartDate isEarlierThanOrEqualToDate:period.StartDate] && [self.EndDate isLaterThanOrEqualToDate:period.EndDate]) {
         return YES;
     }
     return NO;
@@ -192,19 +192,15 @@
 
 -(BOOL)overlapsWith:(DTTimePeriod *)period{
     //Outside -> Inside
-    if ([self.StartDate timeIntervalSinceDate:period.EndDate] < 0 && period.durationInSeconds > 0) {
+    if ([period.StartDate isEarlierThan:self.StartDate] && [period.EndDate isLaterThan:self.StartDate]) {
         return YES;
     }
-    //Enclosing (hugs left)
-    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInSeconds > 0){
-        return YES;
-    }
-    //Enclosing (hugs right)
-    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInSeconds > 0){
+    //Enclosing
+    else if ([period.StartDate isLaterThanOrEqualToDate:self.StartDate] && [period.EndDate isEarlierThanOrEqualToDate:self.EndDate]){
         return YES;
     }
     //Inside -> Out
-    else if([period.StartDate timeIntervalSinceDate:self.EndDate] < 0 && period.durationInSeconds > 0){
+    else if([period.StartDate isEarlierThan:self.EndDate] && [period.EndDate isLaterThan:self.EndDate]){
         return YES;
     }
     return NO;
@@ -212,19 +208,15 @@
 
 -(BOOL)intersects:(DTTimePeriod *)period{
     //Outside -> Inside
-    if ([self.StartDate timeIntervalSinceDate:period.EndDate] <= 0 && period.durationInSeconds > 0) {
+    if ([period.StartDate isEarlierThan:self.StartDate] && [period.EndDate isLaterThanOrEqualToDate:self.StartDate]) {
         return YES;
     }
-    //Enclosing (hugs left)
-    else if ([period.StartDate timeIntervalSinceDate:self.StartDate] >= 0 && period.durationInSeconds > 0){
-        return YES;
-    }
-    //Enclosing (hugs right)
-    else if([period.EndDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInSeconds > 0){
+    //Enclosing
+    else if ([period.StartDate isLaterThanOrEqualToDate:self.StartDate] && [period.EndDate isEarlierThanOrEqualToDate:self.EndDate]){
         return YES;
     }
     //Inside -> Out
-    else if([period.StartDate timeIntervalSinceDate:self.EndDate] <= 0 && period.durationInSeconds > 0){
+    else if([period.StartDate isEarlierThanOrEqualToDate:self.EndDate] && [period.EndDate isLaterThan:self.EndDate]){
         return YES;
     }
     return NO;
@@ -294,7 +286,7 @@
         }
     }
     else if (interval == DTTimePeriodIntervalClosed){
-        if ([self.StartDate isEarlierThanOrEqualToDate:date] && [self.EndDate isLaterOrEqualToDate:date]) {
+        if ([self.StartDate isEarlierThanOrEqualToDate:date] && [self.EndDate isLaterThanOrEqualToDate:date]) {
             return YES;
         }
         else {
@@ -304,5 +296,24 @@
     
     return NO;
 }
+
+#pragma mark - Period Manipulation
+-(void)shiftEarlierWithSize:(DTTimePeriodSize)size{
+    self.StartDate = [DTTimePeriod dateWithSubtractedTime:size amount:1 baseDate:self.StartDate];
+    self.EndDate = [DTTimePeriod dateWithSubtractedTime:size amount:1 baseDate:self.EndDate];
+}
+-(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
+    self.StartDate = [DTTimePeriod dateWithSubtractedTime:size amount:amount baseDate:self.StartDate];
+    self.EndDate = [DTTimePeriod dateWithSubtractedTime:size amount:amount baseDate:self.EndDate];
+}
+-(void)shiftLaterWithSize:(DTTimePeriodSize)size{
+    self.StartDate = [DTTimePeriod dateWithAddedTime:size amount:1 baseDate:self.StartDate];
+    self.EndDate = [DTTimePeriod dateWithAddedTime:size amount:1 baseDate:self.EndDate];
+}
+-(void)shiftLaterrWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
+    self.StartDate = [DTTimePeriod dateWithAddedTime:size amount:amount baseDate:self.StartDate];
+    self.EndDate = [DTTimePeriod dateWithAddedTime:size amount:amount baseDate:self.EndDate];
+}
+
 
 @end

@@ -112,7 +112,7 @@
 -(BOOL)isEarlierThan:(NSDate *)date;
 -(BOOL)isLaterThan:(NSDate *)date;
 -(BOOL)isEarlierThanOrEqualToDate:(NSDate *)date;
--(BOOL)isLaterOrEqualToDate:(NSDate *)date;
+-(BOOL)isLaterThanOrEqualToDate:(NSDate *)date;
 
 #pragma mark - Formatted Dates
 #pragma mark Formatted With Style

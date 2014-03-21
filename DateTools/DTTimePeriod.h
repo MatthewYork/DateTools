@@ -74,4 +74,11 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodInterval) {
 
 #pragma mark - Date Relationships
 -(BOOL)containsDate:(NSDate *)date interval:(DTTimePeriodInterval)interval;
+
+#pragma mark - Period Manipulation
+#pragma mark Shifts
+-(void)shiftEarlierWithSize:(DTTimePeriodSize)size;
+-(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
+-(void)shiftLaterWithSize:(DTTimePeriodSize)size;
+-(void)shiftLaterrWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
 @end

@@ -471,8 +471,6 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     NSInteger yearsFrom = [self yearsFrom:date];
     
     if (yearsFrom == 0) {
-        NSInteger currentLeapOffset = 0;
-        
         if (currentComponents.year - compareComponents.year < 0) {
             return (365-[self dayOfYear] + [date dayOfYear])/7;
         }
@@ -632,7 +630,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return NO;
 }
 
--(BOOL)isLaterOrEqualToDate:(NSDate *)date{
+-(BOOL)isLaterThanOrEqualToDate:(NSDate *)date{
     if (self.timeIntervalSince1970 >= date.timeIntervalSince1970) {
         return YES;
     }

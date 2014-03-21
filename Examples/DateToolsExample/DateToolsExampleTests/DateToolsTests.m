@@ -500,14 +500,14 @@
 -(void)testIsLaterOrEqualToDate{
     //Later
     NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 20:15:12.000"];
-    XCTAssertEqual(NO, [self.controlDate isLaterOrEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(NO, [self.controlDate isLaterThanOrEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
     
     //Earlier
     NSDate *testDate2 = [self.formatter dateFromString:@"2014 11 05 15:15:12.000"];
-    XCTAssertEqual(YES, [self.controlDate isLaterOrEqualToDate:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(YES, [self.controlDate isLaterThanOrEqualToDate:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
     
     //Same
-    XCTAssertEqual(YES, [self.controlDate isLaterOrEqualToDate:self.controlDate], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(YES, [self.controlDate isLaterThanOrEqualToDate:self.controlDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 @end
