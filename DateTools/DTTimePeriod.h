@@ -80,5 +80,5 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodInterval) {
 -(void)shiftEarlierWithSize:(DTTimePeriodSize)size;
 -(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size;
--(void)shiftLaterrWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
+-(void)shiftLaterWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
 @end

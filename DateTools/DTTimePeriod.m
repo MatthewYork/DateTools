@@ -310,7 +310,7 @@
     self.StartDate = [DTTimePeriod dateWithAddedTime:size amount:1 baseDate:self.StartDate];
     self.EndDate = [DTTimePeriod dateWithAddedTime:size amount:1 baseDate:self.EndDate];
 }
--(void)shiftLaterrWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
+-(void)shiftLaterWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
     self.StartDate = [DTTimePeriod dateWithAddedTime:size amount:amount baseDate:self.StartDate];
     self.EndDate = [DTTimePeriod dateWithAddedTime:size amount:amount baseDate:self.EndDate];
 }
