@@ -119,6 +119,16 @@
     return (self.EndDate)? YES:NO;
 }
 
+-(BOOL)isMoment{
+    if (self.StartDate && self.EndDate) {
+        if ([self.StartDate isEqualToDate:self.EndDate]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 -(NSInteger)durationInYears {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate yearsEarlierThan:self.EndDate];

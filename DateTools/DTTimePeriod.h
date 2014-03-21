@@ -63,6 +63,7 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 #pragma mark - Time Period Information
 -(BOOL)hasStartDate;
 -(BOOL)hasEndDate;
+-(BOOL)isMoment;
 -(NSInteger)durationInYears;
 -(NSInteger)durationInWeeks;
 -(NSInteger)durationInDays;

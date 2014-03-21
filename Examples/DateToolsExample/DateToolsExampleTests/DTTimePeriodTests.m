@@ -142,6 +142,14 @@
     DTTimePeriod *testPeriod = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:nil];
     XCTAssertFalse([testPeriod hasEndDate],  @"%s Failed", __PRETTY_FUNCTION__);
 }
+-(void)testIsMoment{
+    //Is moment
+    DTTimePeriod *testPeriod = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:self.controlTimePeriod.StartDate];
+    XCTAssertTrue(testPeriod.isMoment,  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Is not moment
+    XCTAssertFalse(self.controlTimePeriod.isMoment,  @"%s Failed", __PRETTY_FUNCTION__);
+}
 -(void)testDurationInYears{
     XCTAssertEqual(2, [self.controlTimePeriod durationInYears],  @"%s Failed", __PRETTY_FUNCTION__);
 }
