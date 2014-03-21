@@ -543,4 +543,62 @@
     [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeYear];
     XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
 }
+
+#pragma mark Lengthen / Shorten
+-(void)testLengthenAnchorStart{
+    //Test dates
+    NSDate *lengthenedEnd = [self.formatter dateFromString:@"2016 11 05 18:15:14.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:lengthenedEnd];
+    [self.controlTimePeriod lengthenWithAnchorDate:DTTimePeriodAnchorStart size:DTTimePeriodSizeSecond amount:2];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testLengthenAnchorCenter{
+    //Test dates
+    NSDate *lengthenedStart = [self.formatter dateFromString:@"2014 11 05 18:15:11.000"];
+    NSDate *lengthenedEnd = [self.formatter dateFromString:@"2016 11 05 18:15:13.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:lengthenedStart endDate:lengthenedEnd];
+    [self.controlTimePeriod lengthenWithAnchorDate:DTTimePeriodAnchorCenter size:DTTimePeriodSizeSecond amount:2];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+}
+-(void)testLengthenAnchorEnd{
+    //Test dates
+    NSDate *lengthenedStart = [self.formatter dateFromString:@"2014 11 05 18:15:10.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:lengthenedStart endDate:self.controlTimePeriod.EndDate];
+    [self.controlTimePeriod lengthenWithAnchorDate:DTTimePeriodAnchorEnd size:DTTimePeriodSizeSecond amount:2];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+}
+-(void)testShortenAnchorStart{
+    //Test dates
+    NSDate *shortenedEnd = [self.formatter dateFromString:@"2016 11 05 18:15:10.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:shortenedEnd];
+    [self.controlTimePeriod shortenWithAnchorDate:DTTimePeriodAnchorStart size:DTTimePeriodSizeSecond amount:2];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShortenAnchorCenter{
+    //Test dates
+    NSDate *shortenedStart = [self.formatter dateFromString:@"2014 11 05 18:15:13.000"];
+    NSDate *shortenedEnd = [self.formatter dateFromString:@"2016 11 05 18:15:11.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:shortenedStart endDate:shortenedEnd];
+    [self.controlTimePeriod shortenWithAnchorDate:DTTimePeriodAnchorCenter size:DTTimePeriodSizeSecond amount:2];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+}
+-(void)testShortenAnchorEnd{
+    //Test dates
+    NSDate *shortenedStart = [self.formatter dateFromString:@"2014 11 05 18:15:14.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:shortenedStart endDate:self.controlTimePeriod.EndDate];
+    [self.controlTimePeriod shortenWithAnchorDate:DTTimePeriodAnchorEnd size:DTTimePeriodSizeSecond amount:2];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+}
+
+
 @end

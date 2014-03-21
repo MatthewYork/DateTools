@@ -320,7 +320,7 @@
 -(void)lengthenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size amount:(NSInteger)amount{
     switch (anchor) {
         case DTTimePeriodAnchorStart:
-            self.EndDate = [DTTimePeriod dateWithAddedTime:size amount:1 baseDate:self.EndDate];
+            self.EndDate = [DTTimePeriod dateWithAddedTime:size amount:amount baseDate:self.EndDate];
             break;
         case DTTimePeriodAnchorCenter:
             self.StartDate = [DTTimePeriod dateWithSubtractedTime:size amount:amount/2 baseDate:self.StartDate];
@@ -339,7 +339,7 @@
 -(void)shortenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size amount:(NSInteger)amount{
     switch (anchor) {
         case DTTimePeriodAnchorStart:
-            self.EndDate = [DTTimePeriod dateWithSubtractedTime:size amount:1 baseDate:self.EndDate];
+            self.EndDate = [DTTimePeriod dateWithSubtractedTime:size amount:amount baseDate:self.EndDate];
             break;
         case DTTimePeriodAnchorCenter:
             self.StartDate = [DTTimePeriod dateWithAddedTime:size amount:amount/2 baseDate:self.StartDate];
