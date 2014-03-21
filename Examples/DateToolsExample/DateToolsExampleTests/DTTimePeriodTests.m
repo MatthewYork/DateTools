@@ -426,11 +426,121 @@
 
 
 #pragma mark - Period Manipulation
-#pragma mark Shifts
--(void)testShiftEarlier{
+#pragma mark Shift Earlier
+-(void)testShiftSecondEarlier{
+    NSDate *startEarlierSecond = [self.formatter dateFromString:@"2014 11 05 18:15:11.000"];
+    NSDate *endEarlierSecond = [self.formatter dateFromString:@"2016 11 05 18:15:11.000"];
     
+    //Second time period
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startEarlierSecond endDate:endEarlierSecond];
+    [self.controlTimePeriod shiftEarlierWithSize:DTTimePeriodSizeSecond];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
 }
--(void)testShiftLater{
+-(void)testShiftMinuteEarlier{
+    NSDate *startEarlier = [self.formatter dateFromString:@"2014 11 05 18:14:12.000"];
+    NSDate *endEarlier = [self.formatter dateFromString:@"2016 11 05 18:14:12.000"];
     
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startEarlier endDate:endEarlier];
+    [self.controlTimePeriod shiftEarlierWithSize:DTTimePeriodSizeMinute];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftHourEarlier{
+    NSDate *startEarlier = [self.formatter dateFromString:@"2014 11 05 17:15:12.000"];
+    NSDate *endEarlier = [self.formatter dateFromString:@"2016 11 05 17:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startEarlier endDate:endEarlier];
+    [self.controlTimePeriod shiftEarlierWithSize:DTTimePeriodSizeHour];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftDayEarlier{
+    NSDate *startEarlier = [self.formatter dateFromString:@"2014 11 04 18:15:12.000"];
+    NSDate *endEarlier = [self.formatter dateFromString:@"2016 11 04 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startEarlier endDate:endEarlier];
+    [self.controlTimePeriod shiftEarlierWithSize:DTTimePeriodSizeDay];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftWeekEarlier{
+    NSDate *startEarlier = [self.formatter dateFromString:@"2014 10 29 18:15:12.000"];
+    NSDate *endEarlier = [self.formatter dateFromString:@"2016 10 29 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startEarlier endDate:endEarlier];
+    [self.controlTimePeriod shiftEarlierWithSize:DTTimePeriodSizeWeek];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftMonthEarlier{
+    NSDate *startEarlier = [self.formatter dateFromString:@"2014 10 05 18:15:12.000"];
+    NSDate *endEarlier = [self.formatter dateFromString:@"2016 10 05 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startEarlier endDate:endEarlier];
+    [self.controlTimePeriod shiftEarlierWithSize:DTTimePeriodSizeMonth];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftYearEarlier{
+    NSDate *startEarlier = [self.formatter dateFromString:@"2013 11 05 18:15:12.000"];
+    NSDate *endEarlier = [self.formatter dateFromString:@"2015 11 05 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startEarlier endDate:endEarlier];
+    [self.controlTimePeriod shiftEarlierWithSize:DTTimePeriodSizeYear];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+#pragma mark Shift Later
+-(void)testShiftSecondLater{
+    NSDate *startLater = [self.formatter dateFromString:@"2014 11 05 18:15:13.000"];
+    NSDate *endLater = [self.formatter dateFromString:@"2016 11 05 18:15:13.000"];
+    
+    //Second time period
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startLater endDate:endLater];
+    [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeSecond];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftMinuteLater{
+    NSDate *startLater = [self.formatter dateFromString:@"2014 11 05 18:16:12.000"];
+    NSDate *endLater = [self.formatter dateFromString:@"2016 11 05 18:16:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startLater endDate:endLater];
+    [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeMinute];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftHourLater{
+    NSDate *startLater = [self.formatter dateFromString:@"2014 11 05 19:15:12.000"];
+    NSDate *endLater = [self.formatter dateFromString:@"2016 11 05 19:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startLater endDate:endLater];
+    [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeHour];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftDayLater{
+    NSDate *startLater = [self.formatter dateFromString:@"2014 11 06 18:15:12.000"];
+    NSDate *endLater = [self.formatter dateFromString:@"2016 11 06 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startLater endDate:endLater];
+    [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeDay];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftWeekLater{
+    NSDate *startLater = [self.formatter dateFromString:@"2014 11 12 18:15:12.000"];
+    NSDate *endLater = [self.formatter dateFromString:@"2016 11 12 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startLater endDate:endLater];
+    [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeWeek];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftMonthLater{
+    NSDate *startLater = [self.formatter dateFromString:@"2014 12 05 18:15:12.000"];
+    NSDate *endLater = [self.formatter dateFromString:@"2016 12 05 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startLater endDate:endLater];
+    [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeMonth];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testShiftYearLater{
+    NSDate *startLater = [self.formatter dateFromString:@"2015 11 05 18:15:12.000"];
+    NSDate *endLater = [self.formatter dateFromString:@"2017 11 05 18:15:12.000"];
+    
+    DTTimePeriod *testPeriod  = [DTTimePeriod timePeriodWithStartDate:startLater endDate:endLater];
+    [self.controlTimePeriod shiftLaterWithSize:DTTimePeriodSizeYear];
+    XCTAssertTrue([testPeriod.StartDate isEqualToDate:self.controlTimePeriod.StartDate] && [testPeriod.EndDate isEqualToDate:self.controlTimePeriod.EndDate],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 @end
