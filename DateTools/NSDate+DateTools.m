@@ -151,7 +151,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 
 #pragma mark - Date Components Without Calendar
 /**
- *  Returns the era of the receiver.
+ *  Returns the era of the receiver. (0 for BC, 1 for AD for Gregorian)
  *
  *  @return NSInteger
  */
@@ -187,7 +187,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
- *  Returns the hour of the receiver.
+ *  Returns the hour of the day of the receiver. (0-24)
  *
  *  @return NSInteger
  */
@@ -196,7 +196,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
- *  Returns the minute of the receiver.
+ *  Returns the minute of the receiver. (0-59)
  *
  *  @return NSInteger
  */
@@ -205,7 +205,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
- *  Returns the second of the receiver.
+ *  Returns the second of the receiver. (0-59)
  *
  *  @return NSInteger
  */
@@ -281,7 +281,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
- *  Returns the day of the year of the receiver. (0-365 or 0-366 for leap year)
+ *  Returns the day of the year of the receiver. (1-365 or 1-366 for leap year)
  *
  *  @return NSInteger
  */
@@ -325,63 +325,170 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 #pragma mark - Date Components With Calendar
-
+/**
+ *  Returns the era of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the era (0 for BC, 1 for AD for Gregorian)
+ */
 - (NSInteger)eraWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentEra calendar:calendar];
 }
 
+/**
+ *  Returns the year of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the year as an integer
+ */
 - (NSInteger)yearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentYear calendar:calendar];
 }
 
+/**
+ *  Returns the month of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the month as an integer
+ */
 - (NSInteger)monthWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentMonth calendar:calendar];
 }
 
+/**
+ *  Returns the day of the month of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the day of the month as an integer
+ */
 - (NSInteger)dayWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentDay calendar:calendar];
 }
 
+/**
+ *  Returns the hour of the day of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the hour of the day as an integer
+ */
 - (NSInteger)hourWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentHour calendar:calendar];
 }
 
+/**
+ *  Returns the minute of the hour of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the minute of the hour as an integer
+ */
 - (NSInteger)minuteWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentMinute calendar:calendar];
 }
 
+/**
+ *  Returns the second of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the second as an integer
+ */
 - (NSInteger)secondWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentSecond calendar:calendar];
 }
 
+/**
+ *  Returns the weekday of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the weekday as an integer
+ */
 - (NSInteger)weekdayWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekday calendar:calendar];
 }
 
+/**
+ *  Returns the weekday ordinal of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the weekday ordinal as an integer
+ */
 - (NSInteger)weekdayOrdinalWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekdayOrdinal calendar:calendar];
 }
 
+/**
+ *  Returns the quarter of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the quarter as an integer
+ */
 - (NSInteger)quarterWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentQuarter calendar:calendar];
 }
 
+/**
+ *  Returns the week of the month of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the week of the month as an integer
+ */
 - (NSInteger)weekOfMonthWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekOfMonth calendar:calendar];
 }
 
+/**
+ *  Returns the week of the year of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the week of the year as an integer
+ */
 - (NSInteger)weekOfYearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekOfYear calendar:calendar];
 }
 
+/**
+ *  Returns the year for week of the year (???) of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the year for week of the year as an integer
+ */
 - (NSInteger)yearForWeekOfYearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentYearForWeekOfYear calendar:calendar];
 }
 
+/**
+ *  Returns the day of the year of the receiver from a given calendar
+ *
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return NSInteger - represents the day of the year as an integer
+ */
 - (NSInteger)dayOfYearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentDayOfYear calendar:calendar];
 }
 
+/**
+ *  Takes in a date, calendar and desired date component and returns the desired NSInteger
+ *  representation for that component
+ *
+ *  @param date      NSDate - The date to be be mined for a desired component
+ *  @param component DTDateComponent - The desired component (i.e. year, day, week, etc)
+ *  @param calendar  NSCalendar - The calendar to be used in the processing (Defaults to Gregorian)
+ *
+ *  @return <#return value description#>
+ */
 -(NSInteger)componentForDate:(NSDate *)date type:(DTDateComponent)component calendar:(NSCalendar *)calendar{
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -427,6 +534,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 
 #pragma mark - Date Editing
 #pragma mark Date By Adding
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of years.
+ *
+ *  @param years NSInteger - Number of years to add
+ *
+ *  @return NSDate - Date modified by the number of desired years
+ */
 - (NSDate *)dateByAddingYears:(NSInteger)years{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -435,6 +549,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of months.
+ *
+ *  @param years NSInteger - Number of months to add
+ *
+ *  @return NSDate - Date modified by the number of desired months
+ */
 - (NSDate *)dateByAddingMonths:(NSInteger)months{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -443,6 +564,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of weeks.
+ *
+ *  @param years NSInteger - Number of weeks to add
+ *
+ *  @return NSDate - Date modified by the number of desired weeks
+ */
 - (NSDate *)dateByAddingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -451,6 +579,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of days.
+ *
+ *  @param years NSInteger - Number of days to add
+ *
+ *  @return NSDate - Date modified by the number of desired days
+ */
 - (NSDate *)dateByAddingDays:(NSInteger)days{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -459,6 +594,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of hours.
+ *
+ *  @param years NSInteger - Number of hours to add
+ *
+ *  @return NSDate - Date modified by the number of desired hours
+ */
 - (NSDate *)dateByAddingHours:(NSInteger)hours{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -467,6 +609,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of minutes.
+ *
+ *  @param years NSInteger - Number of minutes to add
+ *
+ *  @return NSDate - Date modified by the number of desired minutes
+ */
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -475,6 +624,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of seconds.
+ *
+ *  @param years NSInteger - Number of seconds to add
+ *
+ *  @return NSDate - Date modified by the number of desired seconds
+ */
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -484,6 +640,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 #pragma mark Date By Subtracting
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of years.
+ *
+ *  @param years NSInteger - Number of years to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired years
+ */
 - (NSDate *)dateBySubtractingYears:(NSInteger)years{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -492,6 +655,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of months.
+ *
+ *  @param years NSInteger - Number of months to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired months
+ */
 - (NSDate *)dateBySubtractingMonths:(NSInteger)months{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -500,6 +670,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of weeks.
+ *
+ *  @param years NSInteger - Number of weeks to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired weeks
+ */
 - (NSDate *)dateBySubtractingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -508,6 +685,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of days.
+ *
+ *  @param years NSInteger - Number of days to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired days
+ */
 - (NSDate *)dateBySubtractingDays:(NSInteger)days{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -516,6 +700,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of hours.
+ *
+ *  @param years NSInteger - Number of hours to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired hours
+ */
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -524,6 +715,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of minutes.
+ *
+ *  @param years NSInteger - Number of minutes to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired minutes
+ */
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -532,6 +730,13 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of seconds.
+ *
+ *  @param years NSInteger - Number of seconds to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired seconds
+ */
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
