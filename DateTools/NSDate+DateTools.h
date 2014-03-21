@@ -15,9 +15,7 @@
 + (NSString*)timeAgoSinceDate:(NSDate*)date;
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date;
 - (NSString*)timeAgoSinceNow;
-- (NSString*)timeAgoSinceDate:(NSDate*)date;
 -(NSString *)shortTimeAgoSinceNow;
--(NSString *)shortTimeAgoSinceDate:(NSDate *)date;
 
 #pragma mark - Date Components Without Calendar
 - (NSInteger)era;

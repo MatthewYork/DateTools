@@ -37,28 +37,27 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 
 #pragma mark - Time Ago
 
+/**
+ *  Returns a string with the difference in time from the current time and the desired date;
+ *
+ *  @param date 
+ *
+ *  @return <#return value description#>
+ */
 + (NSString*)timeAgoSinceDate:(NSDate*)date{
-    return [[NSDate date] timeAgoSinceDate:date shortformatting:NO];
+    return [date timeAgoSinceDate:[NSDate date] shortformatting:NO];
 }
 
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date{
-    return [[NSDate date] timeAgoSinceDate:date shortformatting:YES];
+    return [date timeAgoSinceDate:[NSDate date] shortformatting:YES];
 }
 
 - (NSString*)timeAgoSinceNow{
     return [self timeAgoSinceDate:[NSDate date] shortformatting:NO];
 }
 
-- (NSString*)timeAgoSinceDate:(NSDate*)date{
-    return [self timeAgoSinceDate:date shortformatting:NO];
-}
-
 -(NSString *)shortTimeAgoSinceNow{
     return [self timeAgoSinceDate:[NSDate date] shortformatting:YES];
-}
-
--(NSString *)shortTimeAgoSinceDate:(NSDate *)date{
-    return [self timeAgoSinceDate:date shortformatting:YES];
 }
 
 -(NSString *)timeAgoSinceDate:(NSDate *)date shortformatting:(BOOL)shortFormatting{
