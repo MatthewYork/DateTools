@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "DTTimePeriodGroup.h"
 
-@interface DTTimePeriodChain : DTTimePeriodGroup
+@interface DTTimePeriodChain : DTTimePeriodGroup {
+    DTTimePeriod *First;
+    DTTimePeriod *Last;
+}
 
-@property DTTimePeriod *First;
-@property DTTimePeriod *Last;
+@property (nonatomic, readonly) DTTimePeriod *First;
+@property (nonatomic, readonly) DTTimePeriod *Last;
 
 #pragma mark - Custom Init / Factory Chain
 +(DTTimePeriodChain *)chain;
@@ -29,4 +32,7 @@
 -(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size;
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
+
+#pragma mark - Chain Relationship
+-(BOOL)isEqualToChain:(DTTimePeriodChain *)chain;
 @end

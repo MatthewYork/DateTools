@@ -12,10 +12,12 @@
 @interface DTTimePeriodGroup : NSObject {
 @protected
     NSMutableArray *periods;
+    NSDate *StartDate;
+    NSDate *EndDate;
 }
 
-@property NSDate *StartDate;
-@property NSDate *EndDate;
+@property (nonatomic, readonly) NSDate *StartDate;
+@property (nonatomic, readonly) NSDate *EndDate;
 
 //Here we will use object subscripting to help create the illusion of an array
 - (id)objectAtIndexedSubscript:(NSUInteger)index; //getter
@@ -28,4 +30,10 @@
 -(double)durationInHours;
 -(double)durationInMinutes;
 -(double)durationInSeconds;
+-(NSDate *)StartDate;
+-(NSDate *)EndDate;
+-(NSInteger)count;
+
+#pragma mark - Comparison
+-(BOOL)hasSameCharacteristicsAs:(DTTimePeriodGroup *)group;
 @end

@@ -23,7 +23,7 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     self.controlTimePeriod = [[DTTimePeriod alloc] init];
     
-    //Create TimePeriod that is 1 year long
+    //Create TimePeriod that is 2 years long
      self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateFormat:@"yyyy MM dd HH:mm:ss.SSS"];
     self.controlTimePeriod.StartDate = [self.formatter dateFromString:@"2014 11 05 18:15:12.000"];
@@ -175,19 +175,19 @@
 #pragma mark - Time Period Relationship
 -(void)testIsSamePeriod{
     //Same
-    XCTAssertTrue([self.controlTimePeriod isSamePeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertTrue([self.controlTimePeriod isEqualToPeriod:self.controlTimePeriod],  @"%s Failed", __PRETTY_FUNCTION__);
     
     //Different ending
     DTTimePeriod *differentEndPeriod = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:[self.controlTimePeriod.EndDate dateByAddingYears:1]];
-    XCTAssertFalse([self.controlTimePeriod isSamePeriod:differentEndPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertFalse([self.controlTimePeriod isEqualToPeriod:differentEndPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
     
     //Different beginning
     DTTimePeriod *differentStartPeriod = [DTTimePeriod timePeriodWithStartDate:[self.controlTimePeriod.StartDate dateBySubtractingYears:1] endDate:self.controlTimePeriod.EndDate];
-    XCTAssertFalse([self.controlTimePeriod isSamePeriod:differentStartPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertFalse([self.controlTimePeriod isEqualToPeriod:differentStartPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
     
     //Both endings different
     DTTimePeriod *differentStartAndEndPeriod = [DTTimePeriod timePeriodWithStartDate:[self.controlTimePeriod.StartDate dateBySubtractingYears:1] endDate:[self.controlTimePeriod.EndDate dateBySubtractingWeeks:1]];
-    XCTAssertFalse([self.controlTimePeriod isSamePeriod:differentStartAndEndPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertFalse([self.controlTimePeriod isEqualToPeriod:differentStartAndEndPeriod],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testIsInside{
     //POSITIVE MATCHES

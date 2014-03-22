@@ -17,7 +17,7 @@
 
 -(id) init
 {
-    if (self = [self init]) {
+    if (self = [super init]) {
         periods = [[NSMutableArray alloc] init];
     }
     
@@ -110,5 +110,47 @@
     }
     
     return 0;
+}
+
+/**
+ *  Returns the NSDate representing the earliest date in the DTTimePeriodGroup (or subclass)
+ *
+ *  @return NSDate
+ */
+-(NSDate *)StartDate{
+    return StartDate;
+}
+
+/**
+ *  Returns the NSDate representing the latest date in the DTTimePeriodGroup (or subclass)
+ *
+ *  @return NSDate
+ */
+-(NSDate *)EndDate{
+    return EndDate;
+}
+
+/**
+ *  The total number of DTTimePeriods in the group
+ *
+ *  @return NSInteger
+ */
+-(NSInteger)count{
+    return periods.count;
+}
+
+-(BOOL)hasSameCharacteristicsAs:(DTTimePeriodGroup *)group{
+    //Check characteristics first for speed
+    if (group.count != self.count) {
+        return NO;
+    }
+    else if (!group.StartDate && !group.EndDate && !self.StartDate && !self.EndDate){
+        return YES;
+    }
+    else if (![group.StartDate isEqualToDate:self.StartDate] || ![group.EndDate isEqualToDate:self.EndDate]){
+        return NO;
+    }
+    
+    return YES;
 }
 @end

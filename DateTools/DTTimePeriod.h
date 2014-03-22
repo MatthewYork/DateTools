@@ -80,7 +80,7 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 -(double)durationInSeconds;
 
 #pragma mark - Time Period Relationship
--(BOOL)isSamePeriod:(DTTimePeriod *)period;
+-(BOOL)isEqualToPeriod:(DTTimePeriod *)period;
 -(BOOL)isInside:(DTTimePeriod *)period;
 -(BOOL)contains:(DTTimePeriod *)period;
 -(BOOL)overlapsWith:(DTTimePeriod *)period;

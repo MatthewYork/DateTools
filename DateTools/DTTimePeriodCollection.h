@@ -16,17 +16,21 @@
 
 #pragma mark - Collection Manipulation
 -(void)addTimePeriod:(DTTimePeriod *)period;
--(void)insertTimePeriod:(DTTimePeriod *)period atInedx:(NSInteger)index;
+-(void)insertTimePeriod:(DTTimePeriod *)period atIndex:(NSInteger)index;
 -(void)removeTimePeriodAtIndex:(NSInteger)index;
 
 #pragma mark - Sorting
--(void)sortByStart;
--(void)sortByEnd;
--(void)sortByDuration;
+-(void)sortByStartAscending;
+-(void)sortByStartDescending;
+-(void)sortByEndAscending;
+-(void)sortByEndDescending;
+-(void)sortByDurationAscending;
+-(void)sortByDurationDescending;
 
-#pragma mark - Collection Operations
+#pragma mark - Collection Relationship
 -(DTTimePeriodCollection *)periodsInside:(DTTimePeriod *)period;
 -(DTTimePeriodCollection *)periodsIntersectedByDate:(NSDate *)date;
 -(DTTimePeriodCollection *)periodsIntersectedByPeriod:(DTTimePeriod *)period;
 -(DTTimePeriodCollection *)periodsOverlappedByPeriod:(DTTimePeriod *)period;
+-(BOOL)isEqualToCollection:(DTTimePeriodCollection *)collection considerOrder:(BOOL)considerOrder;
 @end

@@ -20,33 +20,54 @@
 -(void)addTimePeriod:(DTTimePeriod *)period{
     if ([period isKindOfClass:[DTTimePeriod class]]) {
         [periods addObject:period];
+        
+        //Set object's variables with updated array values
+        [self updateVariables];
     }
     else {
-        [DTError throwBadTypeException:period];
+        [DTError throwBadTypeException:period expectedClass:[DTTimePeriod class]];
     }
 }
 
--(void)insertTimePeriod:(DTTimePeriod *)period atInedx:(NSInteger)index{
-    if ([period isKindOfClass:[DTTimePeriod class]]) {
-        if (index >= 0 && index < (periods.count - 1)) {
-            [periods insertObject:period atIndex:index];
-        }
-        else {
-            [DTError throwInsertOutOfBoundsException:index array:periods];
-        }
+-(void)insertTimePeriod:(DTTimePeriod *)period atIndex:(NSInteger)index{
+    if ([period class] != [DTTimePeriod class]) {
+        [DTError throwBadTypeException:period expectedClass:[DTTimePeriod class]];
+        return;
+    }
+    
+    if (index >= 0 && index < (periods.count - 1)) {
+        [periods insertObject:period atIndex:index];
+        
+        //Set object's variables with updated array values
+        [self updateVariables];
     }
     else {
-        [DTError throwBadTypeException:period];
+        [DTError throwInsertOutOfBoundsException:index array:periods];
     }
 }
 
 -(void)removeTimePeriodAtIndex:(NSInteger)index{
-    if (index >= 0 && index < (periods.count - 1)) {
-        [periods removeObjectAtIndex:index];
+    if (periods.count > 0) {
+        if (index >= 0 && index < (periods.count - 1)) {
+            [periods removeObjectAtIndex:index];
+            
+            //Update the object variables
+            if (periods.count > 0) {
+                //Set object's variables with updated array values
+                [self updateVariables];
+            }
+            else {
+                [self setVariablesNil];
+            }
+        }
+        else {
+            [DTError throwRemoveOutOfBoundsException:index array:periods];
+        }
     }
     else {
         [DTError throwRemoveOutOfBoundsException:index array:periods];
     }
+    
 }
 
 #pragma mark - Sorting
@@ -56,7 +77,7 @@
     }];
 }
 
--(void)sortByStart{
+-(void)sortByStartDescending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [((DTTimePeriod *) obj2).StartDate compare:((DTTimePeriod *) obj1).StartDate];
     }];
@@ -98,26 +119,130 @@
     }];
 }
 
-#pragma mark - Collection Operations
+#pragma mark - Collection Relationship
 -(DTTimePeriodCollection *)periodsInside:(DTTimePeriod *)period{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
+    
+    if ([period isKindOfClass:[DTTimePeriod class]]) {
+        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([((DTTimePeriod *) obj) isInside:period]) {
+                [collection addTimePeriod:obj];
+            }
+        }];
+    }
+    else {
+        [DTError throwBadTypeException:period expectedClass:[DTTimePeriod class]];
+    }
     
     return collection;
 }
 -(DTTimePeriodCollection *)periodsIntersectedByDate:(NSDate *)date{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
     
+    if ([date isKindOfClass:[NSDate class]]) {
+        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([((DTTimePeriod *) obj) containsDate:date interval:DTTimePeriodIntervalClosed]) {
+                [collection addTimePeriod:obj];
+            }
+        }];
+    }
+    else {
+        [DTError throwBadTypeException:date expectedClass:[NSDate class]];
+    }
+    
     return collection;
 }
 -(DTTimePeriodCollection *)periodsIntersectedByPeriod:(DTTimePeriod *)period{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
+    
+    if ([period isKindOfClass:[DTTimePeriod class]]) {
+        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([((DTTimePeriod *) obj) intersects:period]) {
+                [collection addTimePeriod:obj];
+            }
+        }];
+    }
+    else {
+        [DTError throwBadTypeException:period expectedClass:[DTTimePeriod class]];
+    }
     
     return collection;
 }
 -(DTTimePeriodCollection *)periodsOverlappedByPeriod:(DTTimePeriod *)period{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
     
+    [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([((DTTimePeriod *) obj) overlapsWith:period]) {
+            [collection addTimePeriod:obj];
+        }
+    }];
+    
     return collection;
+}
+
+-(BOOL)isEqualToCollection:(DTTimePeriodCollection *)collection considerOrder:(BOOL)considerOrder{
+    //Check class
+    if ([collection class] != [DTTimePeriodCollection class]) {
+        [DTError throwBadTypeException:collection expectedClass:[DTTimePeriodCollection class]];
+        return NO;
+    }
+    
+    //Check group level characteristics for speed
+    if (![self hasSameCharacteristicsAs:collection]) {
+        return NO;
+    }
+    
+    //Default to equality and look for inequality
+    __block BOOL isEqual = YES;
+    if (considerOrder) {
+        
+        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if (![collection[idx] isEqualToPeriod:obj]) {
+                isEqual = NO;
+                *stop = YES;
+            }
+        }];
+    }
+    else {
+        NSMutableArray *collectionCopy = [collection mutableCopy];
+        
+        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            __block BOOL innerMatch = NO;
+            __block NSInteger matchIndex = 0; //We will remove matches to account for duplicates and to help speed
+            for (int ii = 0; ii < collection.count; ii++) {
+                if ([collectionCopy[idx] isEqualToPeriod:obj]) {
+                    innerMatch = YES;
+                    matchIndex = ii;
+                    break;
+                }
+            }
+            
+            //If there was a match found, stop
+            if (!innerMatch) {
+                isEqual = NO;
+                *stop = YES;
+            }
+            else {
+                [collectionCopy removeObjectAtIndex:matchIndex];
+            }
+        }];
+    }
+    
+    return isEqual;
+}
+
+#pragma mark - Helper Methods
+
+-(void)updateVariables{
+    //Set helper variables
+    StartDate = [periods[0] StartDate];
+    EndDate = [periods[periods.count - 1] EndDate];
+}
+
+-(void)setVariablesNil{
+    //Set helper variables
+    StartDate = nil;
+    EndDate = nil;
 }
 
 @end

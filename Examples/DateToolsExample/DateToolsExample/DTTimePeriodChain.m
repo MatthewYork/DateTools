@@ -7,6 +7,12 @@
 //
 
 #import "DTTimePeriodChain.h"
+#import "DTError.h"
+
+@interface DTTimePeriodChain ()
+@property DTTimePeriod *First;
+@property DTTimePeriod *Last;
+@end
 
 @implementation DTTimePeriodChain
 
@@ -17,14 +23,15 @@
 
 #pragma mark - Chain Existence Manipulation
 -(void)addTimePeriod:(DTTimePeriod *)period{
+    if ([period class] != [DTTimePeriod class]) {
+        [DTError throwBadTypeException:period expectedClass:[DTTimePeriod class]];
+        return;
+    }
+    
     if (periods) {
         if (periods.count > 0) {
             //Create a modified period to be added based on size of passed in period
             DTTimePeriod *modifiedPeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds startingAt:[periods[periods.count - 1] EndDate]];
-            
-            //Set helper variables
-            self.EndDate = modifiedPeriod.EndDate;
-            self.Last = modifiedPeriod;
             
             //Add object to periods array
             [periods addObject:modifiedPeriod];
@@ -32,9 +39,6 @@
         else {
             //Add object to periods array
             [periods addObject:period];
-            
-            //Set object's variables with updated array values
-            [self upateVariables];
         }
     }
     else {
@@ -43,43 +47,47 @@
         
         //Add object to periods array
         [periods addObject:period];
-        
-        //Set object's variables with updated array values
-        [self upateVariables];
     }
+    
+    //Set object's variables with updated array values
+    [self updateVariables];
 }
 
 -(void)insertTimePeriod:(DTTimePeriod *)period atInedx:(NSInteger)index{
+    if ([period class] != [DTTimePeriod class]) {
+        [DTError throwBadTypeException:period expectedClass:[DTTimePeriod class]];
+        return;
+    }
+    
     //Make sure the index is within the operable bounds of the periods array
-    if (index >= 0 && index < (periods.count - 1)) {
-        if (index == 0) {
-            //Update bounds of period to make it fit in chain
-            DTTimePeriod *modifiedPeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds endingAt:[periods[0] EndDate]];
-            
-            //Insert the updated object at the beginning of the periods array
-            [periods insertObject:modifiedPeriod atIndex:0];
-        }
-        else {
-            //Shift time periods later if they fall after new period
-            [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                //Shift later
-                if (idx >= index) {
-                    [((DTTimePeriod *) obj) shiftLaterWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds];
-                }
-            }];
-            
-            //Update bounds of period to make it fit in chain
-            DTTimePeriod *modifiedPeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds startingAt:[periods[index - 1] EndDate]];
-            
-            //Insert the updated object at the beginning of the periods array
-            [periods insertObject:modifiedPeriod atIndex:index];
-        }
+    if (index == 0) {
+        //Update bounds of period to make it fit in chain
+        DTTimePeriod *modifiedPeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds endingAt:[periods[0] EndDate]];
+        
+        //Insert the updated object at the beginning of the periods array
+        [periods insertObject:modifiedPeriod atIndex:0];
+    }
+    else if (index > 0 && index < periods.count) {
+        
+        //Shift time periods later if they fall after new period
+        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            //Shift later
+            if (idx >= index) {
+                [((DTTimePeriod *) obj) shiftLaterWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds];
+            }
+        }];
+        
+        //Update bounds of period to make it fit in chain
+        DTTimePeriod *modifiedPeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds startingAt:[periods[index - 1] EndDate]];
+        
+        //Insert the updated object at the beginning of the periods array
+        [periods insertObject:modifiedPeriod atIndex:index];
         
         //Set object's variables with updated array values
-        [self upateVariables];
+        [self updateVariables];
     }
     else {
-        //Handle Error
+        [DTError throwInsertOutOfBoundsException:index array:periods];
     }
 }
 
@@ -90,17 +98,20 @@
         
         //Shift time periods later if they fall after new period
         [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            //Shift later
+            //Shift earlier
             if (idx > index) {
                 [((DTTimePeriod *) obj) shiftEarlierWithSize:DTTimePeriodSizeSecond amount:period.durationInSeconds];
             }
         }];
-    
+        
+        //Remove object
+        [periods removeObjectAtIndex:index];
+        
         //Set object's variables with updated array values
-        [self upateVariables];
+        [self updateVariables];
     }
     else {
-        //Handle Error
+        [DTError throwRemoveOutOfBoundsException:index array:periods];
     }
 }
 -(void)removeLatestTimePeriod{
@@ -110,7 +121,7 @@
         //Update the object variables
         if (periods.count > 0) {
             //Set object's variables with updated array values
-            [self upateVariables];
+            [self updateVariables];
         }
         else {
             [self setVariablesNil];
@@ -125,18 +136,18 @@
             [((DTTimePeriod *) obj) shiftEarlierWithSize:DTTimePeriodSizeSecond amount:[periods[0] durationInSeconds]];
         }];
         
+        //Remove first period
+        [periods removeObjectAtIndex:0];
+        
         //Update the object variables
         if (periods.count > 0) {
             //Set object's variables with updated array values
-            [self upateVariables];
+            [self updateVariables];
         }
         else {
             [self setVariablesNil];
         }
     }
-    
-    //Set object's variables with updated array values
-    [self upateVariables];
 }
 
 #pragma mark - Chain Time Manipulation
@@ -148,6 +159,8 @@
         [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [((DTTimePeriod *)obj) shiftEarlierWithSize:size amount:amount];
         }];
+        
+        [self updateVariables];
     }
 }
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size{
@@ -158,24 +171,59 @@
         [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [((DTTimePeriod *)obj) shiftLaterWithSize:size amount:amount];
         }];
+        
+        [self updateVariables];
     }
 }
 
+#pragma mark - Chain Relationship
+-(BOOL)isEqualToChain:(DTTimePeriodChain *)chain{
+    //Check class
+    if ([chain class] != [DTTimePeriodChain class]) {
+        [DTError throwBadTypeException:chain expectedClass:[DTTimePeriodChain class]];
+        return NO;
+    }
+    
+    //Check group level characteristics for speed
+    if (![self hasSameCharacteristicsAs:chain]) {
+        return NO;
+    }
+    
+    //Check whole chain
+    __block BOOL isEqual = YES;
+    [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (![chain[idx] isEqualToPeriod:obj]) {
+            isEqual = NO;
+            *stop = YES;
+        }
+    }];
+    return isEqual;
+}
+
+#pragma mark - Getters
+
+-(DTTimePeriod *)First{
+    return First;
+}
+
+-(DTTimePeriod *)Last{
+    return Last;
+}
 
 #pragma mark - Helper Methods
 
--(void)upateVariables{
+-(void)updateVariables{
     //Set helper variables
-    self.StartDate = [periods[0] StartDate];
-    self.EndDate = [periods[periods.count - 1] EndDate];
-    self.First = periods[0];
-    self.Last = periods[periods.count -1];
+    StartDate = [periods[0] StartDate];
+    EndDate = [periods[periods.count - 1] EndDate];
+    First = periods[0];
+    Last = periods[periods.count -1];
 }
 
 -(void)setVariablesNil{
     //Set helper variables
-    self.StartDate = nil;
-    self.EndDate = nil;
+    StartDate = nil;
+    EndDate = nil;
     self.First = nil;
     self.Last = nil;
 }

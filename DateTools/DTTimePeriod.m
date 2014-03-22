@@ -314,7 +314,7 @@
  *
  *  @return BOOL
  */
--(BOOL)isSamePeriod:(DTTimePeriod *)period{
+-(BOOL)isEqualToPeriod:(DTTimePeriod *)period{
     if ([self.StartDate isEqualToDate:period.StartDate] && [self.EndDate isEqualToDate:period.EndDate]) {
         return YES;
     }
