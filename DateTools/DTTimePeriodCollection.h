@@ -33,4 +33,7 @@
 -(DTTimePeriodCollection *)periodsIntersectedByPeriod:(DTTimePeriod *)period;
 -(DTTimePeriodCollection *)periodsOverlappedByPeriod:(DTTimePeriod *)period;
 -(BOOL)isEqualToCollection:(DTTimePeriodCollection *)collection considerOrder:(BOOL)considerOrder;
+
+#pragma mark - Helper Methods
+-(DTTimePeriodCollection *)copy;
 @end

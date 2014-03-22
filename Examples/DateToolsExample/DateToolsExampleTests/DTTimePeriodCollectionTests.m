@@ -31,11 +31,13 @@
     DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
     DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
     DTTimePeriod *thirdPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]];
+    DTTimePeriod *fourthPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]];
     
     //Add test periods
     [self.controlCollection addTimePeriod:firstPeriod];
     [self.controlCollection addTimePeriod:secondPeriod];
     [self.controlCollection addTimePeriod:thirdPeriod];
+    [self.controlCollection addTimePeriod:fourthPeriod];
 }
 
 - (void)tearDown
@@ -98,7 +100,30 @@
     
 }
 -(void)testIsEqualToCollection{
+    //Create test chains
+    DTTimePeriodCollection *testCollection = [DTTimePeriodCollection collection];
+    [testCollection addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
+    [testCollection addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]]];
+    [testCollection addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]]];
+    [testCollection addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]]];
     
+    
+    DTTimePeriodCollection *testCollectionOutOfOrder = [DTTimePeriodCollection collection];
+    [testCollectionOutOfOrder addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]]];
+    [testCollectionOutOfOrder addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]]];
+    [testCollectionOutOfOrder addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]]];
+    [testCollectionOutOfOrder addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
+    
+    //Check equal
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollection considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Check unequal
+    [testCollection addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
+    XCTAssertFalse([self.controlCollection isEqualToCollection:testCollection considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Check same periods out of order
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollectionOutOfOrder considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertFalse([self.controlCollection isEqualToCollection:testCollectionOutOfOrder considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 @end

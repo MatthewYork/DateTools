@@ -8,6 +8,7 @@
 
 #import "DTTimePeriodCollection.h"
 #import "DTError.h"
+#import "NSDate+DateTools.h"
 
 @implementation DTTimePeriodCollection
 
@@ -204,13 +205,13 @@
         }];
     }
     else {
-        NSMutableArray *collectionCopy = [collection mutableCopy];
+        __block DTTimePeriodCollection *collectionCopy = [collection copy];
         
         [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             __block BOOL innerMatch = NO;
             __block NSInteger matchIndex = 0; //We will remove matches to account for duplicates and to help speed
-            for (int ii = 0; ii < collection.count; ii++) {
-                if ([collectionCopy[idx] isEqualToPeriod:obj]) {
+            for (int ii = 0; ii < collectionCopy.count; ii++) {
+                if ([obj isEqualToPeriod:collectionCopy[ii]]) {
                     innerMatch = YES;
                     matchIndex = ii;
                     break;
@@ -223,7 +224,7 @@
                 *stop = YES;
             }
             else {
-                [collectionCopy removeObjectAtIndex:matchIndex];
+                [collectionCopy removeTimePeriodAtIndex:matchIndex];
             }
         }];
     }
@@ -235,14 +236,36 @@
 
 -(void)updateVariables{
     //Set helper variables
-    StartDate = [periods[0] StartDate];
-    EndDate = [periods[periods.count - 1] EndDate];
+    __block NSDate *startDate = [NSDate distantFuture];
+    __block NSDate *endDate = [NSDate distantPast];
+    [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([((DTTimePeriod *) obj).StartDate isEarlierThan:startDate]) {
+            startDate = ((DTTimePeriod *) obj).StartDate;
+        }
+        if ([((DTTimePeriod *) obj).EndDate isLaterThan:endDate]) {
+            endDate = ((DTTimePeriod *) obj).EndDate;
+        }
+    }];
+    
+    //Make assignments after evaluation
+    StartDate = startDate;
+    EndDate = endDate;
 }
 
 -(void)setVariablesNil{
     //Set helper variables
     StartDate = nil;
     EndDate = nil;
+}
+
+-(DTTimePeriodCollection *)copy{
+    DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
+    
+    [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [collection addTimePeriod:obj];
+    }];
+    
+    return collection;
 }
 
 @end
