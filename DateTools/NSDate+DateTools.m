@@ -753,15 +753,15 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return NSInteger - The NSInteger representation of the years between receiver and provided date
+ *  @return double - The NSInteger representation of the years between receiver and provided date
  */
--(NSInteger)yearsFrom:(NSDate *)date{
+-(double)yearsFrom:(NSDate *)date{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
     NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
     
     if (currentComponents.year < compareComponents.year) {
-        if ([self dayOfYear] > [date dayOfYear]) {
+        if (self.dayOfYear > date.dayOfYear) {
             return currentComponents.year - compareComponents.year + 1;
         }
         else {
@@ -769,7 +769,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
         }
     }
     else if(currentComponents.year > compareComponents.year){
-        if ([date dayOfYear] > [self dayOfYear]) {
+        if (date.dayOfYear > self.dayOfYear) {
             return currentComponents.year - compareComponents.year - 1;
         }
         else {
@@ -786,9 +786,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return NSInteger - The NSInteger representation of the weeks between receiver and provided date
+ *  @return double - The double representation of the weeks between receiver and provided date
  */
--(NSInteger)weeksFrom:(NSDate *)date{
+-(double)weeksFrom:(NSDate *)date{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
     NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
@@ -797,20 +797,20 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     
     if (yearsFrom == 0) {
         if (currentComponents.year - compareComponents.year < 0) {
-            return (365-[self dayOfYear] + [date dayOfYear])/7;
+            return (365-self.dayOfYear + date.dayOfYear)/7;
         }
         else if (currentComponents.year - compareComponents.year > 0){
-            return  (365-[date dayOfYear] + [self dayOfYear])/7;
+            return  (365-date.dayOfYear + self.dayOfYear)/7;
         }
         else {
             return currentComponents.weekOfYear - compareComponents.weekOfYear;
         }
     }
     else if (yearsFrom > 0){
-        return yearsFrom*52 + ([self dayOfYear] - [date dayOfYear])/7;
+        return yearsFrom*52 + (self.dayOfYear - date.dayOfYear)/7;
     }
     else if (yearsFrom < 0){
-        return yearsFrom*52 - ([date dayOfYear] - [self dayOfYear])/7;
+        return yearsFrom*52 - (date.dayOfYear - self.dayOfYear)/7;
     }
 
     return 0;
@@ -822,10 +822,10 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return NSInteger - The NSInteger representation of the days between receiver and provided date
+ *  @return double - The double representation of the days between receiver and provided date
  */
--(NSInteger)daysFrom:(NSDate *)date{
-    return ([self timeIntervalSinceDate:date])/SECONDS_IN_DAY;
+-(double)daysFrom:(NSDate *)date{
+    return floor(([self timeIntervalSinceDate:date])/SECONDS_IN_DAY);
 }
 
 /**
@@ -834,10 +834,10 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return NSInteger - The NSInteger representation of the hours between receiver and provided date
+ *  @return double - The double representation of the hours between receiver and provided date
  */
--(NSInteger)hoursFrom:(NSDate *)date{
-    return ([self timeIntervalSinceDate:date])/SECONDS_IN_HOUR;
+-(double)hoursFrom:(NSDate *)date{
+    return floor(([self timeIntervalSinceDate:date])/SECONDS_IN_HOUR);
 }
 
 /**
@@ -846,10 +846,10 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return NSInteger - The NSInteger representation of the minutes between receiver and provided date
+ *  @return double - The double representation of the minutes between receiver and provided date
  */
--(NSInteger)minutesFrom:(NSDate *)date{
-    return ([self timeIntervalSinceDate:date])/SECONDS_IN_MINUTE;
+-(double)minutesFrom:(NSDate *)date{
+    return floor(([self timeIntervalSinceDate:date])/SECONDS_IN_MINUTE);
 }
 
 /**
@@ -858,9 +858,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return NSInteger - The NSInteger representation of the seconds between receiver and provided date
+ *  @return double - The double representation of the seconds between receiver and provided date
  */
--(NSInteger)secondsFrom:(NSDate *)date{
+-(double)secondsFrom:(NSDate *)date{
     return [self timeIntervalSinceDate:date];
 }
 
@@ -868,54 +868,54 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 /**
  *  Returns the number of years until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of years
+ *  @return double representiation of years
  */
--(NSInteger)yearsUntil{
+-(double)yearsUntil{
     return [self yearsLaterThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of weeks until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of weeks
+ *  @return double representiation of weeks
  */
--(NSInteger)weeksUntil{
+-(double)weeksUntil{
     return [self weeksLaterThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of days until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of days
+ *  @return double representiation of days
  */
--(NSInteger)daysUntil{
+-(double)daysUntil{
     return [self daysLaterThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of hours until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of hours
+ *  @return double representiation of hours
  */
--(NSInteger)hoursUntil{
+-(double)hoursUntil{
     return [self hoursLaterThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of minutes until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of minutes
+ *  @return double representiation of minutes
  */
--(NSInteger)minutesUntil{
+-(double)minutesUntil{
     return [self minutesLaterThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of seconds until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of seconds
+ *  @return double representiation of seconds
  */
--(NSInteger)secondsUntil{
+-(double)secondsUntil{
     return [self secondsLaterThan:[NSDate date]];
 }
 
@@ -923,54 +923,54 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 /**
  *  Returns the number of years the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of years
+ *  @return double representiation of years
  */
--(NSInteger)yearsAgo{
+-(double)yearsAgo{
     return [self yearsEarlierThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of weeks the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of weeks
+ *  @return double representiation of weeks
  */
--(NSInteger)weeksAgo{
+-(double)weeksAgo{
     return [self weeksEarlierThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of days the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of days
+ *  @return double representiation of days
  */
--(NSInteger)daysAgo{
+-(double)daysAgo{
     return [self daysEarlierThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of hours the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of hours
+ *  @return double representiation of hours
  */
--(NSInteger)hoursAgo{
+-(double)hoursAgo{
     return [self hoursEarlierThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of minutes the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of minutes
+ *  @return double representiation of minutes
  */
--(NSInteger)minutesAgo{
+-(double)minutesAgo{
     return [self minutesEarlierThan:[NSDate date]];
 }
 
 /**
  *  Returns the number of seconds the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of seconds
+ *  @return double representiation of seconds
  */
--(NSInteger)secondsAgo{
+-(double)secondsAgo{
     return [self secondsEarlierThan:[NSDate date]];
 }
 
@@ -981,9 +981,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of years
+ *  @return double representing the number of years
  */
--(NSInteger)yearsEarlierThan:(NSDate *)date{
+-(double)yearsEarlierThan:(NSDate *)date{
     return ABS(MIN([self yearsFrom:date], 0));
 }
 
@@ -993,9 +993,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of weeks
+ *  @return double representing the number of weeks
  */
--(NSInteger)weeksEarlierThan:(NSDate *)date{
+-(double)weeksEarlierThan:(NSDate *)date{
     return ABS(MIN([self weeksFrom:date], 0));
 }
 
@@ -1005,9 +1005,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of days
+ *  @return double representing the number of days
  */
--(NSInteger)daysEarlierThan:(NSDate *)date{
+-(double)daysEarlierThan:(NSDate *)date{
     return ABS(MIN([self daysFrom:date], 0));
 }
 
@@ -1017,9 +1017,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of hours
+ *  @return double representing the number of hours
  */
--(NSInteger)hoursEarlierThan:(NSDate *)date{
+-(double)hoursEarlierThan:(NSDate *)date{
     return ABS(MIN([self hoursFrom:date], 0));
 }
 
@@ -1029,9 +1029,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of minutes
+ *  @return double representing the number of minutes
  */
--(NSInteger)minutesEarlierThan:(NSDate *)date{
+-(double)minutesEarlierThan:(NSDate *)date{
     return ABS(MIN([self minutesFrom:date], 0));
 }
 
@@ -1041,9 +1041,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of seconds
+ *  @return double representing the number of seconds
  */
--(NSInteger)secondsEarlierThan:(NSDate *)date{
+-(double)secondsEarlierThan:(NSDate *)date{
     return ABS(MIN([self secondsFrom:date], 0));
 }
 
@@ -1054,9 +1054,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of years
+ *  @return double representing the number of years
  */
--(NSInteger)yearsLaterThan:(NSDate *)date{
+-(double)yearsLaterThan:(NSDate *)date{
     return MAX([self yearsFrom:date], 0);
 }
 
@@ -1066,9 +1066,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of weeks
+ *  @return double representing the number of weeks
  */
--(NSInteger)weeksLaterThan:(NSDate *)date{
+-(double)weeksLaterThan:(NSDate *)date{
     return MAX([self weeksFrom:date], 0);
 }
 
@@ -1078,9 +1078,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of days
+ *  @return double representing the number of days
  */
--(NSInteger)daysLaterThan:(NSDate *)date{
+-(double)daysLaterThan:(NSDate *)date{
     return MAX([self daysFrom:date], 0);
 }
 
@@ -1090,9 +1090,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of hours
+ *  @return double representing the number of hours
  */
--(NSInteger)hoursLaterThan:(NSDate *)date{
+-(double)hoursLaterThan:(NSDate *)date{
     return MAX([self hoursFrom:date], 0);
 }
 
@@ -1102,9 +1102,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of minutes
+ *  @return double representing the number of minutes
  */
--(NSInteger)minutesLaterThan:(NSDate *)date{
+-(double)minutesLaterThan:(NSDate *)date{
     return MAX([self minutesFrom:date], 0);
 }
 
@@ -1114,9 +1114,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return NSInteger representing the number of seconds
+ *  @return double representing the number of seconds
  */
--(NSInteger)secondsLaterThan:(NSDate *)date{
+-(double)secondsLaterThan:(NSDate *)date{
     return MAX([self secondsFrom:date], 0);
 }
 

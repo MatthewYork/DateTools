@@ -157,7 +157,7 @@
     XCTAssertEqual(104, [self.controlTimePeriod durationInWeeks],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testDurationInDays{
-    XCTAssertEqual(730, [self.controlTimePeriod durationInDays],  @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(731, [self.controlTimePeriod durationInDays],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testDurationInHours{
     DTTimePeriod *testPeriod = [DTTimePeriod timePeriodWithStartDate:self.controlTimePeriod.StartDate endDate:[self.controlTimePeriod.StartDate dateByAddingHours:4]];

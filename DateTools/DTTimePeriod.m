@@ -232,7 +232,7 @@
  *
  *  @return NSInteger
  */
--(NSInteger)durationInYears {
+-(double)durationInYears {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate yearsEarlierThan:self.EndDate];
     }
@@ -243,9 +243,9 @@
 /**
  *  Returns the duration of the receiver in weeks
  *
- *  @return NSInteger
+ *  @return double
  */
--(NSInteger)durationInWeeks {
+-(double)durationInWeeks {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate weeksEarlierThan:self.EndDate];
     }
@@ -256,9 +256,9 @@
 /**
  *  Returns the duration of the receiver in days
  *
- *  @return NSInteger
+ *  @return double
  */
--(NSInteger)durationInDays {
+-(double)durationInDays {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate daysEarlierThan:self.EndDate];
     }
@@ -269,9 +269,9 @@
 /**
  *  Returns the duration of the receiver in hours
  *
- *  @return NSInteger
+ *  @return double
  */
--(NSInteger)durationInHours {
+-(double)durationInHours {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate hoursEarlierThan:self.EndDate];
     }
@@ -282,9 +282,9 @@
 /**
  *  Returns the duration of the receiver in minutes
  *
- *  @return NSInteger
+ *  @return double
  */
--(NSInteger)durationInMinutes {
+-(double)durationInMinutes {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate minutesEarlierThan:self.EndDate];
     }
@@ -295,9 +295,9 @@
 /**
  *  Returns the duration of the receiver in seconds
  *
- *  @return NSInteger
+ *  @return double
  */
--(NSInteger)durationInSeconds {
+-(double)durationInSeconds {
     if (self.StartDate && self.EndDate) {
         return [self.StartDate secondsEarlierThan:self.EndDate];
     }

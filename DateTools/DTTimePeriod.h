@@ -72,12 +72,12 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 -(BOOL)hasStartDate;
 -(BOOL)hasEndDate;
 -(BOOL)isMoment;
--(NSInteger)durationInYears;
--(NSInteger)durationInWeeks;
--(NSInteger)durationInDays;
--(NSInteger)durationInHours;
--(NSInteger)durationInMinutes;
--(NSInteger)durationInSeconds;
+-(double)durationInYears;
+-(double)durationInWeeks;
+-(double)durationInDays;
+-(double)durationInHours;
+-(double)durationInMinutes;
+-(double)durationInSeconds;
 
 #pragma mark - Time Period Relationship
 -(BOOL)isSamePeriod:(DTTimePeriod *)period;
