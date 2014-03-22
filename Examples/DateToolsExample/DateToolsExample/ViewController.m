@@ -21,8 +21,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
-    [collection insertTimePeriod:[DTTimePeriod timePeriodWithAllTime] atIndex:0];
+    //DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
+    //[collection insertTimePeriod:[DTTimePeriod timePeriodWithAllTime] atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning

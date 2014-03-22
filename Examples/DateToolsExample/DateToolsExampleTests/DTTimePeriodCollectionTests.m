@@ -220,16 +220,70 @@
 
 #pragma mark - Collection Relationship
 -(void)testPeriodsInside{
+    //Check positve match
+    DTTimePeriod *testPeriodMatch = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 06 18:15:12.000"]];
+    DTTimePeriodCollection *testCollectionMatch = [DTTimePeriodCollection collection];
+    [testCollectionMatch addTimePeriod:self.controlCollection[0]];
     
+    XCTAssertTrue([testCollectionMatch isEqualToCollection:[self.controlCollection periodsInside:testPeriodMatch] considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    
+    //Check too narrow
+    DTTimePeriod *testPeriodNarrow = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 06 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 02 18:15:12.000"]];
+    DTTimePeriodCollection *testCollectionNarrow = [DTTimePeriodCollection collection];
+    
+    XCTAssertTrue([testCollectionNarrow isEqualToCollection:[self.controlCollection periodsInside:testPeriodNarrow] considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Random no
+    XCTAssertFalse([self.controlCollection isEqualToCollection:[self.controlCollection periodsInside:testPeriodMatch] considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testPeriodsIntersectedByDate{
+    //Check positve match
+    NSDate *testDate = [self.formatter dateFromString:@"2015 11 05 18:15:12.000"];
+    DTTimePeriodCollection *testCollectionMatch = [DTTimePeriodCollection collection];
+    [testCollectionMatch addTimePeriod:self.controlCollection[0]];
+    [testCollectionMatch addTimePeriod:self.controlCollection[1]];
+    [testCollectionMatch addTimePeriod:self.controlCollection[3]];
     
+    XCTAssertTrue([testCollectionMatch isEqualToCollection:[self.controlCollection periodsIntersectedByDate:testDate] considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testPeriodsIntersectedByPeriod{
+    //Check positve match
+    DTTimePeriod *testPeriodMatch = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriodCollection *testCollectionMatch = [DTTimePeriodCollection collection];
+    [testCollectionMatch addTimePeriod:self.controlCollection[0]];
+    [testCollectionMatch addTimePeriod:self.controlCollection[1]];
+    [testCollectionMatch addTimePeriod:self.controlCollection[3]];
     
+    XCTAssertTrue([testCollectionMatch isEqualToCollection:[self.controlCollection periodsIntersectedByPeriod:testPeriodMatch] considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Check too early
+    DTTimePeriod *testPeriodEarly = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2012 11 06 18:15:12.000"] endDate:[self.formatter dateFromString:@"2013 11 02 18:15:12.000"]];
+    DTTimePeriodCollection *testCollectionEarly = [DTTimePeriodCollection collection];
+    
+    XCTAssertTrue([testCollectionEarly isEqualToCollection:[self.controlCollection periodsIntersectedByPeriod:testPeriodEarly] considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Random no
+    XCTAssertFalse([self.controlCollection isEqualToCollection:[self.controlCollection periodsIntersectedByPeriod:testPeriodMatch] considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testPeriodsOverlappedByPeriod{
+    //Check positve match
+    DTTimePeriod *testPeriodMatch = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriodCollection *testCollectionMatch = [DTTimePeriodCollection collection];
+    [testCollectionMatch addTimePeriod:self.controlCollection[0]];
+    [testCollectionMatch addTimePeriod:self.controlCollection[3]];
     
+    XCTAssertTrue([testCollectionMatch isEqualToCollection:[self.controlCollection periodsOverlappedByPeriod:testPeriodMatch] considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    
+    //Check too early
+    DTTimePeriod *testPeriodEarly = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2012 11 06 18:15:12.000"] endDate:[self.formatter dateFromString:@"2013 11 02 18:15:12.000"]];
+    DTTimePeriodCollection *testCollectionEarly = [DTTimePeriodCollection collection];
+    
+    XCTAssertTrue([testCollectionEarly isEqualToCollection:[self.controlCollection periodsOverlappedByPeriod:testPeriodEarly] considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Random no
+    XCTAssertFalse([self.controlCollection isEqualToCollection:[self.controlCollection periodsOverlappedByPeriod:testPeriodMatch] considerOrder:NO],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testIsEqualToCollection{
     //Create test chains

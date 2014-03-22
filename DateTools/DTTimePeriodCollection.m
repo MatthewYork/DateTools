@@ -48,27 +48,21 @@
 }
 
 -(void)removeTimePeriodAtIndex:(NSInteger)index{
-    if (periods.count > 0) {
-        if (index >= 0 && index < (periods.count - 1)) {
-            [periods removeObjectAtIndex:index];
-            
-            //Update the object variables
-            if (periods.count > 0) {
-                //Set object's variables with updated array values
-                [self updateVariables];
-            }
-            else {
-                [self setVariablesNil];
-            }
+    if (index >= 0 && index < periods.count) {
+        [periods removeObjectAtIndex:index];
+        
+        //Update the object variables
+        if (periods.count > 0) {
+            //Set object's variables with updated array values
+            [self updateVariables];
         }
         else {
-            [DTError throwRemoveOutOfBoundsException:index array:periods];
+            [self setVariablesNil];
         }
     }
     else {
         [DTError throwRemoveOutOfBoundsException:index array:periods];
     }
-    
 }
 
 #pragma mark - Sorting
