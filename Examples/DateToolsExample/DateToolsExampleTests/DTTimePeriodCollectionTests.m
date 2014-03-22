@@ -57,13 +57,59 @@
 
 #pragma mark - Collection Manipulation
 -(void)testAddTimePeriod{
+    //Initialize control DTTimePeriodChain
+    DTTimePeriodCollection *testCollection = [[DTTimePeriodCollection alloc] init];
     
+    //Create test DTTimePeriods that are 1 year long
+    DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    DTTimePeriod *thirdPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]];
+    DTTimePeriod *fourthPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]];
+    
+    //Add test periods
+    [testCollection addTimePeriod:firstPeriod];
+    [testCollection addTimePeriod:secondPeriod];
+    [testCollection addTimePeriod:thirdPeriod];
+    [testCollection addTimePeriod:fourthPeriod];
+    
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollection considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testInsertTimePeriod{
+    //Initialize control DTTimePeriodChain
+    DTTimePeriodCollection *testCollection = [[DTTimePeriodCollection alloc] init];
     
+    //Create test DTTimePeriods that are 1 year long
+    DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+    DTTimePeriod *thirdPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]];
+    DTTimePeriod *fourthPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]];
+    
+    //Add test periods
+    [testCollection addTimePeriod:firstPeriod];
+    [testCollection addTimePeriod:secondPeriod];
+    [testCollection addTimePeriod:fourthPeriod];
+    [testCollection insertTimePeriod:thirdPeriod atIndex:2];
+    
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollection considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testRemoveTimePeriodAtIndex{
+    //Initialize control DTTimePeriodChain
+    DTTimePeriodCollection *testCollection = [[DTTimePeriodCollection alloc] init];
     
+    //Create test DTTimePeriods that are 1 year long
+    DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *thirdPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]];
+    DTTimePeriod *fourthPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]];
+    
+    //Add test periods
+    [testCollection addTimePeriod:firstPeriod];
+    [testCollection addTimePeriod:thirdPeriod];
+    [testCollection addTimePeriod:fourthPeriod];
+    
+    //Remove time period from control
+    [self.controlCollection removeTimePeriodAtIndex:1];
+    
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollection considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 #pragma mark - Sorting

@@ -36,7 +36,7 @@
         return;
     }
     
-    if (index >= 0 && index < (periods.count - 1)) {
+    if (index >= 0 && index < periods.count) {
         [periods insertObject:period atIndex:index];
         
         //Set object's variables with updated array values
