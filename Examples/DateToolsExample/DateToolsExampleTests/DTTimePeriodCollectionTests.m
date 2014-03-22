@@ -68,22 +68,108 @@
 
 #pragma mark - Sorting
 -(void)testSortByStartAscending{
+    //Create ordered array
+    DTTimePeriodCollection *testCollectionOrdered = [DTTimePeriodCollection collection];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]]];
     
+    //Sort control
+    [self.controlCollection sortByStartAscending];
+    
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollectionOrdered considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testSortByStartDescending{
+    //Create ordered array
+    DTTimePeriodCollection *testCollectionOrdered = [DTTimePeriodCollection collection];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
     
+    //Sort control
+    [self.controlCollection sortByStartDescending];
+    
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollectionOrdered considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testSortByEndAscending{
+    //Create ordered array
+    DTTimePeriodCollection *testCollectionOrdered = [DTTimePeriodCollection collection];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]]];
     
+    //Sort control
+    [self.controlCollection sortByEndAscending];
+    
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollectionOrdered considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testSortByEndDescending{
+    //Create ordered array
+    DTTimePeriodCollection *testCollectionOrdered = [DTTimePeriodCollection collection];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]]];
+    [testCollectionOrdered addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
     
+    //Sort control
+    [self.controlCollection sortByEndDescending];
+    
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollectionOrdered considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testSortByDurationAscending{
+    //Create some time periods to sort
+    DTTimePeriod *period2Days = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 04 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 06 18:15:12.000"]];
+    DTTimePeriod *period4Months = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 07 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *period5Months = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 06 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *period2years = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]];
     
+    //Create unordered array
+    DTTimePeriodCollection *testCollectionUnordered = [DTTimePeriodCollection collection];
+    [testCollectionUnordered addTimePeriod:period2years];
+    [testCollectionUnordered addTimePeriod:period5Months];
+    [testCollectionUnordered addTimePeriod:period4Months];
+    [testCollectionUnordered addTimePeriod:period2Days];
+    
+    //Create ordered array
+    DTTimePeriodCollection *testCollectionOrdered = [DTTimePeriodCollection collection];
+    [testCollectionOrdered addTimePeriod:period2Days];
+    [testCollectionOrdered addTimePeriod:period4Months];
+    [testCollectionOrdered addTimePeriod:period5Months];
+    [testCollectionOrdered addTimePeriod:period2years];
+    
+    //Sort unordered
+    [testCollectionUnordered sortByDurationAscending];
+    
+    XCTAssertTrue([testCollectionUnordered isEqualToCollection:testCollectionOrdered considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testSortByDurationDescending{
+    //Create some time periods to sort
+    DTTimePeriod *period2Days = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 04 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 06 18:15:12.000"]];
+    DTTimePeriod *period4Months = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 07 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *period5Months = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 06 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *period2years = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"]];
     
+    //Create unordered array
+    DTTimePeriodCollection *testCollectionUnordered = [DTTimePeriodCollection collection];
+    [testCollectionUnordered addTimePeriod:period4Months];
+    [testCollectionUnordered addTimePeriod:period2Days];
+    [testCollectionUnordered addTimePeriod:period2years];
+    [testCollectionUnordered addTimePeriod:period5Months];
+    
+    //Create ordered array
+    DTTimePeriodCollection *testCollectionOrdered = [DTTimePeriodCollection collection];
+    [testCollectionOrdered addTimePeriod:period2years];
+    [testCollectionOrdered addTimePeriod:period5Months];
+    [testCollectionOrdered addTimePeriod:period4Months];
+    [testCollectionOrdered addTimePeriod:period2Days];
+    
+    //Sort unordered
+    [testCollectionUnordered sortByDurationDescending];
+    
+    XCTAssertTrue([testCollectionUnordered isEqualToCollection:testCollectionOrdered considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 #pragma mark - Collection Relationship

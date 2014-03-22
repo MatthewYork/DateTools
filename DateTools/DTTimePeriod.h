@@ -103,4 +103,7 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 -(void)lengthenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size amount:(NSInteger)amount;
 -(void)shortenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size;
 -(void)shortenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size amount:(NSInteger)amount;
+
+#pragma mark - Helper Methods
+-(DTTimePeriod *)copy;
 @end

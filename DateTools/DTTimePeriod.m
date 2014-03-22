@@ -618,4 +618,11 @@
             break;
     }
 }
+
+#pragma mark - Helper Methods
+-(DTTimePeriod *)copy{
+    DTTimePeriod *period = [DTTimePeriod timePeriodWithStartDate:[NSDate dateWithTimeIntervalSince1970:self.StartDate.timeIntervalSince1970] endDate:[NSDate dateWithTimeIntervalSince1970:self.EndDate.timeIntervalSince1970]];
+    return period;
+}
+
 @end

@@ -86,19 +86,19 @@
 
 -(void)sortByEndAscending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [((DTTimePeriod *) obj1).StartDate compare:((DTTimePeriod *) obj2).StartDate];
+        return [((DTTimePeriod *) obj1).EndDate compare:((DTTimePeriod *) obj2).EndDate];
     }];
 }
 
 -(void)sortByEndDescending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [((DTTimePeriod *) obj2).StartDate compare:((DTTimePeriod *) obj1).StartDate];
+        return [((DTTimePeriod *) obj2).EndDate compare:((DTTimePeriod *) obj1).EndDate];
     }];
 }
 
 -(void)sortByDurationAscending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        if (((DTTimePeriod *) obj1).durationInSeconds > ((DTTimePeriod *) obj2).durationInSeconds) {
+        if (((DTTimePeriod *) obj1).durationInSeconds < ((DTTimePeriod *) obj2).durationInSeconds) {
             return NSOrderedAscending;
         }
         else {
@@ -111,10 +111,10 @@
 -(void)sortByDurationDescending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         if (((DTTimePeriod *) obj1).durationInSeconds > ((DTTimePeriod *) obj2).durationInSeconds) {
-            return NSOrderedDescending;
+            return NSOrderedAscending;
         }
         else {
-            return NSOrderedAscending;
+            return NSOrderedDescending;
         }
         return NSOrderedSame;
     }];
@@ -262,7 +262,7 @@
     DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
     
     [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [collection addTimePeriod:obj];
+        [collection addTimePeriod:[obj copy]];
     }];
     
     return collection;
