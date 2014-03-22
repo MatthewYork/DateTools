@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F0248FB918DE0186008CE501 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0248FB818DE0186008CE501 /* DTError.m */; };
+		F0710AB518DE4F4E00B84044 /* DTTimePeriodGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0710AB418DE4F4E00B84044 /* DTTimePeriodGroupTests.m */; };
 		F07A1A0818DCC76500B3E9FF /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F07A1A0718DCC76500B3E9FF /* DTTimePeriodCollection.m */; };
 		F07A1A0B18DCC78100B3E9FF /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F07A1A0A18DCC78100B3E9FF /* DTTimePeriodChain.m */; };
 		F07A1A0E18DCCC3200B3E9FF /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F07A1A0D18DCCC3200B3E9FF /* DTTimePeriodGroup.m */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		F0248FB718DE0186008CE501 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTError.h; sourceTree = "<group>"; };
 		F0248FB818DE0186008CE501 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTError.m; sourceTree = "<group>"; };
+		F0710AB418DE4F4E00B84044 /* DTTimePeriodGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroupTests.m; sourceTree = "<group>"; };
 		F07A1A0618DCC76500B3E9FF /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = ../../../DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
 		F07A1A0718DCC76500B3E9FF /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = ../../../DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
 		F07A1A0918DCC78100B3E9FF /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodChain.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				F0D185D818DA7F2B00E37C1C /* DateToolsTests.m */,
 				F0D185DA18DA7F3700E37C1C /* DTTimePeriodTests.m */,
+				F0710AB418DE4F4E00B84044 /* DTTimePeriodGroupTests.m */,
 				F07A1A0F18DCEDE200B3E9FF /* DTTimePeriodChainTests.m */,
 				F07A1A1118DCEDEE00B3E9FF /* DTTimePeriodCollectionTests.m */,
 				F0F08DC418D9E80E00214C6B /* Supporting Files */,
@@ -313,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0710AB518DE4F4E00B84044 /* DTTimePeriodGroupTests.m in Sources */,
 				F0D185DB18DA7F3700E37C1C /* DTTimePeriodTests.m in Sources */,
 				F07A1A1218DCEDEE00B3E9FF /* DTTimePeriodCollectionTests.m in Sources */,
 				F07A1A1018DCEDE200B3E9FF /* DTTimePeriodChainTests.m in Sources */,
