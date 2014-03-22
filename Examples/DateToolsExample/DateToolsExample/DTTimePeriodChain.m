@@ -10,6 +10,11 @@
 
 @implementation DTTimePeriodChain
 
+#pragma mark - Custom Init / Factory Chain
++(DTTimePeriodChain *)chain{
+    return [[DTTimePeriodChain alloc] init];
+}
+
 #pragma mark - Chain Existence Manipulation
 -(void)addTimePeriod:(DTTimePeriod *)period{
     if (periods) {

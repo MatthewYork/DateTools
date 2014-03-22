@@ -14,6 +14,9 @@
 @property DTTimePeriod *First;
 @property DTTimePeriod *Last;
 
+#pragma mark - Custom Init / Factory Chain
++(DTTimePeriodChain *)chain;
+
 #pragma mark - Chain Existence Manipulation
 -(void)addTimePeriod:(DTTimePeriod *)period;
 -(void)insertTimePeriod:(DTTimePeriod *)period atInedx:(NSInteger)index;
