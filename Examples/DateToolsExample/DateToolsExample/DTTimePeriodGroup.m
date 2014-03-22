@@ -139,6 +139,14 @@
     return periods.count;
 }
 
+/**
+ *  Returns a BOOL if the receiver and the comparison group have the same metadata (i.e. number of periods, start & end date, etc.)
+ *  Returns YES if they share the same characteristics, otherwise NO
+ *
+ *  @param group The group to compare with the receiver
+ *
+ *  @return BOOL
+ */
 -(BOOL)hasSameCharacteristicsAs:(DTTimePeriodGroup *)group{
     //Check characteristics first for speed
     if (group.count != self.count) {

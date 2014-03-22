@@ -13,11 +13,21 @@
 @implementation DTTimePeriodCollection
 
 #pragma mark - Custom Init / Factory Methods
+/**
+ *  Initializes a new instance of DTTimePeriodCollection
+ *
+ *  @return DTTimePeriodCollection
+ */
 +(DTTimePeriodCollection *)collection{
     return [[DTTimePeriodCollection alloc] init];
 }
 
 #pragma mark - Collection Manipulation
+/**
+ *  Adds a time period to the reciever.
+ *
+ *  @param period DTTimePeriod - The time period to add to the collection
+ */
 -(void)addTimePeriod:(DTTimePeriod *)period{
     if ([period isKindOfClass:[DTTimePeriod class]]) {
         [periods addObject:period];
@@ -30,6 +40,12 @@
     }
 }
 
+/**
+ *  Inserts a time period to the receiver at a given index.
+ *
+ *  @param period DTTimePeriod - The time period to insert into the collection
+ *  @param index  NSInteger - The index in the collection the time period is to be added at
+ */
 -(void)insertTimePeriod:(DTTimePeriod *)period atIndex:(NSInteger)index{
     if ([period class] != [DTTimePeriod class]) {
         [DTError throwBadTypeException:period expectedClass:[DTTimePeriod class]];
@@ -47,6 +63,11 @@
     }
 }
 
+/**
+ *  Removes the time period at a given index from the collection
+ *
+ *  @param index NSInteger - The index in the collection the time period is to be removed from
+ */
 -(void)removeTimePeriodAtIndex:(NSInteger)index{
     if (index >= 0 && index < periods.count) {
         [periods removeObjectAtIndex:index];
@@ -66,30 +87,45 @@
 }
 
 #pragma mark - Sorting
+/**
+ *  Sorts the time periods in the collection by earliest start date to latest start date.
+ */
 -(void)sortByStartAscending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [((DTTimePeriod *) obj1).StartDate compare:((DTTimePeriod *) obj2).StartDate];
     }];
 }
 
+/**
+ *  Sorts the time periods in the collection by latest start date to earliest start date.
+ */
 -(void)sortByStartDescending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [((DTTimePeriod *) obj2).StartDate compare:((DTTimePeriod *) obj1).StartDate];
     }];
 }
 
+/**
+ *  Sorts the time periods in the collection by earliest end date to latest end date.
+ */
 -(void)sortByEndAscending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [((DTTimePeriod *) obj1).EndDate compare:((DTTimePeriod *) obj2).EndDate];
     }];
 }
 
+/**
+ *  Sorts the time periods in the collection by latest end date to earliest end date.
+ */
 -(void)sortByEndDescending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [((DTTimePeriod *) obj2).EndDate compare:((DTTimePeriod *) obj1).EndDate];
     }];
 }
 
+/**
+ *  Sorts the time periods in the collection by how much time they span. Sorts smallest durations to longest.
+ */
 -(void)sortByDurationAscending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         if (((DTTimePeriod *) obj1).durationInSeconds < ((DTTimePeriod *) obj2).durationInSeconds) {
@@ -102,6 +138,9 @@
     }];
 }
 
+/**
+ *  Sorts the time periods in the collection by how much time they span. Sorts longest durations to smallest.
+ */
 -(void)sortByDurationDescending{
     [periods sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         if (((DTTimePeriod *) obj1).durationInSeconds > ((DTTimePeriod *) obj2).durationInSeconds) {
@@ -115,6 +154,14 @@
 }
 
 #pragma mark - Collection Relationship
+/**
+ *  Returns an instance of DTTimePeriodCollection with all the time periods in the receiver that fall inside a given time period.
+ *  Time periods of the receiver must have a start date and end date within the closed interval of the period provided to be included.
+ *
+ *  @param period DTTimePeriod - The time period to check against the receiver's time periods.
+ *
+ *  @return DTTimePeriodCollection
+ */
 -(DTTimePeriodCollection *)periodsInside:(DTTimePeriod *)period{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
     
@@ -131,6 +178,15 @@
     
     return collection;
 }
+
+/**
+ *  Returns an instance of DTTimePeriodCollection with all the time periods in the receiver that intersect a given date.
+ *  Time periods of the receiver must have a start date earlier than or equal to the comparison date and an end date later than or equal to the comparison date to be included
+ *
+ *  @param date NSDate - The date to check against the receiver's time periods
+ *
+ *  @return DTTimePeriodCollection
+ */
 -(DTTimePeriodCollection *)periodsIntersectedByDate:(NSDate *)date{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
     
@@ -147,6 +203,15 @@
     
     return collection;
 }
+
+/**
+ *  Returns an instance of DTTimePeriodCollection with all the time periods in the receiver that intersect a given time period.
+ *  Intersection with the given time period includes other time periods that simply touch it. (i.e. one's start date is equal to another's end date)
+ *
+ *  @param period DTTimePeriod - The time period to check against the receiver's time periods.
+ *
+ *  @return DTTimePeriodCollection
+ */
 -(DTTimePeriodCollection *)periodsIntersectedByPeriod:(DTTimePeriod *)period{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
     
@@ -163,6 +228,15 @@
     
     return collection;
 }
+
+/**
+ *  Returns an instance of DTTimePeriodCollection with all the time periods in the receiver that overlap a given time period.
+ *  Overlap with the given time period does NOT include other time periods that simply touch it. (i.e. one's start date is equal to another's end date)
+ *
+ *  @param period DTTimePeriod - The time period to check against the receiver's time periods.
+ *
+ *  @return DTTimePeriodCollection
+ */
 -(DTTimePeriodCollection *)periodsOverlappedByPeriod:(DTTimePeriod *)period{
     DTTimePeriodCollection *collection = [[DTTimePeriodCollection alloc] init];
     
@@ -175,6 +249,16 @@
     return collection;
 }
 
+/**
+ *  Returns a BOOL representing whether the receiver is equal to a given DTTimePeriodCollection. Equality requires the start and end dates to be the same, and all time periods to be the same. 
+ *
+ *  If you would like to take the order of the time periods in two collections into consideration, you may do so with the considerOrder BOOL
+ *
+ *  @param collection    DTTimePeriodCollection - The collection to compare with the receiver
+ *  @param considerOrder BOOL - Option for whether to account for the time periods order in the test for equality. YES considers order, NO does not.
+ *
+ *  @return BOOL
+ */
 -(BOOL)isEqualToCollection:(DTTimePeriodCollection *)collection considerOrder:(BOOL)considerOrder{
     //Check class
     if ([collection class] != [DTTimePeriodCollection class]) {
@@ -252,6 +336,11 @@
     EndDate = nil;
 }
 
+/**
+ *  Returns a new instance of DTTimePeriodCollection that is an exact copy of the receiver, but with differnt memory references, etc.
+ *
+ *  @return DTTimePeriodCollection
+ */
 -(DTTimePeriodCollection *)copy{
     DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
     
