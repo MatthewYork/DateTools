@@ -45,6 +45,20 @@ All the classes required for DateTools are located in the DateTools folder in th
 * [**Credits**](#credits)
 * [**License**](#license)
 
+##NSDate+DateTools
+
+##Time Periods
+
+##Time Period Groups
+
+##Unit Tests
+Unit tests were performed on all the major classes in the library for quality assurance. You can find theses under the "Tests" folder at the top of the library. There are over 300 test cases in all!
+
+If you ever find a test case that is incomplete, please open an issue so we can get it fixed.
+
+##Credits
+
+Many thanks to the .NET team for their DateTime class and a major thank you to [Jani Giannoudis](http://www.codeproject.com/Members/Jani-Giannoudis) for his work on ITimePeriod.
 
 ##License
 
