@@ -86,10 +86,10 @@
 
 #pragma mark - Date Comparison
 #pragma mark Time From
--(double)yearsFrom:(NSDate *)date;
--(double)monthsFrom:(NSDate *)date;
--(double)weeksFrom:(NSDate *)date;
--(double)daysFrom:(NSDate *)date;
+-(NSInteger)yearsFrom:(NSDate *)date;
+-(NSInteger)monthsFrom:(NSDate *)date;
+-(NSInteger)weeksFrom:(NSDate *)date;
+-(NSInteger)daysFrom:(NSDate *)date;
 -(double)hoursFrom:(NSDate *)date;
 -(double)minutesFrom:(NSDate *)date;
 -(double)secondsFrom:(NSDate *)date;

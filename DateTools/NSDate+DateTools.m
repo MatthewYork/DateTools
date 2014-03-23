@@ -781,9 +781,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return double - The NSInteger representation of the years between receiver and provided date
+ *  @return NSInteger - The NSInteger representation of the years between receiver and provided date
  */
--(double)yearsFrom:(NSDate *)date{
+-(NSInteger)yearsFrom:(NSDate *)date{
     return [self yearsFrom:date calendar:nil];
 }
 
@@ -794,9 +794,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return double - The NSInteger representation of the years between receiver and provided date
+ *  @return NSInteger - The NSInteger representation of the years between receiver and provided date
  */
--(double)monthsFrom:(NSDate *)date{
+-(NSInteger)monthsFrom:(NSDate *)date{
     return [self monthsFrom:date calendar:nil];
 }
 
@@ -807,9 +807,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return double - The double representation of the weeks between receiver and provided date
+ *  @return NSInteger - The double representation of the weeks between receiver and provided date
  */
--(double)weeksFrom:(NSDate *)date{
+-(NSInteger)weeksFrom:(NSDate *)date{
     return [self weeksFrom:date calendar:nil];
 }
 
@@ -820,9 +820,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - The provided date for comparison
  *
- *  @return double - The double representation of the days between receiver and provided date
+ *  @return NSInteger - The double representation of the days between receiver and provided date
  */
--(double)daysFrom:(NSDate *)date{
+-(NSInteger)daysFrom:(NSDate *)date{
     return [self daysFrom:date calendar:nil];
 }
 
