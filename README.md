@@ -33,12 +33,12 @@ All the classes required for DateTools are located in the DateTools folder in th
   * [Date Comparison](#date-comparison)
   * [Formatted Date Strings](#formatted-date-strings)
 * [**Time Periods**](#time-periods)
-  * [Introduction](#initialization)
+  * [Initialization](#initialization)
   * [Time Period Info](#time-period-info)
   * [Manipulation](#manipulation)
   * [Relationships](#relationships) 
 * [**Time Period Groups**](#time-period-groups)
-  * [Introduction](#introduction)
+  * [Initialization](#initialization)
   * [Time Period Collections](#time-period-collections)
   * [Time Period Chains](#time-period-chains)
 * [**Unit Tests**](#unit-tests)
@@ -157,13 +157,27 @@ Methods for comparison in this category include:
 
 ####Formatted Date Strings
 
-Just for kicks, DateTools has a few convenience methods for quickly creating strings from dates. Those two methods <code>formattedDateWithStyle:</code> and <code>formattedDateWithFormat:</code>. The current locale is used unless otherwise specified by additional method parameters. Again, just for kicks, really.
+Just for kicks, DateTools has a few convenience methods for quickly creating strings from dates. Those two methods are <code>formattedDateWithStyle:</code> and <code>formattedDateWithFormat:</code>. The current locale is used unless otherwise specified by additional method parameters. Again, just for kicks, really.
 
 ##Time Periods
 
-####Introduction
+Dates are important, but the real world is a little less discrete than that. Life is made up of spans of time, like an afternoon appointment or a weeklong vacation. In DateTools, time periods are represented by the DTTimePeriod class and come with a suite of initializaiton, manipulation, and comparison methods to make working with them a breeze.
+
+####Initialization
+
+Time peroids consist of an NSDate start date and end date. To initialize a time period, call the init function.
+
+```objc
+DTTimePeriod *timePeriod = [[DTTimePeriod alloc] initWithStartDate:startDate endDate:endDate];
+```
+or, if you would like to create a time period of a known length that starts or ends at a certain time, try out a few other init methods. The method below, for example, creates a time period starting at the current time that is exactly 5 hours long.
+```objc
+DTTimePeriod *timePeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeHour amount:5 startingAt:[NSDate date]];
+```
 
 ####Time Period Info
+
+
 
 ####Manipulation
 
@@ -176,6 +190,9 @@ Just for kicks, DateTools has a few convenience methods for quickly creating str
 ####Time Period Collections
 
 ####Time Period Chains
+
+####Documentation
+
 
 ##Unit Tests
 Unit tests were performed on all the major classes in the library for quality assurance. You can find theses under the "Tests" folder at the top of the library. There are over 300 test cases in all!
