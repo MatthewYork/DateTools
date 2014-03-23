@@ -38,7 +38,6 @@ All the classes required for DateTools are located in the DateTools folder in th
   * [Manipulation](#manipulation)
   * [Relationships](#relationships) 
 * [**Time Period Groups**](#time-period-groups)
-  * [Initialization](#initialization)
   * [Time Period Collections](#time-period-collections)
   * [Time Period Chains](#time-period-chains)
 * [**Unit Tests**](#unit-tests)
@@ -227,13 +226,44 @@ All of the possible relationships have been enumerated in the DTTimePeriodRelati
 
 Time period groups are the final abstraction of date and time in DateTools. Here, time periods are gathered and organized into something useful. There are two main types of time period groups,  <code>DTTimePeriodCollection</code> and <code>DTTimePeriodChain</code>. At a high level, think about a collection as a loose group where overlaps may occur and a chain a more linear, tight group where overlaps are not allowed.
 
+![TimePeriodCollections](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodCollection.png)![TimePeriodChains](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodChain.png)
+
 Both collections and chains operate like an NSArray. You may add,insert and remove DTTimePeriod objects from them just as you would objects in an array. The difference is how these periods are handled under the hood.
 
-####Time Period Collections
+###Time Period Collections
+Time period collections serve as loose collections of time periods. They are unorganized unless you decide to sort them, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period collections allow overlaps within their set of time periods. 
 
-####Time Period Chains
+To make a new collection, call the class method like so:
 
-####Documentation
+```objc
+//Create collection
+DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
+
+//Create a few time periods
+ DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+
+//Add time periods to the colleciton
+[collection addTimePeriod:firstPeriod];
+[collection addTimePeriod:secondPeriod];
+```
+
+Sorting time periods in a collection is easy, just call one of the sort methods. There are a total of three sort options, listed below:
+* **Start Date** - <code>sortByStartAscending</code>, <code>sortByStartDescending</code>
+* **End Date** - <code>sortByEndAscending</code>, <code>sortByEndDescending</code>
+* **Time Period Duration** - <code>sortByDurationAscending</code>, <code>sortByDurationDescending</code>
+
+It is also possible to check an NSDate's or DTTimePeriod's relationship to the collection. For instance, if you would like to see all the time periods tha intersect with a certain date, you can call the <cdoe>periodsIntersectedByDate:</code> method. The result is a new DTTimePeriodCollection with all those periods that intersect the provided date. There are a host of other methods to try out as well, including a full equality check between two collections.
+
+###Time Period Chains
+
+To make a new chain, call the class method like so:
+```objc
+//Create chain
+DTTimePeriodChain *chain = [DTTimePeriodChain chain];
+```
+
+##Documentation
 
 
 ##Unit Tests
