@@ -255,6 +255,8 @@ Sorting time periods in a collection is easy, just call one of the sort methods.
 
 It is also possible to check an NSDate's or DTTimePeriod's relationship to the collection. For instance, if you would like to see all the time periods tha intersect with a certain date, you can call the <cdoe>periodsIntersectedByDate:</code> method. The result is a new DTTimePeriodCollection with all those periods that intersect the provided date. There are a host of other methods to try out as well, including a full equality check between two collections.
 
+![TimePeriodCollectionOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodCollectionOperations.png)
+
 ###Time Period Chains
 
 To make a new chain, call the class method like so:
@@ -262,6 +264,8 @@ To make a new chain, call the class method like so:
 //Create chain
 DTTimePeriodChain *chain = [DTTimePeriodChain chain];
 ```
+
+![TimePeriodChainOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodChainOperations.png)
 
 ##Documentation
 
