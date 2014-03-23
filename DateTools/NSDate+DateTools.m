@@ -1315,6 +1315,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:style];
+    [formatter setLocale:[NSLocale currentLocale]];
     return [formatter stringFromDate:self];
 }
 
@@ -1376,6 +1377,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 -(NSString *)formattedDateWithFormat:(NSString *)format{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
+    [formatter setLocale:[NSLocale currentLocale]];
     return [formatter stringFromDate:self];
 }
 
