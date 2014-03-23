@@ -201,9 +201,33 @@ This doubles a time period of duration 1 minute to duration 2 minutes. The end d
 
 ####Relationships
 
+There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions and may be asked using the relationship methods of DTTimePeriod.
+
+**The Basics**
+
+Below is a chart of all the possible relationships between two time periods:
+![TimePeriods](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/PeriodRelations.png)
+
+A suite of methods have been extended to check for the basic relationships. They are listed below:
+* isEqualToPeriod:
+* isInside:
+* contains:
+* overlapsWith:
+* intersects:
+
+You can also check for the official relationship (like those shown in the chart) with the following method:
+```objc
+-(DTTimePeriodRelation)relationToPeriod:(DTTimePeriod *)period;
+```
+All of the possible relationships have been enumerated in the DTTimePeriodRelation enum. 
+
+**For a better grasp on how time periods relate to one another, check out the "Time Periods" tab in the example application. Here you can slide a few time periods around and watch their relationships change.**
+
 ##Time Period Groups
 
-####Introduction
+Time period groups are the final abstraction of date and time in DateTools. Here, time periods are gathered and organized into something useful. There are two main types of time period groups,  <code>DTTimePeriodCollection</code> and <code>DTTimePeriodChain</code>. At a high level, think about a collection as a loose group where overlaps may occur and a chain a more linear, tight group where overlaps are not allowed.
+
+Both collections and chains operate like an NSArray. You may add,insert and remove DTTimePeriod objects from them just as you would objects in an array. The difference is how these periods are handled under the hood.
 
 ####Time Period Collections
 
