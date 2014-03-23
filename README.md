@@ -26,7 +26,7 @@ All the classes required for DateTools are located in the DateTools folder in th
 
 ## Table of Contents
 
-* [**NSDate+DateTools**](#nsdate+datetools)
+* [**NSDate+DateTools**](#nsdate-datetools)
   * [Time Ago](#time-ago)
   * [Date Components](#date-components)
   * [Date Editing](#date-editing)
