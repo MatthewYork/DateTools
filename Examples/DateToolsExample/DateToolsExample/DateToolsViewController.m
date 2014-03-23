@@ -8,6 +8,7 @@
 
 #import "DateToolsViewController.h"
 #import "NSDate+DateTools.h"
+#import "Colours.h"
 
 @interface DateToolsViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *MasterScrollView;
@@ -61,6 +62,7 @@
     [[NSRunLoop mainRunLoop] addTimer:self.updateTimer forMode:NSRunLoopCommonModes];
     
     [self setupViews];
+    [self updateTimeAgoLabels];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,6 +74,14 @@
 -(void)setupViews{
     [self.MasterScrollView addSubview:self.TimeAgoView];
     [self.MasterScrollView setContentSize:self.TimeAgoView.frame.size];
+    
+    self.SecondsLabel.textColor = [UIColor tealColor];
+    self.MinutesLabel.textColor = [UIColor moneyGreenColor];
+    self.HoursLabel.textColor = [UIColor salmonColor];
+    self.DaysLabel.textColor = [UIColor violetColor];
+    self.WeeksLabel.textColor = [UIColor tealColor];
+    self.MonthsLabel.textColor = [UIColor waveColor];
+    self.YearsLabel.textColor = [UIColor bananaColor];
 }
 
 #pragma mark - Update
@@ -85,13 +95,13 @@
     self.TimeAgoLabel.text = [self.formatter stringFromDate:self.selectedDate];
     
     //Set date component labels
-    self.SecondsLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] secondsFrom: self.selectedDate]];
-    self.MinutesLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] minutesFrom:self.selectedDate]];
-    self.HoursLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] hoursFrom:self.selectedDate]];
-    self.DaysLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] daysFrom:self.selectedDate]];
-    self.WeeksLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] weeksFrom:self.selectedDate]];
-    self.MonthsLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] monthsFrom:self.selectedDate]];
-    self.YearsLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] yearsFrom:self.selectedDate]];
+    self.SecondsLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.secondsAgo];
+    self.MinutesLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.minutesAgo];
+    self.HoursLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.hoursAgo];
+    self.DaysLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.daysAgo];
+    self.WeeksLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.weeksAgo];
+    self.MonthsLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.monthsAgo];
+    self.YearsLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.yearsAgo];
 }
 
 - (IBAction)sliderValueDidChange:(UISlider *)sender {

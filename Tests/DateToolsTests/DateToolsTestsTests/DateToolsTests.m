@@ -476,7 +476,7 @@
     
     //Same year earlier
     NSDate *testDate2 = [self.formatter dateFromString:@"2014 10 24 18:15:12.000"];
-    XCTAssertEqual(2, [self.controlDate weeksLaterThan:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(1, [self.controlDate weeksLaterThan:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
     
     //Eariler year
     NSDate *testDate3 = [self.formatter dateFromString:@"2013 11 12 18:15:12.000"];

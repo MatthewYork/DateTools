@@ -766,27 +766,11 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(double)yearsFrom:(NSDate *)date{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
-    NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
-    
-    if (currentComponents.year < compareComponents.year) {
-        if (self.dayOfYear > date.dayOfYear) {
-            return currentComponents.year - compareComponents.year + 1;
-        }
-        else {
-            return currentComponents.year - compareComponents.year;
-        }
-    }
-    else if(currentComponents.year > compareComponents.year){
-        if (date.dayOfYear > self.dayOfYear) {
-            return currentComponents.year - compareComponents.year - 1;
-        }
-        else {
-            return currentComponents.year - compareComponents.year;
-        }
-    }
-    
-    return 0;
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:earliest toDate:latest options:0];
+    return multiplier*components.year;
 }
 
 /**
@@ -816,30 +800,11 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(double)weeksFrom:(NSDate *)date{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *currentComponents = [calendar components:allCalendarUnitFlags fromDate:self];
-    NSDateComponents *compareComponents = [calendar components:allCalendarUnitFlags fromDate:date];
-    
-    NSInteger yearsFrom = [self yearsFrom:date];
-    
-    if (yearsFrom == 0) {
-        if (currentComponents.year - compareComponents.year < 0) {
-            return (365-self.dayOfYear + date.dayOfYear)/7;
-        }
-        else if (currentComponents.year - compareComponents.year > 0){
-            return  (365-date.dayOfYear + self.dayOfYear)/7;
-        }
-        else {
-            return currentComponents.weekOfYear - compareComponents.weekOfYear;
-        }
-    }
-    else if (yearsFrom > 0){
-        return yearsFrom*52 + (self.dayOfYear - date.dayOfYear)/7;
-    }
-    else if (yearsFrom < 0){
-        return yearsFrom*52 - (date.dayOfYear - self.dayOfYear)/7;
-    }
-
-    return 0;
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:NSWeekCalendarUnit fromDate:earliest toDate:latest options:0];
+    return multiplier*components.week;
 }
 
 /**
@@ -851,7 +816,14 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return double - The double representation of the days between receiver and provided date
  */
 -(double)daysFrom:(NSDate *)date{
-    return floor(([self timeIntervalSinceDate:date])/SECONDS_IN_DAY);
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit fromDate:earliest toDate:latest options:0];
+    return multiplier*components.day;
+    
+    //return trunc(([self timeIntervalSinceDate:date])/SECONDS_IN_DAY);
 }
 
 /**
@@ -863,7 +835,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return double - The double representation of the hours between receiver and provided date
  */
 -(double)hoursFrom:(NSDate *)date{
-    return floor(([self timeIntervalSinceDate:date])/SECONDS_IN_HOUR);
+    return ([self timeIntervalSinceDate:date])/SECONDS_IN_HOUR;
 }
 
 /**
@@ -875,7 +847,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return double - The double representation of the minutes between receiver and provided date
  */
 -(double)minutesFrom:(NSDate *)date{
-    return floor(([self timeIntervalSinceDate:date])/SECONDS_IN_MINUTE);
+    return ([self timeIntervalSinceDate:date])/SECONDS_IN_MINUTE;
 }
 
 /**
