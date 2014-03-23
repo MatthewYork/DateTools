@@ -80,7 +80,7 @@ NSInteger year = calendar.year;
 NSInteger month = calendar.month;
 ```
 
-...has been changed to this:
+...becomes this:
 ```objc
 NSInteger year = date.year;
 NSInteger month = date.month;
@@ -91,9 +91,31 @@ And if you would like to use a non-Gregorian calendar, that option is available 
 NSInteger day = [date dayWithCalendar:calendar];
 ```
 
+If you would like to override the default calendar that DateTools uses, simply change it in the <code>defaultCalendar</code> method of <code>NSDate+DateTools.m</code>.
+
 ####Date Editing
 
+The date editing makes it easy to make a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year in the future, simply call the method <code>dateByAddingYears</code>.
+
+With DateTools, this:
+```objc
+NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+NSDateComponents *components = [[NSDateComponents alloc] init];
+[components setYear:1];
+    
+NSDate *newDate = [calendar dateByAddingComponents:components toDate:self options:0];
+```
+
+...becomes this:
+```objc
+NSDate *newDate = [self.controlDate dateByAddingYears:1];
+```
+
+Subtraction of date components is also supported through the <code>dateBySubtractingYears</code>
+
 ####Date Comparison
+
+
 
 ####Formatted Date Strings
 
