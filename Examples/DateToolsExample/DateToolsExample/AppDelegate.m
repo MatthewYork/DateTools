@@ -65,10 +65,10 @@
     //Style tab bar
     if ([self.tabBarController.tabBar respondsToSelector:@selector(setTranslucent:)]) {
         [self.tabBarController.tabBar setTranslucent:NO];
-        [self.tabBarController.tabBar setTintColor:[UIColor indigoColor]];
+        [self.tabBarController.tabBar setTintColor:[UIColor infoBlueColor]];
     }
     else {
-        [self.tabBarController.tabBar setBackgroundColor:[UIColor indigoColor]];
+        [self.tabBarController.tabBar setBackgroundColor:[UIColor infoBlueColor]];
     }
     
     //Add view controllers

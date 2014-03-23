@@ -31,8 +31,9 @@
     
     if ([self.navigationBar respondsToSelector:@selector(setTranslucent:)]) {
         self.navigationBar.translucent = NO;
-        self.navigationBar.barTintColor = [UIColor indigoColor];
+        self.navigationBar.barTintColor = [UIColor infoBlueColor];
         self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:21.0]};
+        [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     }
 }
 

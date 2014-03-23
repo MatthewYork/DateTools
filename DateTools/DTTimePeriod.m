@@ -10,7 +10,7 @@
 #import "NSDate+DateTools.h"
 
 @interface DTTimePeriod ()
-@property (readwrite, assign) BOOL hasStart;
+
 @end
 
 
