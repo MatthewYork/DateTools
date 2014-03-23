@@ -124,10 +124,10 @@
 -(double)minutesEarlierThan:(NSDate *)date;
 -(double)secondsEarlierThan:(NSDate *)date;
 #pragma mark Later Than
--(double)yearsLaterThan:(NSDate *)date;
--(double)monthsLaterThan:(NSDate *)date;
--(double)weeksLaterThan:(NSDate *)date;
--(double)daysLaterThan:(NSDate *)date;
+-(NSInteger)yearsLaterThan:(NSDate *)date;
+-(NSInteger)monthsLaterThan:(NSDate *)date;
+-(NSInteger)weeksLaterThan:(NSDate *)date;
+-(NSInteger)daysLaterThan:(NSDate *)date;
 -(double)hoursLaterThan:(NSDate *)date;
 -(double)minutesLaterThan:(NSDate *)date;
 -(double)secondsLaterThan:(NSDate *)date;

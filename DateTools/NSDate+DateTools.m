@@ -1042,9 +1042,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 /**
  *  Returns the number of days the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return double representiation of days
+ *  @return NSInteger representiation of days
  */
--(double)daysAgo{
+-(NSInteger)daysAgo{
     return [self daysEarlierThan:[NSDate date]];
 }
 
@@ -1167,9 +1167,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return double representing the number of years
+ *  @return NSInteger representing the number of years
  */
--(double)yearsLaterThan:(NSDate *)date{
+-(NSInteger)yearsLaterThan:(NSDate *)date{
     return MAX([self yearsFrom:date], 0);
 }
 
@@ -1179,9 +1179,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return double representing the number of months
+ *  @return NSInteger representing the number of months
  */
--(double)monthsLaterThan:(NSDate *)date{
+-(NSInteger)monthsLaterThan:(NSDate *)date{
     return MAX([self monthsFrom:date], 0);
 }
 
@@ -1191,9 +1191,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return double representing the number of weeks
+ *  @return NSInteger representing the number of weeks
  */
--(double)weeksLaterThan:(NSDate *)date{
+-(NSInteger)weeksLaterThan:(NSDate *)date{
     return MAX([self weeksFrom:date], 0);
 }
 
@@ -1203,9 +1203,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @param date NSDate - Provided date for comparison
  *
- *  @return double representing the number of days
+ *  @return NSInteger representing the number of days
  */
--(double)daysLaterThan:(NSDate *)date{
+-(NSInteger)daysLaterThan:(NSDate *)date{
     return MAX([self daysFrom:date], 0);
 }
 
