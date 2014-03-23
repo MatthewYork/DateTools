@@ -33,7 +33,7 @@ All the classes required for DateTools are located in the DateTools folder in th
   * [Date Comparison](#date-comparison)
   * [Formatted Date Strings](#formatted-date-strings)
 * [**Time Periods**](#time-periods)
-  * [Initialization](#initialization)
+  * [Introduction](#initialization)
   * [Time Period Info](#time-period-info)
   * [Manipulation](#manipulation)
   * [Relationships](#relationships) 
@@ -47,9 +47,33 @@ All the classes required for DateTools are located in the DateTools folder in th
 
 ##NSDate+DateTools
 
+####Time Ago
+
+####DAte Components
+
+####Date Editing
+
+####Date Comparison
+
+####Formatted Date Strings
+
 ##Time Periods
 
+####Introduction
+
+####Time Period Info
+
+####Manipulation
+
+####Relationships
+
 ##Time Period Groups
+
+####Introduction
+
+####Time Period Collections
+
+####Time Period Chains
 
 ##Unit Tests
 Unit tests were performed on all the major classes in the library for quality assurance. You can find theses under the "Tests" folder at the top of the library. There are over 300 test cases in all!
