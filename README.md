@@ -41,7 +41,7 @@ All the classes required for DateTools are located in the DateTools folder in th
   * [Introduction](#introduction)
   * [Time Period Collections](#time-period-collections)
   * [Time Period Chains](#time-period-chains)
-* [Unit Tests](#unit-tests)
-* [Credits](#credits)
-* [License](#license)
+* [**Unit Tests**](#unit-tests)
+* [**Credits**](#credits)
+* [**License**](#license)
 
