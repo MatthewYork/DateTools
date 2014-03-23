@@ -148,4 +148,7 @@
 -(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone;
 -(NSString *)formattedDateWithFormat:(NSString *)format locale:(NSLocale *)locale;
 -(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale;
+
+#pragma mark - Helpers
++(NSString *)defaultCalendar;
 @end

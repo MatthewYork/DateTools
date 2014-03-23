@@ -32,7 +32,7 @@ NSString *const DTErrorDomain = @"com.mattyork.dateTools";
     NSInteger arrayUpperBound = (array.count == 0)? 0:array.count;
     
     //Create info for error
-    NSDictionary *userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil), NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"Attempted to insert DTTimePeriod at index %ld but the group is of size [0...%ld].", index, arrayUpperBound],NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Please try an index within the bounds or the group.", nil)};
+    NSDictionary *userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil), NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"Attempted to insert DTTimePeriod at index %ld but the group is of size [0...%ld].", (long)index, (long)arrayUpperBound],NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Please try an index within the bounds or the group.", nil)};
     
     //Handle Error
     NSError *error = [NSError errorWithDomain:DTErrorDomain code:DTInsertOutOfBoundsException userInfo:userInfo];
@@ -44,7 +44,7 @@ NSString *const DTErrorDomain = @"com.mattyork.dateTools";
     NSInteger arrayUpperBound = (array.count == 0)? 0:array.count;
     
     //Create info for error
-    NSDictionary *userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil), NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"Attempted to remove DTTimePeriod at index %ld but the group is of size [0...%ld].", index, arrayUpperBound],NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Please try an index within the bounds of the group.", nil)};
+    NSDictionary *userInfo = @{NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil), NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"Attempted to remove DTTimePeriod at index %ld but the group is of size [0...%ld].", (long)index, (long)arrayUpperBound],NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Please try an index within the bounds of the group.", nil)};
     
     //Handle Error
     NSError *error = [NSError errorWithDomain:DTErrorDomain code:DTRemoveOutOfBoundsException userInfo:userInfo];
