@@ -344,7 +344,7 @@
  *  @return BOOL
  */
 -(BOOL)isInside:(DTTimePeriod *)period{
-    if ([period.StartDate isEarlierThanOrEqualToDate:self.StartDate] && [period.EndDate isLaterThanOrEqualToDate:self.EndDate]) {
+    if ([period.StartDate isEarlierThanOrEqualTo:self.StartDate] && [period.EndDate isLaterThanOrEqualTo:self.EndDate]) {
         return YES;
     }
     return NO;
@@ -359,7 +359,7 @@
  *  @return BOOL
  */
 -(BOOL)contains:(DTTimePeriod *)period{
-    if ([self.StartDate isEarlierThanOrEqualToDate:period.StartDate] && [self.EndDate isLaterThanOrEqualToDate:period.EndDate]) {
+    if ([self.StartDate isEarlierThanOrEqualTo:period.StartDate] && [self.EndDate isLaterThanOrEqualTo:period.EndDate]) {
         return YES;
     }
     return NO;
@@ -380,7 +380,7 @@
         return YES;
     }
     //Enclosing
-    else if ([period.StartDate isLaterThanOrEqualToDate:self.StartDate] && [period.EndDate isEarlierThanOrEqualToDate:self.EndDate]){
+    else if ([period.StartDate isLaterThanOrEqualTo:self.StartDate] && [period.EndDate isEarlierThanOrEqualTo:self.EndDate]){
         return YES;
     }
     //Inside -> Out
@@ -401,15 +401,15 @@
  */
 -(BOOL)intersects:(DTTimePeriod *)period{
     //Outside -> Inside
-    if ([period.StartDate isEarlierThan:self.StartDate] && [period.EndDate isLaterThanOrEqualToDate:self.StartDate]) {
+    if ([period.StartDate isEarlierThan:self.StartDate] && [period.EndDate isLaterThanOrEqualTo:self.StartDate]) {
         return YES;
     }
     //Enclosing
-    else if ([period.StartDate isLaterThanOrEqualToDate:self.StartDate] && [period.EndDate isEarlierThanOrEqualToDate:self.EndDate]){
+    else if ([period.StartDate isLaterThanOrEqualTo:self.StartDate] && [period.EndDate isEarlierThanOrEqualTo:self.EndDate]){
         return YES;
     }
     //Inside -> Out
-    else if([period.StartDate isEarlierThanOrEqualToDate:self.EndDate] && [period.EndDate isLaterThan:self.EndDate]){
+    else if([period.StartDate isEarlierThanOrEqualTo:self.EndDate] && [period.EndDate isLaterThan:self.EndDate]){
         return YES;
     }
     return NO;
@@ -513,7 +513,7 @@
         }
     }
     else if (interval == DTTimePeriodIntervalClosed){
-        if ([self.StartDate isEarlierThanOrEqualToDate:date] && [self.EndDate isLaterThanOrEqualToDate:date]) {
+        if ([self.StartDate isEarlierThanOrEqualTo:date] && [self.EndDate isLaterThanOrEqualTo:date]) {
             return YES;
         }
         else {

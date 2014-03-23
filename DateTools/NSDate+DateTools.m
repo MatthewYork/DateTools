@@ -1282,7 +1282,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @return BOOL representing comparison result
  */
--(BOOL)isEarlierThanOrEqualToDate:(NSDate *)date{
+-(BOOL)isEarlierThanOrEqualTo:(NSDate *)date{
     if (self.timeIntervalSince1970 <= date.timeIntervalSince1970) {
         return YES;
     }
@@ -1296,7 +1296,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @return BOOL representing comparison result
  */
--(BOOL)isLaterThanOrEqualToDate:(NSDate *)date{
+-(BOOL)isLaterThanOrEqualTo:(NSDate *)date{
     if (self.timeIntervalSince1970 >= date.timeIntervalSince1970) {
         return YES;
     }

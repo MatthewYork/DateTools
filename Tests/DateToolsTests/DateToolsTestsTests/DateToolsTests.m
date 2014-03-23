@@ -560,29 +560,29 @@
     //Same
     XCTAssertEqual(NO, [self.controlDate isLaterThan:self.controlDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
--(void)testIsEarlierThanOrEqualToDate{
+-(void)testisEarlierThanOrEqualTo{
     //Later
     NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 20:15:12.000"];
-    XCTAssertEqual(YES, [self.controlDate isEarlierThanOrEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(YES, [self.controlDate isEarlierThanOrEqualTo:testDate], @"%s Failed", __PRETTY_FUNCTION__);
     
     //Earlier
     NSDate *testDate2 = [self.formatter dateFromString:@"2014 11 05 15:15:12.000"];
-    XCTAssertEqual(NO, [self.controlDate isEarlierThanOrEqualToDate:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(NO, [self.controlDate isEarlierThanOrEqualTo:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
     
     //Same
-    XCTAssertEqual(YES, [self.controlDate isEarlierThanOrEqualToDate:self.controlDate], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(YES, [self.controlDate isEarlierThanOrEqualTo:self.controlDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testIsLaterOrEqualToDate{
     //Later
     NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 20:15:12.000"];
-    XCTAssertEqual(NO, [self.controlDate isLaterThanOrEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(NO, [self.controlDate isLaterThanOrEqualTo:testDate], @"%s Failed", __PRETTY_FUNCTION__);
     
     //Earlier
     NSDate *testDate2 = [self.formatter dateFromString:@"2014 11 05 15:15:12.000"];
-    XCTAssertEqual(YES, [self.controlDate isLaterThanOrEqualToDate:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(YES, [self.controlDate isLaterThanOrEqualTo:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
     
     //Same
-    XCTAssertEqual(YES, [self.controlDate isLaterThanOrEqualToDate:self.controlDate], @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertEqual(YES, [self.controlDate isLaterThanOrEqualTo:self.controlDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 @end

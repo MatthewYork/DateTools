@@ -134,8 +134,8 @@
 #pragma mark Comparators
 -(BOOL)isEarlierThan:(NSDate *)date;
 -(BOOL)isLaterThan:(NSDate *)date;
--(BOOL)isEarlierThanOrEqualToDate:(NSDate *)date;
--(BOOL)isLaterThanOrEqualToDate:(NSDate *)date;
+-(BOOL)isEarlierThanOrEqualTo:(NSDate *)date;
+-(BOOL)isLaterThanOrEqualTo:(NSDate *)date;
 
 #pragma mark - Formatted Dates
 #pragma mark Formatted With Style
