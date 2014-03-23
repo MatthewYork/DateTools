@@ -7,11 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "Colours.h"
+#import "ExampleNavigationController.h"
+#import "DateToolsViewController.h"
+#import "TimePeriodsViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    [self initializeTabBarController];
+    
+    [self.window setRootViewController:self.tabBarController];
+    [self.window makeKeyAndVisible];
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -41,6 +52,27 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)initializeTabBarController{
+    ExampleNavigationController *dtVC = [[ExampleNavigationController alloc] initWithRootViewController:[[DateToolsViewController alloc] initWithNibName:@"DateToolsViewController" bundle:nil]];
+    
+    ExampleNavigationController *tpVC = [[ExampleNavigationController alloc] initWithRootViewController:[[TimePeriodsViewController alloc] initWithNibName:@"TimePeriodsViewController" bundle:nil]];
+    
+    //Initialize tab bar controller
+    self.tabBarController = [[UITabBarController alloc] init];
+    
+    //Style tab bar
+    if ([self.tabBarController.tabBar respondsToSelector:@selector(setTranslucent:)]) {
+        [self.tabBarController.tabBar setTranslucent:NO];
+        [self.tabBarController.tabBar setTintColor:[UIColor indigoColor]];
+    }
+    else {
+        [self.tabBarController.tabBar setBackgroundColor:[UIColor indigoColor]];
+    }
+    
+    //Add view controllers
+    self.tabBarController.viewControllers = @[dtVC, tpVC];
 }
 
 @end
