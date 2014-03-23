@@ -246,25 +246,42 @@ DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
 //Add time periods to the colleciton
 [collection addTimePeriod:firstPeriod];
 [collection addTimePeriod:secondPeriod];
-```
 
+//Retreive collection items
+DTTimePeriod *firstPeriod = collection[0];
+```
+**Sorting**
 Sorting time periods in a collection is easy, just call one of the sort methods. There are a total of three sort options, listed below:
 * **Start Date** - <code>sortByStartAscending</code>, <code>sortByStartDescending</code>
 * **End Date** - <code>sortByEndAscending</code>, <code>sortByEndDescending</code>
 * **Time Period Duration** - <code>sortByDurationAscending</code>, <code>sortByDurationDescending</code>
 
+**Operations**
 It is also possible to check an NSDate's or DTTimePeriod's relationship to the collection. For instance, if you would like to see all the time periods tha intersect with a certain date, you can call the <cdoe>periodsIntersectedByDate:</code> method. The result is a new DTTimePeriodCollection with all those periods that intersect the provided date. There are a host of other methods to try out as well, including a full equality check between two collections.
 
 ![TimePeriodCollectionOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodCollectionOperations.png)
 
 ###Time Period Chains
 
+
 To make a new chain, call the class method like so:
 ```objc
 //Create chain
 DTTimePeriodChain *chain = [DTTimePeriodChain chain];
+
+//Create a few time periods
+ DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[dateFormatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[dateFormatter dateFromString:@"2015 11 05 18:15:12.000"]];
+DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[dateFormatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[dateFormatter dateFromString:@"2016 11 05 18:15:12.000"]];
+
+//Add test periods
+[self.controlChain addTimePeriod:firstPeriod];
+[self.controlChain addTimePeriod:secondPeriod];
+
+//Retreive chain items
+DTTimePeriod *firstPeriod = chain[0];
 ```
 
+**Operations**
 ![TimePeriodChainOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodChainOperations.png)
 
 ##Documentation
