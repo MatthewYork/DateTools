@@ -80,6 +80,7 @@
 		F0A426D418D9FDB500E236C0 /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriod.h; path = ../../../DateTools/DTTimePeriod.h; sourceTree = "<group>"; };
 		F0A426D518D9FDB500E236C0 /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = ../../../DateTools/DTTimePeriod.m; sourceTree = "<group>"; };
 		F0A426D918DA358C00E236C0 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = ../../../DateTools/DTConstants.h; sourceTree = "<group>"; };
+		F0EE17E018DEAE190010FAD8 /* DateTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = ../../../DateTools/DateTools.h; sourceTree = "<group>"; };
 		F0F08D9B18D9E80E00214C6B /* DateToolsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateToolsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F08D9E18D9E80E00214C6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0F08DA018D9E80E00214C6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -262,6 +263,7 @@
 		F0F08DD318D9E81C00214C6B /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
+				F0EE17E018DEAE190010FAD8 /* DateTools.h */,
 				F0A426D918DA358C00E236C0 /* DTConstants.h */,
 				F0248FB718DE0186008CE501 /* DTError.h */,
 				F0248FB818DE0186008CE501 /* DTError.m */,
