@@ -155,10 +155,10 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 {
     //If shortened formatting is requested, drop the "ago" part of the time ago
     if (shortFormatting) {
-        return [NSString stringWithFormat:@"%d%@", componentValue, name];
+        return [NSString stringWithFormat:@"%ld%@", componentValue, name];
     }
     else {
-        return [NSString stringWithFormat:@"%d %@ %@", componentValue, name, NSLocalizedString(@"ago", nil)];
+        return [NSString stringWithFormat:@"%ld %@ %@", componentValue, name, NSLocalizedString(@"ago", nil)];
     }
     
 }
