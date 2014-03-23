@@ -759,71 +759,53 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 /**
  *  Returns an NSInteger representing the amount of time in years between the receiver and the provided date.
  *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *  Uses the default Gregorian calendar
  *
  *  @param date NSDate - The provided date for comparison
  *
  *  @return double - The NSInteger representation of the years between receiver and provided date
  */
 -(double)yearsFrom:(NSDate *)date{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *earliest = [self earlierDate:date];
-    NSDate *latest = (earliest == self) ? date : self;
-    NSInteger multiplier = (earliest == self) ? -1 : 1;
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:earliest toDate:latest options:0];
-    return multiplier*components.year;
+    return [self yearsFrom:date calendar:nil];
 }
 
 /**
  *  Returns an NSInteger representing the amount of time in months between the receiver and the provided date.
  *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *  Uses the default Gregorian calendar
  *
  *  @param date NSDate - The provided date for comparison
  *
  *  @return double - The NSInteger representation of the years between receiver and provided date
  */
 -(double)monthsFrom:(NSDate *)date{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *earliest = [self earlierDate:date];
-    NSDate *latest = (earliest == self) ? date : self;
-    NSInteger multiplier = (earliest == self) ? -1 : 1;
-    NSDateComponents *components = [calendar components:allCalendarUnitFlags fromDate:earliest toDate:latest options:0];
-    return multiplier*(components.month + 12*components.year);
+    return [self monthsFrom:date calendar:nil];
 }
 
 /**
  *  Returns an NSInteger representing the amount of time in weeks between the receiver and the provided date.
  *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *  Uses the default Gregorian calendar
  *
  *  @param date NSDate - The provided date for comparison
  *
  *  @return double - The double representation of the weeks between receiver and provided date
  */
 -(double)weeksFrom:(NSDate *)date{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *earliest = [self earlierDate:date];
-    NSDate *latest = (earliest == self) ? date : self;
-    NSInteger multiplier = (earliest == self) ? -1 : 1;
-    NSDateComponents *components = [calendar components:NSWeekCalendarUnit fromDate:earliest toDate:latest options:0];
-    return multiplier*components.week;
+    return [self weeksFrom:date calendar:nil];
 }
 
 /**
  *  Returns an NSInteger representing the amount of time in days between the receiver and the provided date.
  *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *  Uses the default Gregorian calendar
  *
  *  @param date NSDate - The provided date for comparison
  *
  *  @return double - The double representation of the days between receiver and provided date
  */
 -(double)daysFrom:(NSDate *)date{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *earliest = [self earlierDate:date];
-    NSDate *latest = (earliest == self) ? date : self;
-    NSInteger multiplier = (earliest == self) ? -1 : 1;
-    NSDateComponents *components = [calendar components:NSDayCalendarUnit fromDate:earliest toDate:latest options:0];
-    return multiplier*components.day;
-    
-    //return trunc(([self timeIntervalSinceDate:date])/SECONDS_IN_DAY);
+    return [self daysFrom:date calendar:nil];
 }
 
 /**
@@ -860,6 +842,91 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(double)secondsFrom:(NSDate *)date{
     return [self timeIntervalSinceDate:date];
+}
+
+#pragma mark Time From With Calendar
+/**
+ *  Returns an NSInteger representing the amount of time in years between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date     NSDate - The provided date for comparison
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return double - The double representation of the years between receiver and provided date
+ */
+-(double)yearsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+    if (!calendar) {
+        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    }
+    
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:earliest toDate:latest options:0];
+    return multiplier*components.year;
+}
+
+/**
+ *  Returns an NSInteger representing the amount of time in months between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date     NSDate - The provided date for comparison
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return double - The double representation of the months between receiver and provided date
+ */
+-(double)monthsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+    if (!calendar) {
+        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    }
+    
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:allCalendarUnitFlags fromDate:earliest toDate:latest options:0];
+    return multiplier*(components.month + 12*components.year);
+}
+
+/**
+ *  Returns an NSInteger representing the amount of time in weeks between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date     NSDate - The provided date for comparison
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return double - The double representation of the weeks between receiver and provided date
+ */
+-(double)weeksFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+    if (!calendar) {
+        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    }
+    
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:NSWeekCalendarUnit fromDate:earliest toDate:latest options:0];
+    return multiplier*components.week;
+}
+
+/**
+ *  Returns an NSInteger representing the amount of time in days between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date     NSDate - The provided date for comparison
+ *  @param calendar NSCalendar - The calendar to be used in the calculation
+ *
+ *  @return double - The double representation of the days between receiver and provided date
+ */
+-(double)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+    if (!calendar) {
+        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    }
+    
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit fromDate:earliest toDate:latest options:0];
+    return multiplier*components.day;
 }
 
 #pragma mark Time Until
