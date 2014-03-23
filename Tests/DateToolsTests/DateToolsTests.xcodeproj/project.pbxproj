@@ -25,18 +25,18 @@
 		F00762FD18DE5D9900A99075 /* DTTimePeriodGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F00762F818DE5D9900A99075 /* DTTimePeriodGroupTests.m */; };
 		F00762FE18DE5D9900A99075 /* DTTimePeriodChainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F00762F918DE5D9900A99075 /* DTTimePeriodChainTests.m */; };
 		F00762FF18DE5D9900A99075 /* DTTimePeriodCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F00762FA18DE5D9900A99075 /* DTTimePeriodCollectionTests.m */; };
-		F007630E18DE5DC400A99075 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630318DE5DC400A99075 /* DTError.m */; };
-		F007630F18DE5DC400A99075 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630318DE5DC400A99075 /* DTError.m */; };
 		F007631018DE5DC400A99075 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630518DE5DC400A99075 /* NSDate+DateTools.m */; };
 		F007631118DE5DC400A99075 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630518DE5DC400A99075 /* NSDate+DateTools.m */; };
 		F007631218DE5DC400A99075 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630718DE5DC400A99075 /* DTTimePeriod.m */; };
 		F007631318DE5DC400A99075 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630718DE5DC400A99075 /* DTTimePeriod.m */; };
-		F007631418DE5DC400A99075 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630918DE5DC400A99075 /* DTTimePeriodGroup.m */; };
-		F007631518DE5DC400A99075 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630918DE5DC400A99075 /* DTTimePeriodGroup.m */; };
 		F007631618DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */; };
 		F007631718DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */; };
-		F007631818DE5DC400A99075 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630D18DE5DC400A99075 /* DTTimePeriodChain.m */; };
-		F007631918DE5DC400A99075 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630D18DE5DC400A99075 /* DTTimePeriodChain.m */; };
+		F0EE17F318DEB1C20010FAD8 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17EE18DEB1C20010FAD8 /* DTError.m */; };
+		F0EE17F418DEB1C20010FAD8 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17EE18DEB1C20010FAD8 /* DTError.m */; };
+		F0EE17F518DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */; };
+		F0EE17F618DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */; };
+		F0EE17F718DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */; };
+		F0EE17F818DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,18 +74,19 @@
 		F00762F918DE5D9900A99075 /* DTTimePeriodChainTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodChainTests.m; sourceTree = "<group>"; };
 		F00762FA18DE5D9900A99075 /* DTTimePeriodCollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodCollectionTests.m; sourceTree = "<group>"; };
 		F007630118DE5DC400A99075 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = ../../../DateTools/DTConstants.h; sourceTree = "<group>"; };
-		F007630218DE5DC400A99075 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = ../../../Examples/DateToolsExample/DateToolsExample/DTError.h; sourceTree = "<group>"; };
-		F007630318DE5DC400A99075 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = ../../../Examples/DateToolsExample/DateToolsExample/DTError.m; sourceTree = "<group>"; };
 		F007630418DE5DC400A99075 /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+DateTools.h"; path = "../../../DateTools/NSDate+DateTools.h"; sourceTree = "<group>"; };
 		F007630518DE5DC400A99075 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateTools.m"; path = "../../../DateTools/NSDate+DateTools.m"; sourceTree = "<group>"; };
 		F007630618DE5DC400A99075 /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriod.h; path = ../../../DateTools/DTTimePeriod.h; sourceTree = "<group>"; };
 		F007630718DE5DC400A99075 /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = ../../../DateTools/DTTimePeriod.m; sourceTree = "<group>"; };
-		F007630818DE5DC400A99075 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodGroup.h; path = ../../../Examples/DateToolsExample/DateToolsExample/DTTimePeriodGroup.h; sourceTree = "<group>"; };
-		F007630918DE5DC400A99075 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodGroup.m; path = ../../../Examples/DateToolsExample/DateToolsExample/DTTimePeriodGroup.m; sourceTree = "<group>"; };
 		F007630A18DE5DC400A99075 /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = ../../../DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
 		F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = ../../../DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
-		F007630C18DE5DC400A99075 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = ../../../Examples/DateToolsExample/DateToolsExample/DTTimePeriodChain.h; sourceTree = "<group>"; };
-		F007630D18DE5DC400A99075 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodChain.m; path = ../../../Examples/DateToolsExample/DateToolsExample/DTTimePeriodChain.m; sourceTree = "<group>"; };
+		F0EE17ED18DEB1C20010FAD8 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = ../../../DateTools/DTError.h; sourceTree = "<group>"; };
+		F0EE17EE18DEB1C20010FAD8 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = ../../../DateTools/DTError.m; sourceTree = "<group>"; };
+		F0EE17EF18DEB1C20010FAD8 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = ../../../DateTools/DTTimePeriodChain.h; sourceTree = "<group>"; };
+		F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodChain.m; path = ../../../DateTools/DTTimePeriodChain.m; sourceTree = "<group>"; };
+		F0EE17F118DEB1C20010FAD8 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodGroup.h; path = ../../../DateTools/DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodGroup.m; path = ../../../DateTools/DTTimePeriodGroup.m; sourceTree = "<group>"; };
+		F0EE17F918DEB1CF0010FAD8 /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = ../../../DateTools/DateTools.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,19 +194,20 @@
 		F007630018DE5DB000A99075 /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
+				F0EE17F918DEB1CF0010FAD8 /* DateTools.h */,
+				F0EE17ED18DEB1C20010FAD8 /* DTError.h */,
+				F0EE17EE18DEB1C20010FAD8 /* DTError.m */,
+				F0EE17EF18DEB1C20010FAD8 /* DTTimePeriodChain.h */,
+				F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */,
+				F0EE17F118DEB1C20010FAD8 /* DTTimePeriodGroup.h */,
+				F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */,
 				F007630118DE5DC400A99075 /* DTConstants.h */,
-				F007630218DE5DC400A99075 /* DTError.h */,
-				F007630318DE5DC400A99075 /* DTError.m */,
 				F007630418DE5DC400A99075 /* NSDate+DateTools.h */,
 				F007630518DE5DC400A99075 /* NSDate+DateTools.m */,
 				F007630618DE5DC400A99075 /* DTTimePeriod.h */,
 				F007630718DE5DC400A99075 /* DTTimePeriod.m */,
-				F007630818DE5DC400A99075 /* DTTimePeriodGroup.h */,
-				F007630918DE5DC400A99075 /* DTTimePeriodGroup.m */,
 				F007630A18DE5DC400A99075 /* DTTimePeriodCollection.h */,
 				F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */,
-				F007630C18DE5DC400A99075 /* DTTimePeriodChain.h */,
-				F007630D18DE5DC400A99075 /* DTTimePeriodChain.m */,
 			);
 			name = DateTools;
 			sourceTree = "<group>";
@@ -306,12 +308,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F007631418DE5DC400A99075 /* DTTimePeriodGroup.m in Sources */,
 				F007631618DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */,
+				F0EE17F718DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */,
 				F00762D818DE5D7500A99075 /* ViewController.m in Sources */,
 				F00762D218DE5D7500A99075 /* AppDelegate.m in Sources */,
-				F007631818DE5DC400A99075 /* DTTimePeriodChain.m in Sources */,
-				F007630E18DE5DC400A99075 /* DTError.m in Sources */,
+				F0EE17F518DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */,
+				F0EE17F318DEB1C20010FAD8 /* DTError.m in Sources */,
 				F007631218DE5DC400A99075 /* DTTimePeriod.m in Sources */,
 				F007631018DE5DC400A99075 /* NSDate+DateTools.m in Sources */,
 				F00762CE18DE5D7500A99075 /* main.m in Sources */,
@@ -322,14 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F007630F18DE5DC400A99075 /* DTError.m in Sources */,
-				F007631518DE5DC400A99075 /* DTTimePeriodGroup.m in Sources */,
 				F00762FB18DE5D9900A99075 /* DateToolsTests.m in Sources */,
-				F007631918DE5DC400A99075 /* DTTimePeriodChain.m in Sources */,
 				F00762FD18DE5D9900A99075 /* DTTimePeriodGroupTests.m in Sources */,
 				F007631318DE5DC400A99075 /* DTTimePeriod.m in Sources */,
+				F0EE17F618DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */,
+				F0EE17F418DEB1C20010FAD8 /* DTError.m in Sources */,
 				F00762FF18DE5D9900A99075 /* DTTimePeriodCollectionTests.m in Sources */,
 				F00762FC18DE5D9900A99075 /* DTTimePeriodTests.m in Sources */,
+				F0EE17F818DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */,
 				F007631718DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */,
 				F007631118DE5DC400A99075 /* NSDate+DateTools.m in Sources */,
 				F00762FE18DE5D9900A99075 /* DTTimePeriodChainTests.m in Sources */,
@@ -529,6 +531,7 @@
 				F00762F218DE5D7500A99075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F00762F318DE5D7500A99075 /* Build configuration list for PBXNativeTarget "DateToolsTestsTests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +540,7 @@
 				F00762F518DE5D7500A99075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

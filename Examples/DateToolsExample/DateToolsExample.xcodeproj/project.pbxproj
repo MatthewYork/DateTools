@@ -21,11 +21,14 @@
 		F007634018DE647600A99075 /* Recents_filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F007633C18DE647600A99075 /* Recents_filled@2x.png */; };
 		F007634118DE647600A99075 /* Recents.png in Resources */ = {isa = PBXBuildFile; fileRef = F007633D18DE647600A99075 /* Recents.png */; };
 		F007634218DE647600A99075 /* Recents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F007633E18DE647600A99075 /* Recents@2x.png */; };
-		F0248FB918DE0186008CE501 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0248FB818DE0186008CE501 /* DTError.m */; };
 		F07A1A0818DCC76500B3E9FF /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F07A1A0718DCC76500B3E9FF /* DTTimePeriodCollection.m */; };
-		F07A1A0B18DCC78100B3E9FF /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F07A1A0A18DCC78100B3E9FF /* DTTimePeriodChain.m */; };
-		F07A1A0E18DCCC3200B3E9FF /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F07A1A0D18DCCC3200B3E9FF /* DTTimePeriodGroup.m */; };
 		F0A426D618D9FDB500E236C0 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A426D518D9FDB500E236C0 /* DTTimePeriod.m */; };
+		F0EE17E718DEB1A10010FAD8 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17E218DEB1A10010FAD8 /* DTError.m */; };
+		F0EE17E818DEB1A10010FAD8 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17E218DEB1A10010FAD8 /* DTError.m */; };
+		F0EE17E918DEB1A10010FAD8 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17E418DEB1A10010FAD8 /* DTTimePeriodChain.m */; };
+		F0EE17EA18DEB1A10010FAD8 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17E418DEB1A10010FAD8 /* DTTimePeriodChain.m */; };
+		F0EE17EB18DEB1A10010FAD8 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17E618DEB1A10010FAD8 /* DTTimePeriodGroup.m */; };
+		F0EE17EC18DEB1A10010FAD8 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17E618DEB1A10010FAD8 /* DTTimePeriodGroup.m */; };
 		F0F08D9F18D9E80E00214C6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F08D9E18D9E80E00214C6B /* Foundation.framework */; };
 		F0F08DA118D9E80E00214C6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F08DA018D9E80E00214C6B /* CoreGraphics.framework */; };
 		F0F08DA318D9E80E00214C6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F08DA218D9E80E00214C6B /* UIKit.framework */; };
@@ -69,18 +72,18 @@
 		F007633C18DE647600A99075 /* Recents_filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Recents_filled@2x.png"; sourceTree = "<group>"; };
 		F007633D18DE647600A99075 /* Recents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Recents.png; sourceTree = "<group>"; };
 		F007633E18DE647600A99075 /* Recents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Recents@2x.png"; sourceTree = "<group>"; };
-		F0248FB718DE0186008CE501 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTError.h; sourceTree = "<group>"; };
-		F0248FB818DE0186008CE501 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTError.m; sourceTree = "<group>"; };
 		F07A1A0618DCC76500B3E9FF /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = ../../../DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
 		F07A1A0718DCC76500B3E9FF /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = ../../../DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
-		F07A1A0918DCC78100B3E9FF /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodChain.h; sourceTree = "<group>"; };
-		F07A1A0A18DCC78100B3E9FF /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodChain.m; sourceTree = "<group>"; };
-		F07A1A0C18DCCC3200B3E9FF /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodGroup.h; sourceTree = "<group>"; };
-		F07A1A0D18DCCC3200B3E9FF /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
 		F0A426D418D9FDB500E236C0 /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriod.h; path = ../../../DateTools/DTTimePeriod.h; sourceTree = "<group>"; };
 		F0A426D518D9FDB500E236C0 /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = ../../../DateTools/DTTimePeriod.m; sourceTree = "<group>"; };
 		F0A426D918DA358C00E236C0 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = ../../../DateTools/DTConstants.h; sourceTree = "<group>"; };
 		F0EE17E018DEAE190010FAD8 /* DateTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = ../../../DateTools/DateTools.h; sourceTree = "<group>"; };
+		F0EE17E118DEB1A10010FAD8 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = ../../../DateTools/DTError.h; sourceTree = "<group>"; };
+		F0EE17E218DEB1A10010FAD8 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = ../../../DateTools/DTError.m; sourceTree = "<group>"; };
+		F0EE17E318DEB1A10010FAD8 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = ../../../DateTools/DTTimePeriodChain.h; sourceTree = "<group>"; };
+		F0EE17E418DEB1A10010FAD8 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodChain.m; path = ../../../DateTools/DTTimePeriodChain.m; sourceTree = "<group>"; };
+		F0EE17E518DEB1A10010FAD8 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodGroup.h; path = ../../../DateTools/DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		F0EE17E618DEB1A10010FAD8 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodGroup.m; path = ../../../DateTools/DTTimePeriodGroup.m; sourceTree = "<group>"; };
 		F0F08D9B18D9E80E00214C6B /* DateToolsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateToolsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F08D9E18D9E80E00214C6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0F08DA018D9E80E00214C6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -263,20 +266,20 @@
 		F0F08DD318D9E81C00214C6B /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
+				F0EE17E118DEB1A10010FAD8 /* DTError.h */,
+				F0EE17E218DEB1A10010FAD8 /* DTError.m */,
+				F0EE17E318DEB1A10010FAD8 /* DTTimePeriodChain.h */,
+				F0EE17E418DEB1A10010FAD8 /* DTTimePeriodChain.m */,
+				F0EE17E518DEB1A10010FAD8 /* DTTimePeriodGroup.h */,
+				F0EE17E618DEB1A10010FAD8 /* DTTimePeriodGroup.m */,
 				F0EE17E018DEAE190010FAD8 /* DateTools.h */,
 				F0A426D918DA358C00E236C0 /* DTConstants.h */,
-				F0248FB718DE0186008CE501 /* DTError.h */,
-				F0248FB818DE0186008CE501 /* DTError.m */,
 				F0F08DD718D9E94F00214C6B /* NSDate+DateTools.h */,
 				F0F08DD818D9E94F00214C6B /* NSDate+DateTools.m */,
 				F0A426D418D9FDB500E236C0 /* DTTimePeriod.h */,
 				F0A426D518D9FDB500E236C0 /* DTTimePeriod.m */,
-				F07A1A0C18DCCC3200B3E9FF /* DTTimePeriodGroup.h */,
-				F07A1A0D18DCCC3200B3E9FF /* DTTimePeriodGroup.m */,
 				F07A1A0618DCC76500B3E9FF /* DTTimePeriodCollection.h */,
 				F07A1A0718DCC76500B3E9FF /* DTTimePeriodCollection.m */,
-				F07A1A0918DCC78100B3E9FF /* DTTimePeriodChain.h */,
-				F07A1A0A18DCC78100B3E9FF /* DTTimePeriodChain.m */,
 			);
 			name = DateTools;
 			sourceTree = "<group>";
@@ -386,15 +389,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0EE17E718DEB1A10010FAD8 /* DTError.m in Sources */,
+				F0EE17EB18DEB1A10010FAD8 /* DTTimePeriodGroup.m in Sources */,
 				F0A426D618D9FDB500E236C0 /* DTTimePeriod.m in Sources */,
 				F007633418DE628900A99075 /* ExampleNavigationController.m in Sources */,
+				F0EE17E918DEB1A10010FAD8 /* DTTimePeriodChain.m in Sources */,
 				F07A1A0818DCC76500B3E9FF /* DTTimePeriodCollection.m in Sources */,
-				F0248FB918DE0186008CE501 /* DTError.m in Sources */,
 				F0F08DAF18D9E80E00214C6B /* AppDelegate.m in Sources */,
-				F07A1A0B18DCC78100B3E9FF /* DTTimePeriodChain.m in Sources */,
 				F007632518DE5FE300A99075 /* Colours.m in Sources */,
 				F007632018DE5F5E00A99075 /* DateToolsViewController.m in Sources */,
-				F07A1A0E18DCCC3200B3E9FF /* DTTimePeriodGroup.m in Sources */,
 				F0F08DD918D9E94F00214C6B /* NSDate+DateTools.m in Sources */,
 				F007633918DE63C400A99075 /* TimePeriodsViewController.m in Sources */,
 				F0F08DAB18D9E80E00214C6B /* main.m in Sources */,
@@ -405,6 +408,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0EE17E818DEB1A10010FAD8 /* DTError.m in Sources */,
+				F0EE17EC18DEB1A10010FAD8 /* DTTimePeriodGroup.m in Sources */,
+				F0EE17EA18DEB1A10010FAD8 /* DTTimePeriodChain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
