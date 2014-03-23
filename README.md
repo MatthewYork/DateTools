@@ -47,9 +47,24 @@ All the classes required for DateTools are located in the DateTools folder in th
 
 ##NSDate+DateTools
 
+One of the missions of DateTools was to make NSDate feel more complete. There are many other languages that allow direct access to information about dates from their date classes, but NSDate (sadly) does not. It safely works only in the Unix time offsets through the <code>timeIntervalSince...</code> methods for building dates. But that's not <i>always</i> what we want to do. Sometimes, we would like to work with dates based on their date components (like year, month, day, etc) at a more abstract level. This is where DateTools comes in.
+
 ####Time Ago
 
-####DAte Components
+No date library would be complete without the ability to quickly make an NSString based on how much earlier a date is than now. DateTools has you covered. These "time ago" strings come in a long a short form, with the latter closely resembling Twitter. There are many libraries that do this, so I wanted to pull it into this one.
+
+**Long Format**
+```objc
+NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:-4];
+NSLog(@"Time Ago: %@", timeAgoDate.timeAgoSinceNow);
+NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
+
+//Output:
+//Time Ago: 4 seconds ago
+//Time Ago: 4s
+```
+
+####Date Components
 
 ####Date Editing
 
