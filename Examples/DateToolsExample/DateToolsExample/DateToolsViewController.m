@@ -98,10 +98,10 @@
     self.SecondsLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.secondsAgo];
     self.MinutesLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.minutesAgo];
     self.HoursLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.hoursAgo];
-    self.DaysLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.daysAgo];
-    self.WeeksLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.weeksAgo];
-    self.MonthsLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.monthsAgo];
-    self.YearsLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.yearsAgo];
+    self.DaysLabel.text = [NSString stringWithFormat:@"%ld", (long)self.selectedDate.daysAgo];
+    self.WeeksLabel.text = [NSString stringWithFormat:@"%ld", (long)self.selectedDate.weeksAgo];
+    self.MonthsLabel.text = [NSString stringWithFormat:@"%ld", (long)self.selectedDate.monthsAgo];
+    self.YearsLabel.text = [NSString stringWithFormat:@"%ld", (long)self.selectedDate.yearsAgo];
 }
 
 - (IBAction)sliderValueDidChange:(UISlider *)sender {

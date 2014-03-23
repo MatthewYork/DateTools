@@ -197,17 +197,17 @@
 				F0EE17F918DEB1CF0010FAD8 /* DateTools.h */,
 				F0EE17ED18DEB1C20010FAD8 /* DTError.h */,
 				F0EE17EE18DEB1C20010FAD8 /* DTError.m */,
-				F0EE17EF18DEB1C20010FAD8 /* DTTimePeriodChain.h */,
-				F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */,
-				F0EE17F118DEB1C20010FAD8 /* DTTimePeriodGroup.h */,
-				F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */,
 				F007630118DE5DC400A99075 /* DTConstants.h */,
 				F007630418DE5DC400A99075 /* NSDate+DateTools.h */,
 				F007630518DE5DC400A99075 /* NSDate+DateTools.m */,
 				F007630618DE5DC400A99075 /* DTTimePeriod.h */,
 				F007630718DE5DC400A99075 /* DTTimePeriod.m */,
+				F0EE17F118DEB1C20010FAD8 /* DTTimePeriodGroup.h */,
+				F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */,
 				F007630A18DE5DC400A99075 /* DTTimePeriodCollection.h */,
 				F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */,
+				F0EE17EF18DEB1C20010FAD8 /* DTTimePeriodChain.h */,
+				F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */,
 			);
 			name = DateTools;
 			sourceTree = "<group>";
