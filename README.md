@@ -95,15 +95,19 @@ If you would like to override the default calendar that DateTools uses, simply c
 
 ####Date Editing
 
-The date editing makes it easy to make a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year in the future, simply call the method <code>dateByAddingYears</code>.
+The date editing makes it easy to make a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year later from a given date, simply call the method <code>dateByAddingYears</code>.
 
 With DateTools, this:
 ```objc
+//Create calendar
 NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
 NSDateComponents *components = [[NSDateComponents alloc] init];
+
+//Make changes
 [components setYear:1];
-    
-NSDate *newDate = [calendar dateByAddingComponents:components toDate:self options:0];
+
+//Get new date with updated year
+NSDate *newDate = [calendar dateByAddingComponents:components toDate:date options:0];
 ```
 
 ...becomes this:
@@ -111,11 +115,45 @@ NSDate *newDate = [calendar dateByAddingComponents:components toDate:self option
 NSDate *newDate = [self.controlDate dateByAddingYears:1];
 ```
 
-Subtraction of date components is also supported through the <code>dateBySubtractingYears</code>
+Subtraction of date components is also fully supported through the <code>dateBySubtractingYears</code>
 
 ####Date Comparison
 
+One of the biggest reasons for the DateTools category on NSDate was to greatly increase the flexibility of date comparisons. NSDate gives you four basic methods:
+* isEqualToDate:
+* earlierDate:
+* laterDate:
+* compare:
 
+<code>earlierDate:</code> and <code>laterDate:</code> are great, but it would be nice to have a boolean response to help when building logic in code. DateTools has a set of proxy methods that do just that as well as a few other methods for extended flexibility. The new methods are:
+* isEarlierThan
+* isEarlierThanOrEqualTo
+* isLaterThan
+* isLaterThanOrEqualTo
+
+These methods are great for comparing dates in a boolean fashion, but what if we want to compare the dates and return some meaningful information about how far they are apart? NSDate comes with two methods <code>timeIntervalSinceDate:</code> and <code>timeIntervalSinceNow</code> which gives you a <code>double</code> offset representing the number of seconds between the two dates. This is great and all, but there are times when I want to know how many years or days something is away. For this, DateTools goes back to the ever-trusty NSCalendar and abstracts all the necessary code out for you.
+
+With Date Tools, this:
+```objc
+NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+NSDate *earliest = [firstDate earlierDate:secondDate];
+NSDate *latest = (secondDate == firstDate) ? secondDate : firstDate;
+NSInteger multiplier = (secondDate == firstDate) ? -1 : 1;
+NSDateComponents *components = [calendar components:allCalendarUnitFlags fromDate:earliest toDate:latest options:0];
+NSInteger yearsApart = multiplier*(components.month + 12*components.year);
+```
+..becomes this:
+```objc
+NSInteger yearsApart = [firstDate yearsFrom:secondDate];
+```
+Methods for comparison in this category include:
+* <code>yearsFrom:</code>, <code>yearsUntil</code>, <code>yearsAgo</code>, <code>yearsEarlierThan:</code>, <code>yearsLaterThan:</code>
+* <code>monthsFrom:</code>, <code>monthsUntil</code>, <code>monthsAgo</code>, <code>monthsEarlierThan:,</code> <code>monthsLaterThan:</code>
+* <code>weeksFrom:</code>, <code>weeksUntil</code>, <code>weeksAgo</code>, <code>weeksEarlierThan:</code>, <code>weeksLaterThan:</code>
+* <code>daysFrom:</code>, <code>daysUntil</code>, <code>daysAgo</code>, <code>daysEarlierThan:</code>, <code>daysLaterThan:</code>
+* <code>hoursFrom:</code>, <code>hoursUntil</code>, <code>hoursAgo</code>, <code>hoursEarlierThan:</code>, <code>hoursLaterThan:</code>
+* <code>minutesFrom:</code>, <code>minutesUntil</code>, <code>minutesAgo</code>, <code>minutesEarlierThan:, <code>minutesLaterThan:</code>
+* <code>secondsFrom:</code>, <code>secondsUntil</code>, <code>secondsAgo,</code> <code>secondsEarlierThan:, <code>secondsLaterThan:</code>
 
 ####Formatted Date Strings
 
