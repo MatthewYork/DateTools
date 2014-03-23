@@ -27,7 +27,7 @@
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateFormat:@"yyyy MM dd HH:mm:ss.SSS"];
     
-    //Create test DTTimePeriods that are 1 year long
+    //Create test DTTimePeriods
     DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
     DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
     DTTimePeriod *thirdPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]];
@@ -111,6 +111,50 @@
     
     XCTAssertTrue([self.controlCollection isEqualToCollection:testCollection considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
 }
+
+#pragma mark - Chain Time Manipulation
+-(void)testShiftEarlier{
+    //Create test chain
+    DTTimePeriodCollection *testCollectionOriginal = [DTTimePeriodCollection collection];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2012 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2013 11 05 18:15:12.000"]]];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2013 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"]]];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]]];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2013 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 4 05 18:15:12.000"]]];
+    
+    //Create test chain
+    DTTimePeriodCollection *controlCopy = [self.controlCollection copy];
+    
+    //Shift control chain
+    [self.controlCollection shiftEarlierWithSize:DTTimePeriodSizeYear amount:2];
+    
+    //Check equal
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollectionOriginal considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Check equal
+    XCTAssertFalse([self.controlCollection isEqualToCollection:controlCopy considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+-(void)testShiftLater{
+    //Create test chain
+    DTTimePeriodCollection *testCollectionOriginal = [DTTimePeriodCollection collection];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"]]];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2017 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2018 11 05 18:15:12.000"]]];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2018 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2019 11 05 18:15:12.000"]]];
+    [testCollectionOriginal addTimePeriod:[DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2017 4 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2019 4 05 18:15:12.000"]]];
+    
+    //Create test chain
+    DTTimePeriodCollection *controlCopy = [self.controlCollection copy];
+    
+    //Shift control chain
+    [self.controlCollection shiftLaterWithSize:DTTimePeriodSizeYear amount:2];
+    
+    //Check equal
+    XCTAssertTrue([self.controlCollection isEqualToCollection:testCollectionOriginal considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Check equal
+    XCTAssertFalse([self.controlCollection isEqualToCollection:controlCopy considerOrder:YES],  @"%s Failed", __PRETTY_FUNCTION__);
+}
+
 
 #pragma mark - Sorting
 -(void)testSortByStartAscending{

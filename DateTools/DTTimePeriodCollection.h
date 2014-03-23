@@ -36,4 +36,7 @@
 
 #pragma mark - Helper Methods
 -(DTTimePeriodCollection *)copy;
+
+#pragma mark - Updates
+-(void)updateVariables;
 @end

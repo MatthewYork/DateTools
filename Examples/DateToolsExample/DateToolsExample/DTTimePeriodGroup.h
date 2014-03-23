@@ -34,6 +34,15 @@
 -(NSDate *)EndDate;
 -(NSInteger)count;
 
+#pragma mark - Chain Time Manipulation
+-(void)shiftEarlierWithSize:(DTTimePeriodSize)size;
+-(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
+-(void)shiftLaterWithSize:(DTTimePeriodSize)size;
+-(void)shiftLaterWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount;
+
 #pragma mark - Comparison
 -(BOOL)hasSameCharacteristicsAs:(DTTimePeriodGroup *)group;
+
+#pragma mark - Updates
+-(void)updateVariables;
 @end

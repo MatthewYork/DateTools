@@ -150,32 +150,6 @@
     }
 }
 
-#pragma mark - Chain Time Manipulation
--(void)shiftEarlierWithSize:(DTTimePeriodSize)size{
-    [self shiftEarlierWithSize:size amount:1];
-}
--(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
-    if (periods) {
-        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [((DTTimePeriod *)obj) shiftEarlierWithSize:size amount:amount];
-        }];
-        
-        [self updateVariables];
-    }
-}
--(void)shiftLaterWithSize:(DTTimePeriodSize)size{
-    [self shiftLaterWithSize:size amount:1];
-}
--(void)shiftLaterWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
-    if (periods) {
-        [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [((DTTimePeriod *)obj) shiftLaterWithSize:size amount:amount];
-        }];
-        
-        [self updateVariables];
-    }
-}
-
 #pragma mark - Chain Relationship
 -(BOOL)isEqualToChain:(DTTimePeriodChain *)chain{
     //Check class

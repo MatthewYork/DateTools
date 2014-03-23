@@ -86,6 +86,8 @@
     }
 }
 
+
+
 #pragma mark - Sorting
 /**
  *  Sorts the time periods in the collection by earliest start date to latest start date.
