@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, DTDateComponent){
  */
 static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
 
-static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit | NSYearForWeekOfYearCalendarUnit;
+static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit;
 
 @implementation NSDate (DateTools)
 
@@ -487,14 +487,23 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @param component DTDateComponent - The desired component (i.e. year, day, week, etc)
  *  @param calendar  NSCalendar - The calendar to be used in the processing (Defaults to Gregorian)
  *
- *  @return <#return value description#>
+ *  @return NSInteger
  */
 -(NSInteger)componentForDate:(NSDate *)date type:(DTDateComponent)component calendar:(NSCalendar *)calendar{
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     }
+    
+    unsigned int unitFlags = 0;
+    
+    if (component == DTDateComponentYearForWeekOfYear) {
+       unitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit | NSYearForWeekOfYearCalendarUnit;
+    }
+    else {
+        unitFlags = allCalendarUnitFlags;
+    }
 
-    NSDateComponents *dateComponents = [calendar components:allCalendarUnitFlags fromDate:date];
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
     
     switch (component) {
         case DTDateComponentEra:
@@ -781,6 +790,23 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
+ *  Returns an NSInteger representing the amount of time in months between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return double - The NSInteger representation of the years between receiver and provided date
+ */
+-(double)monthsFrom:(NSDate *)date{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSInteger multiplier = (earliest == self) ? -1 : 1;
+    NSDateComponents *components = [calendar components:allCalendarUnitFlags fromDate:earliest toDate:latest options:0];
+    return multiplier*(components.month + 12*components.year);
+}
+
+/**
  *  Returns an NSInteger representing the amount of time in weeks between the receiver and the provided date.
  *  If the receiver is earlier than the provided date, the returned value will be negative.
  *
@@ -872,6 +898,15 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(double)yearsUntil{
     return [self yearsLaterThan:[NSDate date]];
+}
+
+/**
+ *  Returns the number of months until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
+ *
+ *  @return double representiation of months
+ */
+-(double)monthsUntil{
+    return [self monthsLaterThan:[NSDate date]];
 }
 
 /**
@@ -988,6 +1023,18 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
+ *  Returns the number of months the receiver's date is earlier than the provided comparison date.
+ *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return double representing the number of months
+ */
+-(double)monthsEarlierThan:(NSDate *)date{
+    return ABS(MIN([self monthsFrom:date], 0));
+}
+
+/**
  *  Returns the number of weeks the receiver's date is earlier than the provided comparison date.
  *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
  *
@@ -1058,6 +1105,18 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(double)yearsLaterThan:(NSDate *)date{
     return MAX([self yearsFrom:date], 0);
+}
+
+/**
+ *  Returns the number of months the receiver's date is later than the provided comparison date.
+ *  Returns 0 if the receiver's date is earlier than or equal to the provided comparison date.
+ *
+ *  @param date NSDate - Provided date for comparison
+ *
+ *  @return double representing the number of months
+ */
+-(double)monthsLaterThan:(NSDate *)date{
+    return MAX([self monthsFrom:date], 0);
 }
 
 /**

@@ -7,9 +7,25 @@
 //
 
 #import "DateToolsViewController.h"
+#import "NSDate+DateTools.h"
 
 @interface DateToolsViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *MasterScrollView;
+@property NSTimer *updateTimer;
+@property NSDate *selectedDate;
+@property NSDateFormatter *formatter;
+
+//Time Ago View
+@property (strong, nonatomic) IBOutlet UIView *TimeAgoView;
+@property (weak, nonatomic) IBOutlet UILabel *TimeAgoLabel;
+@property (weak, nonatomic) IBOutlet UISlider *TimeAgoSlider;
+@property (weak, nonatomic) IBOutlet UILabel *SecondsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *MinutesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *HoursLabel;
+@property (weak, nonatomic) IBOutlet UILabel *DaysLabel;
+@property (weak, nonatomic) IBOutlet UILabel *WeeksLabel;
+@property (weak, nonatomic) IBOutlet UILabel *MonthsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *YearsLabel;
 
 @end
 
@@ -31,9 +47,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    [self createViews];
+    //Setup date formatter
+    self.formatter = [[NSDateFormatter alloc] init];
+    [self.formatter setDateFormat:@"HHmm MMMM d yyyy"];
+    
+    //Set initial date
+    self.selectedDate = [self.formatter dateFromString:@"0000 November 5 1605"];
+    self.TimeAgoSlider.value = [self.selectedDate timeIntervalSinceNow];
+    
+    //Set up timer for updating UI
+    self.updateTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateTimeAgoLabels) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.updateTimer forMode:NSRunLoopCommonModes];
+    
+    [self setupViews];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,8 +69,36 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)createViews{
+-(void)setupViews{
+    [self.MasterScrollView addSubview:self.TimeAgoView];
+    [self.MasterScrollView setContentSize:self.TimeAgoView.frame.size];
+}
+
+#pragma mark - Update
+-(void)updateTimeAgoLabels{
+    //Account for now
+    if (self.TimeAgoSlider.value == 0) {
+        self.selectedDate = [NSDate date];
+    }
     
+    //Set time ago label
+    self.TimeAgoLabel.text = [self.formatter stringFromDate:self.selectedDate];
+    
+    //Set date component labels
+    self.SecondsLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] secondsFrom: self.selectedDate]];
+    self.MinutesLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] minutesFrom:self.selectedDate]];
+    self.HoursLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] hoursFrom:self.selectedDate]];
+    self.DaysLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] daysFrom:self.selectedDate]];
+    self.WeeksLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] weeksFrom:self.selectedDate]];
+    self.MonthsLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] monthsFrom:self.selectedDate]];
+    self.YearsLabel.text = [NSString stringWithFormat:@"%.0f", [[NSDate date] yearsFrom:self.selectedDate]];
+}
+
+- (IBAction)sliderValueDidChange:(UISlider *)sender {
+    self.selectedDate = [NSDate dateWithTimeIntervalSinceNow:sender.value];
+    
+    //Update UI
+    [self updateTimeAgoLabels];
 }
 
 @end

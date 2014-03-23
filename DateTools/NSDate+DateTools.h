@@ -73,6 +73,7 @@
 #pragma mark - Date Comparison
 #pragma mark Time From
 -(double)yearsFrom:(NSDate *)date;
+-(double)monthsFrom:(NSDate *)date;
 -(double)weeksFrom:(NSDate *)date;
 -(double)daysFrom:(NSDate *)date;
 -(double)hoursFrom:(NSDate *)date;
@@ -80,6 +81,7 @@
 -(double)secondsFrom:(NSDate *)date;
 #pragma mark Time Until
 -(double)yearsUntil;
+-(double)monthsUntil;
 -(double)weeksUntil;
 -(double)daysUntil;
 -(double)hoursUntil;
@@ -94,6 +96,7 @@
 -(double)secondsAgo;
 #pragma mark Earlier Than
 -(double)yearsEarlierThan:(NSDate *)date;
+-(double)monthsEarlierThan:(NSDate *)date;
 -(double)weeksEarlierThan:(NSDate *)date;
 -(double)daysEarlierThan:(NSDate *)date;
 -(double)hoursEarlierThan:(NSDate *)date;
@@ -101,6 +104,7 @@
 -(double)secondsEarlierThan:(NSDate *)date;
 #pragma mark Later Than
 -(double)yearsLaterThan:(NSDate *)date;
+-(double)monthsLaterThan:(NSDate *)date;
 -(double)weeksLaterThan:(NSDate *)date;
 -(double)daysLaterThan:(NSDate *)date;
 -(double)hoursLaterThan:(NSDate *)date;

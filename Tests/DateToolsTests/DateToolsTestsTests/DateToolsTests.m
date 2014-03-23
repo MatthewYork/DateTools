@@ -194,6 +194,31 @@
     NSDate *testDate9 = [self.formatter dateFromString:@"2012 11 8 18:15:12.000"];
     XCTAssertEqual(1, [self.controlDate yearsFrom:testDate9], @"%s Failed", __PRETTY_FUNCTION__);
 }
+-(void)testMonthsFrom{
+    //Under a month
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 12 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsFrom:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Exactly a month
+    NSDate *testDate2 = [self.formatter dateFromString:@"2014 12 05 18:15:12.000"];
+    XCTAssertEqual(-1, [self.controlDate monthsFrom:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Year number later, still less than a year
+    NSDate *testDate3 = [self.formatter dateFromString:@"2015 11 04 18:15:12.000"];
+    XCTAssertEqual(-11, [self.controlDate monthsFrom:testDate3], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Year number earlier, still less than a year
+    NSDate *testDate5 = [self.formatter dateFromString:@"2013 11 06 18:15:12.000"];
+    XCTAssertEqual(11, [self.controlDate monthsFrom:testDate5], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Over a year earlier
+    NSDate *testDate6 = [self.formatter dateFromString:@"2012 11 04 18:15:12.000"];
+    XCTAssertEqual(24, [self.controlDate monthsFrom:testDate6], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    ///Over a year later
+    NSDate *testDate7 = [self.formatter dateFromString:@"2017 11 12 18:15:12.000"];
+    XCTAssertEqual(-36, [self.controlDate monthsFrom:testDate7], @"%s Failed", __PRETTY_FUNCTION__);
+}
 -(void)testWeeksFrom{
     //Same week
     NSDate *testSameDate = [self.formatter dateFromString:@"2014 11 06 18:15:12.000"];
@@ -289,6 +314,31 @@
     ///Over a year earlier, but less than a year in final comparison year
     NSDate *testDate9 = [self.formatter dateFromString:@"2012 11 8 18:15:12.000"];
     XCTAssertEqual(0, [self.controlDate yearsEarlierThan:testDate9], @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testMonthsEarlerThan{
+    //Under a month
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 12 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsEarlierThan:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Exactly a month
+    NSDate *testDate2 = [self.formatter dateFromString:@"2014 12 05 18:15:12.000"];
+    XCTAssertEqual(1, [self.controlDate monthsEarlierThan:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Year number later, still less than a year
+    NSDate *testDate3 = [self.formatter dateFromString:@"2015 11 04 18:15:12.000"];
+    XCTAssertEqual(11, [self.controlDate monthsEarlierThan:testDate3], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Year number earlier, still less than a year
+    NSDate *testDate5 = [self.formatter dateFromString:@"2013 11 06 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsEarlierThan:testDate5], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Over a year earlier
+    NSDate *testDate6 = [self.formatter dateFromString:@"2012 11 04 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsEarlierThan:testDate6], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    ///Over a year later
+    NSDate *testDate7 = [self.formatter dateFromString:@"2017 11 12 18:15:12.000"];
+    XCTAssertEqual(36, [self.controlDate monthsEarlierThan:testDate7], @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testWeeksEarlierThan{
     //Same week
@@ -389,6 +439,31 @@
     ///Over a year earlier, but less than a year in final comparison year
     NSDate *testDate9 = [self.formatter dateFromString:@"2012 11 8 18:15:12.000"];
     XCTAssertEqual(1, [self.controlDate yearsLaterThan:testDate9], @"%s Failed", __PRETTY_FUNCTION__);
+}
+-(void)testMonthsLaterThan{
+    //Under a month
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 12 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsLaterThan:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Exactly a month
+    NSDate *testDate2 = [self.formatter dateFromString:@"2014 12 05 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsLaterThan:testDate2], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Year number later, still less than a year
+    NSDate *testDate3 = [self.formatter dateFromString:@"2015 11 04 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsLaterThan:testDate3], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Year number earlier, still less than a year
+    NSDate *testDate5 = [self.formatter dateFromString:@"2013 11 06 18:15:12.000"];
+    XCTAssertEqual(11, [self.controlDate monthsLaterThan:testDate5], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Over a year earlier
+    NSDate *testDate6 = [self.formatter dateFromString:@"2012 11 04 18:15:12.000"];
+    XCTAssertEqual(24, [self.controlDate monthsLaterThan:testDate6], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    ///Over a year later
+    NSDate *testDate7 = [self.formatter dateFromString:@"2017 11 12 18:15:12.000"];
+    XCTAssertEqual(0, [self.controlDate monthsLaterThan:testDate7], @"%s Failed", __PRETTY_FUNCTION__);
 }
 -(void)testWeeksLaterThan{
     //Same week
