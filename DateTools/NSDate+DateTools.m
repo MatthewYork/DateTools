@@ -965,6 +965,15 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
+ *  Returns the number of months the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
+ *
+ *  @return double representiation of months
+ */
+-(double)monthsAgo{
+    return [self monthsEarlierThan:[NSDate date]];
+}
+
+/**
  *  Returns the number of weeks the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
  *  @return double representiation of weeks

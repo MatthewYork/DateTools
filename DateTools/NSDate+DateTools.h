@@ -89,6 +89,7 @@
 -(double)secondsUntil;
 #pragma mark Time Ago
 -(double)yearsAgo;
+-(double)monthsAgo;
 -(double)weeksAgo;
 -(double)daysAgo;
 -(double)hoursAgo;
