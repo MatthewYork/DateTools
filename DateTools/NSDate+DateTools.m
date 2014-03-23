@@ -870,9 +870,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @param date     NSDate - The provided date for comparison
  *  @param calendar NSCalendar - The calendar to be used in the calculation
  *
- *  @return double - The double representation of the years between receiver and provided date
+ *  @return NSInteger - The double representation of the years between receiver and provided date
  */
--(double)yearsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+-(NSInteger)yearsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
     }
@@ -891,9 +891,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @param date     NSDate - The provided date for comparison
  *  @param calendar NSCalendar - The calendar to be used in the calculation
  *
- *  @return double - The double representation of the months between receiver and provided date
+ *  @return NSInteger - The double representation of the months between receiver and provided date
  */
--(double)monthsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+-(NSInteger)monthsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
     }
@@ -912,9 +912,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @param date     NSDate - The provided date for comparison
  *  @param calendar NSCalendar - The calendar to be used in the calculation
  *
- *  @return double - The double representation of the weeks between receiver and provided date
+ *  @return NSInteger - The double representation of the weeks between receiver and provided date
  */
--(double)weeksFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+-(NSInteger)weeksFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
     }
@@ -933,9 +933,9 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @param date     NSDate - The provided date for comparison
  *  @param calendar NSCalendar - The calendar to be used in the calculation
  *
- *  @return double - The double representation of the days between receiver and provided date
+ *  @return NSInteger - The double representation of the days between receiver and provided date
  */
--(double)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
+-(NSInteger)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
         calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
     }

@@ -94,10 +94,10 @@
 -(double)minutesFrom:(NSDate *)date;
 -(double)secondsFrom:(NSDate *)date;
 #pragma mark Time From With Calendar
--(double)yearsFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
--(double)monthsFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
--(double)weeksFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
--(double)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
+-(NSInteger)yearsFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
+-(NSInteger)monthsFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
+-(NSInteger)weeksFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
+-(NSInteger)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
 
 #pragma mark Time Until
 -(double)yearsUntil;
