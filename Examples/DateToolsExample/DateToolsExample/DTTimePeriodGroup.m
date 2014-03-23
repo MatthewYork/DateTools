@@ -163,9 +163,22 @@
 }
 
 #pragma mark - Chain Time Manipulation
+/**
+ *  Shifts all the time periods in the collection to an earlier date by the given size
+ *
+ *  @param size DTTimePeriodSize - The desired size of the shift
+ */
 -(void)shiftEarlierWithSize:(DTTimePeriodSize)size{
     [self shiftEarlierWithSize:size amount:1];
 }
+
+/**
+ *  Shifts all the time periods in the collection to an earlier date by the given size and amount.
+ *  The amount acts as a multiplier to the size (i.e. "2 weeks" or "4 years")
+ *
+ *  @param size   DTTimePeriodSize - The desired size of the shift
+ *  @param amount NSInteger - Multiplier for the size
+ */
 -(void)shiftEarlierWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
     if (periods) {
         [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -175,9 +188,23 @@
         [self updateVariables];
     }
 }
+
+/**
+ *  Shifts all the time periods in the collection to a later date by the given size
+ *
+ *  @param size DTTimePeriodSize - The desired size of the shift
+ */
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size{
     [self shiftLaterWithSize:size amount:1];
 }
+
+/**
+ *  Shifts all the time periods in the collection to an later date by the given size and amount.
+ *  The amount acts as a multiplier to the size (i.e. "2 weeks" or "4 years")
+ *
+ *  @param size   DTTimePeriodSize - The desired size of the shift
+ *  @param amount NSInteger - Multiplier for the size
+ */
 -(void)shiftLaterWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount{
     if (periods) {
         [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
