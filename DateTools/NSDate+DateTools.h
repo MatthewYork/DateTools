@@ -100,26 +100,26 @@
 -(NSInteger)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
 
 #pragma mark Time Until
--(double)yearsUntil;
--(double)monthsUntil;
--(double)weeksUntil;
--(double)daysUntil;
+-(NSInteger)yearsUntil;
+-(NSInteger)monthsUntil;
+-(NSInteger)weeksUntil;
+-(NSInteger)daysUntil;
 -(double)hoursUntil;
 -(double)minutesUntil;
 -(double)secondsUntil;
 #pragma mark Time Ago
--(double)yearsAgo;
--(double)monthsAgo;
--(double)weeksAgo;
--(double)daysAgo;
+-(NSInteger)yearsAgo;
+-(NSInteger)monthsAgo;
+-(NSInteger)weeksAgo;
+-(NSInteger)daysAgo;
 -(double)hoursAgo;
 -(double)minutesAgo;
 -(double)secondsAgo;
 #pragma mark Earlier Than
--(double)yearsEarlierThan:(NSDate *)date;
--(double)monthsEarlierThan:(NSDate *)date;
--(double)weeksEarlierThan:(NSDate *)date;
--(double)daysEarlierThan:(NSDate *)date;
+-(NSInteger)yearsEarlierThan:(NSDate *)date;
+-(NSInteger)monthsEarlierThan:(NSDate *)date;
+-(NSInteger)weeksEarlierThan:(NSDate *)date;
+-(NSInteger)daysEarlierThan:(NSDate *)date;
 -(double)hoursEarlierThan:(NSDate *)date;
 -(double)minutesEarlierThan:(NSDate *)date;
 -(double)secondsEarlierThan:(NSDate *)date;
