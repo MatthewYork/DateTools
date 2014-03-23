@@ -53,7 +53,6 @@ One of the missions of DateTools was to make NSDate feel more complete. There ar
 
 No date library would be complete without the ability to quickly make an NSString based on how much earlier a date is than now. DateTools has you covered. These "time ago" strings come in a long a short form, with the latter closely resembling Twitter. There are many libraries that do this, so I wanted to pull it into this one.
 
-**Long Format**
 ```objc
 NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:-4];
 NSLog(@"Time Ago: %@", timeAgoDate.timeAgoSinceNow);
@@ -65,6 +64,32 @@ NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
 ```
 
 ####Date Components
+
+There is a lot of boilerplate associated with getting date components from an NSDate. You have to set up a calendar, use the desired flags for the components you want, and finally extract them out of the calendar. 
+
+With DateTools, this:
+
+```objc
+//Create calendar
+NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit;
+NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
+
+//Get components
+NSInteger year = calendar.year;
+NSInteger month = calendar.month;
+```
+
+...has been changed to this:
+```objc
+NSInteger year = date.year;
+NSInteger month = date.month;
+```
+
+And if you would like to use a non-Gregorian calendar, that option is available as well.
+```objc
+NSInteger day = [date dayWithCalendar:calendar];
+```
 
 ####Date Editing
 
