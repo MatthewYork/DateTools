@@ -177,9 +177,27 @@ DTTimePeriod *timePeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeHour
 
 ####Time Period Info
 
-
+A host of methods have been extended to give information about an instance of DTTimePeriod. A few are listed below
+* <code>hasStartDate</code> - Returns true if the period has a start date
+* <code>hasEndDate</code> - Returns true if the period has an end date
+* <code>isMoment</code> - Returns true if the period has the same start and end date
+* <code>durationIn....</code> - Returns the length of the time period in the requested units
 
 ####Manipulation
+
+Time periods may also be manipulated. They may be shifted earlier or later as well as expanded and contracted. 
+**Shifting**
+When a time period is shifted, the start dates and end dates are both moved earlier or later by the amounts requested.
+To shift a time period earlier, call <code>shiftEarlierWithSize:amount:</code> and to shift it later, call <code>shiftLaterWithSize:amount:</code>. The amount field serves as a multipler, just like in the above initializaion method.
+**Lengthening/Shortening**
+When a time periods is lengthen or shortened, it does so anchoring one date of the time period and then changing the other one. There is also an option to anchor the centerpoint of the time period, changing both the start and end dates.
+
+An example of lengthening a time period is shown below:
+```objc
+DTTimePeriod *timePeriod  = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeMinute endingAt:[NSDate date]];
+[timePeriod lengthenWithAnchorDate:DTTimePeriodAnchorEnd size:DTTimePeriodSizeMinute amount:1];
+```
+This doubles a time period of duration 1 minute to duration 2 minutes. The end date of "now" is retained and only the start date is shifted 1 minute earlier.
 
 ####Relationships
 
