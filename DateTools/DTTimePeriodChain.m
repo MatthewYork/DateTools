@@ -10,8 +10,7 @@
 #import "DTError.h"
 
 @interface DTTimePeriodChain ()
-@property DTTimePeriod *First;
-@property DTTimePeriod *Last;
+
 @end
 
 @implementation DTTimePeriodChain
@@ -198,8 +197,8 @@
     //Set helper variables
     StartDate = nil;
     EndDate = nil;
-    self.First = nil;
-    self.Last = nil;
+    First = nil;
+    Last = nil;
 }
 
 @end
