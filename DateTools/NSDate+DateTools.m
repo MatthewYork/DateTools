@@ -97,7 +97,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 
 -(NSString *)timeAgoSinceDate:(NSDate *)date shortformatting:(BOOL)shortFormatting{
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
+    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
@@ -127,6 +127,10 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
     else if (components.minute >= 1) {
         componentValue = components.minute;
         componentName = (components.minute == 1)? NSLocalizedString(@"minute", nil):NSLocalizedString(@"minutes", nil);
+    }
+    else if (components.second >= 3) {
+        componentValue = components.second;
+        componentName = (components.second == 1)? NSLocalizedString(@"second", nil):NSLocalizedString(@"seconds", nil);
     }
     else {
         if (shortFormatting) {
