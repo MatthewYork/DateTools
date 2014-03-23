@@ -157,6 +157,8 @@ Methods for comparison in this category include:
 
 ####Formatted Date Strings
 
+Just for kicks, DateTools has a few convenience methods for quickly creating strings from dates. Those two methods <code>formattedDateWithStyle:</code> and <code>formattedDateWithFormat:</code>. The current locale is used unless otherwise specified by additional method parameters. Again, just for kicks, really.
+
 ##Time Periods
 
 ####Introduction
