@@ -118,7 +118,7 @@ Subtraction of date components is also fully supported through the <code>dateByS
 
 ####Date Comparison
 
-One of the biggest reasons for the DateTools category on NSDate was to greatly increase the flexibility of date comparisons. NSDate gives you four basic methods:
+Another mission of the DateTools category is to greatly increase the flexibility of date comparisons. NSDate gives you four basic methods:
 * isEqualToDate:
 * earlierDate:
 * laterDate:
