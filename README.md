@@ -124,7 +124,7 @@ Another mission of the DateTools category is to greatly increase the flexibility
 * laterDate:
 * compare:
 
-<code>earlierDate:</code> and <code>laterDate:</code> are great, but it would be nice to have a boolean response to help when building logic in code. DateTools has a set of proxy methods that do just that as well as a few other methods for extended flexibility. The new methods are:
+<code>earlierDate:</code> and <code>laterDate:</code> are great, but it would be nice to have a boolean response to help when building logic in code; to easily ask "is this date earlier than that one?". DateTools has a set of proxy methods that do just that as well as a few other methods for extended flexibility. The new methods are:
 * isEarlierThan
 * isEarlierThanOrEqualTo
 * isLaterThan
