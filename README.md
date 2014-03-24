@@ -231,7 +231,7 @@ Time period groups are the final abstraction of date and time in DateTools. Here
 Both collections and chains operate like an NSArray. You may add,insert and remove DTTimePeriod objects from them just as you would objects in an array. The difference is how these periods are handled under the hood.
 
 ###Time Period Collections
-Time period collections serve as loose collections of time periods. They are unorganized unless you decide to sort them, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period collections allow overlaps within their set of time periods. 
+Time period collections serve as loose sets of time periods. They are unorganized unless you decide to sort them, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period collections allow overlaps within their set of time periods. 
 
 To make a new collection, call the class method like so:
 
@@ -240,8 +240,8 @@ To make a new collection, call the class method like so:
 DTTimePeriodCollection *collection = [DTTimePeriodCollection collection];
 
 //Create a few time periods
- DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"]];
-    DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[self.formatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[self.formatter dateFromString:@"2016 11 05 18:15:12.000"]];
+ DTTimePeriod *firstPeriod = [DTTimePeriod timePeriodWithStartDate:[dateFormatter dateFromString:@"2014 11 05 18:15:12.000"] endDate:[dateFormatter dateFromString:@"2015 11 05 18:15:12.000"]];
+    DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[dateFormatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[dateFormatter dateFromString:@"2016 11 05 18:15:12.000"]];
 
 //Add time periods to the colleciton
 [collection addTimePeriod:firstPeriod];
@@ -262,7 +262,7 @@ It is also possible to check an NSDate's or DTTimePeriod's relationship to the c
 ![TimePeriodCollectionOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodCollectionOperations.png)
 
 ###Time Period Chains
-
+Time period chains serve as tightly coupled set of time periods. They are always organized by start and end date, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period chains do not allow overlaps within their set of time periods. This type of group is ideal for modeling schedules like sequential meetings or appointments.
 
 To make a new chain, call the class method like so:
 ```objc
@@ -274,18 +274,20 @@ DTTimePeriodChain *chain = [DTTimePeriodChain chain];
 DTTimePeriod *secondPeriod = [DTTimePeriod timePeriodWithStartDate:[dateFormatter dateFromString:@"2015 11 05 18:15:12.000"] endDate:[dateFormatter dateFromString:@"2016 11 05 18:15:12.000"]];
 
 //Add test periods
-[self.controlChain addTimePeriod:firstPeriod];
-[self.controlChain addTimePeriod:secondPeriod];
+[chain addTimePeriod:firstPeriod];
+[chain addTimePeriod:secondPeriod];
 
 //Retreive chain items
 DTTimePeriod *firstPeriod = chain[0];
 ```
 
+Any time a date is added to the time chain, it retains its duration, but is modified to have its StartDate be the same as the latest period in the chain's EndDate. This helps keep the tightly coupled structure of the chain's time periods. Inserts (besides those at index 0) shift dates after insertion index by the duration of the new time period while leaving those at indexes before untouched. Insertions at index 0 shift the start date of the collection by the duration of the new time period. A full list of operations can be seen below.
+
 **Operations**
 ![TimePeriodChainOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodChainOperations.png)
 
 ##Documentation
-
+All methods and variables have been documented and are available for option+click inspection, just like the SDK classes. This includes an explanation of the methods as well as what their input and output parameters are for. Please raise an issue if you ever feel documentation is confusing or misleading and we will get it fixed up!
 
 ##Unit Tests
 Unit tests were performed on all the major classes in the library for quality assurance. You can find theses under the "Tests" folder at the top of the library. There are over 300 test cases in all!
@@ -295,6 +297,8 @@ If you ever find a test case that is incomplete, please open an issue so we can 
 ##Credits
 
 Many thanks to the .NET team for their DateTime class and a major thank you to [Jani Giannoudis](http://www.codeproject.com/Members/Jani-Giannoudis) for his work on ITimePeriod.
+
+Images were first published through itenso.com through [Code Project](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
 
 ##License
 
