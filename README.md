@@ -7,10 +7,12 @@ DateTools was written to streamline date and time handling in Objective-C. Class
 
 ## Installation
 
-**Cocoapods - Pending!**
+**Cocoapods**
+
 <code>pod 'DateTools'</code>
 
 **Manual Installation**
+
 All the classes required for DateTools are located in the DateTools folder in the root of this repository. They are listed below:
 
 * <code>DateTools.h</code>
