@@ -193,7 +193,7 @@ To shift a time period earlier, call <code>shiftEarlierWithSize:amount:</code> a
 
 **Lengthening/Shortening**
 
-When a time periods is lengthen or shortened, it does so anchoring one date of the time period and then changing the other one. There is also an option to anchor the centerpoint of the time period, changing both the start and end dates.
+When a time periods is lengthened or shortened, it does so anchoring one date of the time period and then changing the other one. There is also an option to anchor the centerpoint of the time period, changing both the start and end dates.
 
 An example of lengthening a time period is shown below:
 ```objc
