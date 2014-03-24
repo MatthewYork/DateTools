@@ -94,7 +94,7 @@ If you would like to override the default calendar that DateTools uses, simply c
 
 ####Date Editing
 
-The date editing makes it easy to make a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year later from a given date, simply call the method <code>dateByAddingYears</code>.
+The date editing methods in NSDate+DateTools makes it easy to shift a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year later from a given date, simply call the method <code>dateByAddingYears</code>.
 
 With DateTools, this:
 ```objc
