@@ -266,7 +266,7 @@ It is also possible to check an NSDate's or DTTimePeriod's relationship to the c
 ![TimePeriodCollectionOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodCollectionOperations.png)
 
 ###Time Period Chains
-Time period chains serve as tightly coupled set of time periods. They are always organized by start and end date, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period chains do not allow overlaps within their set of time periods. This type of group is ideal for modeling schedules like sequential meetings or appointments.
+Time period chains serve as a tightly coupled set of time periods. They are always organized by start and end date, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period chains do not allow overlaps within their set of time periods. This type of group is ideal for modeling schedules like sequential meetings or appointments.
 
 ![TimePeriodChains](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodChain.png)
 
