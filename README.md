@@ -4,6 +4,7 @@
 
 DateTools was written to streamline date and time handling in Objective-C. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](Time Period Library) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
 
+[![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
 
 ## Installation
 
@@ -300,9 +301,12 @@ Like collections, chains have an equality check and the ability to be shifted ea
 All methods and variables have been documented and are available for option+click inspection, just like the SDK classes. This includes an explanation of the methods as well as what their input and output parameters are for. Please raise an issue if you ever feel documentation is confusing or misleading and we will get it fixed up!
 
 ##Unit Tests
+
 Unit tests were performed on all the major classes in the library for quality assurance. You can find theses under the "Tests" folder at the top of the library. There are over 300 test cases in all!
 
 If you ever find a test case that is incomplete, please open an issue so we can get it fixed.
+
+Continuous integration testing is performed by Travis CI: [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
 
 ##Credits
 
