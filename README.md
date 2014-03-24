@@ -49,7 +49,7 @@ All the classes required for DateTools are located in the DateTools folder in th
 
 ##NSDate+DateTools
 
-One of the missions of DateTools was to make NSDate feel more complete. There are many other languages that allow direct access to information about dates from their date classes, but NSDate (sadly) does not. It safely works only in the Unix time offsets through the <code>timeIntervalSince...</code> methods for building dates and remains calendar agnostic. But that's not <i>always</i> what we want to do. Sometimes, we would like to work with dates based on their date components (like year, month, day, etc) at a more abstract level. This is where DateTools comes in.
+One of the missions of DateTools was to make NSDate feel more complete. There are many other languages that allow direct access to information about dates from their date classes, but NSDate (sadly) does not. It safely works only in the Unix time offsets through the <code>timeIntervalSince...</code> methods for building dates and remains calendar agnostic. But that's not <i>always</i> what we want to do. Sometimes, we want to work with dates based on their date components (like year, month, day, etc) at a more abstract level. This is where DateTools comes in.
 
 ####Time Ago
 
@@ -114,7 +114,7 @@ NSDate *newDate = [calendar dateByAddingComponents:components toDate:date option
 
 ...becomes this:
 ```objc
-NSDate *newDate = [self.controlDate dateByAddingYears:1];
+NSDate *newDate = [date dateByAddingYears:1];
 ```
 
 Subtraction of date components is also fully supported through the <code>dateBySubtractingYears</code>
