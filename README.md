@@ -130,7 +130,7 @@ Another mission of the DateTools category is to greatly increase the flexibility
 * isLaterThan
 * isLaterThanOrEqualTo
 
-These methods are great for comparing dates in a boolean fashion, but what if we want to compare the dates and return some meaningful information about how far they are apart? NSDate comes with two methods <code>timeIntervalSinceDate:</code> and <code>timeIntervalSinceNow</code> which gives you a <code>double</code> offset representing the number of seconds between the two dates. This is great and all, but there are times when I want to know how many years or days something is away. For this, DateTools goes back to the ever-trusty NSCalendar and abstracts all the necessary code out for you.
+These methods are great for comparing dates in a boolean fashion, but what if we want to compare the dates and return some meaningful information about how far they are apart? NSDate comes with two methods <code>timeIntervalSinceDate:</code> and <code>timeIntervalSinceNow</code> which gives you a <code>double</code> offset representing the number of seconds between the two dates. This is great and all, but there are times when one wants to know how many years or days are between two dates. For this, DateTools goes back to the ever-trusty NSCalendar and abstracts out all the necessary code for you.
 
 With Date Tools, this:
 ```objc
