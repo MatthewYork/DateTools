@@ -53,7 +53,7 @@ One of the missions of DateTools was to make NSDate feel more complete. There ar
 
 ####Time Ago
 
-No date library would be complete without the ability to quickly make an NSString based on how much earlier a date is than now. DateTools has you covered. These "time ago" strings come in a long a short form, with the latter closely resembling Twitter. There are many libraries that do this, so I wanted to pull it into this one.
+No date library would be complete without the ability to quickly make an NSString based on how much earlier a date is than now. DateTools has you covered. These "time ago" strings come in a long and short form, with the latter closely resembling Twitter. You can get these strings like so:
 
 ```objc
 NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:-4];
