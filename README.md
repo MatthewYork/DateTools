@@ -154,8 +154,8 @@ Methods for comparison in this category include:
 * <code>weeksFrom:</code>, <code>weeksUntil</code>, <code>weeksAgo</code>, <code>weeksEarlierThan:</code>, <code>weeksLaterThan:</code>
 * <code>daysFrom:</code>, <code>daysUntil</code>, <code>daysAgo</code>, <code>daysEarlierThan:</code>, <code>daysLaterThan:</code>
 * <code>hoursFrom:</code>, <code>hoursUntil</code>, <code>hoursAgo</code>, <code>hoursEarlierThan:</code>, <code>hoursLaterThan:</code>
-* <code>minutesFrom:</code>, <code>minutesUntil</code>, <code>minutesAgo</code>, <code>minutesEarlierThan:, <code>minutesLaterThan:</code>
-* <code>secondsFrom:</code>, <code>secondsUntil</code>, <code>secondsAgo,</code> <code>secondsEarlierThan:, <code>secondsLaterThan:</code>
+* <code>minutesFrom:</code>, <code>minutesUntil</code>, <code>minutesAgo</code>, <code>minutesEarlierThan:</code>, <code>minutesLaterThan:</code>
+* <code>secondsFrom:</code>, <code>secondsUntil</code>, <code>secondsAgo,</code> <code>secondsEarlierThan:</code>, <code>secondsLaterThan:</code>
 
 ####Formatted Date Strings
 
