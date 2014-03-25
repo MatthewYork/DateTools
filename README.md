@@ -95,6 +95,10 @@ NSInteger day = [date dayWithCalendar:calendar];
 
 If you would like to override the default calendar that DateTools uses, simply change it in the <code>defaultCalendar</code> method of <code>NSDate+DateTools.m</code>.
 
+**Note on Performance** 
+
+It has been accurately pointed out that using the . notation getters may lead to a performance hit when using them in a UITableVeiw. This is due to a new NSCalendar instance being created every time. If this is something you are concerned about, please, use the <code>xxxWithCalendar:</code> methods to save on the repeated calendar allocations.
+
 ####Date Editing
 
 The date editing methods in NSDate+DateTools makes it easy to shift a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year later from a given date, simply call the method <code>dateByAddingYears</code>.
