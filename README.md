@@ -150,12 +150,12 @@ NSInteger yearsApart = [firstDate yearsFrom:secondDate];
 ```
 Methods for comparison in this category include:
 * <code>yearsFrom:</code>, <code>yearsUntil</code>, <code>yearsAgo</code>, <code>yearsEarlierThan:</code>, <code>yearsLaterThan:</code>
-* <code>monthsFrom:</code>, <code>monthsUntil</code>, <code>monthsAgo</code>, <code>monthsEarlierThan:,</code> <code>monthsLaterThan:</code>
+* <code>monthsFrom:</code>, <code>monthsUntil</code>, <code>monthsAgo</code>, <code>monthsEarlierThan:</code>, <code>monthsLaterThan:</code>
 * <code>weeksFrom:</code>, <code>weeksUntil</code>, <code>weeksAgo</code>, <code>weeksEarlierThan:</code>, <code>weeksLaterThan:</code>
 * <code>daysFrom:</code>, <code>daysUntil</code>, <code>daysAgo</code>, <code>daysEarlierThan:</code>, <code>daysLaterThan:</code>
 * <code>hoursFrom:</code>, <code>hoursUntil</code>, <code>hoursAgo</code>, <code>hoursEarlierThan:</code>, <code>hoursLaterThan:</code>
 * <code>minutesFrom:</code>, <code>minutesUntil</code>, <code>minutesAgo</code>, <code>minutesEarlierThan:</code>, <code>minutesLaterThan:</code>
-* <code>secondsFrom:</code>, <code>secondsUntil</code>, <code>secondsAgo,</code> <code>secondsEarlierThan:</code>, <code>secondsLaterThan:</code>
+* <code>secondsFrom:</code>, <code>secondsUntil</code>, <code>secondsAgo</code>, <code>secondsEarlierThan:</code>, <code>secondsLaterThan:</code>
 
 ####Formatted Date Strings
 
@@ -207,7 +207,7 @@ This doubles a time period of duration 1 minute to duration 2 minutes. The end d
 
 ####Relationships
 
-There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions and may be asked using the relationship methods of DTTimePeriod.
+There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions may be asked using the relationship methods of DTTimePeriod.
 
 **The Basics**
 
@@ -228,6 +228,8 @@ You can also check for the official relationship (like those shown in the chart)
 All of the possible relationships have been enumerated in the DTTimePeriodRelation enum. 
 
 **For a better grasp on how time periods relate to one another, check out the "Time Periods" tab in the example application. Here you can slide a few time periods around and watch their relationships change.**
+
+![TimePeriods](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodsDemo.gif)
 
 ##Time Period Groups
 
