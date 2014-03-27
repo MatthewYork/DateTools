@@ -78,8 +78,8 @@ unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit;
 NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
 
 //Get components
-NSInteger year = calendar.year;
-NSInteger month = calendar.month;
+NSInteger year = dateComponents.year;
+NSInteger month = dateComponents.month;
 ```
 
 ...becomes this:
