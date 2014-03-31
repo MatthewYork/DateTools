@@ -65,6 +65,8 @@ NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
 //Time Ago: 4s
 ```
 
+The <code>timeAgo</code> functions are also set up for **localization**. Take a peek inside the <code>timeAgoSinceDate:shortformatting:</code> method for the localization string keys.
+
 Thanks to Jon Hocking for his work on [PrettyTimestamp](https://github.com/jonhocking/PrettyTimestamp), which the majority of these methods are from.
 
 ####Date Components
