@@ -65,6 +65,8 @@ NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
 //Time Ago: 4s
 ```
 
+Thanks to Jon Hocking for his work on [PrettyTimestamp](https://github.com/jonhocking/PrettyTimestamp), which the majority of these are from.
+
 ####Date Components
 
 There is a lot of boilerplate associated with getting date components from an NSDate. You have to set up a calendar, use the desired flags for the components you want, and finally extract them out of the calendar. 
@@ -315,6 +317,8 @@ If you ever find a test case that is incomplete, please open an issue so we can 
 Continuous integration testing is performed by Travis CI: [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
 
 ##Credits
+
+Thanks to Jon Hocking for his initial work on PrettyTimestamp. It laid the foundation for DateTools' timeAgo methods. You can find this great project [here](https://github.com/jonhocking/PrettyTimestamp).
 
 Many thanks to the .NET team for their DateTime class and a major thank you to [Jani Giannoudis](http://www.codeproject.com/Members/Jani-Giannoudis) for his work on ITimePeriod.
 
