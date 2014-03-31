@@ -65,7 +65,7 @@ NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
 //Time Ago: 4s
 ```
 
-Thanks to Jon Hocking for his work on [PrettyTimestamp](https://github.com/jonhocking/PrettyTimestamp), which the majority of these are from.
+Thanks to Jon Hocking for his work on [PrettyTimestamp](https://github.com/jonhocking/PrettyTimestamp), which the majority of these methods are from.
 
 ####Date Components
 
