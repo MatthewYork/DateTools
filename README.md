@@ -318,7 +318,7 @@ Continuous integration testing is performed by Travis CI: [![Build Status](https
 
 ##Credits
 
-Thanks to Jon Hocking for his initial work on PrettyTimestamp. It laid the foundation for DateTools' timeAgo methods. You can find this great project [here](https://github.com/jonhocking/PrettyTimestamp).
+Thanks to [Jon Hocking](https://github.com/jonhocking) for his initial work on PrettyTimestamp. It laid the foundation for DateTools' timeAgo methods. You can find this great project [here](https://github.com/jonhocking/PrettyTimestamp).
 
 Many thanks to the .NET team for their DateTime class and a major thank you to [Jani Giannoudis](http://www.codeproject.com/Members/Jani-Giannoudis) for his work on ITimePeriod.
 
