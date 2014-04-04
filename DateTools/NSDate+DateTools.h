@@ -49,9 +49,11 @@
 - (NSInteger)dayOfYear;
 -(NSInteger)daysInYear;
 -(BOOL)isInLeapYear;
-
+- (BOOL)isToday;
 
 #pragma mark - Date Components With Calendar
+
+
 - (NSInteger)eraWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)yearWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)monthWithCalendar:(NSCalendar *)calendar;
