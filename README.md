@@ -25,6 +25,10 @@ All the classes required for DateTools are located in the DateTools folder in th
 * <code>DTTimePeriodCollection.{h,m}</code>
 * <code>DTTimePeriodChain.{h,m}</code>
 
+The following bundle is necessary if you would like to support internationalization. You can add localizations at the `Localizations` subheading under `Info` in the `Project` menu.
+
+* <code>DateTools.bundle</code>
+
 <code>DateTools.h</code> contains the headers for all the other files. Import this if you want to link to the entire framework.
 
 ## Table of Contents

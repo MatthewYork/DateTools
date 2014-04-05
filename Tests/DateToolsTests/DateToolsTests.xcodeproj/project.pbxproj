@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFD485E18F082FE004D0FE1 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AFD485D18F082FE004D0FE1 /* DateTools.bundle */; };
+		0AFD486018F08640004D0FE1 /* DTTimeAgoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD485F18F08640004D0FE1 /* DTTimeAgoTests.m */; };
 		F00762C218DE5D7500A99075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00762C118DE5D7500A99075 /* Foundation.framework */; };
 		F00762C418DE5D7500A99075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00762C318DE5D7500A99075 /* CoreGraphics.framework */; };
 		F00762C618DE5D7500A99075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00762C518DE5D7500A99075 /* UIKit.framework */; };
@@ -50,6 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AFD485D18F082FE004D0FE1 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		0AFD485F18F08640004D0FE1 /* DTTimeAgoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimeAgoTests.m; sourceTree = "<group>"; };
+		0AFD486118F0AB99004D0FE1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		0AFD486218F0AB99004D0FE1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0AFD486318F0AB99004D0FE1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F00762BE18DE5D7500A99075 /* DateToolsTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateToolsTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00762C118DE5D7500A99075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F00762C318DE5D7500A99075 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,6 +184,7 @@
 				F00762F818DE5D9900A99075 /* DTTimePeriodGroupTests.m */,
 				F00762F918DE5D9900A99075 /* DTTimePeriodChainTests.m */,
 				F00762FA18DE5D9900A99075 /* DTTimePeriodCollectionTests.m */,
+				0AFD485F18F08640004D0FE1 /* DTTimeAgoTests.m */,
 				F00762E718DE5D7500A99075 /* Supporting Files */,
 			);
 			path = DateToolsTestsTests;
@@ -194,6 +202,7 @@
 		F007630018DE5DB000A99075 /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
+				0AFD485D18F082FE004D0FE1 /* DateTools.bundle */,
 				F0EE17F918DEB1CF0010FAD8 /* DateTools.h */,
 				F0EE17ED18DEB1C20010FAD8 /* DTError.h */,
 				F0EE17EE18DEB1C20010FAD8 /* DTError.m */,
@@ -270,6 +279,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = F00762B518DE5D7500A99075;
 			productRefGroup = F00762BF18DE5D7500A99075 /* Products */;
@@ -290,6 +300,7 @@
 				F00762DA18DE5D7500A99075 /* Images.xcassets in Resources */,
 				F00762CC18DE5D7500A99075 /* InfoPlist.strings in Resources */,
 				F00762D518DE5D7500A99075 /* Main.storyboard in Resources */,
+				0AFD485E18F082FE004D0FE1 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AFD486018F08640004D0FE1 /* DTTimeAgoTests.m in Sources */,
 				F00762FB18DE5D9900A99075 /* DateToolsTests.m in Sources */,
 				F00762FD18DE5D9900A99075 /* DTTimePeriodGroupTests.m in Sources */,
 				F007631318DE5DC400A99075 /* DTTimePeriod.m in Sources */,
@@ -353,6 +365,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F00762CB18DE5D7500A99075 /* en */,
+				0AFD486218F0AB99004D0FE1 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -361,6 +374,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F00762D418DE5D7500A99075 /* Base */,
+				0AFD486118F0AB99004D0FE1 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -369,6 +383,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F00762EA18DE5D7500A99075 /* en */,
+				0AFD486318F0AB99004D0FE1 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

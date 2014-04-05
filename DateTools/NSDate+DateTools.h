@@ -20,6 +20,11 @@
 // ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#ifndef DateToolsLocalizedStrings
+#define DateToolsLocalizedStrings(key) \
+NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
+#endif
+
 #import <Foundation/Foundation.h>
 #import "DTConstants.h"
 
@@ -29,7 +34,11 @@
 + (NSString*)timeAgoSinceDate:(NSDate*)date;
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date;
 - (NSString*)timeAgoSinceNow;
--(NSString *)shortTimeAgoSinceNow;
+- (NSString *)shortTimeAgoSinceNow;
+- (NSString *)timeAgoSinceDate:(NSDate *)date;
+- (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates;
+- (NSString *)shortTimeAgoSinceDate:(NSDate *)date;
+
 
 #pragma mark - Date Components Without Calendar
 - (NSInteger)era;
