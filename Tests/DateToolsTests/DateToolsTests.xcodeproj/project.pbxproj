@@ -87,6 +87,7 @@
 		F007630718DE5DC400A99075 /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = ../../../DateTools/DTTimePeriod.m; sourceTree = "<group>"; };
 		F007630A18DE5DC400A99075 /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = ../../../DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
 		F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = ../../../DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
+		F022EC1418F44D3700743E17 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		F0EE17ED18DEB1C20010FAD8 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = ../../../DateTools/DTError.h; sourceTree = "<group>"; };
 		F0EE17EE18DEB1C20010FAD8 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = ../../../DateTools/DTError.m; sourceTree = "<group>"; };
 		F0EE17EF18DEB1C20010FAD8 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = ../../../DateTools/DTTimePeriodChain.h; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 				en,
 				Base,
 				ja,
+				es,
 			);
 			mainGroup = F00762B518DE5D7500A99075;
 			productRefGroup = F00762BF18DE5D7500A99075 /* Products */;
@@ -375,6 +377,7 @@
 			children = (
 				F00762D418DE5D7500A99075 /* Base */,
 				0AFD486118F0AB99004D0FE1 /* ja */,
+				F022EC1418F44D3700743E17 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
