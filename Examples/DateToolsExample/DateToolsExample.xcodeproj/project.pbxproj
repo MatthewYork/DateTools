@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFD486518F0BBC0004D0FE1 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */; };
 		F007632018DE5F5E00A99075 /* DateToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F007631E18DE5F5E00A99075 /* DateToolsViewController.m */; };
 		F007632118DE5F5E00A99075 /* DateToolsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F007631F18DE5F5E00A99075 /* DateToolsViewController.xib */; };
 		F007632518DE5FE300A99075 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = F007632418DE5FE300A99075 /* Colours.m */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
 		F007631D18DE5F5E00A99075 /* DateToolsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateToolsViewController.h; sourceTree = "<group>"; };
 		F007631E18DE5F5E00A99075 /* DateToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateToolsViewController.m; sourceTree = "<group>"; };
 		F007631F18DE5F5E00A99075 /* DateToolsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateToolsViewController.xib; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		F0F08DD318D9E81C00214C6B /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
+				0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */,
 				F0EE17E118DEB1A10010FAD8 /* DTError.h */,
 				F0EE17E218DEB1A10010FAD8 /* DTError.m */,
 				F0EE17E018DEAE190010FAD8 /* DateTools.h */,
@@ -365,6 +368,7 @@
 				F007633A18DE63C400A99075 /* TimePeriodsViewController.xib in Resources */,
 				F0F08DA918D9E80E00214C6B /* InfoPlist.strings in Resources */,
 				F007634118DE647600A99075 /* Recents.png in Resources */,
+				0AFD486518F0BBC0004D0FE1 /* DateTools.bundle in Resources */,
 				F007632E18DE61EE00A99075 /* Calendar.png in Resources */,
 				F007632F18DE61EE00A99075 /* Calendar@2x.png in Resources */,
 				F007634018DE647600A99075 /* Recents_filled@2x.png in Resources */,

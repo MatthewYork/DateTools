@@ -39,17 +39,12 @@ typedef NS_ENUM(NSUInteger, DTDateComponent){
     DTDateComponentDayOfYear
 };
 
-/**
- *  Constant describing the desired length of the string for a shortened time ago unit
- *  Example: If 1 is provided then "week" becomes "w" for the shortenedTimeAgoString
- */
-static const NSUInteger SHORT_TIME_AGO_STRING_LENGTH = 1;
-
 static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit;
 
 @implementation NSDate (DateTools)
 
 #pragma mark - Time Ago
+
 
 /**
  *  Takes in a date and returns a string with the most convenient unit of time representing
@@ -60,7 +55,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSString - Formatted return string
  */
 + (NSString*)timeAgoSinceDate:(NSDate*)date{
-    return [date timeAgoSinceDate:[NSDate date] shortformatting:NO];
+    return [date timeAgoSinceDate:[NSDate date]];
 }
 
 /**
@@ -72,7 +67,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSString - Formatted return string
  */
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date{
-    return [date timeAgoSinceDate:[NSDate date] shortformatting:YES];
+    return [date shortTimeAgoSinceDate:[NSDate date]];
 }
 
 /**
@@ -82,7 +77,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSString - Formatted return string
  */
 - (NSString*)timeAgoSinceNow{
-    return [self timeAgoSinceDate:[NSDate date] shortformatting:NO];
+    return [self timeAgoSinceDate:[NSDate date]];
 }
 
 /**
@@ -91,80 +86,161 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *
  *  @return NSString - Formatted return string
  */
--(NSString *)shortTimeAgoSinceNow{
-    return [self timeAgoSinceDate:[NSDate date] shortformatting:YES];
+- (NSString *)shortTimeAgoSinceNow{
+    return [self shortTimeAgoSinceDate:[NSDate date]];
 }
 
--(NSString *)timeAgoSinceDate:(NSDate *)date shortformatting:(BOOL)shortFormatting{
+- (NSString *)timeAgoSinceDate:(NSDate *)date{
+    return [self timeAgoSinceDate:date numericDates:NO];
+}
+
+- (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates{
+
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
     
-    NSString *componentName = @"";
-    NSInteger componentValue = 0;
+    //Not Yet Implemented/Optional
+    //The following strings are present in the translation files but lack logic as of 2014.04.05
+    //@"Today", @"This week", @"This month", @"This year"
+    //and @"This morning", @"This afternoon"
     
-    if (components.year >= 1) {
-        return NSLocalizedString(@"over a year ago", nil);
+    if (components.year >= 2) {
+        return  [self logicLocalizedStringFromFormat:@"%%d %@years ago" withValue:components.year];
+    }
+    else if (components.year >= 1) {
+     
+        if (useNumericDates) {
+            return DateToolsLocalizedStrings(@"1 year ago");
+        }
+        
+        return DateToolsLocalizedStrings(@"Last year");
+    }
+    else if (components.month >= 2) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@months ago" withValue:components.month];
     }
     else if (components.month >= 1) {
-        componentValue = components.month;
-        componentName = (components.month == 1)? NSLocalizedString(@"month", nil):NSLocalizedString(@"months", nil);
+        
+        if (useNumericDates) {
+            return DateToolsLocalizedStrings(@"1 month ago");
+        }
+        
+        return DateToolsLocalizedStrings(@"Last month");
+    }
+    else if (components.week >= 2) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:components.week];
     }
     else if (components.week >= 1) {
-        componentValue = components.week;
-        componentName = (components.week == 1)? NSLocalizedString(@"week", nil):NSLocalizedString(@"weeks", nil);
+        
+        if (useNumericDates) {
+            return DateToolsLocalizedStrings(@"1 week ago");
+        }
+        
+        return DateToolsLocalizedStrings(@"Last week");
+    }
+    else if (components.day >= 2) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@days ago" withValue:components.day];
     }
     else if (components.day >= 1) {
-        componentValue = components.day;
-        componentName = (components.day == 1)? NSLocalizedString(@"day", nil):NSLocalizedString(@"days", nil);
+        
+        if (useNumericDates) {
+            return DateToolsLocalizedStrings(@"1 day ago");
+        }
+        
+        return DateToolsLocalizedStrings(@"Yesterday");
+    }
+    else if (components.hour >= 2) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@hours ago" withValue:components.hour];
     }
     else if (components.hour >= 1) {
-        componentValue = components.hour;
-        componentName = (components.hour == 1)? NSLocalizedString(@"hour", nil):NSLocalizedString(@"hours", nil);
+        return DateToolsLocalizedStrings(@"An hour ago");
+    }
+    else if (components.minute >= 2) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@minutes ago" withValue:components.minute];
     }
     else if (components.minute >= 1) {
-        componentValue = components.minute;
-        componentName = (components.minute == 1)? NSLocalizedString(@"minute", nil):NSLocalizedString(@"minutes", nil);
+        return DateToolsLocalizedStrings(@"A minute ago");
     }
     else if (components.second >= 3) {
-        componentValue = components.second;
-        componentName = (components.second == 1)? NSLocalizedString(@"second", nil):NSLocalizedString(@"seconds", nil);
+        return [self logicLocalizedStringFromFormat:@"%%d %@seconds ago" withValue:components.second];
     }
     else {
-        if (shortFormatting) {
-            return NSLocalizedString(@"now", nil);
-        }
-        else {
-            return NSLocalizedString(@"just now", nil);
-        }
+        return DateToolsLocalizedStrings(@"Just now");
     }
     
-    //If short formatting is requested, only take the first character of your string
-    if (shortFormatting) {
-        //Make sure that the provided substring length is not too long for the component name
-        if (SHORT_TIME_AGO_STRING_LENGTH < componentName.length) {
-            componentName = [componentName substringToIndex:SHORT_TIME_AGO_STRING_LENGTH];
-        }
-        else {
-            componentName = [componentName substringToIndex:1];
-        }
-    }
-    
-    return [self stringForComponentValue:componentValue withName:componentName shortFormatting:shortFormatting];
 }
 
-- (NSString*)stringForComponentValue:(NSInteger)componentValue withName:(NSString*)name shortFormatting:(BOOL)shortFormatting
-{
+- (NSString *)shortTimeAgoSinceDate:(NSDate *)date{
+
     //If shortened formatting is requested, drop the "ago" part of the time ago
-    if (shortFormatting) {
-        return [NSString stringWithFormat:@"%ld%@", (long)componentValue, name];
+    //use abbreviated unit names
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
+    
+    
+    if (components.year >= 1) {
+        return  [self logicLocalizedStringFromFormat:@"%%d%@y" withValue:components.year];
+    }
+    else if (components.month >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@M" withValue:components.month];
+    }
+    else if (components.week >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:components.week];
+    }
+    else if (components.day >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:components.day];
+    }
+    else if (components.hour >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@h" withValue:components.hour];
+    }
+    else if (components.minute >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@m" withValue:components.minute];
+    }
+    else if (components.second >= 3) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@s" withValue:components.second];
     }
     else {
-        return [NSString stringWithFormat:@"%ld %@ %@", (long)componentValue, name, NSLocalizedString(@"ago", nil)];
+        return [self logicLocalizedStringFromFormat:@"%%d%@s" withValue:components.second];
+        //return DateToolsLocalizedStrings(@"Now"); //string not yet translated 2014.04.05
     }
     
+}
+
+- (NSString *) logicLocalizedStringFromFormat:(NSString *)format withValue:(NSInteger)value{
+    NSString * localeFormat = [NSString stringWithFormat:format, [self getLocaleFormatUnderscoresWithValue:value]];
+    return [NSString stringWithFormat:DateToolsLocalizedStrings(localeFormat), value];
+}
+
+- (NSString *)getLocaleFormatUnderscoresWithValue:(double)value{
+    NSString *localeCode = [[NSLocale preferredLanguages] objectAtIndex:0];
+    
+    // Russian (ru)
+    if([localeCode isEqual:@"ru"]) {
+        int XY = (int)floor(value) % 100;
+        int Y = (int)floor(value) % 10;
+        
+        if(Y == 0 || Y > 4 || (XY > 10 && XY < 15)) {
+            return @"";
+        }
+
+        if(Y > 1 && Y < 5 && (XY < 10 || XY > 20))  {
+            return @"_";
+        }
+
+        if(Y == 1 && XY != 11) {
+            return @"__";
+        }
+    }
+    
+    // Add more languages here, which are have specific translation rules...
+    
+    return @"";
 }
 
 #pragma mark - Date Components Without Calendar
