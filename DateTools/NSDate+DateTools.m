@@ -425,6 +425,16 @@ static NSCalendar *implicitCalendar = nil;
     return NO;
 }
 
+- (BOOL)isToday {
+	NSCalendar *cal = [NSCalendar currentCalendar];
+	NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+	NSDate *today = [cal dateFromComponents:components];
+	components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+	NSDate *otherDate = [cal dateFromComponents:components];
+
+	return [today isEqualToDate:otherDate];
+}
+
 #pragma mark - Date Components With Calendar
 /**
  *  Returns the era of the receiver from a given calendar
