@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'DateTools'
-  s.resources    = 'DateTools.bundle'
+  s.resources    = 'DateTools/DateTools.bundle'
 end
