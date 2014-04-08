@@ -97,6 +97,22 @@
     //Is leap year (%4) 2016
     XCTAssertTrue([[self.controlDate dateByAddingYears:2] isInLeapYear],  @"%s Failed", __PRETTY_FUNCTION__);
 }
+-(void)testIsToday{
+    //Test true now
+    XCTAssertTrue([NSDate date].isToday, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test true past (Technically, could fail if you ran the test precisely at midnight, but...)
+    XCTAssertTrue([[NSDate date] dateBySubtractingSeconds:1].isToday, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test true future (Technically, could fail if you ran the test precisely at midnight, but...)
+    XCTAssertTrue([[NSDate date] dateByAddingSeconds:1].isToday, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Tests false past
+    XCTAssertFalse([[NSDate date] dateBySubtractingDays:2].isToday, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Tests false future
+    XCTAssertFalse([[NSDate date] dateByAddingDays:1].isToday, @"%s Failed", __PRETTY_FUNCTION__);
+}
 
 #pragma mark - Date Editing
 #pragma mark Date By Adding
