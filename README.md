@@ -106,7 +106,7 @@ If you know a language not listed here, please consider submitting a translation
 
 This project is user driven (by people like you). Pull requests close faster than issues (merged or rejected).
 
-Thanks to Kevin Lawler for his work on [NSDate+TimeAgo](https://github.com/kevinlawler/NSDate-TimeAgo), which has been officially merged into this librart.
+Thanks to Kevin Lawler for his work on [NSDate+TimeAgo](https://github.com/kevinlawler/NSDate-TimeAgo), which has been officially merged into this library.
 
 ####Date Components
 
