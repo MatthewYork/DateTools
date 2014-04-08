@@ -159,5 +159,6 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 -(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale;
 
 #pragma mark - Helpers
-+(NSString *)defaultCalendar;
++(NSString *)defaultCalendarIdentifier;
++ (void)setDefaultCalendarIdentifier:(NSString *)identifier;
 @end

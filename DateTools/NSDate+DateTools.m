@@ -41,7 +41,14 @@ typedef NS_ENUM(NSUInteger, DTDateComponent){
 
 static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit;
 
+static NSString *defaultCalendarIdentifier = nil;
+static NSCalendar *implicitCalendar = nil;
+
 @implementation NSDate (DateTools)
+
++ (void)load {
+    [self setDefaultCalendarIdentifier:NSGregorianCalendar];
+}
 
 #pragma mark - Time Ago
 
@@ -402,7 +409,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSInteger
  */
 -(BOOL)isInLeapYear{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *dateComponents = [calendar components:allCalendarUnitFlags fromDate:self];
     
     if (dateComponents.year%400 == 0){
@@ -585,7 +592,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(NSInteger)componentForDate:(NSDate *)date type:(DTDateComponent)component calendar:(NSCalendar *)calendar{
     if (!calendar) {
-        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+        calendar = [[self class] implicitCalendar];
     }
     
     unsigned int unitFlags = 0;
@@ -645,7 +652,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired years
  */
 - (NSDate *)dateByAddingYears:(NSInteger)years{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setYear:years];
     
@@ -660,7 +667,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired months
  */
 - (NSDate *)dateByAddingMonths:(NSInteger)months{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setMonth:months];
     
@@ -675,7 +682,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired weeks
  */
 - (NSDate *)dateByAddingWeeks:(NSInteger)weeks{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setWeek:weeks];
     
@@ -690,7 +697,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired days
  */
 - (NSDate *)dateByAddingDays:(NSInteger)days{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:days];
     
@@ -705,7 +712,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired hours
  */
 - (NSDate *)dateByAddingHours:(NSInteger)hours{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setHour:hours];
     
@@ -720,7 +727,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired minutes
  */
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setMinute:minutes];
     
@@ -735,7 +742,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired seconds
  */
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setSecond:seconds];
     
@@ -751,7 +758,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired years
  */
 - (NSDate *)dateBySubtractingYears:(NSInteger)years{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setYear:-1*years];
     
@@ -766,7 +773,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired months
  */
 - (NSDate *)dateBySubtractingMonths:(NSInteger)months{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setMonth:-1*months];
     
@@ -781,7 +788,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired weeks
  */
 - (NSDate *)dateBySubtractingWeeks:(NSInteger)weeks{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setWeek:-1*weeks];
     
@@ -796,7 +803,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired days
  */
 - (NSDate *)dateBySubtractingDays:(NSInteger)days{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:-1*days];
     
@@ -811,7 +818,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired hours
  */
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setHour:-1*hours];
     
@@ -826,7 +833,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired minutes
  */
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setMinute:-1*minutes];
     
@@ -841,7 +848,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  *  @return NSDate - Date modified by the number of desired seconds
  */
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+    NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setSecond:-1*seconds];
     
@@ -950,7 +957,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(NSInteger)yearsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
-        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+        calendar = [[self class] implicitCalendar];
     }
     
     NSDate *earliest = [self earlierDate:date];
@@ -971,7 +978,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(NSInteger)monthsFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
-        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+        calendar = [[self class] implicitCalendar];
     }
     
     NSDate *earliest = [self earlierDate:date];
@@ -992,7 +999,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(NSInteger)weeksFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
-        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+        calendar = [[self class] implicitCalendar];
     }
     
     NSDate *earliest = [self earlierDate:date];
@@ -1013,7 +1020,7 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
  */
 -(NSInteger)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar{
     if (!calendar) {
-        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:[NSDate defaultCalendar]];
+        calendar = [[self class] implicitCalendar];
     }
     
     NSDate *earliest = [self earlierDate:date];
@@ -1528,12 +1535,31 @@ static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterC
 }
 
 /**
- *  The default calendar used for all non-calendar-specified operations
+ *  Retrieves the default calendar identifier used for all non-calendar-specified operations
  *
  *  @return NSString - NSCalendarIdentifier
  */
-+(NSString *)defaultCalendar{
-    return NSGregorianCalendar;
++(NSString *)defaultCalendarIdentifier {
+    return defaultCalendarIdentifier;
+}
+
+/**
+ *  Sets the default calendar identifier used for all non-calendar-specified operations
+ *
+ *  @param identifier NSString - NSCalendarIdentifier
+ */
++ (void)setDefaultCalendarIdentifier:(NSString *)identifier {
+    defaultCalendarIdentifier = [identifier copy];
+    implicitCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:defaultCalendarIdentifier ?: NSGregorianCalendar];
+}
+
+/**
+ *  Retrieves a default NSCalendar instance, based on the value of defaultCalendarSetting
+ *
+ *  @return NSCalendar The current implicit calendar
+ */
++ (NSCalendar *)implicitCalendar {
+    return implicitCalendar;
 }
 
 @end
