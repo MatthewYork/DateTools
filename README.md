@@ -69,9 +69,44 @@ NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
 //Time Ago: 4s
 ```
 
-The <code>timeAgo</code> functions are also set up for **localization**. Take a peek inside the <code>timeAgoSinceDate:shortformatting:</code> method for the localization string keys.
+Assuming you have added the localization to your project, `DateTools` currently supports the following languages: 
 
-Thanks to Jon Hocking for his work on [PrettyTimestamp](https://github.com/jonhocking/PrettyTimestamp), which the majority of these methods are from.
+- en (English)
+- es (Spanish)
+- zh_Hans (Chinese Simplified)
+- zh_Hant (Chinese Traditional)
+- pt (Portuguese)
+- fr (French)
+- it (Italian)
+- ru (Russian)
+- de (German)
+- nl (Dutch)
+- hu (Hungarian)
+- fi (Finnish)
+- ja (Japanese)
+- vi (Vietnamese)
+- ro (Romanian)
+- da (Danish)
+- cs (Czech)
+- nb (Norwegian)
+- lv (Latvian)
+- tr (Turkish)
+- ko (Korean)
+- bg (Bulgarian)
+- he (Hebrew)
+- ar (Arabic)
+- gre (Greek)
+- pl (Polish)
+- sv (Swedish)
+- th (Thai)
+- uk (Ukrainian)
+- is (Icelandic)
+
+If you know a language not listed here, please consider submitting a translation. [Localization codes by language](http://stackoverflow.com/questions/3040677/locale-codes-for-iphone-lproj-folders).
+
+This project is user driven (by people like you). Pull requests close faster than issues (merged or rejected).
+
+Thanks to Kevin Lawler for his work on [NSDate+TimeAgo](https://github.com/kevinlawler/NSDate-TimeAgo), which has been officially merged into this librart.
 
 ####Date Components
 
@@ -324,7 +359,7 @@ Continuous integration testing is performed by Travis CI: [![Build Status](https
 
 ##Credits
 
-Thanks to [Jon Hocking](https://github.com/jonhocking) for his initial work on PrettyTimestamp. It laid the foundation for DateTools' timeAgo methods. You can find this great project [here](https://github.com/jonhocking/PrettyTimestamp).
+Thanks to [Kevin Lawler](https://github.com/kevinlawler) for his initial work on NSDate+TimeAgo. It laid the foundation for DateTools' timeAgo methods. You can find this great project [here](https://github.com/kevinlawler/NSDate-TimeAgo).
 
 Many thanks to the .NET team for their DateTime class and a major thank you to [Jani Giannoudis](http://www.codeproject.com/Members/Jani-Giannoudis) for his work on ITimePeriod.
 
