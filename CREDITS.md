@@ -54,3 +54,5 @@ Viraf Sarkari added ar Arabic, gre Greek, pl Polish, sv Swedish, and th Thai str
 Vasyl Skrypii added uk Ukranian strings. https://github.com/medlay
 
 Maggi Trymbill added is Icelandic strings. https://github.com/grundvollur
+
+Ikhsan Assaat added id Indonesian strings. http://ikhsan.me
