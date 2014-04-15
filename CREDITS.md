@@ -56,3 +56,5 @@ Vasyl Skrypii added uk Ukranian strings. https://github.com/medlay
 Maggi Trymbill added is Icelandic strings. https://github.com/grundvollur
 
 Ikhsan Assaat added id Indonesian strings. http://ikhsan.me
+
+Marc added ca Catalan strings. http://marcboquet.com/
