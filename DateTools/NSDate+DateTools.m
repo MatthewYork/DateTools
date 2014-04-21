@@ -1406,10 +1406,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:style];
-    [formatter setLocale:[NSLocale currentLocale]];
-    return [formatter stringFromDate:self];
+    return [self formattedDateWithStyle:style timeZone:[NSTimeZone systemTimeZone] locale:[NSLocale currentLocale]];
 }
 
 /**
@@ -1421,10 +1418,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style timeZone:(NSTimeZone *)timeZone{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:style];
-    [formatter setTimeZone:timeZone];
-    return [formatter stringFromDate:self];
+    return [self formattedDateWithStyle:style timeZone:timeZone locale:[NSLocale autoupdatingCurrentLocale]];
 }
 
 /**
@@ -1436,10 +1430,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style locale:(NSLocale *)locale{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:style];
-    [formatter setLocale:locale];
-    return [formatter stringFromDate:self];
+    return [self formattedDateWithStyle:style timeZone:[NSTimeZone systemTimeZone] locale:locale];
 }
 
 /**
@@ -1452,7 +1443,12 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    static NSDateFormatter *formatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [[NSDateFormatter alloc] init];
+    });
+
     [formatter setDateStyle:style];
     [formatter setTimeZone:timeZone];
     [formatter setLocale:locale];
@@ -1468,10 +1464,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithFormat:(NSString *)format{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
-    [formatter setLocale:[NSLocale currentLocale]];
-    return [formatter stringFromDate:self];
+    return [self formattedDateWithFormat:format timeZone:[NSTimeZone systemTimeZone] locale:[NSLocale autoupdatingCurrentLocale]];
 }
 
 /**
@@ -1483,10 +1476,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
-    [formatter setTimeZone:timeZone];
-    return [formatter stringFromDate:self];
+    return [self formattedDateWithFormat:format timeZone:timeZone locale:[NSLocale autoupdatingCurrentLocale]];
 }
 
 /**
@@ -1498,10 +1488,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithFormat:(NSString *)format locale:(NSLocale *)locale{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
-    [formatter setLocale:locale];
-    return [formatter stringFromDate:self];
+    return [self formattedDateWithFormat:format timeZone:[NSTimeZone systemTimeZone] locale:locale];
 }
 
 /**
@@ -1514,9 +1501,14 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    static NSDateFormatter *formatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [[NSDateFormatter alloc] init];
+    });
+
     [formatter setDateFormat:format];
-     [formatter setTimeZone:timeZone];
+    [formatter setTimeZone:timeZone];
     [formatter setLocale:locale];
     return [formatter stringFromDate:self];
 }
