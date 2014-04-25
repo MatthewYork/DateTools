@@ -1406,7 +1406,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style{
-    return [self formattedDateWithStyle:style timeZone:[NSTimeZone systemTimeZone] locale:[NSLocale currentLocale]];
+    return [self formattedDateWithStyle:style timeZone:[NSTimeZone systemTimeZone] locale:[NSLocale autoupdatingCurrentLocale]];
 }
 
 /**

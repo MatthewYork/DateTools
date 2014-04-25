@@ -35,6 +35,14 @@
     NSLog(@"5 minutes Ago: %@", [[NSDate date] dateBySubtractingMinutes:5].shortTimeAgoSinceNow);
     NSLog(@"1 second Ago: %@", [[NSDate date] dateBySubtractingSeconds:1].shortTimeAgoSinceNow);
     NSLog(@"now Ago: %@", [NSDate date].timeAgoSinceNow);
+    
+    //Test formatters
+    NSString *dateStringFormatTest = [[NSDate date] formattedDateWithFormat:@"dd MMM, yyyy"];
+    NSString *dateStringStyleTest = [[NSDate date] formattedDateWithStyle:NSDateFormatterLongStyle timeZone:[NSTimeZone localTimeZone] locale:[NSLocale currentLocale]];
+    NSString *dateStringStyleTest2 = [[NSDate date] formattedDateWithStyle:NSDateFormatterShortStyle timeZone:[NSTimeZone localTimeZone] locale:[NSLocale currentLocale]];
+    NSLog(@"%@", dateStringFormatTest);
+    NSLog(@"%@", dateStringStyleTest);
+    NSLog(@"%@", dateStringStyleTest2);
 }
 
 - (void)didReceiveMemoryWarning
