@@ -363,6 +363,8 @@ Many thanks to the .NET team for their DateTime class and a major thank you to [
 
 Images were first published through itenso.com through [Code Project](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
 
+I would also like to thank **God** through whom all things live and move and have their being. [Acts 17:28](http://www.biblegateway.com/passage/?search=Acts+17%3A16-34&version=NIV)
+
 ##License
 
 The MIT License (MIT)
