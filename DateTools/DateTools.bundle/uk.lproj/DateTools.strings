@@ -7,7 +7,7 @@
 "%d days ago" = "%d днів тому";
 
 /* Y > 1 AND Y < 5 AND (XY < 10 OR XY > 20); */
-"%d _days ago" = "%d дня тому";
+"%d _days ago" = "%d дні тому";
 
 /* Y == 1 AND XY != 11; */
 "%d __days ago" = "%d день тому";
@@ -37,7 +37,7 @@
 "%d months ago" = "%d місяців тому";
 
 /* Y > 1 AND Y < 5 AND (XY < 10 OR XY > 20); */
-"%d _months ago" = "%d місяця тому";
+"%d _months ago" = "%d місяці тому";
 
 /* Y == 1 AND XY != 11; */
 "%d __months ago" = "%d місяць тому";
@@ -54,10 +54,10 @@
 
 
 /* Y == 0 OR Y > 4 OR (XY > 10 AND XY < 15); */
-"%d weeks ago" = "%d тижднів тому";
+"%d weeks ago" = "%d тижнів тому";
 
 /* Y > 1 AND Y < 5 AND (XY < 10 OR XY > 20); */
-"%d _weeks ago" = "%d тиждні тому";
+"%d _weeks ago" = "%d тижні тому";
 
 /* Y == 1 AND XY != 11; */
 "%d __weeks ago" = "%d тиждень тому";
@@ -116,7 +116,7 @@
 "Today" = "Сьогодні";
 
 /* No comment provided by engineer. */
-"This week" = "Цього тиждня";
+"This week" = "Цього тижня";
 
 /* No comment provided by engineer. */
 "This month" = "Цього місяця";
