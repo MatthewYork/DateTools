@@ -227,8 +227,8 @@ static NSCalendar *implicitCalendar = nil;
 - (NSString *)getLocaleFormatUnderscoresWithValue:(double)value{
     NSString *localeCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     
-    // Russian (ru)
-    if([localeCode isEqual:@"ru"]) {
+    // Russian (ru) and Ukrainian (uk)
+    if([localeCode isEqual:@"ru"] || [localeCode isEqual:@"uk"]) {
         int XY = (int)floor(value) % 100;
         int Y = (int)floor(value) % 10;
         
