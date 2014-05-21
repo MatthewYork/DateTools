@@ -445,6 +445,16 @@ static NSCalendar *implicitCalendar = nil;
 	return [tomorrow isEqualToDate:otherDate];
 }
 
+-(BOOL)isYesterday{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+	NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[[NSDate date] dateBySubtractingDays:1]];
+	NSDate *tomorrow = [cal dateFromComponents:components];
+	components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+	NSDate *otherDate = [cal dateFromComponents:components];
+    
+	return [tomorrow isEqualToDate:otherDate];
+}
+
 #pragma mark - Date Components With Calendar
 /**
  *  Returns the era of the receiver from a given calendar
