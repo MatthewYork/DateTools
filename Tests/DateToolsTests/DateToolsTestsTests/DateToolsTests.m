@@ -113,6 +113,20 @@
     //Tests false future
     XCTAssertFalse([[NSDate date] dateByAddingDays:1].isToday, @"%s Failed", __PRETTY_FUNCTION__);
 }
+-(void)testIsTomorrow{
+    //Test false with now
+    XCTAssertFalse([NSDate date].isTomorrow, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test false past
+    XCTAssertFalse([[NSDate date] dateBySubtractingDays:1].isTomorrow, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test true future
+    XCTAssertTrue([[NSDate date] dateByAddingDays:1].isTomorrow, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Tests false future
+    XCTAssertFalse([[NSDate date] dateByAddingDays:2].isToday, @"%s Failed", __PRETTY_FUNCTION__);
+    
+}
 
 #pragma mark - Date Editing
 #pragma mark Date By Adding
