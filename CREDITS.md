@@ -58,3 +58,5 @@ Maggi Trymbill added is Icelandic strings. https://github.com/grundvollur
 Ikhsan Assaat added id Indonesian strings. http://ikhsan.me
 
 Marc added ca Catalan strings. http://marcboquet.com/
+
+Steffan Harries added cy Welsh strings. https://github.com/Bendihossan
