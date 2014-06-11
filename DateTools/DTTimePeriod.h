@@ -66,12 +66,12 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 /**
  *  The start date for a DTTimePeriod representing the starting boundary of the time period
  */
-@property NSDate *StartDate;
+@property (nonatomic,strong) NSDate *StartDate;
 
 /**
  *  The end date for a DTTimePeriod representing the ending boundary of the time period
  */
-@property NSDate *EndDate;
+@property (nonatomic,strong) NSDate *EndDate;
 
 #pragma mark - Custom Init / Factory Methods
 -(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
