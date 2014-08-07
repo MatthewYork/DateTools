@@ -104,7 +104,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates{
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
+    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekOfYearCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
@@ -136,10 +136,10 @@ static NSCalendar *implicitCalendar = nil;
         
         return DateToolsLocalizedStrings(@"Last month");
     }
-    else if (components.week >= 2) {
-        return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:components.week];
+    else if (components.weekOfYear >= 2) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:components.weekOfYear];
     }
-    else if (components.week >= 1) {
+    else if (components.weekOfYear >= 1) {
         
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 week ago");
@@ -185,7 +185,7 @@ static NSCalendar *implicitCalendar = nil;
     //use abbreviated unit names
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
+    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekOfYearCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
@@ -197,8 +197,8 @@ static NSCalendar *implicitCalendar = nil;
     else if (components.month >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@M" withValue:components.month];
     }
-    else if (components.week >= 1) {
-        return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:components.week];
+    else if (components.weekOfYear >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:components.weekOfYear];
     }
     else if (components.day >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:components.day];
@@ -714,7 +714,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setWeek:weeks];
+    [components setWeekOfYear:weeks];
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -820,7 +820,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setWeek:-1*weeks];
+    [components setWeekOfYear:-1*weeks];
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -1035,8 +1035,8 @@ static NSCalendar *implicitCalendar = nil;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSInteger multiplier = (earliest == self) ? -1 : 1;
-    NSDateComponents *components = [calendar components:NSWeekCalendarUnit fromDate:earliest toDate:latest options:0];
-    return multiplier*components.week;
+    NSDateComponents *components = [calendar components:NSWeekOfYearCalendarUnit fromDate:earliest toDate:latest options:0];
+    return multiplier*components.weekOfYear;
 }
 
 /**
