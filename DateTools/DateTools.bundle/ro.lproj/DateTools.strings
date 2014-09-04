@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Anul acesta";
+
+/* Short format for */
+"%dy" = "%da"; // year (an)
+"%dM" = "%dl"; // month (luna)
+"%dw" = "%dS"; // week (saptamana)
+"%dd" = "%dz"; // day (ziua)
+"%dh" = "%do"; // hour (ora)
+"%dm" = "%dm"; // minute (minut)
+"%ds" = "%ds"; // second  (secunda)
