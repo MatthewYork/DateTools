@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'DateTools'
-  s.version      = '1.4.0'
+  s.version      = '1.4.1'
   s.summary      = 'Dates and time made easy in Objective-C'
   s.homepage     = 'https://github.com/MatthewYork/DateTools'
 
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author       = { "Matthew York" => "my3681@gmail.com" }
 
   s.source       = { :git => "https://github.com/MatthewYork/DateTools.git",
-                     :tag => "v1.4.0" }
+                     :tag => "v1.4.1" }
 
   s.platform = :ios, '6.0'
   s.requires_arc = true
