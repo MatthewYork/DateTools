@@ -60,3 +60,5 @@ Ikhsan Assaat added id Indonesian strings. http://ikhsan.me
 Marc added ca Catalan strings. http://marcboquet.com/
 
 Steffan Harries added cy Welsh strings. https://github.com/Bendihossan
+
+mjanda added es and cs short format strings https://github.com/mjanda
