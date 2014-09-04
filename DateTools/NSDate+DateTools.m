@@ -1543,7 +1543,7 @@ static NSCalendar *implicitCalendar = nil;
  *  @return BOOL evaluation of year
  */
 +(BOOL)isLeapYear:(NSInteger)year{
-    if (year*400){
+    if (year%400){
         return YES;
     }
     else if (year%100){
