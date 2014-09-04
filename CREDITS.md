@@ -64,3 +64,5 @@ Steffan Harries added cy Welsh strings. https://github.com/Bendihossan
 mjanda added es and cs short format strings https://github.com/mjanda
 
 Niklas Fahl added the de short format strings https://github.com/fahlout
+
+Vlad Cacuic added the ro short format strings https://github.com/vrcaciuc
