@@ -61,6 +61,7 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (BOOL)isToday;
 - (BOOL)isTomorrow;
 -(BOOL)isYesterday;
+- (BOOL)isWeekend;
 
 #pragma mark - Date Components With Calendar
 
