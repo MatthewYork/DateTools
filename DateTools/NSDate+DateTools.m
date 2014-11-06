@@ -459,7 +459,7 @@ static NSCalendar *implicitCalendar = nil;
     NSCalendar *calendar            = [NSCalendar currentCalendar];
     NSRange weekdayRange            = [calendar maximumRangeOfUnit:NSWeekdayCalendarUnit];
     NSDateComponents *components    = [calendar components:NSWeekdayCalendarUnit
-                                                  fromDate:someDate];
+                                                  fromDate:self];
     NSUInteger weekdayOfSomeDate    = [components weekday];
     
     BOOL result = NO;
