@@ -79,7 +79,11 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSInteger)weekOfYearWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)yearForWeekOfYearWithCalendar:(NSCalendar *)calendar;
 
+
 #pragma mark - Date Editing
+#pragma mark - Date Creating
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
 #pragma mark Date By Adding
 - (NSDate *)dateByAddingYears:(NSInteger)years;
 - (NSDate *)dateByAddingMonths:(NSInteger)months;

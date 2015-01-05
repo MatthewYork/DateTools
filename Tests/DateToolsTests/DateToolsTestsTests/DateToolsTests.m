@@ -142,6 +142,13 @@
 }
 
 #pragma mark - Date Editing
+#pragma mark Date Creating
+
+- (void)testDateWithYearMonthDayHourMinuteSecond{
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 18:15:12.000"];
+    XCTAssertEqual(YES, [self.controlDate isEqualToDate:[NSDate dateWithYear:2014 month:11 day:5 hour:18 minute:15 second:12]], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
 #pragma mark Date By Adding
 - (void)testDateByAddingYears{
     NSDate *testDate = [self.formatter dateFromString:@"2016 11 05 18:15:12.000"];
