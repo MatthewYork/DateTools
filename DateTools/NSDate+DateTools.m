@@ -673,30 +673,30 @@ static NSCalendar *implicitCalendar = nil;
     return 0;
 }
 
-#pragma mark - Date Editing
 #pragma mark - Date Creating
 + (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day {
-
-    return [self dateWithYear:year month:month day:day hour:0 minute:0 second:0];
+	
+	return [self dateWithYear:year month:month day:day hour:0 minute:0 second:0];
 }
 
 + (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second {
-
-    NSDate *nsDate = nil;
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-
-    components.year   = year;
-    components.month  = month;
-    components.day    = day;
-    components.hour   = hour;
-    components.minute = minute;
-    components.second = second;
-
-    nsDate = [[[self class] implicitCalendar] dateFromComponents:components];
-
-    return nsDate;
+	
+	NSDate *nsDate = nil;
+	NSDateComponents *components = [[NSDateComponents alloc] init];
+	
+	components.year   = year;
+	components.month  = month;
+	components.day    = day;
+	components.hour   = hour;
+	components.minute = minute;
+	components.second = second;
+	
+	nsDate = [[[self class] implicitCalendar] dateFromComponents:components];
+	
+	return nsDate;
 }
 
+#pragma mark - Date Editing
 #pragma mark Date By Adding
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of years.
