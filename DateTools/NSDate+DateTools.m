@@ -474,6 +474,21 @@ static NSCalendar *implicitCalendar = nil;
 	return [tomorrow isEqualToDate:otherDate];
 }
 
+- (BOOL)isWeekend {
+    NSCalendar *calendar            = [NSCalendar currentCalendar];
+    NSRange weekdayRange            = [calendar maximumRangeOfUnit:NSCalendarUnitWeekday];
+    NSDateComponents *components    = [calendar components:NSCalendarUnitWeekday
+                                                  fromDate:self];
+    NSUInteger weekdayOfSomeDate    = [components weekday];
+    
+    BOOL result = NO;
+    
+    if (weekdayOfSomeDate == weekdayRange.location || weekdayOfSomeDate == weekdayRange.length)
+        result = YES;
+    
+    return result;
+}
+
 #pragma mark - Date Components With Calendar
 /**
  *  Returns the era of the receiver from a given calendar
