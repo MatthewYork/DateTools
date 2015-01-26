@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "今年";
+
+/* Short format for */
+"%dy" = "%d年"; // year
+"%dM" = "%d月"; // month
+"%dw" = "%d週"; // week
+"%dd" = "%d天"; // day
+"%dh" = "%d小时"; // hour
+"%dm" = "%d分"; // minute
+"%ds" = "%d秒"; // second
