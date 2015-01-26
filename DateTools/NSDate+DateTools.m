@@ -102,6 +102,10 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates{
+    return [self timeAgoSinceDate:date numericDates:useNumericDates numericTimes:NO];
+}
+
+- (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes{
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitWeekOfYear | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitSecond;
@@ -162,18 +166,33 @@ static NSCalendar *implicitCalendar = nil;
         return [self logicLocalizedStringFromFormat:@"%%d %@hours ago" withValue:components.hour];
     }
     else if (components.hour >= 1) {
+        
+        if (useNumericTimes) {
+            return DateToolsLocalizedStrings(@"1 hour ago");
+        }
+        
         return DateToolsLocalizedStrings(@"An hour ago");
     }
     else if (components.minute >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@minutes ago" withValue:components.minute];
     }
     else if (components.minute >= 1) {
+        
+        if (useNumericTimes) {
+            return DateToolsLocalizedStrings(@"1 minute ago");
+        }
+        
         return DateToolsLocalizedStrings(@"A minute ago");
     }
     else if (components.second >= 3) {
         return [self logicLocalizedStringFromFormat:@"%%d %@seconds ago" withValue:components.second];
     }
     else {
+        
+        if (useNumericTimes) {
+            return DateToolsLocalizedStrings(@"1 second ago");
+        }
+        
         return DateToolsLocalizedStrings(@"Just now");
     }
     
