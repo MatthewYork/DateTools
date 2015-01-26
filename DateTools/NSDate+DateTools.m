@@ -618,6 +618,7 @@ static NSCalendar *implicitCalendar = nil;
     return [self componentForDate:self type:DTDateComponentYearForWeekOfYear calendar:calendar];
 }
 
+
 /**
  *  Returns the day of the year of the receiver from a given calendar
  *
@@ -689,6 +690,29 @@ static NSCalendar *implicitCalendar = nil;
     }
     
     return 0;
+}
+
+#pragma mark - Date Creating
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day {
+	
+	return [self dateWithYear:year month:month day:day hour:0 minute:0 second:0];
+}
+
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second {
+	
+	NSDate *nsDate = nil;
+	NSDateComponents *components = [[NSDateComponents alloc] init];
+	
+	components.year   = year;
+	components.month  = month;
+	components.day    = day;
+	components.hour   = hour;
+	components.minute = minute;
+	components.second = second;
+	
+	nsDate = [[[self class] implicitCalendar] dateFromComponents:components];
+	
+	return nsDate;
 }
 
 #pragma mark - Date Editing
