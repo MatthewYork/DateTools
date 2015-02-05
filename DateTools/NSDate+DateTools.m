@@ -943,6 +943,35 @@ static NSCalendar *implicitCalendar = nil;
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+#pragma mark Date Bounds
+/**
+ *  Returns a date representing the receivers date shifted to 00:00:00
+ *
+ *  @return NSDate - Date at start of day
+ */
+- (NSDate *)dateAtStartOfDay{
+    NSCalendar *calendar = [[self class] implicitCalendar];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
+    
+    return [calendar dateFromComponents:components];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted to 23:59:59
+ *
+ *  @return NSDate - Date at end of day
+ */
+- (NSDate *)dateAtEndOfDay{
+    NSCalendar *calendar = [[self class] implicitCalendar];
+    NSDateComponents *components = [NSDateComponents new];
+    components.day = 1;
+    
+    NSDate *date = [calendar dateByAddingComponents:components toDate:[self dateAtStartOfDay] options:0];
+    date = [date dateByAddingTimeInterval:-1];
+    
+    return date;
+}
+
 #pragma mark - Date Comparison
 #pragma mark Time From
 /**
