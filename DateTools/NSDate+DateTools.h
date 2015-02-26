@@ -25,6 +25,7 @@
 NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
 #endif
 
+#import <Availability.h>
 #import <Foundation/Foundation.h>
 #import "DTConstants.h"
 

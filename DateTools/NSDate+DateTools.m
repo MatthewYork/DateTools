@@ -39,16 +39,41 @@ typedef NS_ENUM(NSUInteger, DTDateComponent){
     DTDateComponentDayOfYear
 };
 
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+
+#else
+
+#endif
+
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+
+static const unsigned int allCalendarUnitFlags = NSCalendarUnitYear | NSCalendarUnitQuarter | NSCalendarUnitMonth | NSCalendarUnitWeekOfYear | NSCalendarUnitWeekOfMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitEra | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal | NSCalendarUnitWeekOfMonth;
+
+#else
+
 static const unsigned int allCalendarUnitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit;
+
+#endif
 
 static NSString *defaultCalendarIdentifier = nil;
 static NSCalendar *implicitCalendar = nil;
 
 @implementation NSDate (DateTools)
 
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+
++ (void)load {
+    [self setDefaultCalendarIdentifier:NSCalendarIdentifierGregorian];
+}
+
+#else
+
 + (void)load {
     [self setDefaultCalendarIdentifier:NSGregorianCalendar];
 }
+
+#endif
+
 
 #pragma mark - Time Ago
 
@@ -104,7 +129,16 @@ static NSCalendar *implicitCalendar = nil;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates{
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+
+    NSUInteger unitFlags = NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitSecond;
+    
+#else
+    
     NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
+    
+#endif
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
@@ -136,6 +170,21 @@ static NSCalendar *implicitCalendar = nil;
         
         return DateToolsLocalizedStrings(@"Last month");
     }
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+
+    else if (components.weekOfMonth >= 2) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:components.weekOfMonth];
+    }
+    else if (components.weekOfMonth >= 1) {
+        
+        if (useNumericDates) {
+            return DateToolsLocalizedStrings(@"1 week ago");
+        }
+        
+        return DateToolsLocalizedStrings(@"Last week");
+    }
+
+#else
     else if (components.week >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:components.week];
     }
@@ -147,6 +196,9 @@ static NSCalendar *implicitCalendar = nil;
         
         return DateToolsLocalizedStrings(@"Last week");
     }
+    
+#endif
+    
     else if (components.day >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@days ago" withValue:components.day];
     }
@@ -185,7 +237,14 @@ static NSCalendar *implicitCalendar = nil;
     //use abbreviated unit names
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    NSUInteger unitFlags = NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitSecond;
+    
+#else
     NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
+    
+#endif
+    
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
@@ -197,9 +256,18 @@ static NSCalendar *implicitCalendar = nil;
     else if (components.month >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@M" withValue:components.month];
     }
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    else if (components.weekOfMonth >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:components.weekOfMonth];
+    }
+    
+#else
     else if (components.week >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:components.week];
     }
+    
+#endif
+    
     else if (components.day >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:components.day];
     }
@@ -375,9 +443,18 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSInteger)daysInMonth{
     NSCalendar *calendar = [NSCalendar currentCalendar];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    NSRange days = [calendar rangeOfUnit:NSCalendarUnitDay
+                                  inUnit:NSCalendarUnitMonth
+                                 forDate:self];
+    
+#else
     NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit
                                   inUnit:NSMonthCalendarUnit
                                  forDate:self];
+    
+#endif
+    
     return days.length;
 }
 
@@ -427,9 +504,23 @@ static NSCalendar *implicitCalendar = nil;
 
 - (BOOL)isToday {
 	NSCalendar *cal = [NSCalendar currentCalendar];
-	NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[NSDate date]];
+    
+#else
+    NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+    
+#endif
+    
 	NSDate *today = [cal dateFromComponents:components];
-	components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:self];
+    
+#else
+    components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+    
+#endif
+    
 	NSDate *otherDate = [cal dateFromComponents:components];
 
 	return [today isEqualToDate:otherDate];
@@ -437,9 +528,23 @@ static NSCalendar *implicitCalendar = nil;
 
 - (BOOL)isTomorrow {
 	NSCalendar *cal = [NSCalendar currentCalendar];
-	NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[[NSDate date] dateByAddingDays:1]];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    
+    NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[[NSDate date] dateByAddingDays:1]];
+#else
+    NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[[NSDate date] dateByAddingDays:1]];
+    
+#endif
+    
 	NSDate *tomorrow = [cal dateFromComponents:components];
-	components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:self];
+    
+#else
+    components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+    
+#endif
+    
 	NSDate *otherDate = [cal dateFromComponents:components];
     
 	return [tomorrow isEqualToDate:otherDate];
@@ -447,9 +552,24 @@ static NSCalendar *implicitCalendar = nil;
 
 -(BOOL)isYesterday{
     NSCalendar *cal = [NSCalendar currentCalendar];
-	NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[[NSDate date] dateBySubtractingDays:1]];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+  	NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:
+                                    [[NSDate date] dateBySubtractingDays:1]];
+#else
+	NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:
+[[NSDate date] dateBySubtractingDays:1]];
+#endif
+
 	NSDate *tomorrow = [cal dateFromComponents:components];
-	components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+    
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:self];
+    
+#else
+    components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+    
+#endif
+    
 	NSDate *otherDate = [cal dateFromComponents:components];
     
 	return [tomorrow isEqualToDate:otherDate];
@@ -628,7 +748,14 @@ static NSCalendar *implicitCalendar = nil;
     unsigned int unitFlags = 0;
     
     if (component == DTDateComponentYearForWeekOfYear) {
-       unitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit | NSYearForWeekOfYearCalendarUnit;
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+        unitFlags = NSCalendarUnitYear | NSCalendarUnitQuarter | NSCalendarUnitMonth | NSCalendarUnitWeekOfYear | NSCalendarUnitWeekOfMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitEra | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal | NSCalendarUnitWeekOfMonth | NSCalendarUnitYearForWeekOfYear;
+        
+#else
+        unitFlags = NSYearCalendarUnit | NSQuarterCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekOfMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSEraCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekCalendarUnit | NSYearForWeekOfYearCalendarUnit;
+        
+#endif
+        
     }
     else {
         unitFlags = allCalendarUnitFlags;
@@ -664,7 +791,14 @@ static NSCalendar *implicitCalendar = nil;
         case DTDateComponentYearForWeekOfYear:
             return [dateComponents yearForWeekOfYear];
         case DTDateComponentDayOfYear:
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+            return [calendar ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:date];
+            
+#else
             return [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSYearCalendarUnit forDate:date];
+            
+#endif
+            
         default:
             break;
     }
@@ -714,7 +848,14 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    [components setWeekOfYear:weeks];
+    
+#else
     [components setWeek:weeks];
+    
+#endif
+    
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -820,7 +961,16 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+
+    [components setWeekOfYear:-1*weeks];
+
+#else
+
     [components setWeek:-1*weeks];
+    
+#endif
+    
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -993,7 +1143,14 @@ static NSCalendar *implicitCalendar = nil;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSInteger multiplier = (earliest == self) ? -1 : 1;
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear fromDate:earliest toDate:latest options:0];
+    
+#else
     NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:earliest toDate:latest options:0];
+    
+#endif
+    
     return multiplier*components.year;
 }
 
@@ -1035,8 +1192,15 @@ static NSCalendar *implicitCalendar = nil;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSInteger multiplier = (earliest == self) ? -1 : 1;
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    NSDateComponents *components = [calendar components:NSCalendarUnitWeekOfYear fromDate:earliest toDate:latest options:0];
+    
+#else
     NSDateComponents *components = [calendar components:NSWeekCalendarUnit fromDate:earliest toDate:latest options:0];
-    return multiplier*components.week;
+    
+#endif
+    
+    return multiplier*components.weekOfYear;
 }
 
 /**
@@ -1056,7 +1220,14 @@ static NSCalendar *implicitCalendar = nil;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSInteger multiplier = (earliest == self) ? -1 : 1;
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:earliest toDate:latest options:0];
+    
+#else
     NSDateComponents *components = [calendar components:NSDayCalendarUnit fromDate:earliest toDate:latest options:0];
+    
+#endif
+    
     return multiplier*components.day;
 }
 
@@ -1572,7 +1743,14 @@ static NSCalendar *implicitCalendar = nil;
  */
 + (void)setDefaultCalendarIdentifier:(NSString *)identifier {
     defaultCalendarIdentifier = [identifier copy];
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10)
+    implicitCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:defaultCalendarIdentifier ?: NSCalendarIdentifierGregorian];
+    
+#else
     implicitCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:defaultCalendarIdentifier ?: NSGregorianCalendar];
+    
+#endif
+    
 }
 
 /**
