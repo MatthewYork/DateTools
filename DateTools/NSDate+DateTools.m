@@ -943,6 +943,58 @@ static NSCalendar *implicitCalendar = nil;
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+- (NSDate *)dateByAddingYearsFloat:(float)years{
+    NSDate *result = nil;
+    float dummy = 0;
+    int front = (int)years;
+    result = [self dateByAddingYears:front];
+    float tail = modff(years, &dummy);
+    result = [result dateByAddingMonthsFloat:(tail*12.0f)];
+    return result;
+}
+- (NSDate *)dateByAddingMonthsFloat:(float)months{
+    NSDate *result = nil;
+    int front = (int)months;
+    float dummy = 0;
+    result = [self dateByAddingMonths:front];
+    float tail = modff(months, &dummy);
+    // Get number of days in the current month
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[NSDate date]];
+    NSUInteger numberOfDaysInMonth = rng.length;
+    
+    result = [result dateByAddingDaysFloat:(tail*numberOfDaysInMonth)];
+    return result;
+}
+- (NSDate *)dateByAddingDaysFloat:(float)days{
+    NSDate *result = nil;
+    int front = (int)days;
+    float dummy = 0;
+    result = [self dateByAddingDays:front];
+    float tail = modff(days, &dummy);
+    result = [result dateByAddingHoursFloat:(tail*24.0f)];
+    return result;
+    
+}
+- (NSDate *)dateByAddingHoursFloat:(float)hours{
+    NSDate *result = nil;
+    float dummy = 0;
+    int front = (int)hours;
+    result = [self dateByAddingHours:front];
+    float tail = modff(hours, &dummy);
+    result = [result dateByAddingMinutesFloat:(tail*60.0f)];
+    return result;
+}
+- (NSDate *)dateByAddingMinutesFloat:(float)minutes{
+    NSDate *result = nil;
+    float dummy = 0;
+    int front = (int)minutes;
+    result = [self dateByAddingMinutes:front];
+    float tail = modff(minutes, &dummy);
+    result = [result dateByAddingSeconds:(tail*60.0f)];
+    return result;
+}
+
 #pragma mark - Date Comparison
 #pragma mark Time From
 /**
