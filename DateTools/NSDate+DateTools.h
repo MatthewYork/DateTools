@@ -109,6 +109,12 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSDate *)dateByAddingDaysFloat:(float)days;
 - (NSDate *)dateByAddingHoursFloat:(float)hours;
 - (NSDate *)dateByAddingMinutesFloat:(float)minutes;
+#pragma mark Date By Subtracting Float
+- (NSDate *)dateBySubtractingYearsFloat:(float)years;
+- (NSDate *)dateBySubtractingMonthsFloat:(float)months;
+- (NSDate *)dateBySubtractingDaysFloat:(float)days;
+- (NSDate *)dateBySubtractingHoursFloat:(float)hours;
+- (NSDate *)dateBySubtractingMinutesFloat:(float)minutes;
 
 #pragma mark - Date Comparison
 #pragma mark Time From

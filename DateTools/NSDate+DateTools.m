@@ -949,7 +949,7 @@ static NSCalendar *implicitCalendar = nil;
     int front = (int)years;
     result = [self dateByAddingYears:front];
     float tail = modff(years, &dummy);
-    result = [result dateByAddingMonthsFloat:(tail*12.0f)];
+    result = [result dateByAddingDaysFloat:(tail*365.0f)];
     return result;
 }
 - (NSDate *)dateByAddingMonthsFloat:(float)months{
@@ -958,10 +958,11 @@ static NSCalendar *implicitCalendar = nil;
     float dummy = 0;
     result = [self dateByAddingMonths:front];
     float tail = modff(months, &dummy);
+    
     // Get number of days in the current month
     NSCalendar *cal = [NSCalendar currentCalendar];
-    NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[NSDate date]];
-    NSUInteger numberOfDaysInMonth = rng.length;
+    NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:result];
+    NSInteger numberOfDaysInMonth = rng.length;
     
     result = [result dateByAddingDaysFloat:(tail*numberOfDaysInMonth)];
     return result;
@@ -992,6 +993,59 @@ static NSCalendar *implicitCalendar = nil;
     result = [self dateByAddingMinutes:front];
     float tail = modff(minutes, &dummy);
     result = [result dateByAddingSeconds:(tail*60.0f)];
+    return result;
+}
+
+- (NSDate *)dateBySubtractingYearsFloat:(float)years{
+    NSDate *result = nil;
+    float dummy = 0;
+    int front = (int)years;
+    result = [self dateBySubtractingYears:front];
+    float tail = modff(years, &dummy);
+    result = [result dateBySubtractingDaysFloat:(tail*365.0f)];
+    return result;
+}
+- (NSDate *)dateBySubtractingMonthsFloat:(float)months{
+    NSDate *result = nil;
+    int front = (int)months;
+    float dummy = 0;
+    result = [self dateBySubtractingMonths:front];
+    float tail = modff(months, &dummy);
+    
+    // Get number of days in the current month
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:result];
+    NSInteger numberOfDaysInMonth = rng.length;
+    
+    result = [result dateBySubtractingDaysFloat:(tail*numberOfDaysInMonth)];
+    return result;
+}
+- (NSDate *)dateBySubtractingDaysFloat:(float)days{
+    NSDate *result = nil;
+    int front = (int)days;
+    float dummy = 0;
+    result = [self dateBySubtractingDays:front];
+    float tail = modff(days, &dummy);
+    result = [result dateBySubtractingHoursFloat:(tail/24.0f)];
+    return result;
+    
+}
+- (NSDate *)dateBySubtractingHoursFloat:(float)hours{
+    NSDate *result = nil;
+    float dummy = 0;
+    int front = (int)hours;
+    result = [self dateBySubtractingHours:front];
+    float tail = modff(hours, &dummy);
+    result = [result dateBySubtractingMinutesFloat:(tail*60.0f)];
+    return result;
+}
+- (NSDate *)dateBySubtractingMinutesFloat:(float)minutes{
+    NSDate *result = nil;
+    float dummy = 0;
+    int front = (int)minutes;
+    result = [self dateBySubtractingMinutes:front];
+    float tail = modff(minutes, &dummy);
+    result = [result dateBySubtractingSeconds:(tail*60.0f)];
     return result;
 }
 
