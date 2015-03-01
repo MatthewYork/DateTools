@@ -942,6 +942,7 @@ static NSCalendar *implicitCalendar = nil;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
+
 #pragma mark Date By Adding Float
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of years.
@@ -952,11 +953,12 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSDate *)dateByAddingYearsFloat:(float)years{
     NSDate *result = nil;
-    float dummy = 0;
+    float dummy;
     int front = (int)years;
     result = [self dateByAddingYears:front];
     float tail = modff(years, &dummy);
     result = [result dateByAddingDaysFloat:(tail*365.0f)];
+    
     return result;
 }
 
@@ -970,7 +972,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingMonthsFloat:(float)months{
     NSDate *result = nil;
     int front = (int)months;
-    float dummy = 0;
+    float dummy;
     result = [self dateByAddingMonths:front];
     float tail = modff(months, &dummy);
     
@@ -979,9 +981,9 @@ static NSCalendar *implicitCalendar = nil;
     NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:result];
     NSInteger numberOfDaysInMonth = rng.length;
     
-    result = [result dateByAddingDaysFloat:(tail*numberOfDaysInMonth)];
-    return result;
+    return [result dateByAddingDaysFloat:(tail*numberOfDaysInMonth)];
 }
+
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of weeks.
  *
@@ -996,8 +998,7 @@ static NSCalendar *implicitCalendar = nil;
     result = [self dateByAddingWeeks:front];
     float tail = modff(weeks, &dummy);
     
-    result = [result dateByAddingDaysFloat:(tail*7.0f)];
-    return result;
+    return [result dateByAddingDaysFloat:(tail*7.0f)];
 }
 
 /**
@@ -1010,12 +1011,11 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingDaysFloat:(float)days{
     NSDate *result = nil;
     int front = (int)days;
-    float dummy = 0;
+    float dummy;
     result = [self dateByAddingDays:front];
     float tail = modff(days, &dummy);
-    result = [result dateByAddingHoursFloat:(tail*24.0f)];
-    return result;
     
+    return [result dateByAddingHoursFloat:(tail*24.0f)];
 }
 
 /**
@@ -1027,12 +1027,12 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSDate *)dateByAddingHoursFloat:(float)hours{
     NSDate *result = nil;
-    float dummy = 0;
+    float dummy;
     int front = (int)hours;
     result = [self dateByAddingHours:front];
     float tail = modff(hours, &dummy);
-    result = [result dateByAddingMinutesFloat:(tail*60.0f)];
-    return result;
+    
+    return [result dateByAddingMinutesFloat:(tail*60.0f)];
 }
 
 /**
@@ -1044,12 +1044,12 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSDate *)dateByAddingMinutesFloat:(float)minutes{
     NSDate *result = nil;
-    float dummy = 0;
+    float dummy;
     int front = (int)minutes;
     result = [self dateByAddingMinutes:front];
     float tail = modff(minutes, &dummy);
-    result = [result dateByAddingSeconds:(tail*60.0f)];
-    return result;
+    
+    return [result dateByAddingSeconds:(tail*60.0f)];
 }
 
 #pragma mark Date By Subtracting Float
@@ -1062,12 +1062,12 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSDate *)dateBySubtractingYearsFloat:(float)years{
     NSDate *result = nil;
-    float dummy = 0;
+    float dummy;
     int front = (int)years;
     result = [self dateBySubtractingYears:front];
     float tail = modff(years, &dummy);
-    result = [result dateBySubtractingDaysFloat:(tail*365.0f)];
-    return result;
+    
+    return [result dateBySubtractingDaysFloat:(tail*365.0f)];
 }
 
 /**
@@ -1080,7 +1080,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingMonthsFloat:(float)months{
     NSDate *result = nil;
     int front = (int)months;
-    float dummy = 0;
+    float dummy;
     result = [self dateBySubtractingMonths:front];
     float tail = modff(months, &dummy);
     
@@ -1089,8 +1089,7 @@ static NSCalendar *implicitCalendar = nil;
     NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:result];
     NSInteger numberOfDaysInMonth = rng.length;
     
-    result = [result dateBySubtractingDaysFloat:(tail*numberOfDaysInMonth)];
-    return result;
+    return [result dateBySubtractingDaysFloat:(tail*numberOfDaysInMonth)];
 }
 
 /**
@@ -1107,8 +1106,7 @@ static NSCalendar *implicitCalendar = nil;
     result = [self dateBySubtractingWeeks:front];
     float tail = modff(weeks, &dummy);
     
-    result = [result dateBySubtractingDaysFloat:(tail*7.0f)];
-    return result;
+    return [result dateBySubtractingDaysFloat:(tail*7.0f)];
 }
 
 /**
@@ -1121,12 +1119,11 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingDaysFloat:(float)days{
     NSDate *result = nil;
     int front = (int)days;
-    float dummy = 0;
+    float dummy;
     result = [self dateBySubtractingDays:front];
     float tail = modff(days, &dummy);
-    result = [result dateBySubtractingHoursFloat:(tail*24.0f)];
-    return result;
     
+    return [result dateBySubtractingHoursFloat:(tail*24.0f)];
 }
 
 /**
@@ -1138,12 +1135,12 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSDate *)dateBySubtractingHoursFloat:(float)hours{
     NSDate *result = nil;
-    float dummy = 0;
+    float dummy;
     int front = (int)hours;
     result = [self dateBySubtractingHours:front];
     float tail = modff(hours, &dummy);
-    result = [result dateBySubtractingMinutesFloat:(tail*60.0f)];
-    return result;
+    
+    return [result dateBySubtractingMinutesFloat:(tail*60.0f)];
 }
 
 /**
@@ -1155,12 +1152,12 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSDate *)dateBySubtractingMinutesFloat:(float)minutes{
     NSDate *result = nil;
-    float dummy = 0;
+    float dummy;
     int front = (int)minutes;
     result = [self dateBySubtractingMinutes:front];
     float tail = modff(minutes, &dummy);
-    result = [result dateBySubtractingSeconds:(tail*60.0f)];
-    return result;
+    
+    return [result dateBySubtractingSeconds:(tail*60.0f)];
 }
 
 #pragma mark - Date Comparison
