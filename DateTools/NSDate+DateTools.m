@@ -942,7 +942,14 @@ static NSCalendar *implicitCalendar = nil;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
-
+#pragma mark Date By Adding Float
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of years.
+ *
+ *  @param years float - Number of years to add
+ *
+ *  @return NSDate - Date modified by the number of desired years
+ */
 - (NSDate *)dateByAddingYearsFloat:(float)years{
     NSDate *result = nil;
     float dummy = 0;
@@ -952,6 +959,14 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateByAddingDaysFloat:(tail*365.0f)];
     return result;
 }
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of months.
+ *
+ *  @param months float - Number of months to add
+ *
+ *  @return NSDate - Date modified by the number of desired months
+ */
 - (NSDate *)dateByAddingMonthsFloat:(float)months{
     NSDate *result = nil;
     int front = (int)months;
@@ -967,7 +982,14 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateByAddingDaysFloat:(tail*numberOfDaysInMonth)];
     return result;
 }
-- (NSDate *)dateByAddingWeeksFloat:(float)weeks {
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of weeks.
+ *
+ *  @param weeks float - Number of weeks to add
+ *
+ *  @return NSDate - Date modified by the number of desired weeks
+ */
+- (NSDate *)dateByAddingWeeksFloat:(float)weeks{
     NSDate *result = nil;
     int front = (int)weeks;
     float dummy;
@@ -977,6 +999,14 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateByAddingDaysFloat:(tail*7.0f)];
     return result;
 }
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of days.
+ *
+ *  @param days float - Number of days to add
+ *
+ *  @return NSDate - Date modified by the number of desired days
+ */
 - (NSDate *)dateByAddingDaysFloat:(float)days{
     NSDate *result = nil;
     int front = (int)days;
@@ -987,6 +1017,14 @@ static NSCalendar *implicitCalendar = nil;
     return result;
     
 }
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of hours.
+ *
+ *  @param hours float - Number of hours to add
+ *
+ *  @return NSDate - Date modified by the number of desired hours
+ */
 - (NSDate *)dateByAddingHoursFloat:(float)hours{
     NSDate *result = nil;
     float dummy = 0;
@@ -996,6 +1034,14 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateByAddingMinutesFloat:(tail*60.0f)];
     return result;
 }
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of minutes.
+ *
+ *  @param minutes float - Number of minutes to add
+ *
+ *  @return NSDate - Date modified by the number of desired minutes
+ */
 - (NSDate *)dateByAddingMinutesFloat:(float)minutes{
     NSDate *result = nil;
     float dummy = 0;
@@ -1006,6 +1052,14 @@ static NSCalendar *implicitCalendar = nil;
     return result;
 }
 
+#pragma mark Date By Subtracting Float
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of years.
+ *
+ *  @param years float - Number of years to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired years
+ */
 - (NSDate *)dateBySubtractingYearsFloat:(float)years{
     NSDate *result = nil;
     float dummy = 0;
@@ -1015,6 +1069,14 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateBySubtractingDaysFloat:(tail*365.0f)];
     return result;
 }
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of months.
+ *
+ *  @param months float - Number of months to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired months
+ */
 - (NSDate *)dateBySubtractingMonthsFloat:(float)months{
     NSDate *result = nil;
     int front = (int)months;
@@ -1030,7 +1092,15 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateBySubtractingDaysFloat:(tail*numberOfDaysInMonth)];
     return result;
 }
-- (NSDate *)dateBySubtractingWeeksFloat:(float)weeks {
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of weeks.
+ *
+ *  @param weeks float - Number of weeks to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired weeks
+ */
+- (NSDate *)dateBySubtractingWeeksFloat:(float)weeks{
     NSDate *result = nil;
     int front = (int)weeks;
     float dummy;
@@ -1040,6 +1110,14 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateBySubtractingDaysFloat:(tail*7.0f)];
     return result;
 }
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of days.
+ *
+ *  @param days float - Number of days to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired days
+ */
 - (NSDate *)dateBySubtractingDaysFloat:(float)days{
     NSDate *result = nil;
     int front = (int)days;
@@ -1050,6 +1128,14 @@ static NSCalendar *implicitCalendar = nil;
     return result;
     
 }
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of hours.
+ *
+ *  @param hours float - Number of hours to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired hours
+ */
 - (NSDate *)dateBySubtractingHoursFloat:(float)hours{
     NSDate *result = nil;
     float dummy = 0;
@@ -1059,6 +1145,14 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateBySubtractingMinutesFloat:(tail*60.0f)];
     return result;
 }
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of minutes.
+ *
+ *  @param minutes float - Number of minutes to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired minutes
+ */
 - (NSDate *)dateBySubtractingMinutesFloat:(float)minutes{
     NSDate *result = nil;
     float dummy = 0;
