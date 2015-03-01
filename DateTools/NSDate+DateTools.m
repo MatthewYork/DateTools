@@ -967,6 +967,16 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateByAddingDaysFloat:(tail*numberOfDaysInMonth)];
     return result;
 }
+- (NSDate *)dateByAddingWeeksFloat:(float)weeks {
+    NSDate *result = nil;
+    int front = (int)weeks;
+    float dummy;
+    result = [self dateByAddingWeeks:front];
+    float tail = modff(weeks, &dummy);
+    
+    result = [result dateByAddingDaysFloat:(tail*7.0f)];
+    return result;
+}
 - (NSDate *)dateByAddingDaysFloat:(float)days{
     NSDate *result = nil;
     int front = (int)days;
@@ -1020,13 +1030,23 @@ static NSCalendar *implicitCalendar = nil;
     result = [result dateBySubtractingDaysFloat:(tail*numberOfDaysInMonth)];
     return result;
 }
+- (NSDate *)dateBySubtractingWeeksFloat:(float)weeks {
+    NSDate *result = nil;
+    int front = (int)weeks;
+    float dummy;
+    result = [self dateBySubtractingWeeks:front];
+    float tail = modff(weeks, &dummy);
+    
+    result = [result dateBySubtractingDaysFloat:(tail*7.0f)];
+    return result;
+}
 - (NSDate *)dateBySubtractingDaysFloat:(float)days{
     NSDate *result = nil;
     int front = (int)days;
     float dummy = 0;
     result = [self dateBySubtractingDays:front];
     float tail = modff(days, &dummy);
-    result = [result dateBySubtractingHoursFloat:(tail/24.0f)];
+    result = [result dateBySubtractingHoursFloat:(tail*24.0f)];
     return result;
     
 }
