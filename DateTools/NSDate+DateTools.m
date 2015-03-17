@@ -379,6 +379,15 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 /**
+ *  Returns the number of weeks in the current month.
+ *
+ * @return NSInteger
+ */
+- (NSInteger)weeksInMonth {
+    return [self weeksInMonthWithCalendar:nil];
+}
+
+/**
  *  I honestly don't know much about this value...
  *
  *  @return NSInteger
@@ -620,6 +629,22 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSInteger)weekOfYearWithCalendar:(NSCalendar *)calendar{
     return [self componentForDate:self type:DTDateComponentWeekOfYear calendar:calendar];
+}
+
+/**
+ *  Returns the number of weeks in the current month.
+ *
+ * @param calendar NSCalendar - The calendar to be used in the calculation
+ * 
+ * @return NSInteger
+ */
+- (NSInteger)weeksInMonthWithCalendar:(NSCalendar *)calendar{
+    if (!calendar) {
+        calendar = [[self class] implicitCalendar];
+    }
+    
+    NSRange weekRange = [calendar rangeOfUnit:NSWeekCalendarUnit inUnit:NSMonthCalendarUnit forDate:self];
+    return weekRange.length;
 }
 
 /**

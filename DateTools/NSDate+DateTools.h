@@ -54,6 +54,7 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSInteger)quarter;
 - (NSInteger)weekOfMonth;
 - (NSInteger)weekOfYear;
+- (NSInteger)weeksInMonth;
 - (NSInteger)yearForWeekOfYear;
 - (NSInteger)daysInMonth;
 - (NSInteger)dayOfYear;
@@ -78,6 +79,7 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSInteger)weekdayOrdinalWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)quarterWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)weekOfMonthWithCalendar:(NSCalendar *)calendar;
+- (NSInteger)weeksInMonthWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)weekOfYearWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)yearForWeekOfYearWithCalendar:(NSCalendar *)calendar;
 
