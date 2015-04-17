@@ -47,6 +47,46 @@
     XCTAssert(ago && ago.length > 0, @"Ago is nil or empty.");
 }
 
+- (void)testLongTimeAgo2Days
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 05 18:15:12.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"2 days ago"));
+}
+
+- (void)testLongTimeAgo1DayAndHalf
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 06 9:15:12.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"Yesterday"));
+}
+
+- (void)testLongTimeAgoExactlyYesterday
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 06 18:15:12.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"Yesterday"));
+}
+
+- (void)testLongTimeAgoLessThan24hoursButYesterday
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 06 20:15:12.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"Yesterday"));
+}
+
+- (void)testLongTimeAgoLessThan24hoursSameDay
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:15:12.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"8 hours ago"));
+}
+
 - (void)testBasicShortTimeAgo
 {
     NSString *now = [self.date0 shortTimeAgoSinceDate:self.date0];
@@ -58,6 +98,48 @@
     
     XCTAssert(ago && ago.length > 0, @"Ago is nil or empty.");
 }
+
+
+- (void)testShortTimeAgo2Days
+{
+  self.date0 = [self.formatter dateFromString:@"2014 11 05 18:15:12.000"];
+  self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+  NSString *ago = [self.date0 shortTimeAgoSinceDate:self.date1];
+  XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"2d"));
+}
+
+- (void)testShortTimeAgo1DayAndHalf
+{
+  self.date0 = [self.formatter dateFromString:@"2014 11 06 9:15:12.000"];
+  self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+  NSString *ago = [self.date0 shortTimeAgoSinceDate:self.date1];
+  XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"1d"));
+}
+
+- (void)testShortTimeAgoExactlyYesterday
+{
+  self.date0 = [self.formatter dateFromString:@"2014 11 06 18:15:12.000"];
+  self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+  NSString *ago = [self.date0 shortTimeAgoSinceDate:self.date1];
+  XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"1d"));
+}
+
+- (void)testShortTimeAgoLessThan24hoursButYesterday
+{
+  self.date0 = [self.formatter dateFromString:@"2014 11 06 20:15:12.000"];
+  self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+  NSString *ago = [self.date0 shortTimeAgoSinceDate:self.date1];
+  XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"1d"));
+}
+
+- (void)testShortTimeAgoLessThan24hoursSameDay
+{
+  self.date0 = [self.formatter dateFromString:@"2014 11 07 10:15:12.000"];
+  self.date1 = [self.formatter dateFromString:@"2014 11 07 18:15:12.000"];
+  NSString *ago = [self.date0 shortTimeAgoSinceDate:self.date1];
+  XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"8h"));
+}
+
 
 - (void)testLongTimeAgoLocalizationsAccessible
 {
