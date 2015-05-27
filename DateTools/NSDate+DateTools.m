@@ -730,6 +730,28 @@ static NSCalendar *implicitCalendar = nil;
 	return nsDate;
 }
 
++ (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString {
+
+	return [self dateWithString:dateString formatString:formatString timeZone:[NSTimeZone systemTimeZone]];
+}
+
++ (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString timeZone:(NSTimeZone *)timeZone {
+
+	static NSDateFormatter *parser = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+	    parser = [[NSDateFormatter alloc] init];
+	});
+
+	parser.dateStyle = NSDateFormatterNoStyle;
+	parser.timeStyle = NSDateFormatterNoStyle;
+	parser.timeZone = timeZone;
+	parser.dateFormat = formatString;
+
+	return [parser dateFromString:dateString];
+}
+
+
 #pragma mark - Date Editing
 #pragma mark Date By Adding
 /**

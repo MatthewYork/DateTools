@@ -145,8 +145,17 @@
 #pragma mark Date Creating
 
 - (void)testDateWithYearMonthDayHourMinuteSecond{
-    NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 18:15:12.000"];
     XCTAssertEqual(YES, [self.controlDate isEqualToDate:[NSDate dateWithYear:2014 month:11 day:5 hour:18 minute:15 second:12]], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+- (void)testDateWithStringFormatStringTimeZone {
+	NSDate *testDate = [NSDate dateWithString:@"2015-02-27T18:15:00"
+								 formatString:@"yyyy-MM-dd'T'HH:mm:ss"
+									 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+	
+	XCTAssertEqual(YES, [testDate isEqualToDate:[NSDate dateWithString:@"2015-02-27T19:15:00"
+														  formatString:@"yyyy-MM-dd'T'HH:mm:ss"
+															  timeZone:[NSTimeZone timeZoneWithName:@"Europe/Warsaw"]]], @"%s Failed", __PRETTY_FUNCTION__);
 }
 
 #pragma mark Date By Adding
