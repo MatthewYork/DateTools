@@ -112,103 +112,105 @@ static NSCalendar *implicitCalendar = nil;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
-    
+    NSDate *yesterday = [date dateBySubtractingDays:1];
+    BOOL isYesterday = yesterday.day == self.day;
+
     //Not Yet Implemented/Optional
     //The following strings are present in the translation files but lack logic as of 2014.04.05
     //@"Today", @"This week", @"This month", @"This year"
     //and @"This morning", @"This afternoon"
-    
+
     if (components.year >= 2) {
         return  [self logicLocalizedStringFromFormat:@"%%d %@years ago" withValue:components.year];
     }
     else if (components.year >= 1) {
-     
+
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 year ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Last year");
     }
     else if (components.month >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@months ago" withValue:components.month];
     }
     else if (components.month >= 1) {
-        
+
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 month ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Last month");
     }
     else if (components.weekOfYear >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:components.weekOfYear];
     }
     else if (components.weekOfYear >= 1) {
-        
+
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 week ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Last week");
     }
     else if (components.day >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@days ago" withValue:components.day];
     }
-    else if (components.day >= 1) {
-        
+    else if (isYesterday) {
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 day ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Yesterday");
     }
     else if (components.hour >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@hours ago" withValue:components.hour];
     }
     else if (components.hour >= 1) {
-        
+
         if (useNumericTimes) {
             return DateToolsLocalizedStrings(@"1 hour ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"An hour ago");
     }
     else if (components.minute >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@minutes ago" withValue:components.minute];
     }
     else if (components.minute >= 1) {
-        
+
         if (useNumericTimes) {
             return DateToolsLocalizedStrings(@"1 minute ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"A minute ago");
     }
     else if (components.second >= 3) {
         return [self logicLocalizedStringFromFormat:@"%%d %@seconds ago" withValue:components.second];
     }
     else {
-        
+
         if (useNumericTimes) {
             return DateToolsLocalizedStrings(@"1 second ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Just now");
     }
-    
-}
 
+}
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date{
 
     //If shortened formatting is requested, drop the "ago" part of the time ago
     //use abbreviated unit names
-    
+
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitWeekOfYear | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitSecond;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
-    
+    NSDate *yesterday = [date dateBySubtractingDays:1];
+    BOOL isYesterday = yesterday.day == self.day;
+
     
     if (components.year >= 1) {
         return  [self logicLocalizedStringFromFormat:@"%%d%@y" withValue:components.year];
@@ -219,8 +221,11 @@ static NSCalendar *implicitCalendar = nil;
     else if (components.weekOfYear >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:components.weekOfYear];
     }
-    else if (components.day >= 1) {
+    else if (components.day >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:components.day];
+    }
+    else if (isYesterday) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:1];
     }
     else if (components.hour >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@h" withValue:components.hour];
