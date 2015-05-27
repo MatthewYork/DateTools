@@ -73,7 +73,7 @@
 /* Short format for */
 "%dy" = "%d年"; // year
 "%dM" = "%d月"; // month
-"%dw" = "%d週"; // week
+"%dw" = "%d周"; // week
 "%dd" = "%d天"; // day
 "%dh" = "%d小时"; // hour
 "%dm" = "%d分"; // minute
