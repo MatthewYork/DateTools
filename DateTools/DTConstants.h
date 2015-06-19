@@ -32,3 +32,4 @@ static const NSInteger SECONDS_IN_DAY = 86400;
 static const NSInteger SECONDS_IN_HOUR = 3600;
 static const NSInteger SECONDS_IN_MINUTE = 60;
 static const NSInteger MILLISECONDS_IN_DAY = 86400000;
+#import "DTError.h"
