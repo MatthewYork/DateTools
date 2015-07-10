@@ -26,7 +26,7 @@ All the classes required for DateTools are located in the DateTools folder in th
 * <code>DTTimePeriodCollection.{h,m}</code>
 * <code>DTTimePeriodChain.{h,m}</code>
 
-The following bundle is necessary if you would like to support internationalization. You can add localizations at the `Localizations` subheading under `Info` in the `Project` menu.
+The following bundle is necessary if you would like to support internationalization or would like to use the "Time Ago" functionality. You can add localizations at the `Localizations` subheading under `Info` in the `Project` menu.
 
 * <code>DateTools.bundle</code>
 
@@ -105,6 +105,7 @@ Assuming you have added the localization to your project, `DateTools` currently 
 - id (Indonesian)
 - ca (Catalan)
 - cy (Welsh)
+- hr (Croatian)
 
 If you know a language not listed here, please consider submitting a translation. [Localization codes by language](http://stackoverflow.com/questions/3040677/locale-codes-for-iphone-lproj-folders).
 

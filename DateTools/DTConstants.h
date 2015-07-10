@@ -20,6 +20,8 @@
 // ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#import <Foundation/Foundation.h>
+
 static const long long SECONDS_IN_YEAR = 31556900;
 static const NSInteger SECONDS_IN_MONTH_28 = 2419200;
 static const NSInteger SECONDS_IN_MONTH_29 = 2505600;
@@ -30,3 +32,4 @@ static const NSInteger SECONDS_IN_DAY = 86400;
 static const NSInteger SECONDS_IN_HOUR = 3600;
 static const NSInteger SECONDS_IN_MINUTE = 60;
 static const NSInteger MILLISECONDS_IN_DAY = 86400000;
+#import "DTError.h"

@@ -102,94 +102,115 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates{
+    return [self timeAgoSinceDate:date numericDates:useNumericDates numericTimes:NO];
+}
+
+- (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes{
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitWeekOfYear | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitSecond;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
-    
+    NSDate *yesterday = [date dateBySubtractingDays:1];
+    BOOL isYesterday = yesterday.day == self.day;
+
     //Not Yet Implemented/Optional
     //The following strings are present in the translation files but lack logic as of 2014.04.05
     //@"Today", @"This week", @"This month", @"This year"
     //and @"This morning", @"This afternoon"
-    
+
     if (components.year >= 2) {
         return  [self logicLocalizedStringFromFormat:@"%%d %@years ago" withValue:components.year];
     }
     else if (components.year >= 1) {
-     
+
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 year ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Last year");
     }
     else if (components.month >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@months ago" withValue:components.month];
     }
     else if (components.month >= 1) {
-        
+
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 month ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Last month");
     }
     else if (components.weekOfYear >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@weeks ago" withValue:components.weekOfYear];
     }
     else if (components.weekOfYear >= 1) {
-        
+
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 week ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Last week");
     }
     else if (components.day >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@days ago" withValue:components.day];
     }
-    else if (components.day >= 1) {
-        
+    else if (isYesterday) {
         if (useNumericDates) {
             return DateToolsLocalizedStrings(@"1 day ago");
         }
-        
+
         return DateToolsLocalizedStrings(@"Yesterday");
     }
     else if (components.hour >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@hours ago" withValue:components.hour];
     }
     else if (components.hour >= 1) {
+
+        if (useNumericTimes) {
+            return DateToolsLocalizedStrings(@"1 hour ago");
+        }
+
         return DateToolsLocalizedStrings(@"An hour ago");
     }
     else if (components.minute >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@minutes ago" withValue:components.minute];
     }
     else if (components.minute >= 1) {
+
+        if (useNumericTimes) {
+            return DateToolsLocalizedStrings(@"1 minute ago");
+        }
+
         return DateToolsLocalizedStrings(@"A minute ago");
     }
     else if (components.second >= 3) {
         return [self logicLocalizedStringFromFormat:@"%%d %@seconds ago" withValue:components.second];
     }
     else {
+
+        if (useNumericTimes) {
+            return DateToolsLocalizedStrings(@"1 second ago");
+        }
+
         return DateToolsLocalizedStrings(@"Just now");
     }
-    
-}
 
+}
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date{
 
     //If shortened formatting is requested, drop the "ago" part of the time ago
     //use abbreviated unit names
-    
+
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitWeekOfYear | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitSecond;
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
     NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
-    
+    NSDate *yesterday = [date dateBySubtractingDays:1];
+    BOOL isYesterday = yesterday.day == self.day;
+
     
     if (components.year >= 1) {
         return  [self logicLocalizedStringFromFormat:@"%%d%@y" withValue:components.year];
@@ -200,8 +221,11 @@ static NSCalendar *implicitCalendar = nil;
     else if (components.weekOfYear >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@w" withValue:components.weekOfYear];
     }
-    else if (components.day >= 1) {
+    else if (components.day >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:components.day];
+    }
+    else if (isYesterday) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:1];
     }
     else if (components.hour >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@h" withValue:components.hour];
@@ -228,7 +252,7 @@ static NSCalendar *implicitCalendar = nil;
     NSString *localeCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     
     // Russian (ru) and Ukrainian (uk)
-    if([localeCode isEqual:@"ru"] || [localeCode isEqual:@"uk"]) {
+    if([localeCode isEqualToString:@"ru"] || [localeCode isEqualToString:@"uk"]) {
         int XY = (int)floor(value) % 100;
         int Y = (int)floor(value) % 10;
         
@@ -455,6 +479,21 @@ static NSCalendar *implicitCalendar = nil;
 	return [tomorrow isEqualToDate:otherDate];
 }
 
+- (BOOL)isWeekend {
+    NSCalendar *calendar            = [NSCalendar currentCalendar];
+    NSRange weekdayRange            = [calendar maximumRangeOfUnit:NSCalendarUnitWeekday];
+    NSDateComponents *components    = [calendar components:NSCalendarUnitWeekday
+                                                  fromDate:self];
+    NSUInteger weekdayOfSomeDate    = [components weekday];
+    
+    BOOL result = NO;
+    
+    if (weekdayOfSomeDate == weekdayRange.location || weekdayOfSomeDate == weekdayRange.length)
+        result = YES;
+    
+    return result;
+}
+
 #pragma mark - Date Components With Calendar
 /**
  *  Returns the era of the receiver from a given calendar
@@ -599,6 +638,7 @@ static NSCalendar *implicitCalendar = nil;
     return [self componentForDate:self type:DTDateComponentYearForWeekOfYear calendar:calendar];
 }
 
+
 /**
  *  Returns the day of the year of the receiver from a given calendar
  *
@@ -671,6 +711,51 @@ static NSCalendar *implicitCalendar = nil;
     
     return 0;
 }
+
+#pragma mark - Date Creating
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day {
+	
+	return [self dateWithYear:year month:month day:day hour:0 minute:0 second:0];
+}
+
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second {
+	
+	NSDate *nsDate = nil;
+	NSDateComponents *components = [[NSDateComponents alloc] init];
+	
+	components.year   = year;
+	components.month  = month;
+	components.day    = day;
+	components.hour   = hour;
+	components.minute = minute;
+	components.second = second;
+	
+	nsDate = [[[self class] implicitCalendar] dateFromComponents:components];
+	
+	return nsDate;
+}
+
++ (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString {
+
+	return [self dateWithString:dateString formatString:formatString timeZone:[NSTimeZone systemTimeZone]];
+}
+
++ (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString timeZone:(NSTimeZone *)timeZone {
+
+	static NSDateFormatter *parser = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+	    parser = [[NSDateFormatter alloc] init];
+	});
+
+	parser.dateStyle = NSDateFormatterNoStyle;
+	parser.timeStyle = NSDateFormatterNoStyle;
+	parser.timeZone = timeZone;
+	parser.dateFormat = formatString;
+
+	return [parser dateFromString:dateString];
+}
+
 
 #pragma mark - Date Editing
 #pragma mark Date By Adding

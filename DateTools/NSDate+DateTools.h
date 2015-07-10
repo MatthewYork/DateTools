@@ -22,7 +22,7 @@
 
 #ifndef DateToolsLocalizedStrings
 #define DateToolsLocalizedStrings(key) \
-NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
+NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle bundleForClass:[DTError class]] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
 #endif
 
 #import <Foundation/Foundation.h>
@@ -37,6 +37,7 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSString *)shortTimeAgoSinceNow;
 - (NSString *)timeAgoSinceDate:(NSDate *)date;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates;
+- (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes;
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date;
 
 
@@ -61,6 +62,7 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (BOOL)isToday;
 - (BOOL)isTomorrow;
 -(BOOL)isYesterday;
+- (BOOL)isWeekend;
 
 #pragma mark - Date Components With Calendar
 
@@ -78,6 +80,14 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSInteger)weekOfMonthWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)weekOfYearWithCalendar:(NSCalendar *)calendar;
 - (NSInteger)yearForWeekOfYearWithCalendar:(NSCalendar *)calendar;
+
+
+#pragma mark - Date Creating
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
++ (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
++ (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString;
++ (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString timeZone:(NSTimeZone *)timeZone;
+
 
 #pragma mark - Date Editing
 #pragma mark Date By Adding

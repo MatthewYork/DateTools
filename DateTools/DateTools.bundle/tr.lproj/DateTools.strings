@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Bu yıl";
+
+/* Short format for */
+"%dy" = "%dy"; // year
+"%dM" = "%day"; // month
+"%dw" = "%dh"; // week
+"%dd" = "%dg"; // day
+"%dh" = "%dsa"; // hour
+"%dm" = "%ddk"; // minute
+"%ds" = "%dsn"; // second

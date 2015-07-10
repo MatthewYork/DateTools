@@ -28,17 +28,11 @@
 		F00762FE18DE5D9900A99075 /* DTTimePeriodChainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F00762F918DE5D9900A99075 /* DTTimePeriodChainTests.m */; };
 		F00762FF18DE5D9900A99075 /* DTTimePeriodCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F00762FA18DE5D9900A99075 /* DTTimePeriodCollectionTests.m */; };
 		F007631018DE5DC400A99075 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630518DE5DC400A99075 /* NSDate+DateTools.m */; };
-		F007631118DE5DC400A99075 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630518DE5DC400A99075 /* NSDate+DateTools.m */; };
 		F007631218DE5DC400A99075 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630718DE5DC400A99075 /* DTTimePeriod.m */; };
-		F007631318DE5DC400A99075 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630718DE5DC400A99075 /* DTTimePeriod.m */; };
 		F007631618DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */; };
-		F007631718DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */; };
 		F0EE17F318DEB1C20010FAD8 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17EE18DEB1C20010FAD8 /* DTError.m */; };
-		F0EE17F418DEB1C20010FAD8 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17EE18DEB1C20010FAD8 /* DTError.m */; };
 		F0EE17F518DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */; };
-		F0EE17F618DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */; };
 		F0EE17F718DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */; };
-		F0EE17F818DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -340,14 +334,8 @@
 				0AFD486018F08640004D0FE1 /* DTTimeAgoTests.m in Sources */,
 				F00762FB18DE5D9900A99075 /* DateToolsTests.m in Sources */,
 				F00762FD18DE5D9900A99075 /* DTTimePeriodGroupTests.m in Sources */,
-				F007631318DE5DC400A99075 /* DTTimePeriod.m in Sources */,
-				F0EE17F618DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */,
-				F0EE17F418DEB1C20010FAD8 /* DTError.m in Sources */,
 				F00762FF18DE5D9900A99075 /* DTTimePeriodCollectionTests.m in Sources */,
 				F00762FC18DE5D9900A99075 /* DTTimePeriodTests.m in Sources */,
-				F0EE17F818DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */,
-				F007631718DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */,
-				F007631118DE5DC400A99075 /* NSDate+DateTools.m in Sources */,
 				F00762FE18DE5D9900A99075 /* DTTimePeriodChainTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
