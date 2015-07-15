@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0AFD486518F0BBC0004D0FE1 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */; };
+		D935DB441B567FBD00BAA4F0 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D935DB431B567FBD00BAA4F0 /* DTConstants.m */; };
 		F007632018DE5F5E00A99075 /* DateToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F007631E18DE5F5E00A99075 /* DateToolsViewController.m */; };
 		F007632118DE5F5E00A99075 /* DateToolsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F007631F18DE5F5E00A99075 /* DateToolsViewController.xib */; };
 		F007632518DE5FE300A99075 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = F007632418DE5FE300A99075 /* Colours.m */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		D935DB431B567FBD00BAA4F0 /* DTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTConstants.m; path = ../../../DateTools/DTConstants.m; sourceTree = "<group>"; };
 		F007631D18DE5F5E00A99075 /* DateToolsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateToolsViewController.h; sourceTree = "<group>"; };
 		F007631E18DE5F5E00A99075 /* DateToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateToolsViewController.m; sourceTree = "<group>"; };
 		F007631F18DE5F5E00A99075 /* DateToolsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateToolsViewController.xib; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				F0EE17E218DEB1A10010FAD8 /* DTError.m */,
 				F0EE17E018DEAE190010FAD8 /* DateTools.h */,
 				F0A426D918DA358C00E236C0 /* DTConstants.h */,
+				D935DB431B567FBD00BAA4F0 /* DTConstants.m */,
 				F0F08DD718D9E94F00214C6B /* NSDate+DateTools.h */,
 				F0F08DD818D9E94F00214C6B /* NSDate+DateTools.m */,
 				F0A426D418D9FDB500E236C0 /* DTTimePeriod.h */,
@@ -393,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D935DB441B567FBD00BAA4F0 /* DTConstants.m in Sources */,
 				F0EE17E718DEB1A10010FAD8 /* DTError.m in Sources */,
 				F0EE17EB18DEB1A10010FAD8 /* DTTimePeriodGroup.m in Sources */,
 				F0A426D618D9FDB500E236C0 /* DTTimePeriod.m in Sources */,
