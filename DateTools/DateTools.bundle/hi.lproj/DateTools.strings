@@ -5,13 +5,13 @@
 "%d hours ago" = "%d घंटे पहले";
 
 /* No comment provided by engineer. */
-"%d minutes ago" = "%d मिनट पहल";
+"%d minutes ago" = "%d मिनट पहले";
 
 /* No comment provided by engineer. */
-"%d months ago" = "%d महीने पहल";
+"%d months ago" = "%d महीने पहले";
 
 /* No comment provided by engineer. */
-"%d seconds ago" = "%d सेकंड पहल";
+"%d seconds ago" = "%d सेकंड पहले";
 
 /* No comment provided by engineer. */
 "%d weeks ago" = "%d हफ्ते पहले";
@@ -29,7 +29,7 @@
 "Just now" = "बस अभी";
 
 /* No comment provided by engineer. */
-"Last month" = "पिछले महीन";
+"Last month" = "पिछले महीने";
 
 /* No comment provided by engineer. */
 "Last week" = "पिछले हफ्ते";
@@ -44,7 +44,7 @@
 "1 year ago" = "1 साल पहले";
 
 /* No comment provided by engineer. */
-"1 month ago" = "1 महीने पहल";
+"1 month ago" = "1 महीने पहले";
 
 /* No comment provided by engineer. */
 "1 week ago" = "1 हफ्ते पहले";
@@ -59,19 +59,19 @@
 "1 minute ago" = "1 मिनट पहले";
 
 /* No comment provided by engineer. */
-"1 second ago" = "1 सेकंड पहल";
+"1 second ago" = "1 सेकंड पहले";
 
 /* No comment provided by engineer. */
 "This morning" = "आज सुबह";
 
 /* No comment provided by engineer. */
-"This afternoon" = "यह दोपहर";
+"This afternoon" = "आज दोपहर";
 
 /* No comment provided by engineer. */
 "Today" = "आज";
 
 /* No comment provided by engineer. */
-"This week" = "इस हफ्त";
+"This week" = "इस हफ्ते";
 
 /* No comment provided by engineer. */
 "This month" = "इस महीने";
