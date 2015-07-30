@@ -95,6 +95,7 @@ Assuming you have added the localization to your project, `DateTools` currently 
 - ja (Japanese)
 - ko (Korean)
 - lv (Latvian)
+- ms (Malay)
 - nb (Norwegian)
 - pl (Polish)
 - pt (Portuguese)
