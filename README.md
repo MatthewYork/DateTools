@@ -19,11 +19,15 @@ DateTools was written to streamline date and time handling in Objective-C. Class
   <td align="center">
   <a href="https://itunes.apple.com/us/app/aldi-usa/id429396645?mt=8"><img src="http://a4.mzstatic.com/us/r30/Purple7/v4/a7/63/20/a76320db-2de4-62ad-b620-efaab8a179dc/icon100x100.jpeg" /></a>
   </td>
+  <td align="center">
+  <a href="https://itunes.apple.com/us/app/guidebook/id428713847?mt=8"><img src="http://a5.mzstatic.com/us/r30/Purple7/v4/e4/af/db/e4afdbc1-9ceb-c403-4d06-299e7e693120/icon100x100.png" /></a>
+  </td>
   <tr>
    <td align="center">Yahoo! Livetext</td>
    <td align="center">My Disney Experience</td>
-   <td align="center">ALDI</td></tr>
-  </td>
+   <td align="center">ALDI</td>
+   <td align="center">Guidebook</td>
+  </tr>
  </tr>
 </table>
 
