@@ -7,6 +7,26 @@ DateTools was written to streamline date and time handling in Objective-C. Class
 [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/DateTools/badge.png)](http://cocoapods.org/?q=datetools)
 
+####Featured In
+<table>
+ <tr>
+  <td align="center">
+  <a href="https://itunes.apple.com/hk/app/yahoo-livetext-video-messenger/id995121875?mt=8"><img src="http://a4.mzstatic.com/us/r30/Purple2/v4/7c/1b/11/7c1b11f3-2a73-b655-751e-b21b2e8bc6f7/icon100x100.png" /></a>
+  </td>
+  <td align="center">
+  <a href="https://itunes.apple.com/app/id547436543"><img src="http://a5.mzstatic.com/us/r30/Purple5/v4/1f/7b/a5/1f7ba545-038e-353e-18a0-b6472eef1913/icon100x100.jpeg" /></a>
+  </td>
+  <td align="center">
+  <a href="https://itunes.apple.com/us/app/aldi-usa/id429396645?mt=8"><img src="http://a4.mzstatic.com/us/r30/Purple7/v4/a7/63/20/a76320db-2de4-62ad-b620-efaab8a179dc/icon100x100.jpeg" /></a>
+  </td>
+  <tr>
+   <td align="center">Yahoo! Livetext</td>
+   <td align="center">My Disney Experience</td>
+   <td align="center">ALDI</td></tr>
+  </td>
+ </tr>
+</table>
+
 ## Installation
 
 **Cocoapods**
