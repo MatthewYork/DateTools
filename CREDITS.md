@@ -66,3 +66,9 @@ mjanda added es and cs short format strings https://github.com/mjanda
 Niklas Fahl added the de short format strings https://github.com/fahlout
 
 Vlad Cacuic added the ro short format strings https://github.com/vrcaciuc
+
+frin added sl Slovenian strings. http://github.com/frin
+
+Nikhil Nigade added hi (Hindi) and gu (Gujarati) strings. https://github.com/dezinezync
+
+Faiz Mokhtar added ms Malay strings. https://github.com/faizmokhtar
