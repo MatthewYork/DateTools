@@ -147,12 +147,12 @@
     NSString *ja_local = @"昨日";
 
     NSString *key = en_local;
-    
-    NSString *path = [NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:@"DateTools.bundle/ja.lproj"];
-    NSBundle *bundle = [NSBundle bundleWithPath:path];
-    
+    NSString *frameworkPath = [NSBundle bundleForClass:[DTError class]].resourcePath;
+    NSString *bundlePath = [frameworkPath stringByAppendingPathComponent:@"DateTools.bundle/ja.lproj"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+
     NSString *ja_result = NSLocalizedStringFromTableInBundle(key, @"DateTools", bundle, nil);
-    
+
     XCTAssertEqualObjects(ja_local, ja_result, @"Could not access localizations.");
 }
 
