@@ -4,4 +4,4 @@ before_script:
 - gem install xcpretty
 
 script: 
-- xcodebuild -project Tests/DateToolsTests/DateToolsTests.xcodeproj -scheme DateToolsTests -sdk iphonesimulator test | xcpretty -c
+- xcodebuild -project DateTools.xcodeproj -scheme "DateTools iOS" -sdk iphonesimulator test | xcpretty -c
