@@ -494,6 +494,26 @@ static NSCalendar *implicitCalendar = nil;
     return result;
 }
 
+/**
+ *  Returns whether two dates fall on the same day.
+ *
+ *  @param date NSDate - First date to compare
+ *  @param compareDate NSDate - Second date to compare
+ *  @return BOOL - YES if both paramter dates fall on the same day, NO otherwise
+ */
++ (BOOL)isSameDay:(NSDate *)date asDate:(NSDate *)compareDate
+{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:date];
+    NSDate *dateOne = [cal dateFromComponents:components];
+    
+    components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:compareDate];
+    NSDate *dateTwo = [cal dateFromComponents:components];
+    
+    return [dateOne isEqualToDate:dateTwo];
+}
+
 #pragma mark - Date Components With Calendar
 /**
  *  Returns the era of the receiver from a given calendar
