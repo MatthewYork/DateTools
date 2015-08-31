@@ -201,16 +201,16 @@
 
 -(void)updateVariables{
     //Set helper variables
-    StartDate = [periods[0] StartDate];
-    EndDate = [periods[periods.count - 1] EndDate];
+    startDate = [periods[0] StartDate];
+    endDate = [periods[periods.count - 1] EndDate];
     First = periods[0];
     Last = periods[periods.count -1];
 }
 
 -(void)setVariablesNil{
     //Set helper variables
-    StartDate = nil;
-    EndDate = nil;
+    startDate = nil;
+    endDate = nil;
     First = nil;
     Last = nil;
 }

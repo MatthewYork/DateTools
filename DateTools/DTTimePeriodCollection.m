@@ -330,26 +330,26 @@
 
 -(void)updateVariables{
     //Set helper variables
-    __block NSDate *startDate = [NSDate distantFuture];
-    __block NSDate *endDate = [NSDate distantPast];
+    __block NSDate *_startDate = [NSDate distantFuture];
+    __block NSDate *_endDate = [NSDate distantPast];
     [periods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([((DTTimePeriod *) obj).StartDate isEarlierThan:startDate]) {
-            startDate = ((DTTimePeriod *) obj).StartDate;
+        if ([((DTTimePeriod *) obj).StartDate isEarlierThan:_startDate]) {
+            _startDate = ((DTTimePeriod *) obj).StartDate;
         }
-        if ([((DTTimePeriod *) obj).EndDate isLaterThan:endDate]) {
-            endDate = ((DTTimePeriod *) obj).EndDate;
+        if ([((DTTimePeriod *) obj).EndDate isLaterThan:_endDate]) {
+            _endDate = ((DTTimePeriod *) obj).EndDate;
         }
     }];
     
     //Make assignments after evaluation
-    StartDate = startDate;
-    EndDate = endDate;
+    startDate = _startDate;
+    endDate = _endDate;
 }
 
 -(void)setVariablesNil{
     //Set helper variables
-    StartDate = nil;
-    EndDate = nil;
+    startDate = nil;
+    endDate = nil;
 }
 
 /**
