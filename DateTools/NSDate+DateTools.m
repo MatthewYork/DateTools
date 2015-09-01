@@ -163,6 +163,9 @@ static NSCalendar *implicitCalendar = nil;
 
         return DateToolsLocalizedStrings(@"Yesterday");
     }
+    else if (components.day >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@day ago" withValue:components.day];
+    }
     else if (components.hour >= 2) {
         return [self logicLocalizedStringFromFormat:@"%%d %@hours ago" withValue:components.hour];
     }
@@ -227,6 +230,9 @@ static NSCalendar *implicitCalendar = nil;
     else if (isYesterday) {
         return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:1];
     }
+    else if (components.day >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:components.day];
+    }
     else if (components.hour >= 1) {
         return [self logicLocalizedStringFromFormat:@"%%d%@h" withValue:components.hour];
     }
@@ -273,6 +279,62 @@ static NSCalendar *implicitCalendar = nil;
     
     return @"";
 }
+
+/**
+ *  Returns a string with the most conventient unit of time representing
+ *  how many calendar days in the past that date is from now.
+ *
+ *  @return NSString - Formatted return string
+ */
+- (NSString *)calendarTimeAgoSinceNow
+{
+    return [self calendarTimeAgoSinceDate:[NSDate date]];
+}
+
+/**
+ *  Returns a shortened string with the most conventient unit of time representing
+ *  how many calendar days in the past that date is from now.
+ *
+ *  @return NSString - Formatted return string
+ */
+- (NSString *)shortCalendarTimeAgoSinceNow
+{
+    return [self shortCalendarTimeAgoSinceDate:[NSDate date]];
+}
+
+- (NSString *)calendarTimeAgoSinceDate:(NSDate *)date
+{
+    return [self calendarTimeAgoSinceDate:date shortFormat:NO];
+}
+
+- (NSString *)shortCalendarTimeAgoSinceDate:(NSDate *)date
+{
+    return [self calendarTimeAgoSinceDate:date shortFormat:YES];
+}
+
+- (NSString *)calendarTimeAgoSinceDate:(NSDate *)date shortFormat:(BOOL)shortFormat
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *earlierDate = [self earlierDate:date];
+    NSDate *laterDate = (earlierDate == self) ? date : self;
+    
+    NSDate *earliest;
+    NSDate *latest;
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&earliest
+                 interval:NULL forDate:earlierDate];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&latest
+                 interval:NULL forDate:laterDate];
+    
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:earliest toDate:latest options:0];
+    
+    // If less than one day, return formatted number of hours, minutes, seconds
+    if (components.day < 1) {
+        return shortFormat ? [self shortTimeAgoSinceDate:date] : [self timeAgoSinceDate:date];
+    }
+    
+    return shortFormat ? [latest shortTimeAgoSinceDate:earliest] : [latest timeAgoSinceDate:earliest];
+}
+
 
 #pragma mark - Date Components Without Calendar
 /**

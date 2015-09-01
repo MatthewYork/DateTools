@@ -39,7 +39,11 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes;
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date;
-
+- (NSString *)calendarTimeAgoSinceNow;
+- (NSString *)shortCalendarTimeAgoSinceNow;
+- (NSString *)calendarTimeAgoSinceDate:(NSDate *)date;
+- (NSString *)shortCalendarTimeAgoSinceDate:(NSDate *)date;
+- (NSString *)calendarTimeAgoSinceDate:(NSDate *)date shortFormat:(BOOL)shortFormat;
 
 #pragma mark - Date Components Without Calendar
 - (NSInteger)era;
