@@ -512,6 +512,17 @@ static NSCalendar *implicitCalendar = nil;
     return result;
 }
 
+
+/**
+ *  Returns whether two dates fall on the same day.
+ *
+ *  @param date NSDate - Date to compare with sender
+ *  @return BOOL - YES if both paramter dates fall on the same day, NO otherwise
+ */
+-(BOOL)isSameDay:(NSDate *)date {
+    return [NSDate isSameDay:self asDate:date];
+}
+
 /**
  *  Returns whether two dates fall on the same day.
  *
