@@ -8,6 +8,7 @@
 
 #import "DateToolsViewController.h"
 #import "NSDate+DateTools.h"
+#import "NSBundle+Language.h"
 #import "Colours.h"
 
 @interface DateToolsViewController ()
@@ -62,7 +63,13 @@
     [[NSRunLoop mainRunLoop] addTimer:self.updateTimer forMode:NSRunLoopCommonModes];
     
     [self setupViews];
+    [NSBundle setLanguage:@"en"];
     [self updateTimeAgoLabels];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [NSBundle setLanguage:@"ja"];
+        [self updateTimeAgoLabels];
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,6 +100,8 @@
     
     //Set time ago label
     self.TimeAgoLabel.text = [self.formatter stringFromDate:self.selectedDate];
+    
+    NSLog(@"Time Ago: %@", self.selectedDate.timeAgoSinceNow);
     
     //Set date component labels
     self.SecondsLabel.text = [NSString stringWithFormat:@"%.0f", self.selectedDate.secondsAgo];
