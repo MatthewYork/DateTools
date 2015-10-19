@@ -267,7 +267,7 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (NSString *)getLocaleFormatUnderscoresWithValue:(double)value{
-    NSString *localeCode = [[NSLocale currentLocale] localeIdentifier];
+    NSString *localeCode = [[[[NSLocale currentLocale] localeIdentifier] componentsSeparatedByString:@"_"] firstObject];
     
     // Russian (ru) and Ukrainian (uk)
     if([localeCode isEqualToString:@"ru"] || [localeCode isEqualToString:@"uk"]) {
