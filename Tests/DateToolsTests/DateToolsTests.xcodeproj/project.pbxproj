@@ -30,6 +30,7 @@
 		F007631018DE5DC400A99075 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630518DE5DC400A99075 /* NSDate+DateTools.m */; };
 		F007631218DE5DC400A99075 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630718DE5DC400A99075 /* DTTimePeriod.m */; };
 		F007631618DE5DC400A99075 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */; };
+		F075ABC91B9A52DA00AC95C8 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F075ABC81B9A52DA00AC95C8 /* DTConstants.m */; };
 		F0EE17F318DEB1C20010FAD8 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17EE18DEB1C20010FAD8 /* DTError.m */; };
 		F0EE17F518DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F018DEB1C20010FAD8 /* DTTimePeriodChain.m */; };
 		F0EE17F718DEB1C20010FAD8 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EE17F218DEB1C20010FAD8 /* DTTimePeriodGroup.m */; };
@@ -82,6 +83,7 @@
 		F007630A18DE5DC400A99075 /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = ../../../DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
 		F007630B18DE5DC400A99075 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = ../../../DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
 		F022EC1418F44D3700743E17 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		F075ABC81B9A52DA00AC95C8 /* DTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTConstants.m; path = ../../../DateTools/DTConstants.m; sourceTree = "<group>"; };
 		F0EE17ED18DEB1C20010FAD8 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = ../../../DateTools/DTError.h; sourceTree = "<group>"; };
 		F0EE17EE18DEB1C20010FAD8 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = ../../../DateTools/DTError.m; sourceTree = "<group>"; };
 		F0EE17EF18DEB1C20010FAD8 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = ../../../DateTools/DTTimePeriodChain.h; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				F0EE17ED18DEB1C20010FAD8 /* DTError.h */,
 				F0EE17EE18DEB1C20010FAD8 /* DTError.m */,
 				F007630118DE5DC400A99075 /* DTConstants.h */,
+				F075ABC81B9A52DA00AC95C8 /* DTConstants.m */,
 				F007630418DE5DC400A99075 /* NSDate+DateTools.h */,
 				F007630518DE5DC400A99075 /* NSDate+DateTools.m */,
 				F007630618DE5DC400A99075 /* DTTimePeriod.h */,
@@ -320,6 +323,7 @@
 				F00762D818DE5D7500A99075 /* ViewController.m in Sources */,
 				F00762D218DE5D7500A99075 /* AppDelegate.m in Sources */,
 				F0EE17F518DEB1C20010FAD8 /* DTTimePeriodChain.m in Sources */,
+				F075ABC91B9A52DA00AC95C8 /* DTConstants.m in Sources */,
 				F0EE17F318DEB1C20010FAD8 /* DTError.m in Sources */,
 				F007631218DE5DC400A99075 /* DTTimePeriod.m in Sources */,
 				F007631018DE5DC400A99075 /* NSDate+DateTools.m in Sources */,

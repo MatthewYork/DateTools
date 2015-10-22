@@ -1,90 +1,89 @@
 /* No comment provided by engineer. */
-"%d days ago" = "%d日前";
+"%d days ago" = "%d hari yang lepas";
 
 /* No comment provided by engineer. */
-"%d hours ago" = "%d時間前";
+"%d hours ago" = "%d jam yang lepas";
 
 /* No comment provided by engineer. */
-"%d minutes ago" = "%d分前";
+"%d minutes ago" = "%d minit yang lepas";
 
 /* No comment provided by engineer. */
-"%d months ago" = "%dヶ月前";
+"%d months ago" = "%d bulan yang lepas";
 
 /* No comment provided by engineer. */
-"%d seconds ago" = "%d秒前";
+"%d seconds ago" = "%d saat yang lepas";
 
 /* No comment provided by engineer. */
-"%d weeks ago" = "%d週間前";
+"%d weeks ago" = "%d minggu yang lepas";
 
 /* No comment provided by engineer. */
-"%d years ago" = "%d年前";
+"%d years ago" = "%d tahun yang lepas";
 
 /* No comment provided by engineer. */
-"A minute ago" = "1分前";
+"A minute ago" = "Seminit yang lepas";
 
 /* No comment provided by engineer. */
-"An hour ago" = "1時間前";
+"An hour ago" = "Sejam yang lepas";
 
 /* No comment provided by engineer. */
-"Just now" = "たった今";
+"Just now" = "Sebentar tadi";
 
 /* No comment provided by engineer. */
-"Last month" = "先月";
+"Last month" = "Bulan lepas";
 
 /* No comment provided by engineer. */
-"Last week" = "先週";
+"Last week" = "Minggu lepas";
 
 /* No comment provided by engineer. */
-"Last year" = "去年";
+"Last year" = "Tahun lepas";
 
 /* No comment provided by engineer. */
-"Yesterday" = "昨日";
+"Yesterday" = "Semalam";
 
 /* No comment provided by engineer. */
-"1 year ago" = "1年前";
+"1 year ago" = "1 tahun lepas";
 
 /* No comment provided by engineer. */
-"1 month ago" = "1ヶ月前";
+"1 month ago" = "1 bulan lepas";
 
 /* No comment provided by engineer. */
-"1 week ago" = "1週間前";
+"1 week ago" = "1 minggu lepas";
 
 /* No comment provided by engineer. */
-"1 day ago" = "1日前";
+"1 day ago" = "1 hari lepas";
 
 /* No comment provided by engineer. */
-"1 hour ago" = "1時間前";
+"1 hour ago" = "1 jam lepas";
 
 /* No comment provided by engineer. */
-"1 minute ago" = "1分前";
+"1 minute ago" = "1 minit lepas";
 
 /* No comment provided by engineer. */
-"1 second ago" = "1秒前";
+"1 second ago" = "1 saat lepas";
 
 /* No comment provided by engineer. */
-"This morning" = "午前";
+"This morning" = "Pagi ini";
 
 /* No comment provided by engineer. */
-"This afternoon" = "午後";
+"This afternoon" = "Petang ini";
 
 /* No comment provided by engineer. */
-"Today" = "今日";
+"Today" = "Hari ini";
 
 /* No comment provided by engineer. */
-"This week" = "今週";
+"This week" = "Minggu ini";
 
 /* No comment provided by engineer. */
-"This month" = "今月";
+"This month" = "Bulan ini";
 
 /* No comment provided by engineer. */
-"This year" = "今年";
+"This year" = "Tahun ini";
 
 /* Short format for */
-"%dy" = "%d年"; // year
-"%dM" = "%d月"; // month
-"%dw" = "%d週"; // week
-"%dd" = "%d日"; // day
-"%dh" = "%d時間"; // hour
-"%dm" = "%d分"; // minute
-"%ds" = "%d秒"; // second
-
+"%dy" = "%dy"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dw"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%dh"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second

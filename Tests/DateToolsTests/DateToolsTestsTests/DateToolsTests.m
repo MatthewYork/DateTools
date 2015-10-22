@@ -141,6 +141,52 @@
     XCTAssertFalse([[NSDate date] dateBySubtractingDays:2].isYesterday, @"%s Failed", __PRETTY_FUNCTION__);
 }
 
+-(void)testIsWeekend{
+    //Created test dates
+    NSDate *testFriday = [self.formatter dateFromString:@"2015 09 04 12:45:12.000"];
+    NSDate *testMonday = [self.formatter dateFromString:@"2015 02 16 00:00:00.000"];
+    NSDate *testWeekend = [self.formatter dateFromString:@"2015 09 05 17:45:12.000"];
+    
+    //Test false with friday and monday
+    XCTAssertFalse(testFriday.isWeekend, @"%s Failed", __PRETTY_FUNCTION__);
+    XCTAssertFalse(testMonday.isWeekend, @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test true past
+    XCTAssertTrue(testWeekend.isWeekend, @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+-(void)testIsSameDay {
+    //Test same time stamp
+    XCTAssertTrue([[NSDate date] isSameDay:[NSDate date]], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test true same day
+    NSDate *testSameDay1 = [self.formatter dateFromString:@"2014 11 05 12:45:12.000"];
+    NSDate *testSameDay2 = [self.formatter dateFromString:@"2014 11 05 17:45:12.000"];
+    XCTAssertTrue([testSameDay1 isSameDay:testSameDay2], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test false 1 day ahead
+    XCTAssertFalse([testSameDay1 isSameDay:[[NSDate date] dateByAddingDays:1]], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test false 1 day before
+    XCTAssertFalse([testSameDay1 isSameDay:[[NSDate date] dateBySubtractingDays:1]], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
+-(void)testIsSameDayStatic {
+    //Test true same time stamp
+    XCTAssertTrue([NSDate isSameDay:[NSDate date] asDate:[NSDate date]], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test true same day
+    NSDate *testSameDay1 = [self.formatter dateFromString:@"2014 11 05 12:45:12.000"];
+    NSDate *testSameDay2 = [self.formatter dateFromString:@"2014 11 05 17:45:12.000"];
+    XCTAssertTrue([NSDate isSameDay:testSameDay1 asDate:testSameDay2], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test false 1 day ahead
+    XCTAssertFalse([NSDate isSameDay:[NSDate date] asDate:[[NSDate date] dateByAddingDays:1]], @"%s Failed", __PRETTY_FUNCTION__);
+    
+    //Test false 1 day before
+    XCTAssertFalse([NSDate isSameDay:[NSDate date] asDate:[[NSDate date] dateBySubtractingDays:1]], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
 #pragma mark - Date Editing
 #pragma mark Date Creating
 
