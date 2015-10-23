@@ -148,6 +148,104 @@
   XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"8h"));
 }
 
+//------------------------------------------------------------------------------------
+// ここからJOIN US 仕様: https://github.com/gram30/joinus-android/issues/9#issue-111549274
+//------------------------------------------------------------------------------------
+
+- (void)testShortTimeAgo1SecAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:15:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:15:01.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"Just now"));
+}
+
+- (void)testShortTimeAgo1MinAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:01:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"Just now"));
+}
+
+- (void)testShortTimeAgo9MinAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:09:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"Just now"));
+}
+
+- (void)testShortTimeAgo10MinAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:10:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"10 min ago"));
+}
+
+- (void)testShortTimeAgo11MinAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:11:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"10 min ago"));
+}
+
+- (void)testShortTimeAgo30MinAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:30:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"30 min ago"));
+}
+
+- (void)testShortTimeAgo31MinAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:31:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"30 min ago"));
+}
+
+- (void)testShortTimeAgo59MinAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 10:59:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"50 min ago"));
+}
+
+- (void)testShortTimeAgo1HourAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 11:00:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"1 hour ago"));
+}
+
+- (void)testShortTimeAgo2HourAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 12:00:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"2 hours ago"));
+}
+
+- (void)testShortTimeAgo10_5HourAgo
+{
+    self.date0 = [self.formatter dateFromString:@"2014 11 07 10:00:00.000"];
+    self.date1 = [self.formatter dateFromString:@"2014 11 07 20:30:00.000"];
+    NSString *ago = [self.date0 timeAgoSinceDate:self.date1];
+    XCTAssertEqualObjects(ago, DateToolsLocalizedStrings(@"10 hours ago"));
+}
+
+
+//------------------------------------------------------------------------------------
+// ここまでJOIN US 仕様: https://github.com/gram30/joinus-android/issues/9#issue-111549274
+//------------------------------------------------------------------------------------
+
+
 - (void)testShortTimeAgoBetween24And48Hours
 {
     self.date0 = [self.formatter dateFromString:@"2014 11 07 10:15:12.000"];
