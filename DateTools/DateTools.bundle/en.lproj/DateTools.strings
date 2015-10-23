@@ -5,7 +5,7 @@
 "%d hours ago" = "%d hours ago";
 
 /* No comment provided by engineer. */
-"%d minutes ago" = "%d minutes ago";
+"%d minutes ago" = "%d min ago";
 
 /* No comment provided by engineer. */
 "%d months ago" = "%d months ago";
@@ -20,7 +20,7 @@
 "%d years ago" = "%d years ago";
 
 /* No comment provided by engineer. */
-"A minute ago" = "A minute ago";
+"A minute ago" = "A min ago";
 
 /* No comment provided by engineer. */
 "An hour ago" = "An hour ago";
@@ -56,7 +56,7 @@
 "1 hour ago" = "1 hour ago";
 
 /* No comment provided by engineer. */
-"1 minute ago" = "1 minute ago";
+"1 minute ago" = "1 min ago";
 
 /* No comment provided by engineer. */
 "1 second ago" = "1 second ago";
