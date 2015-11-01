@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'DateTools'
-  s.version      = '1.7.0'
+  s.version      = '1.7.1'
   s.summary      = 'Dates and time made easy in Objective-C'
   s.homepage     = 'https://github.com/MatthewYork/DateTools'
 
@@ -14,6 +14,8 @@ Pod::Spec.new do |s|
 
   s.ios.platform = :ios, '7.0'
   s.osx.platform = :iox, '10.7'
+  s.tvos.platform = :tvos, '9.0'
+  s.watchos.platform = :watchos, '2.0'
   s.requires_arc = true
 
   s.source_files = 'DateTools'
