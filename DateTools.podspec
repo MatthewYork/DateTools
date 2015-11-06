@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
 
   s.source_files = 'DateTools'
   s.resources    = 'DateTools/DateTools.bundle'
-  s.public_header_files = 'DateTools/DateTools.h'
+  s.public_header_files = 'DateTools/*.h'
 end
