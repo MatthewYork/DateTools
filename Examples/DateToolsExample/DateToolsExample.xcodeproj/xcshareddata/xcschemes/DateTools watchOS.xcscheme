@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0640"
+   LastUpgradeVersion = "0710"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "908837C81B637C240063096B"
+               BlueprintIdentifier = "A717AFCC1C17AA620052A1F7"
                BuildableName = "DateTools.framework"
-               BlueprintName = "DateTools"
-               ReferencedContainer = "container:DateToolsExample.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "908837D21B637C240063096B"
-               BuildableName = "DateToolsTests.xctest"
-               BlueprintName = "DateToolsTests"
+               BlueprintName = "DateTools watchOS"
                ReferencedContainer = "container:DateToolsExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "908837D21B637C240063096B"
-               BuildableName = "DateToolsTests.xctest"
-               BlueprintName = "DateToolsTests"
-               ReferencedContainer = "container:DateToolsExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "908837C81B637C240063096B"
-            BuildableName = "DateTools.framework"
-            BlueprintName = "DateTools"
-            ReferencedContainer = "container:DateToolsExample.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -78,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "908837C81B637C240063096B"
+            BlueprintIdentifier = "A717AFCC1C17AA620052A1F7"
             BuildableName = "DateTools.framework"
-            BlueprintName = "DateTools"
+            BlueprintName = "DateTools watchOS"
             ReferencedContainer = "container:DateToolsExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -96,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "908837C81B637C240063096B"
+            BlueprintIdentifier = "A717AFCC1C17AA620052A1F7"
             BuildableName = "DateTools.framework"
-            BlueprintName = "DateTools"
+            BlueprintName = "DateTools watchOS"
             ReferencedContainer = "container:DateToolsExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
