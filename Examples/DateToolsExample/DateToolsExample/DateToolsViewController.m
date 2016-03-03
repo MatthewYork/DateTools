@@ -52,6 +52,15 @@
     //Setup date formatter
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateFormat:@"HHmm MMMM d yyyy"];
+
+
+
+    // <<<<<<<<<<<<<<<<<<<<<<<
+    self.selectedDate = [NSDate dateWithTimeIntervalSinceNow:-24*60*60*6+100];
+    NSString *week = [NSDate weekTimeAgoSinceDate:self.selectedDate];
+    NSLog(@"Week:%@", week);
+    // >>>>>>>>>>>>>>>>>>>>>>>
+
     
     //Set initial date
     self.selectedDate = [self.formatter dateFromString:@"0000 November 5 1605"];

@@ -87,3 +87,20 @@
 "%dh" = "%dh"; // hour
 "%dm" = "%dm"; // minute
 "%ds" = "%ds"; // second
+
+/* Week format for */
+"Mon" = "Mon";
+"Tue" = "Tue";
+"Wed" = "Wed";
+"Thu" = "Thu";
+"Fri" = "Fri";
+"Sat" = "Sat";
+"Sun" = "Sun";
+
+"周一" = "星期一";
+"周二" = "星期二";
+"周三" = "星期三";
+"周四" = "星期四";
+"周五" = "星期五";
+"周六" = "星期六";
+"周日" = "星期日";

@@ -44,7 +44,8 @@ typedef NS_ENUM(NSUInteger, DateAgoFormat){
     DateAgoLongUsingNumericDatesAndTimes,
     DateAgoLongUsingNumericDates,
     DateAgoLongUsingNumericTimes,
-    DateAgoShort
+    DateAgoShort,
+    DateAgoWeek,
 };
 
 typedef NS_ENUM(NSUInteger, DateAgoValues){
@@ -95,6 +96,10 @@ static NSCalendar *implicitCalendar = nil;
     return [date shortTimeAgoSinceDate:[NSDate date]];
 }
 
++ (NSString*)weekTimeAgoSinceDate:(NSDate*)date{
+    return [date weekTimeAgoSinceDate:[NSDate date]];
+}
+
 /**
  *  Returns a string with the most convenient unit of time representing
  *  how far in the past that date is from now.
@@ -113,6 +118,10 @@ static NSCalendar *implicitCalendar = nil;
  */
 - (NSString *)shortTimeAgoSinceNow{
     return [self shortTimeAgoSinceDate:[NSDate date]];
+}
+
+- (NSString *)weekTimeAgoSinceNow{
+    return [self weekTimeAgoSinceDate:[NSDate date]];
 }
 
 - (NSString *)timeAgoSinceDate:(NSDate *)date{
@@ -137,6 +146,10 @@ static NSCalendar *implicitCalendar = nil;
 
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date{
     return [self timeAgoSinceDate:date format:DateAgoShort];
+}
+
+- (NSString *)weekTimeAgoSinceDate:(NSDate *)date{
+    return [self timeAgoSinceDate:date format:DateAgoWeek];
 }
 
 - (NSString *)timeAgoSinceDate:(NSDate *)date format:(DateAgoFormat)format {
@@ -185,7 +198,8 @@ static NSCalendar *implicitCalendar = nil;
     BOOL isShort = format == DateAgoShort;
     BOOL isNumericDate = format == DateAgoLongUsingNumericDates || format == DateAgoLongUsingNumericDatesAndTimes;
     BOOL isNumericTime = format == DateAgoLongUsingNumericTimes || format == DateAgoLongUsingNumericDatesAndTimes;
-    
+    BOOL isWeek =  format == DateAgoWeek;
+
     switch (valueType) {
         case YearsAgo:
             if (isShort) {
@@ -221,6 +235,14 @@ static NSCalendar *implicitCalendar = nil;
             if (isShort) {
                 return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:value];
             } else if (value >= 2) {
+                if (isWeek && value <= 7) {
+                    NSDateFormatter *dayDateFormatter = [[NSDateFormatter alloc]init];
+                    dayDateFormatter.dateFormat = @"EEE";
+                    NSString *eee = [dayDateFormatter stringFromDate:self];
+
+                    return DateToolsLocalizedStrings(eee);
+                }
+
                 return [self logicLocalizedStringFromFormat:@"%%d %@days ago" withValue:value];
             } else if (isNumericDate) {
                 return DateToolsLocalizedStrings(@"1 day ago");
