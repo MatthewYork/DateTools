@@ -284,8 +284,10 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (NSString *) logicLocalizedStringFromFormat:(NSString *)format withValue:(NSInteger)value{
-    NSString * localeFormat = [NSString stringWithFormat:format, [self getLocaleFormatUnderscoresWithValue:value]];
-    return [NSString stringWithFormat:DateToolsLocalizedStrings(localeFormat), value];
+    NSString *localeFormat = [NSString stringWithFormat:format, [self getLocaleFormatUnderscoresWithValue:value]];
+    NSBundle *bundle = [NSBundle bundleForClass:[DTError class]];
+    NSBundle *bundleWithPath = [NSBundle bundleWithPath:[bundle resourcePath]];
+    return NSLocalizedStringFromTableInBundle(localeFormat, @"DateTools.bundle", bundleWithPath, nil);
 }
 
 - (NSString *)getLocaleFormatUnderscoresWithValue:(double)value{
