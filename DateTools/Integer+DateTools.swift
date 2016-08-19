@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+extension Int {
+    
+    //MARK: TimePeriod
+    func seconds() -> TimePeriod {
+        
+    }
+    func minutes() -> TimePeriod {
+        
+    }
+    func days() -> TimePeriod {
+        
+    }
+    func years() -> TimePeriod {
+        
+    }
+}

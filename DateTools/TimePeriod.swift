@@ -17,4 +17,11 @@ import Foundation
  */
 class TimePeriod {
     
+    //MARK: Operator Overloads
+    static func +(leftAddend: TimePeriod, rightAddend: TimePeriod) -> TimePeriod {
+       return TimePeriod()
+    }
+    static func -(minuend: TimePeriod, subtrahend: TimePeriod) -> TimePeriod {
+        return TimePeriod()
+    }
 }
