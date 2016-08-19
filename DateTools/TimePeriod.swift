@@ -77,16 +77,20 @@ class TimePeriod {
     /**
         The start date for a DTTimePeriod representing the starting boundary of the time period
      */
-    var startDate = Date()
+    var startDate: Date?
     
     /**
      *  The end date for a DTTimePeriod representing the ending boundary of the time period
      */
-    var endDate = Date()
+    var endDate: Date?
     
     
     // MARK: - Initializers
-    init () {
+    init() {
+        
+    }
+    
+    init (start:Date, end:Date) {
         
     }
     
