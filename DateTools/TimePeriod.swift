@@ -155,10 +155,6 @@ class TimePeriod {
         return false
     }
     
-    func equals(timePeriod: TimePeriod) {
-        
-    }
-    
     func relationTo(timePeriod: TimePeriod) -> Relation {
         return .none
     }
