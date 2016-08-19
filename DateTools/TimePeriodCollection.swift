@@ -17,4 +17,75 @@ import Foundation
  */
 class TimePeriodCollection: TimePeriodGroup {
     
+    // MARK: - Collection Manipulation
+    
+    // Manipulation will be implemented by overriding CollectionType methods
+    
+    
+    // MARK: - Sorting
+    
+    func sort(by areInIncreasingOrder: (TimePeriod, TimePeriod) -> Bool) {
+        
+    }
+    
+    func sorted(by areInIncreasingOrder: (TimePeriod, TimePeriod) -> Bool) -> TimePeriodCollection {
+        return TimePeriodCollection()
+    }
+    
+    
+    // MARK: - Collection Relationship
+    
+    // Potentially use .reduce() instead of these functions
+    /**
+        Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s whose start and end dates fall completely inside the interval of the given ```TimePeriod```
+     */
+    func allInside(in period: TimePeriod) -> TimePeriodCollection {
+        return TimePeriodCollection()
+    }
+    
+    /**
+        Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing the given date
+     */
+    func periodsIntersected(by date: Date) -> TimePeriodCollection {
+        return TimePeriodCollection()
+    }
+    
+    /**
+     Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing either the start date or the end date--or both--of the given ```TimePeriod```
+     */
+    func periodsIntersected(by period: TimePeriod) -> TimePeriodCollection {
+        return TimePeriodCollection()
+    }
+    
+    func equals(collection: TimePeriodCollection) -> Bool {
+        return false
+    }
+    
+    
+    // MARK: - Helper Methods
+    
+    func copy() -> TimePeriodCollection {
+        return TimePeriodCollection()
+    }
+    
+    
+    // MARK: - Updates
+    
+    func updateVariables() {
+        
+    }
+    
+    
+    // MARK: - Operator Overloads
+    
+    static func +(leftAddend: TimePeriodCollection, rightAddend: TimePeriodCollection) -> TimePeriodCollection {
+        return TimePeriodCollection()
+    }
+    static func -(minuend: TimePeriodCollection, subtrahend: TimePeriodCollection) -> TimePeriodCollection {
+        return TimePeriodCollection()
+    }
+    static func ==(left: TimePeriodCollection, right: TimePeriodCollection) -> Bool {
+        return left.equals(collection: right)
+    }
+    
 }

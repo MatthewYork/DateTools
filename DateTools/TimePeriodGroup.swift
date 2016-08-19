@@ -19,6 +19,6 @@ class TimePeriodGroup {
     
     // MARK: - Variables
     
-    var periods: [TimePeriod] = []
+    private var periods: [TimePeriod] = []
     
 }

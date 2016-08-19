@@ -17,4 +17,21 @@ import Foundation
  */
 class TimePeriodChain: TimePeriodGroup {
     
+    // MARK: - Chain Existence Manipulation
+    
+    // Manipulation will be implemented by overriding CollectionType methods
+    
+    
+    // MARK: - Chain Relationship
+    
+    func equals(chain: TimePeriodChain) {
+        
+    }
+    
+    
+    // MARK: - Updates
+    func updateVariables() {
+        
+    }
+    
 }
