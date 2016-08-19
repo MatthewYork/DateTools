@@ -289,8 +289,6 @@ This doubles a time period of duration 1 minute to duration 2 minutes. The end d
 
 There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions may be asked using the relationship methods of DTTimePeriod.
 
-**The Basics**
-
 Below is a chart of all the possible relationships between two time periods:
 ![TimePeriods](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/PeriodRelations.png)
 
