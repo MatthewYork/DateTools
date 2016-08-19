@@ -265,7 +265,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
+					F00762BD18DE5D7500A99075 = {
+						LastSwiftMigration = 0800;
+					};
 					F00762DE18DE5D7500A99075 = {
+						LastSwiftMigration = 0800;
 						TestTargetID = F00762BD18DE5D7500A99075;
 					};
 				};
@@ -466,6 +470,7 @@
 				INFOPLIST_FILE = "DateToolsTests/DateToolsTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -480,6 +485,7 @@
 				INFOPLIST_FILE = "DateToolsTests/DateToolsTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -501,6 +507,7 @@
 				);
 				INFOPLIST_FILE = "DateToolsTestsTests/DateToolsTestsTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -519,6 +526,7 @@
 				GCC_PREFIX_HEADER = "DateToolsTests/DateToolsTests-Prefix.pch";
 				INFOPLIST_FILE = "DateToolsTestsTests/DateToolsTestsTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

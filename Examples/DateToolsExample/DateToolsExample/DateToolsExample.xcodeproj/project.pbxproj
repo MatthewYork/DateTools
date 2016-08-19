@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56D193B11D675BAD001BD246 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193A81D675BAD001BD246 /* Constants.swift */; };
+		56D193B21D675BAD001BD246 /* Date+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193A91D675BAD001BD246 /* Date+DateTools.swift */; };
+		56D193B31D675BAD001BD246 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56D193AA1D675BAD001BD246 /* DateTools.bundle */; };
+		56D193B41D675BAD001BD246 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193AB1D675BAD001BD246 /* Error.swift */; };
+		56D193B51D675BAD001BD246 /* Integer+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193AC1D675BAD001BD246 /* Integer+DateTools.swift */; };
+		56D193B61D675BAD001BD246 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193AD1D675BAD001BD246 /* TimePeriod.swift */; };
+		56D193B71D675BAD001BD246 /* TimePeriodChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193AE1D675BAD001BD246 /* TimePeriodChain.swift */; };
+		56D193B81D675BAD001BD246 /* TimePeriodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193AF1D675BAD001BD246 /* TimePeriodCollection.swift */; };
+		56D193B91D675BAD001BD246 /* TimePeriodGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193B01D675BAD001BD246 /* TimePeriodGroup.swift */; };
 		F0997A241D67576300EBCF5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0997A231D67576300EBCF5C /* AppDelegate.swift */; };
 		F0997A261D67576300EBCF5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0997A251D67576300EBCF5C /* ViewController.swift */; };
 		F0997A291D67576300EBCF5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A271D67576300EBCF5C /* Main.storyboard */; };
@@ -15,6 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56D193A81D675BAD001BD246 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../DateTools/Constants.swift; sourceTree = "<group>"; };
+		56D193A91D675BAD001BD246 /* Date+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+DateTools.swift"; path = "../../../../DateTools/Date+DateTools.swift"; sourceTree = "<group>"; };
+		56D193AA1D675BAD001BD246 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		56D193AB1D675BAD001BD246 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = ../../../../DateTools/Error.swift; sourceTree = "<group>"; };
+		56D193AC1D675BAD001BD246 /* Integer+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Integer+DateTools.swift"; path = "../../../../DateTools/Integer+DateTools.swift"; sourceTree = "<group>"; };
+		56D193AD1D675BAD001BD246 /* TimePeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriod.swift; path = ../../../../DateTools/TimePeriod.swift; sourceTree = "<group>"; };
+		56D193AE1D675BAD001BD246 /* TimePeriodChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodChain.swift; path = ../../../../DateTools/TimePeriodChain.swift; sourceTree = "<group>"; };
+		56D193AF1D675BAD001BD246 /* TimePeriodCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodCollection.swift; path = ../../../../DateTools/TimePeriodCollection.swift; sourceTree = "<group>"; };
+		56D193B01D675BAD001BD246 /* TimePeriodGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodGroup.swift; path = ../../../../DateTools/TimePeriodGroup.swift; sourceTree = "<group>"; };
 		F0997A201D67576300EBCF5C /* DateToolsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateToolsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0997A231D67576300EBCF5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0997A251D67576300EBCF5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +53,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56D193A71D675B9F001BD246 /* DateTools */ = {
+			isa = PBXGroup;
+			children = (
+				56D193A81D675BAD001BD246 /* Constants.swift */,
+				56D193A91D675BAD001BD246 /* Date+DateTools.swift */,
+				56D193AA1D675BAD001BD246 /* DateTools.bundle */,
+				56D193AB1D675BAD001BD246 /* Error.swift */,
+				56D193AC1D675BAD001BD246 /* Integer+DateTools.swift */,
+				56D193AD1D675BAD001BD246 /* TimePeriod.swift */,
+				56D193AE1D675BAD001BD246 /* TimePeriodChain.swift */,
+				56D193AF1D675BAD001BD246 /* TimePeriodCollection.swift */,
+				56D193B01D675BAD001BD246 /* TimePeriodGroup.swift */,
+			);
+			name = DateTools;
+			sourceTree = "<group>";
+		};
 		F0997A171D67576300EBCF5C = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +88,7 @@
 		F0997A221D67576300EBCF5C /* DateToolsExample */ = {
 			isa = PBXGroup;
 			children = (
+				56D193A71D675B9F001BD246 /* DateTools */,
 				F0997A231D67576300EBCF5C /* AppDelegate.swift */,
 				F0997A251D67576300EBCF5C /* ViewController.swift */,
 				F0997A271D67576300EBCF5C /* Main.storyboard */,
@@ -126,6 +161,7 @@
 				F0997A2E1D67576300EBCF5C /* LaunchScreen.storyboard in Resources */,
 				F0997A2B1D67576300EBCF5C /* Assets.xcassets in Resources */,
 				F0997A291D67576300EBCF5C /* Main.storyboard in Resources */,
+				56D193B31D675BAD001BD246 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,8 +172,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56D193B51D675BAD001BD246 /* Integer+DateTools.swift in Sources */,
+				56D193B91D675BAD001BD246 /* TimePeriodGroup.swift in Sources */,
+				56D193B61D675BAD001BD246 /* TimePeriod.swift in Sources */,
 				F0997A261D67576300EBCF5C /* ViewController.swift in Sources */,
+				56D193B81D675BAD001BD246 /* TimePeriodCollection.swift in Sources */,
 				F0997A241D67576300EBCF5C /* AppDelegate.swift in Sources */,
+				56D193B11D675BAD001BD246 /* Constants.swift in Sources */,
+				56D193B71D675BAD001BD246 /* TimePeriodChain.swift in Sources */,
+				56D193B41D675BAD001BD246 /* Error.swift in Sources */,
+				56D193B21D675BAD001BD246 /* Date+DateTools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +343,7 @@
 				F0997A341D67576300EBCF5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
