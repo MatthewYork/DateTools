@@ -1,7 +1,7 @@
-language: objective-c
+language: swift
 
 before_script: 
 - gem install xcpretty
 
 script: 
-- xcodebuild -project Tests/DateToolsTests/DateToolsTests.xcodeproj -scheme DateToolsTests -sdk iphonesimulator test | xcpretty -c
+- xcodebuild -project Tests/DateToolsTests.xcodeproj -scheme DateToolsTests -sdk iphonesimulator test | xcpretty -c
