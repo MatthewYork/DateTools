@@ -25,50 +25,50 @@ class TimePeriod {
          Further reading: [GitHub](https://github.com/MatthewYork/DateTools#relationships), [CodeProject](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
      */
     enum Relation {
-        case After
-        case StartTouching
-        case StartInside
-        case InsideStartTouching
-        case EnclosingStartTouching
-        case Enclosing
-        case EnclosingEndTouching
-        case ExactMatch
-        case Inside
-        case InsideEndTouching
-        case EndInside
-        case EndTouching
-        case Before
-        case None // One or more of the dates does not exist
+        case after
+        case startTouching
+        case startInside
+        case insideStartTouching
+        case enclosingStartTouching
+        case enclosing
+        case enclosingEndTouching
+        case exactMatch
+        case inside
+        case insideEndTouching
+        case endInside
+        case endTouching
+        case before
+        case none // One or more of the dates does not exist
     }
     
     /**
         Time period lengths
      */
     enum Size {
-        case Second
-        case Minute
-        case Hour
-        case Day
-        case Week
-        case Month
-        case Year
+        case second
+        case minute
+        case hour
+        case day
+        case week
+        case month
+        case year
     }
     
     /**
         Whether the time period is Open or Closed
      */
     enum Interval {
-        case Open
-        case Closed
+        case open
+        case closed
     }
     
     /**
         When a time periods is lengthened or shortened, it does so anchoring one date of the time period and then changing the other one. There is also an option to anchor the centerpoint of the time period, changing both the start and end dates.
      */
     enum Anchor {
-        case Start
-        case Center
-        case End
+        case beginning
+        case center
+        case end
     }
     
     
@@ -77,12 +77,12 @@ class TimePeriod {
     /**
         The start date for a DTTimePeriod representing the starting boundary of the time period
      */
-    var startDate: Date?
+    var beginning: Date?
     
     /**
      *  The end date for a DTTimePeriod representing the ending boundary of the time period
      */
-    var endDate: Date?
+    var end: Date?
     
     
     // MARK: - Initializers
@@ -94,6 +94,102 @@ class TimePeriod {
         
     }
     
+    init(start: Date, duration: TimeInterval) {
+        
+    }
+    
+    init(end: Date, duration: TimeInterval) {
+        
+    }
+    
+    //MARK: - Information
+    func hasStartDate() -> Bool {
+        return false
+    }
+    
+    func hasEndDate() -> Bool {
+        return false
+    }
+    
+    func isMoment() -> Bool {
+        return false
+    }
+    
+    func years() -> TimeInterval {
+        return 0
+    }
+    
+    func weeks() -> TimeInterval {
+        return 0
+    }
+    
+    func days() -> TimeInterval {
+        return 0
+    }
+    
+    func hours() -> TimeInterval {
+        return 0
+    }
+    
+    func minutes() -> TimeInterval {
+        return 0
+    }
+    
+    func seconds() -> TimeInterval {
+        return 0
+    }
+    
+    //MARK: - Time Period Relationships
+    func equals(timePeriod: TimePeriod) -> Bool {
+        return false
+    }
+    
+    func isInside(timePeriod: TimePeriod) -> Bool {
+        return false
+    }
+    
+    func contains(timePeriod: TimePeriod) -> Bool {
+        return false
+    }
+    
+    func overlaps(timePeriod: TimePeriod) -> Bool {
+        return false
+    }
+    
+    func intersects(timePeriod: TimePeriod) -> Bool {
+        return false
+    }
+    
+    func equals(timePeriod: TimePeriod) {
+        
+    }
+    
+    func relationTo(timePeriod: TimePeriod) -> Relation {
+        return .none
+    }
+    
+    func timeBetween(timePeriod: TimePeriod) -> TimeInterval {
+        return 0
+    }
+    
+    //MARK: - Shifts
+    func shiftEarlier(timeInterval: TimeInterval) {
+        
+    }
+    
+    func shiftLater(timeInterval: TimeInterval) {
+        
+    }
+    
+    //MARK: - Lengthen / Shorten
+    func lengthen(by timeInterval: TimeInterval, at anchor: Anchor) {
+        
+    }
+    
+    //MARK: - Copy
+    func copy() -> TimePeriod {
+        return TimePeriod()
+    }
     
     // MARK: - Operator Overloads
     static func +(leftAddend: TimePeriod, rightAddend: TimePeriod) -> TimePeriod {
@@ -101,5 +197,8 @@ class TimePeriod {
     }
     static func -(minuend: TimePeriod, subtrahend: TimePeriod) -> TimePeriod {
         return TimePeriod()
+    }
+    static func ==(left: TimePeriod, right: TimePeriod) -> Bool {
+        return false
     }
 }
