@@ -91,7 +91,7 @@ class TimePeriod {
     }
     
     
-    //MARK: - Operator Overloads
+    // MARK: - Operator Overloads
     static func +(leftAddend: TimePeriod, rightAddend: TimePeriod) -> TimePeriod {
        return TimePeriod()
     }

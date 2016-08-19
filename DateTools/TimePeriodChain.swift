@@ -15,6 +15,6 @@ import Foundation
  
     [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-chains) for more information.
  */
-class TimePeriodChain {
+class TimePeriodChain: TimePeriodGroup {
     
 }

@@ -17,4 +17,8 @@ import Foundation
  */
 class TimePeriodGroup {
     
+    // MARK: - Variables
+    
+    var periods: [TimePeriod] = []
+    
 }
