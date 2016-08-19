@@ -86,6 +86,7 @@ class TimePeriod {
     
     
     // MARK: - Initializers
+    
     init() {
         
     }
@@ -103,13 +104,6 @@ class TimePeriod {
     }
     
     //MARK: - Information
-    func hasStartDate() -> Bool {
-        return false
-    }
-    
-    func hasEndDate() -> Bool {
-        return false
-    }
     
     func isMoment() -> Bool {
         return false
@@ -140,6 +134,7 @@ class TimePeriod {
     }
     
     //MARK: - Time Period Relationships
+    
     func equals(timePeriod: TimePeriod) -> Bool {
         return false
     }
@@ -173,6 +168,7 @@ class TimePeriod {
     }
     
     //MARK: - Shifts
+    
     func shiftEarlier(timeInterval: TimeInterval) {
         
     }
@@ -182,16 +178,19 @@ class TimePeriod {
     }
     
     //MARK: - Lengthen / Shorten
+    
     func lengthen(by timeInterval: TimeInterval, at anchor: Anchor) {
         
     }
     
     //MARK: - Copy
+    
     func copy() -> TimePeriod {
         return TimePeriod()
     }
     
     // MARK: - Operator Overloads
+    
     static func +(leftAddend: TimePeriod, rightAddend: TimePeriod) -> TimePeriod {
        return TimePeriod()
     }
@@ -199,6 +198,6 @@ class TimePeriod {
         return TimePeriod()
     }
     static func ==(left: TimePeriod, right: TimePeriod) -> Bool {
-        return false
+        return left.equals(timePeriod: right)
     }
 }
