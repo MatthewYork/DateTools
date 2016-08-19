@@ -84,7 +84,6 @@ class TimePeriod {
      */
     var end: Date?
     
-    
     // MARK: - Initializers
     
     init() {
@@ -103,83 +102,79 @@ class TimePeriod {
         
     }
     
-    //MARK: - Information
+    // MARK: - Information
     
     func isMoment() -> Bool {
         return false
     }
     
-    func years() -> TimeInterval {
+    var years: TimeInterval {
         return 0
     }
     
-    func weeks() -> TimeInterval {
+    var weeks: TimeInterval {
         return 0
     }
     
-    func days() -> TimeInterval {
+    var days: TimeInterval {
         return 0
     }
     
-    func hours() -> TimeInterval {
+    var hours: TimeInterval {
         return 0
     }
     
-    func minutes() -> TimeInterval {
+    var minutes: TimeInterval {
         return 0
     }
     
-    func seconds() -> TimeInterval {
+    var seconds: TimeInterval {
         return 0
     }
     
-    //MARK: - Time Period Relationships
+    // MARK: - Time Period Relationships
     
-    func equals(timePeriod: TimePeriod) -> Bool {
+    func equals(period: TimePeriod) -> Bool {
         return false
     }
     
-    func isInside(timePeriod: TimePeriod) -> Bool {
+    func inside(of: TimePeriod) -> Bool {
         return false
     }
     
-    func contains(timePeriod: TimePeriod) -> Bool {
+    func contains(period: TimePeriod) -> Bool {
         return false
     }
     
-    func overlaps(timePeriod: TimePeriod) -> Bool {
+    func overlaps(with period: TimePeriod) -> Bool {
         return false
     }
     
-    func intersects(timePeriod: TimePeriod) -> Bool {
+    func intersects(with period: TimePeriod) -> Bool {
         return false
     }
     
-    func relationTo(timePeriod: TimePeriod) -> Relation {
+    func relation(to period: TimePeriod) -> Relation {
         return .none
     }
     
-    func timeBetween(timePeriod: TimePeriod) -> TimeInterval {
+    func intervalBetweenPeriod(_ period: TimePeriod) -> TimeInterval {
         return 0
     }
     
-    //MARK: - Shifts
+    // MARK: - Shifts
     
-    func shiftEarlier(timeInterval: TimeInterval) {
+    func shift(by interval: TimeInterval) {
         
     }
     
-    func shiftLater(timeInterval: TimeInterval) {
+    // MARK: - Lengthen / Shorten
+    
+    func lengthen(by interval: TimeInterval, at anchor: Anchor) {
         
     }
     
-    //MARK: - Lengthen / Shorten
-    
-    func lengthen(by timeInterval: TimeInterval, at anchor: Anchor) {
-        
-    }
-    
-    //MARK: - Copy
+    // MARK: - Copy
     
     func copy() -> TimePeriod {
         return TimePeriod()
@@ -194,6 +189,6 @@ class TimePeriod {
         return TimePeriod()
     }
     static func ==(left: TimePeriod, right: TimePeriod) -> Bool {
-        return left.equals(timePeriod: right)
+        return left.equals(period: right)
     }
 }
