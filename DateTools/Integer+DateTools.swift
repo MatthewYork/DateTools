@@ -14,12 +14,15 @@ extension Int {
     func seconds() -> TimePeriod {
         
     }
+    
     func minutes() -> TimePeriod {
         
     }
+    
     func days() -> TimePeriod {
         
     }
+    
     func years() -> TimePeriod {
         
     }
