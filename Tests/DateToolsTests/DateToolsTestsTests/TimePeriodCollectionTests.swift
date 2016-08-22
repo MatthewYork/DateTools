@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import DateToolsTests
+
 
 class TimePeriodChainTests : XCTestCase {
     

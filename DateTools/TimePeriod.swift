@@ -94,11 +94,11 @@ class TimePeriod {
         
     }
     
-    init (start:Date, end:Date) {
+    init (beginning:Date, end:Date) {
         
     }
     
-    init(start: Date, duration: TimeInterval) {
+    init(beginning: Date, duration: TimeInterval) {
         
     }
     

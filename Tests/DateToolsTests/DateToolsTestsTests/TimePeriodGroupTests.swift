@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import DateToolsTests
+
 
 class TimePeriodGroupTests : XCTestCase {
     
@@ -14,7 +16,6 @@ class TimePeriodGroupTests : XCTestCase {
     var controlCollection: TimePeriodCollection?
     
     override func setUp() {
-        super.up = nil
         //Initialize control TimePeriodChain
         self.controlCollection = TimePeriodCollection()
         //Initialize formatter

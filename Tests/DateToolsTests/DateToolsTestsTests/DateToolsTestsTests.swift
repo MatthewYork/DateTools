@@ -2,12 +2,11 @@
 //  DateToolsTestsTests.swift
 //  DateToolsTestsTests
 //
-//  Created by Matthew York on 8/19/16.
+//  Created by Grayson Webster on 8/22/16.
 //  Copyright © 2016 Matthew York. All rights reserved.
 //
 
 import XCTest
-@testable import DateToolsTests
 
 class DateToolsTestsTests: XCTestCase {
     

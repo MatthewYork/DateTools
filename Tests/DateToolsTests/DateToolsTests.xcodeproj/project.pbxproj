@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5658E35A1D67776C00D1465A /* TimePeriodGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E3591D67776C00D1465A /* TimePeriodGroupTests.swift */; };
-		5658E35C1D67782D00D1465A /* TimePeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E35B1D67782D00D1465A /* TimePeriodTests.swift */; };
-		5693216C1D67641C00FAA4DB /* TimePeriodCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5693216B1D67641C00FAA4DB /* TimePeriodCollectionTests.swift */; };
-		5693216E1D6776C800FAA4DB /* TimePeriodChainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5693216D1D6776C800FAA4DB /* TimePeriodChainTests.swift */; };
-		56C9A7BC1D6760160051E89F /* DateToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9A7BB1D6760160051E89F /* DateToolsTests.swift */; };
-		56C9A7BE1D6762730051E89F /* TimeAgoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9A7BD1D6762730051E89F /* TimeAgoTests.swift */; };
+		5658E3801D6B559900D1465A /* TimePeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E35B1D67782D00D1465A /* TimePeriodTests.swift */; };
+		5658E3811D6B55C800D1465A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5658E37A1D6B556B00D1465A /* Info.plist */; };
+		5658E38E1D6B59B300D1465A /* DateToolsTestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E3881D6B59B300D1465A /* DateToolsTestsTests.swift */; };
 		56D1939E1D675ADE001BD246 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193951D675ADE001BD246 /* Constants.swift */; };
 		56D1939F1D675ADE001BD246 /* Date+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193961D675ADE001BD246 /* Date+DateTools.swift */; };
 		56D193A01D675ADE001BD246 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56D193971D675ADE001BD246 /* DateTools.bundle */; };
@@ -22,17 +19,16 @@
 		56D193A41D675ADE001BD246 /* TimePeriodChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */; };
 		56D193A51D675ADE001BD246 /* TimePeriodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939C1D675ADE001BD246 /* TimePeriodCollection.swift */; };
 		56D193A61D675ADE001BD246 /* TimePeriodGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939D1D675ADE001BD246 /* TimePeriodGroup.swift */; };
-		56D193BD1D675CF2001BD246 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193BC1D675CF2001BD246 /* TimeBlock.swift */; };
+		56D193BD1D675CF2001BD246 /* TimeChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193BC1D675CF2001BD246 /* TimeChunk.swift */; };
 		F0997A421D67580B00EBCF5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0997A411D67580B00EBCF5C /* AppDelegate.swift */; };
 		F0997A441D67580B00EBCF5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0997A431D67580B00EBCF5C /* ViewController.swift */; };
 		F0997A471D67580B00EBCF5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A451D67580B00EBCF5C /* Main.storyboard */; };
 		F0997A491D67580B00EBCF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0997A481D67580B00EBCF5C /* Assets.xcassets */; };
 		F0997A4C1D67580B00EBCF5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A4A1D67580B00EBCF5C /* LaunchScreen.storyboard */; };
-		F0997A571D67580C00EBCF5C /* DateToolsTestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0997A561D67580C00EBCF5C /* DateToolsTestsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F0997A531D67580C00EBCF5C /* PBXContainerItemProxy */ = {
+		5658E37B1D6B556B00D1465A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0997A361D67580B00EBCF5C /* Project object */;
 			proxyType = 1;
@@ -42,12 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5658E3591D67776C00D1465A /* TimePeriodGroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodGroupTests.swift; sourceTree = "<group>"; };
 		5658E35B1D67782D00D1465A /* TimePeriodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodTests.swift; sourceTree = "<group>"; };
-		5693216B1D67641C00FAA4DB /* TimePeriodCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCollectionTests.swift; sourceTree = "<group>"; };
-		5693216D1D6776C800FAA4DB /* TimePeriodChainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodChainTests.swift; sourceTree = "<group>"; };
-		56C9A7BB1D6760160051E89F /* DateToolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToolsTests.swift; sourceTree = "<group>"; };
-		56C9A7BD1D6762730051E89F /* TimeAgoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgoTests.swift; sourceTree = "<group>"; };
+		5658E3701D6B53B000D1465A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateToolsTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5658E37A1D6B556B00D1465A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5658E3881D6B59B300D1465A /* DateToolsTestsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateToolsTestsTests.swift; sourceTree = "<group>"; };
 		56D193951D675ADE001BD246 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../DateTools/Constants.swift; sourceTree = "<group>"; };
 		56D193961D675ADE001BD246 /* Date+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+DateTools.swift"; path = "../../../DateTools/Date+DateTools.swift"; sourceTree = "<group>"; };
 		56D193971D675ADE001BD246 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
@@ -57,7 +52,7 @@
 		56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodChain.swift; path = ../../../DateTools/TimePeriodChain.swift; sourceTree = "<group>"; };
 		56D1939C1D675ADE001BD246 /* TimePeriodCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodCollection.swift; path = ../../../DateTools/TimePeriodCollection.swift; sourceTree = "<group>"; };
 		56D1939D1D675ADE001BD246 /* TimePeriodGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodGroup.swift; path = ../../../DateTools/TimePeriodGroup.swift; sourceTree = "<group>"; };
-		56D193BC1D675CF2001BD246 /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeBlock.swift; path = ../../../DateTools/TimeBlock.swift; sourceTree = "<group>"; };
+		56D193BC1D675CF2001BD246 /* TimeChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeChunk.swift; path = ../../../DateTools/TimeChunk.swift; sourceTree = "<group>"; };
 		F0997A3E1D67580B00EBCF5C /* DateToolsTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateToolsTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0997A411D67580B00EBCF5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0997A431D67580B00EBCF5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,20 +60,17 @@
 		F0997A481D67580B00EBCF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0997A4B1D67580B00EBCF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0997A4D1D67580B00EBCF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0997A521D67580C00EBCF5C /* DateToolsTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateToolsTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0997A561D67580C00EBCF5C /* DateToolsTestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToolsTestsTests.swift; sourceTree = "<group>"; };
-		F0997A581D67580C00EBCF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F0997A3B1D67580B00EBCF5C /* Frameworks */ = {
+		5658E3731D6B556B00D1465A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0997A4F1D67580C00EBCF5C /* Frameworks */ = {
+		F0997A3B1D67580B00EBCF5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -88,10 +80,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5658E36F1D6B53B000D1465A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5658E3701D6B53B000D1465A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5658E3771D6B556B00D1465A /* DateToolsTestsTests */ = {
+			isa = PBXGroup;
+			children = (
+				5658E3881D6B59B300D1465A /* DateToolsTestsTests.swift */,
+				5658E35B1D67782D00D1465A /* TimePeriodTests.swift */,
+				5658E37A1D6B556B00D1465A /* Info.plist */,
+			);
+			path = DateToolsTestsTests;
+			sourceTree = "<group>";
+		};
 		56D193941D675AC3001BD246 /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
-				56D193BC1D675CF2001BD246 /* TimeBlock.swift */,
+				56D193BC1D675CF2001BD246 /* TimeChunk.swift */,
 				56D193951D675ADE001BD246 /* Constants.swift */,
 				56D193961D675ADE001BD246 /* Date+DateTools.swift */,
 				56D193971D675ADE001BD246 /* DateTools.bundle */,
@@ -109,8 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				F0997A401D67580B00EBCF5C /* DateToolsTests */,
-				F0997A551D67580C00EBCF5C /* DateToolsTestsTests */,
+				5658E3771D6B556B00D1465A /* DateToolsTestsTests */,
 				F0997A3F1D67580B00EBCF5C /* Products */,
+				5658E36F1D6B53B000D1465A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				F0997A3E1D67580B00EBCF5C /* DateToolsTests.app */,
-				F0997A521D67580C00EBCF5C /* DateToolsTestsTests.xctest */,
+				5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,24 +148,27 @@
 			path = DateToolsTests;
 			sourceTree = "<group>";
 		};
-		F0997A551D67580C00EBCF5C /* DateToolsTestsTests */ = {
-			isa = PBXGroup;
-			children = (
-				F0997A561D67580C00EBCF5C /* DateToolsTestsTests.swift */,
-				F0997A581D67580C00EBCF5C /* Info.plist */,
-				56C9A7BB1D6760160051E89F /* DateToolsTests.swift */,
-				56C9A7BD1D6762730051E89F /* TimeAgoTests.swift */,
-				5693216B1D67641C00FAA4DB /* TimePeriodCollectionTests.swift */,
-				5693216D1D6776C800FAA4DB /* TimePeriodChainTests.swift */,
-				5658E3591D67776C00D1465A /* TimePeriodGroupTests.swift */,
-				5658E35B1D67782D00D1465A /* TimePeriodTests.swift */,
-			);
-			path = DateToolsTestsTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5658E3751D6B556B00D1465A /* DateToolsTestsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5658E37D1D6B556B00D1465A /* Build configuration list for PBXNativeTarget "DateToolsTestsTests" */;
+			buildPhases = (
+				5658E3721D6B556B00D1465A /* Sources */,
+				5658E3731D6B556B00D1465A /* Frameworks */,
+				5658E3741D6B556B00D1465A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5658E37C1D6B556B00D1465A /* PBXTargetDependency */,
+			);
+			name = DateToolsTestsTests;
+			productName = DateToolsTestsTests;
+			productReference = 5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F0997A3D1D67580B00EBCF5C /* DateToolsTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0997A5B1D67580C00EBCF5C /* Build configuration list for PBXNativeTarget "DateToolsTests" */;
@@ -172,24 +186,6 @@
 			productReference = F0997A3E1D67580B00EBCF5C /* DateToolsTests.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F0997A511D67580C00EBCF5C /* DateToolsTestsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F0997A5E1D67580C00EBCF5C /* Build configuration list for PBXNativeTarget "DateToolsTestsTests" */;
-			buildPhases = (
-				F0997A4E1D67580C00EBCF5C /* Sources */,
-				F0997A4F1D67580C00EBCF5C /* Frameworks */,
-				F0997A501D67580C00EBCF5C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F0997A541D67580C00EBCF5C /* PBXTargetDependency */,
-			);
-			name = DateToolsTestsTests;
-			productName = DateToolsTestsTests;
-			productReference = F0997A521D67580C00EBCF5C /* DateToolsTestsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,16 +196,17 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Matthew York";
 				TargetAttributes = {
-					F0997A3D1D67580B00EBCF5C = {
+					5658E3751D6B556B00D1465A = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
-					};
-					F0997A511D67580C00EBCF5C = {
-						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0800;
+						DevelopmentTeam = 79J92XV598;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F0997A3D1D67580B00EBCF5C;
+					};
+					F0997A3D1D67580B00EBCF5C = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 79J92XV598;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -227,12 +224,20 @@
 			projectRoot = "";
 			targets = (
 				F0997A3D1D67580B00EBCF5C /* DateToolsTests */,
-				F0997A511D67580C00EBCF5C /* DateToolsTestsTests */,
+				5658E3751D6B556B00D1465A /* DateToolsTestsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5658E3741D6B556B00D1465A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5658E3811D6B55C800D1465A /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0997A3C1D67580B00EBCF5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,23 +249,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0997A501D67580C00EBCF5C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5658E3721D6B556B00D1465A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5658E38E1D6B59B300D1465A /* DateToolsTestsTests.swift in Sources */,
+				5658E3801D6B559900D1465A /* TimePeriodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0997A3A1D67580B00EBCF5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				56D193A21D675ADE001BD246 /* Integer+DateTools.swift in Sources */,
 				56D193A61D675ADE001BD246 /* TimePeriodGroup.swift in Sources */,
-				56D193BD1D675CF2001BD246 /* TimeBlock.swift in Sources */,
+				56D193BD1D675CF2001BD246 /* TimeChunk.swift in Sources */,
 				56D193A31D675ADE001BD246 /* TimePeriod.swift in Sources */,
 				F0997A441D67580B00EBCF5C /* ViewController.swift in Sources */,
 				56D193A51D675ADE001BD246 /* TimePeriodCollection.swift in Sources */,
@@ -272,27 +279,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0997A4E1D67580C00EBCF5C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5658E35C1D67782D00D1465A /* TimePeriodTests.swift in Sources */,
-				5693216E1D6776C800FAA4DB /* TimePeriodChainTests.swift in Sources */,
-				56C9A7BE1D6762730051E89F /* TimeAgoTests.swift in Sources */,
-				F0997A571D67580C00EBCF5C /* DateToolsTestsTests.swift in Sources */,
-				5658E35A1D67776C00D1465A /* TimePeriodGroupTests.swift in Sources */,
-				56C9A7BC1D6760160051E89F /* DateToolsTests.swift in Sources */,
-				5693216C1D67641C00FAA4DB /* TimePeriodCollectionTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F0997A541D67580C00EBCF5C /* PBXTargetDependency */ = {
+		5658E37C1D6B556B00D1465A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F0997A3D1D67580B00EBCF5C /* DateToolsTests */;
-			targetProxy = F0997A531D67580C00EBCF5C /* PBXContainerItemProxy */;
+			targetProxy = 5658E37B1D6B556B00D1465A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -316,6 +309,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5658E37E1D6B556B00D1465A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 79J92XV598;
+				INFOPLIST_FILE = DateToolsTestsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ua.caps.DateToolsTestsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateToolsTests.app/DateToolsTests";
+			};
+			name = Debug;
+		};
+		5658E37F1D6B556B00D1465A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 79J92XV598;
+				INFOPLIST_FILE = DateToolsTestsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ua.caps.DateToolsTestsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateToolsTests.app/DateToolsTests";
+			};
+			name = Release;
+		};
 		F0997A591D67580C00EBCF5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -413,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 79J92XV598;
 				INFOPLIST_FILE = DateToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.matthewyork.DateToolsTests;
@@ -425,6 +447,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 79J92XV598;
 				INFOPLIST_FILE = DateToolsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.matthewyork.DateToolsTests;
@@ -433,37 +456,17 @@
 			};
 			name = Release;
 		};
-		F0997A5F1D67580C00EBCF5C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = DateToolsTestsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.matthewyork.DateToolsTestsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateToolsTests.app/DateToolsTests";
-			};
-			name = Debug;
-		};
-		F0997A601D67580C00EBCF5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = DateToolsTestsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.matthewyork.DateToolsTestsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateToolsTests.app/DateToolsTests";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5658E37D1D6B556B00D1465A /* Build configuration list for PBXNativeTarget "DateToolsTestsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5658E37E1D6B556B00D1465A /* Debug */,
+				5658E37F1D6B556B00D1465A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F0997A391D67580B00EBCF5C /* Build configuration list for PBXProject "DateToolsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -478,15 +481,6 @@
 			buildConfigurations = (
 				F0997A5C1D67580C00EBCF5C /* Debug */,
 				F0997A5D1D67580C00EBCF5C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F0997A5E1D67580C00EBCF5C /* Build configuration list for PBXNativeTarget "DateToolsTestsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F0997A5F1D67580C00EBCF5C /* Debug */,
-				F0997A601D67580C00EBCF5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
