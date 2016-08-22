@@ -56,6 +56,10 @@ class TimePeriod {
     
     /**
         Whether the time period is Open or Closed
+     
+        Closed: The boundary moment of time is included in calculations.
+     
+        Open: The boundary moment of time represents a boundary value which is excluded in regard to calculations.
      */
     enum Interval {
         case open
@@ -168,9 +172,17 @@ class TimePeriod {
         
     }
     
+    func shift(by chunk: TimeChunk) {
+        
+    }
+    
     // MARK: - Lengthen / Shorten
     
     func lengthen(by interval: TimeInterval, at anchor: Anchor) {
+        
+    }
+    
+    func lengthen(by chunk: TimeChunk, at anchor: Anchor) {
         
     }
     
