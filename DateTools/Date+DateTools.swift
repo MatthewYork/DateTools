@@ -13,8 +13,8 @@ import Foundation
 */
 
 extension Date {
-	//MARK: Date Building Methods
-	static func date(with year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) -> Date? {
+	//MARK: Initializers
+	init(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) {
 		var dateComponents = DateComponents()
 		dateComponents.year = year
 		dateComponents.month = month
@@ -23,28 +23,33 @@ extension Date {
 		dateComponents.minute = minute
 		dateComponents.second = second
 		
-		let date = Calendar.current.date(from: dateComponents)
-		return date;
-		
+		guard let date = Calendar.current.date(from: dateComponents) else {
+			self = Date()
+			return
+		}
+		self = date
 	}
 	
-	static func date(with year: Int, month: Int, day: Int) -> Date? {
-		return date(with: year, month: month, day: day, hour: 0, minute: 0, second: 0)
+	init(year: Int, month: Int, day: Int) {
+		self.init(year: year, month: month, day: day, hour: 0, minute: 0, second: 0)
 	}
 	
-	static func date(with dateString: String, format: String, timeZone: TimeZone) -> Date? {
+	init(dateString: String, format: String, timeZone: TimeZone) {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateStyle = .none;
 		dateFormatter.timeStyle = .none;
 		dateFormatter.timeZone = timeZone;
 		dateFormatter.dateFormat = format;
 		
-		let date = dateFormatter.date(from: dateString)
-		return date
+		guard let date = dateFormatter.date(from: dateString) else {
+			self = Date()
+			return
+		}
+		self = date
 	}
 	
-	static func date(with dateString: String, format: String) -> Date? {
-		return date(with: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
+	init (dateString: String, format: String) {
+		self.init(dateString: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
 	}
 	
 	//MARK: Formatted Date - Style
