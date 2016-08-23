@@ -13,6 +13,7 @@ import Foundation
 */
 
 extension Date {
+	//MARK: Date Building Methods
 	static func date(with year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) -> Date? {
 		var dateComponents = DateComponents()
 		dateComponents.year = year
@@ -43,6 +44,50 @@ extension Date {
 	}
 	
 	static func date(with dateString: String, format: String) -> Date? {
-		return date(with: dateString, format: format, timeZone: TimeZone.current)
+		return date(with: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
+	}
+	
+	//MARK: Formatted Date - Style
+	func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone, locale: Locale) -> String? {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .medium
+		dateFormatter.timeZone = timeZone
+		dateFormatter.locale = locale
+		
+		return dateFormatter.string(from: self)
+	}
+	
+	func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone) -> String? {
+		return format(with: dateStyle, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
+	}
+	
+	func format(with dateStyle: DateFormatter.Style, locale: Locale) -> String? {
+		return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: locale)
+	}
+	
+	func format(with dateStyle: DateFormatter.Style) -> String? {
+		return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
+	}
+	
+	//MARK: Formatted Date - String
+	func format(with dateFormat: String, timeZone: TimeZone, locale: Locale) -> String? {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = dateFormat
+		dateFormatter.timeZone = timeZone
+		dateFormatter.locale = locale
+		
+		return dateFormatter.string(from: self)
+	}
+	
+	func format(with dateFormat: String, timeZone: TimeZone) -> String? {
+		return format(with: dateFormat, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
+	}
+	
+	func format(with dateFormat: String, locale: Locale) -> String? {
+		return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: locale)
+	}
+	
+	func format(with dateFormat: String) -> String? {
+		return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
 	}
 }
