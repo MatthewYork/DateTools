@@ -172,7 +172,7 @@ static NSCalendar *implicitCalendar = nil;
         }
         
     } else {
-        NSUInteger bigUnits = NSCalendarUnitTimeZone | NSCalendarUnitDay | NSCalendarUnitWeekOfYear | NSCalendarUnitMonth | NSCalendarUnitYear;
+        NSUInteger bigUnits = NSCalendarUnitTimeZone | NSCalendarUnitDay | NSCalendarUnitWeekOfYear | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour;
         
         NSDateComponents *components = [calendar components:bigUnits fromDate:earliest];
         earliest = [calendar dateFromComponents:components];

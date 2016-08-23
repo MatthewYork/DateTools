@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0AFD486518F0BBC0004D0FE1 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */; };
+		0EE4F4C91BA28A8C00E3A573 /* NSBundle+Language.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EE4F4C71BA28A8C00E3A573 /* NSBundle+Language.h */; };
+		0EE4F4CA1BA28A8C00E3A573 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE4F4C81BA28A8C00E3A573 /* NSBundle+Language.m */; };
+		0EE4F4CB1BA28A8C00E3A573 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE4F4C81BA28A8C00E3A573 /* NSBundle+Language.m */; };
 		901CF0E31B6CA9FE00F6414B /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 901CF0D31B6CA9FE00F6414B /* DateTools.bundle */; };
 		901CF0E41B6CA9FE00F6414B /* DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 901CF0D41B6CA9FE00F6414B /* DateTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		901CF0E51B6CA9FE00F6414B /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 901CF0D51B6CA9FE00F6414B /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		0EE4F4C71BA28A8C00E3A573 /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		0EE4F4C81BA28A8C00E3A573 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		901CF0D31B6CA9FE00F6414B /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
 		901CF0D41B6CA9FE00F6414B /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTools.h; sourceTree = "<group>"; };
 		901CF0D51B6CA9FE00F6414B /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
@@ -360,6 +365,8 @@
 				F0EE17E018DEAE190010FAD8 /* DateTools.h */,
 				F0A426D918DA358C00E236C0 /* DTConstants.h */,
 				D935DB431B567FBD00BAA4F0 /* DTConstants.m */,
+				0EE4F4C71BA28A8C00E3A573 /* NSBundle+Language.h */,
+				0EE4F4C81BA28A8C00E3A573 /* NSBundle+Language.m */,
 				F0F08DD718D9E94F00214C6B /* NSDate+DateTools.h */,
 				F0F08DD818D9E94F00214C6B /* NSDate+DateTools.m */,
 				F0A426D418D9FDB500E236C0 /* DTTimePeriod.h */,
@@ -386,6 +393,7 @@
 				901CF0E41B6CA9FE00F6414B /* DateTools.h in Headers */,
 				901CF0E71B6CA9FE00F6414B /* DTError.h in Headers */,
 				901CF0EB1B6CA9FE00F6414B /* DTTimePeriodChain.h in Headers */,
+				0EE4F4C91BA28A8C00E3A573 /* NSBundle+Language.h in Headers */,
 				901CF0F11B6CA9FE00F6414B /* NSDate+DateTools.h in Headers */,
 				901CF0E51B6CA9FE00F6414B /* DTConstants.h in Headers */,
 				901CF0ED1B6CA9FE00F6414B /* DTTimePeriodCollection.h in Headers */,
@@ -528,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE4F4CB1BA28A8C00E3A573 /* NSBundle+Language.m in Sources */,
 				901CF0EA1B6CA9FE00F6414B /* DTTimePeriod.m in Sources */,
 				901CF0F01B6CA9FE00F6414B /* DTTimePeriodGroup.m in Sources */,
 				901CF0E81B6CA9FE00F6414B /* DTError.m in Sources */,
@@ -546,6 +555,7 @@
 				F0EE17E718DEB1A10010FAD8 /* DTError.m in Sources */,
 				F0EE17EB18DEB1A10010FAD8 /* DTTimePeriodGroup.m in Sources */,
 				F0A426D618D9FDB500E236C0 /* DTTimePeriod.m in Sources */,
+				0EE4F4CA1BA28A8C00E3A573 /* NSBundle+Language.m in Sources */,
 				F007633418DE628900A99075 /* ExampleNavigationController.m in Sources */,
 				F0EE17E918DEB1A10010FAD8 /* DTTimePeriodChain.m in Sources */,
 				F07A1A0818DCC76500B3E9FF /* DTTimePeriodCollection.m in Sources */,
