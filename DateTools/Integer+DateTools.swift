@@ -11,19 +11,31 @@ import Foundation
 extension Int {
     
     //MARK: TimePeriod
-    func seconds() -> TimeChunk {
-		return TimeChunk(size: .second, amount: self)
+    var seconds: TimeChunk {
+        return TimeChunk(size: .second, amount: self)
     }
     
-    func minutes() -> TimeChunk {
+    var minutes: TimeChunk {
         return TimeChunk(size: .minute, amount: self)
     }
     
-    func days() -> TimeChunk {
+    var hours: TimeChunk {
+        return TimeChunk(size: .hour, amount: self)
+    }
+    
+    var days: TimeChunk {
         return TimeChunk(size: .day, amount: self)
     }
     
-    func years() -> TimeChunk {
+    var weeks: TimeChunk {
+        return TimeChunk(size: .week, amount: self)
+    }
+    
+    var months: TimeChunk {
+        return TimeChunk(size: .month, amount: self)
+    }
+    
+    var years: TimeChunk {
         return TimeChunk(size: .year, amount: self)
     }
 }

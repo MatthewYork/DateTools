@@ -162,7 +162,7 @@ class TimePeriod {
         return .none
     }
     
-    func intervalBetweenPeriod(_ period: TimePeriod) -> TimeInterval {
+    func interval(between period: TimePeriod) -> TimeInterval {
         return 0
     }
     

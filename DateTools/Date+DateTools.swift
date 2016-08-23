@@ -52,5 +52,12 @@ extension Date {
 		self.init(dateString: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
 	}
 	
-	
+	//MARK: Addition / Subtractions
+    func add(_ timeChunk: TimeChunk) -> Date {
+        return Date()
+    }
+    
+    func subtract(_ timeChunk: TimeChunk) -> Date {
+        return Date()
+    }
 }
