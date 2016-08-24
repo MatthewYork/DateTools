@@ -9,6 +9,20 @@
 import Foundation
 
 struct TimeChunk {
+    
+    enum Size {
+        case second
+        case minute
+        case hour
+        case day
+        case week
+        case month
+        case year
+    }
+    
+    
+    // MARK: - Variables
+    
     var seconds = 0
     var minutes = 0
     var hours = 0
@@ -21,7 +35,7 @@ struct TimeChunk {
     
     }
     
-    init(size: TimePeriod.Size, amount: Int) {
+    init(size: Size, amount: Int) {
         switch size {
         case .second:
             seconds += amount
@@ -40,12 +54,16 @@ struct TimeChunk {
         }
     }
     
-    //MARK: Comparisons
+    
+    // MARK: - Comparisons
+    
     func equals(chunk: TimeChunk) -> Bool {
         return (seconds == chunk.seconds && minutes == chunk.minutes && hours == chunk.hours && days == chunk.days && weeks == chunk.weeks && months == chunk.months && years == chunk.years)
     }
     
+    
     //MARK: - Lengthen / Shorten
+    
     func lengthen(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
         newChunk.seconds = seconds + chunk.seconds
@@ -72,7 +90,9 @@ struct TimeChunk {
         return newChunk
     }
     
-    //MARK: Mutation
+    
+    // MARK: - Mutation
+    
     mutating func lengthened(by chunk: TimeChunk) {
         seconds += chunk.seconds
         minutes += chunk.minutes
@@ -93,7 +113,9 @@ struct TimeChunk {
         years -= chunk.years
     }
     
-    //MARK: Operator Overloads
+    
+    // MARK: - Operator Overloads
+    
     static func +(leftAddend: TimeChunk, rightAddend: TimeChunk) -> TimeChunk {
         return leftAddend.lengthen(by: rightAddend)
     }

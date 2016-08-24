@@ -41,18 +41,6 @@ class TimePeriod {
         case none // One or more of the dates does not exist
     }
     
-    /**
-        Time period lengths
-     */
-    enum Size {
-        case second
-        case minute
-        case hour
-        case day
-        case week
-        case month
-        case year
-    }
     
     /**
         Whether the time period is Open or Closed
@@ -88,14 +76,16 @@ class TimePeriod {
      */
     var end: Date?
     
+    
     // MARK: - Initializers
     
     init() {
         
     }
     
-    init (beginning:Date, end:Date) {
-        
+    init(beginning:Date, end:Date) {
+        self.beginning = beginning
+        self.end = end
     }
     
     init(beginning: Date, duration: TimeInterval) {
@@ -105,6 +95,15 @@ class TimePeriod {
     init(end: Date, duration: TimeInterval) {
         
     }
+    
+    init(beginning: Date, duration: TimeChunk) {
+        
+    }
+    
+    init(end: Date, duration: TimeChunk) {
+        
+    }
+    
     
     // MARK: - Information
     
@@ -136,7 +135,12 @@ class TimePeriod {
         return 0
     }
     
+    
     // MARK: - Time Period Relationships
+    
+    func relation(to period: TimePeriod) -> Relation {
+        return .none
+    }
     
     func equals(period: TimePeriod) -> Bool {
         return false
@@ -162,13 +166,22 @@ class TimePeriod {
         return false
     }
     
-    func relation(to period: TimePeriod) -> Relation {
-        return .none
+    func touches(period: TimePeriod) -> Bool {
+        return false
     }
     
-    func interval(between period: TimePeriod) -> TimeInterval {
+    func hasGap(between period: TimePeriod) -> Bool {
+        return false
+    }
+    
+    func gap(between period: TimePeriod) -> TimeInterval {
         return 0
     }
+    
+    func gap(between period: TimePeriod) -> TimeChunk {
+        return 0.days
+    }
+    
     
     // MARK: - Shifts
     
@@ -180,6 +193,7 @@ class TimePeriod {
         
     }
     
+    
     // MARK: - Lengthen / Shorten
     
     func lengthen(by interval: TimeInterval, at anchor: Anchor) {
@@ -190,11 +204,13 @@ class TimePeriod {
         
     }
     
+    
     // MARK: - Copy
     
     func copy() -> TimePeriod {
         return TimePeriod()
     }
+    
     
     // MARK: - Operator Overloads
     

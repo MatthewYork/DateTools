@@ -9,7 +9,9 @@
 import UIKit
 
 extension Date {
-    //MARK: Formatted Date - Style
+    
+    // MARK: - Formatted Date - Style
+    
     func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone, locale: Locale) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -31,7 +33,9 @@ extension Date {
         return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
     }
     
-    //MARK: Formatted Date - String
+    
+    // MARK: - Formatted Date - String
+    
     func format(with dateFormat: String, timeZone: TimeZone, locale: Locale) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat

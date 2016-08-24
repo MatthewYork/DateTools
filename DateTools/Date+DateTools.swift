@@ -13,7 +13,8 @@ import Foundation
 */
 
 extension Date {
-	//MARK: Initializers
+    
+	// MARK: - Initializers
 	init(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) {
 		var dateComponents = DateComponents()
 		dateComponents.year = year
@@ -52,12 +53,46 @@ extension Date {
 		self.init(dateString: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
 	}
 	
-	//MARK: Addition / Subtractions
+	// MARK: - Addition / Subtractions
     func add(_ timeChunk: TimeChunk) -> Date {
         return Date()
     }
     
     func subtract(_ timeChunk: TimeChunk) -> Date {
         return Date()
+    }
+    
+    
+    // MARK: - Operator Overloads
+    
+    static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
+        return leftAddend.add(rightAddend)
+    }
+    static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
+        return minuend.subtract(subtrahend)
+    }
+    static func >(left: Date, right: Date) -> Bool {
+        return left.greater(than: right)
+    }
+    static func <(left: Date, right: Date) -> Bool {
+        return left.less(than: right)
+    }
+    static func ==(left: Date, right: Date) -> Bool {
+        return left.equals(right)
+    }
+    
+    
+    // MARK: - Comparisons
+    
+    func equals(_ date: Date) -> Bool {
+        return self.compare(date) == .orderedSame
+    }
+    
+    func greater(than date: Date) -> Bool {
+        return self.compare(date) == .orderedDescending
+    }
+    
+    func less(than date: Date) -> Bool {
+        return self.compare(date) == .orderedAscending
     }
 }

@@ -34,7 +34,7 @@ class TimePeriodTests : XCTestCase {
         // THIS SHOULD BE FAILING
         // FILL OUT INIT
         let testPeriodInit = TimePeriod(beginning: (self.controlTimePeriod.beginning)!, end: self.controlTimePeriod.end!)
-        XCTAssertTrue(self.controlTimePeriod.equals(period: testPeriodInit) && self.controlTimePeriod.end!.equals(date: testPeriodInit.end!), "%s Failed", file: #function)
+        XCTAssertTrue(self.controlTimePeriod.equals(period: testPeriodInit) && self.controlTimePeriod.end!.equals(testPeriodInit.end!), "%s Failed", file: #function)
     }
     
     
@@ -82,13 +82,13 @@ class TimePeriodTests : XCTestCase {
         //Same
         XCTAssertTrue(self.controlTimePeriod.equals(period: self.controlTimePeriod), "%s Failed", file: #function)
         //Different ending
-        var differentEndPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: self.controlTimePeriod.end!.add(1.years))
+        let differentEndPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: self.controlTimePeriod.end!.add(1.years))
         XCTAssertFalse(self.controlTimePeriod.equals(period: differentEndPeriod), "%s Failed", file: #function)
         //Different beginning
-        var differentStartPeriod = TimePeriod (beginning: self.controlTimePeriod.beginning!.subtract(1.years), end: self.controlTimePeriod.end!)
-        XCTAssertFalse(self.controlTimePeriod.equals(differentStartPeriod), "%s Failed", file: #function)
+        let differentStartPeriod = TimePeriod (beginning: self.controlTimePeriod.beginning!.subtract(1.years), end: self.controlTimePeriod.end!)
+        XCTAssertFalse(self.controlTimePeriod.equals(period: differentStartPeriod), "%s Failed", file: #function)
         //Both endings different
-        var differentStartAndEndPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!.subtract(1.weeks), end: self.controlTimePeriod.end!.subtract(1.weeks))
+        let differentStartAndEndPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!.subtract(1.weeks), end: self.controlTimePeriod.end!.subtract(1.weeks))
         XCTAssertFalse(self.controlTimePeriod.equals(period: differentStartAndEndPeriod), "%s Failed", file: #function)
     }
     
@@ -236,53 +236,56 @@ class TimePeriodTests : XCTestCase {
     func testRelation() {
         //Test exact match
         let testTimePeriodExact = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.exactMatch, testTimePeriodExact.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.exactMatch, testTimePeriodExact.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test same start
         let testTimePeriodSameStart = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.insideStartTouching, testTimePeriodSameStart.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.insideStartTouching, testTimePeriodSameStart.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test same end
         let testTimePeriodSameEnd = TimePeriod(beginning: self.formatter.date(from: "2015 12 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.insideEndTouching, testTimePeriodSameEnd.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.insideEndTouching, testTimePeriodSameEnd.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test completely inside
         let testTimePeriodCompletelyInside = TimePeriod(beginning: self.formatter.date(from: "2015 12 05 18:15:12.000")!, end: self.formatter.date(from: "2016 04 05 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.inside, testTimePeriodCompletelyInside.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.inside, testTimePeriodCompletelyInside.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //NEGATIVE MATCHES
         //Test before
         let testTimePeriodBefore = TimePeriod(beginning: self.formatter.date(from: "2014 11 02 18:15:12.000")!, end: self.formatter.date(from: "2014 11 04 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.before, testTimePeriodBefore.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.before, testTimePeriodBefore.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test end same as start
         let testTimePeriodEndSameStart = TimePeriod(beginning: self.formatter.date(from: "2013 11 05 18:15:12.000")!, end: self.formatter.date(from: "2014 11 05 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.endTouching, testTimePeriodEndSameStart.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.endTouching, testTimePeriodEndSameStart.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test end inside
         let testTimePeriodEndInside = TimePeriod(beginning: self.formatter.date(from: "2014 11 02 18:15:12.000")!, end: self.formatter.date(from: "2014 11 07 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.endInside, testTimePeriodEndInside.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.endInside, testTimePeriodEndInside.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test start inside
         let testTimePeriodStartInside = TimePeriod(beginning: self.formatter.date(from: "2014 11 07 18:15:12.000")!, end: self.formatter.date(from: "2016 12 05 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.startInside, testTimePeriodStartInside.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.startInside, testTimePeriodStartInside.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test start same as end
         let testTimePeriodStartSameEnd = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 10 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.startTouching, testTimePeriodStartSameEnd.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.startTouching, testTimePeriodStartSameEnd.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
         //Test after
         let testTimePeriodAfter = TimePeriod(beginning: self.formatter.date(from: "2016 12 05 18:15:12.000")!, end: self.formatter.date(from: "2016 12 10 18:15:12.000")!)
-        XCTAssertEqual(TimePeriod.Relation.after, testTimePeriodAfter.relation(to period: self.controlTimePeriod), "%s Failed", file: #function)
+        XCTAssertEqual(TimePeriod.Relation.after, testTimePeriodAfter.relation(to: self.controlTimePeriod), "%s Failed", file: #function)
     }
     
-    func testintervalBetweenPeriod() {
+    func testHasGap() {
         //We are going to treat some of these as False=noGap and True=gap
         //No Gap Same
-        XCTAssertFalse(self.controlTimePeriod.intervalBetween(period: self.controlTimePeriod) > 0, "%s Failed", file: #function)
+        XCTAssertFalse(self.controlTimePeriod.hasGap(between: self.controlTimePeriod), "%s Failed", file: #function)
         //No Gap End Inside
-        let testPeriodNoGap = TimePeriod(beginning: self.controlTimePeriod.beginning!.subtract(1.days), end: self.controlTimePeriod.end!.subtract(1.days))
-        XCTAssertFalse(self.controlTimePeriod.intervalBetween(period: testPeriodNoGap) > 0, "%s Failed", file: #function)
+        let testPeriodNoGap = TimePeriod(beginning: self.controlTimePeriod.beginning! - 1.days, end: self.controlTimePeriod.end!.subtract(1.days))
+        XCTAssertFalse(self.controlTimePeriod.hasGap(between: testPeriodNoGap), "%s Failed", file: #function)
         //Gap receiver early
-        let testPeriodReceiverEarly = TimePeriod(size: TimePeriod.Size.week, startingAt: self.controlTimePeriod.end!.add(1.years))
-        XCTAssertTrue(self.controlTimePeriod.intervalBetween(period: testPeriodReceiverEarly), "%s Failed", file: #function)
+        let testPeriodReceiverEarly = TimePeriod(beginning: self.controlTimePeriod.end!.add(1.years), duration: 1.weeks)
+        XCTAssertTrue(self.controlTimePeriod.hasGap(between: testPeriodReceiverEarly), "%s Failed", file: #function)
         //Gap parameter early
-        let testPeriodParameterEarly = TimePeriod(size: TimePeriod.Size.week, endingAt: self.controlTimePeriod.beginning!.subtract(1.years))
-        XCTAssertTrue(self.controlTimePeriod.intervalBetween(period: testPeriodParameterEarly), "%s Failed", file: #function)
+        let testPeriodParameterEarly = TimePeriod(end: self.controlTimePeriod.beginning! - 1.years, duration: 1.weeks)
+        XCTAssertTrue(self.controlTimePeriod.hasGap(between: testPeriodParameterEarly), "%s Failed", file: #function)
+    }
+    
+    func testGap() {
         //Gap of 1 minute
-        let testPeriodParameter1MinuteEarly = TimePeriod(size: TimePeriod.Size.second, endingAt: self.controlTimePeriod.beginning!.subtract(1.minutes))
-        XCTAssertEqual(60, self.controlTimePeriod.intervalBetween(period: testPeriodParameter1MinuteEarly), "%s Failed", file: #function)
+        let testPeriodParameter1MinuteEarly = TimePeriod(end: self.controlTimePeriod.beginning! - 1.minutes, duration: 1.seconds)
+        XCTAssertEqual(60, self.controlTimePeriod.gap(between: testPeriodParameter1MinuteEarly), "%s Failed", file: #function)
     }
     
     
@@ -318,18 +321,18 @@ class TimePeriodTests : XCTestCase {
         let endEarlierSecond: Date = self.formatter.date(from: "2016 11 05 18:15:11.000")!
         //Second time period
         let testPeriod: TimePeriod = TimePeriod(beginning: startEarlierSecond, end: endEarlierSecond)
-        let timeChunk = TimeChunk(size: TimePeriod.Size.second, amount: 1)
-        self.controlTimePeriod.shift(by chunk: timeChunk)
-        XCTAssertTrue(testPeriod.beginning!.equals(date: self.controlTimePeriod.beginning!) && testPeriod.end!.equals(date: self.controlTimePeriod.end!), "%s Failed", file: #function)
+        let timeChunk = TimeChunk(size: .second, amount: 1)
+        self.controlTimePeriod.shift(by: timeChunk)
+        XCTAssertTrue(testPeriod.beginning!.equals(self.controlTimePeriod.beginning!) && testPeriod.end!.equals(self.controlTimePeriod.end!), "%s Failed", file: #function)
     }
     
     func testShiftMinuteEarlier() {
         let startEarlier: Date = self.formatter.date(from: "2014 11 05 18:14:12.000")!
         let endEarlier: Date = self.formatter.date(from: "2016 11 05 18:14:12.000")!
         let testPeriod: TimePeriod = TimePeriod(beginning: startEarlier, end: endEarlier)
-        let timeChunk = TimeChunk(size: TimePeriod.Size.minute, amount: 1)
-        self.controlTimePeriod.shift(by chunk: timeChunk)
-        XCTAssertTrue(testPeriod.beginning!.equals(date: self.controlTimePeriod.beginning!) && testPeriod.end!.equals(date: self.controlTimePeriod.end), "%s Failed", file: #function)
+        let timeChunk = TimeChunk(size: .minute, amount: 1)
+        self.controlTimePeriod.shift(by: timeChunk)
+        XCTAssertTrue(testPeriod.beginning!.equals(self.controlTimePeriod.beginning!) && testPeriod.end!.equals(self.controlTimePeriod.end!), "%s Failed", file: #function)
     }
     
 }
