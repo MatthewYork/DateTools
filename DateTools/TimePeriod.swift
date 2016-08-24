@@ -146,6 +146,10 @@ class TimePeriod {
         return false
     }
     
+    func contains(date: Date, interval: Interval) -> Bool {
+        return false
+    }
+    
     func contains(period: TimePeriod) -> Bool {
         return false
     }
