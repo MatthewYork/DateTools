@@ -127,4 +127,17 @@ struct TimeChunk {
     static func ==(left: TimeChunk, right: TimeChunk) -> Bool {
         return left.equals(chunk: right)
     }
+    
+    static prefix func -(chunk: TimeChunk) -> TimeChunk {
+        var invertedChunk = chunk;
+        invertedChunk.seconds = -chunk.seconds
+        invertedChunk.minutes = -chunk.minutes
+        invertedChunk.hours = -chunk.hours
+        invertedChunk.days = -chunk.days
+        invertedChunk.weeks = -chunk.weeks
+        invertedChunk.months = -chunk.months
+        invertedChunk.years = -chunk.years
+        return invertedChunk
+    }
+
 }
