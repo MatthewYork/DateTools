@@ -21,6 +21,6 @@ class Constants {
     static let SecondsInWeek: TimeInterval = 604800
     static let SecondsInDay: TimeInterval = 86400
     static let SecondsInHour: TimeInterval = 3600
-    static let SeconsInMinute: TimeInterval = 60
+    static let SecondsInMinute: TimeInterval = 60
     static let MillisecondsInDay: TimeInterval = 86400000
 }
