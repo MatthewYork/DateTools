@@ -137,6 +137,14 @@ class TimePeriod {
         return 0
     }
     
+    var chunk: TimeChunk {
+        return 0.days
+    }
+    
+    var time: TimeInterval {
+        return 0
+    }
+    
     
     // MARK: - Time Period Relationships
     
