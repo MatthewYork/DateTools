@@ -238,12 +238,24 @@ class TimePeriod {
     
     // MARK: - Operator Overloads
     
-    static func +(leftAddend: TimePeriod, rightAddend: TimePeriod) -> TimePeriod {
-       return TimePeriod()
+    // Default anchor = end
+    static func +(leftAddend: TimePeriod, rightAddend: TimeInterval) -> TimePeriod {
+       return leftAddend.lengthen(by: rightAddend, at: .end)
     }
-    static func -(minuend: TimePeriod, subtrahend: TimePeriod) -> TimePeriod {
-        return TimePeriod()
+    
+    static func +(leftAddend: TimePeriod, rightAddend: TimeChunk) -> TimePeriod {
+        return leftAddend.lengthen(by: rightAddend, at: .end)
     }
+    
+    // Default anchor = end
+    static func -(minuend: TimePeriod, subtrahend: TimeInterval) -> TimePeriod {
+        return minuend.lengthen(by: subtrahend, at: .end)
+    }
+    
+    static func -(minuend: TimePeriod, subtrahend: TimeChunk) -> TimePeriod {
+        return minuend.lengthen(by: subtrahend, at: .end)
+    }
+    
     static func ==(left: TimePeriod, right: TimePeriod) -> Bool {
         return left.equals(period: right)
     }
