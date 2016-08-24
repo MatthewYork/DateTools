@@ -89,7 +89,8 @@ class TimePeriod {
     }
     
     init(beginning: Date, duration: TimeInterval) {
-        
+        self.beginning = beginning
+        self.end = beginning + duration
     }
     
     init(end: Date, duration: TimeInterval) {
@@ -97,7 +98,8 @@ class TimePeriod {
     }
     
     init(beginning: Date, duration: TimeChunk) {
-        
+        self.beginning = beginning
+        self.end = beginning + duration
     }
     
     init(end: Date, duration: TimeChunk) {
