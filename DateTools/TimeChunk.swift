@@ -10,17 +10,6 @@ import Foundation
 
 struct TimeChunk {
     
-    enum Size {
-        case second
-        case minute
-        case hour
-        case day
-        case week
-        case month
-        case year
-    }
-    
-    
     // MARK: - Variables
     
     var seconds = 0
@@ -35,23 +24,14 @@ struct TimeChunk {
     
     }
     
-    init(size: Size, amount: Int) {
-        switch size {
-        case .second:
-            seconds += amount
-        case .minute:
-            minutes += amount
-        case .hour:
-            hours += amount
-        case .day:
-            days += amount
-        case .week:
-            weeks += amount
-        case .month:
-            months += amount
-        case .year:
-            years += amount
-        }
+    init(seconds: Int, minutes: Int, hours: Int, days: Int, weeks: Int, months: Int, years: Int) {
+        self.seconds = seconds
+        self.minutes = minutes
+        self.hours = hours
+        self.days = days
+        self.weeks = weeks
+        self.months = months
+        self.years = years
     }
     
     

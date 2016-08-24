@@ -12,30 +12,30 @@ extension Int {
     
     //MARK: TimePeriod
     var seconds: TimeChunk {
-        return TimeChunk(size: .second, amount: self)
+        return TimeChunk(seconds: self, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
     }
     
     var minutes: TimeChunk {
-        return TimeChunk(size: .minute, amount: self)
+        return TimeChunk(seconds: 0, minutes: self, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
     }
     
     var hours: TimeChunk {
-        return TimeChunk(size: .hour, amount: self)
+        return TimeChunk(seconds: 0, minutes: 0, hours: self, days: 0, weeks: 0, months: 0, years: 0)
     }
     
     var days: TimeChunk {
-        return TimeChunk(size: .day, amount: self)
+        return TimeChunk(seconds: 0, minutes: 0, hours: 0, days: self, weeks: 0, months: 0, years: 0)
     }
     
     var weeks: TimeChunk {
-        return TimeChunk(size: .week, amount: self)
+        return TimeChunk(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: self, months: 0, years: 0)
     }
     
     var months: TimeChunk {
-        return TimeChunk(size: .month, amount: self)
+        return TimeChunk(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: self, years: 0)
     }
     
     var years: TimeChunk {
-        return TimeChunk(size: .year, amount: self)
+        return TimeChunk(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: self)
     }
 }
