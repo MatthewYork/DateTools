@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EAB89D91D6CE3DC000794B7 /* String+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */; };
 		5658E3801D6B559900D1465A /* TimePeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E35B1D67782D00D1465A /* TimePeriodTests.swift */; };
 		5658E3811D6B55C800D1465A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5658E37A1D6B556B00D1465A /* Info.plist */; };
 		5658E38E1D6B59B300D1465A /* DateToolsTestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E3881D6B59B300D1465A /* DateToolsTestsTests.swift */; };
@@ -25,6 +26,8 @@
 		F0997A471D67580B00EBCF5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A451D67580B00EBCF5C /* Main.storyboard */; };
 		F0997A491D67580B00EBCF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0997A481D67580B00EBCF5C /* Assets.xcassets */; };
 		F0997A4C1D67580B00EBCF5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A4A1D67580B00EBCF5C /* LaunchScreen.storyboard */; };
+		F0E41E861D6CE82B00DF0AAB /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */; };
+		F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+DateTools.swift"; path = "../../../DateTools/String+DateTools.swift"; sourceTree = "<group>"; };
 		5658E35B1D67782D00D1465A /* TimePeriodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodTests.swift; sourceTree = "<group>"; };
 		5658E3701D6B53B000D1465A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateToolsTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +64,8 @@
 		F0997A481D67580B00EBCF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0997A4B1D67580B00EBCF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0997A4D1D67580B00EBCF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Format.swift"; path = "../../../DateTools/Date+Format.swift"; sourceTree = "<group>"; };
+		F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+TimeAgo.swift"; path = "../../../DateTools/Date+TimeAgo.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +107,15 @@
 		56D193941D675AC3001BD246 /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
-				56D193BC1D675CF2001BD246 /* TimeChunk.swift */,
+				56D193971D675ADE001BD246 /* DateTools.bundle */,
 				56D193951D675ADE001BD246 /* Constants.swift */,
 				56D193961D675ADE001BD246 /* Date+DateTools.swift */,
-				56D193971D675ADE001BD246 /* DateTools.bundle */,
+				F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */,
+				F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */,
 				56D193981D675ADE001BD246 /* Error.swift */,
 				56D193991D675ADE001BD246 /* Integer+DateTools.swift */,
+				2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */,
+				56D193BC1D675CF2001BD246 /* TimeChunk.swift */,
 				56D1939A1D675ADE001BD246 /* TimePeriod.swift */,
 				56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */,
 				56D1939C1D675ADE001BD246 /* TimePeriodCollection.swift */,
@@ -267,6 +276,8 @@
 			files = (
 				56D193A21D675ADE001BD246 /* Integer+DateTools.swift in Sources */,
 				56D193A61D675ADE001BD246 /* TimePeriodGroup.swift in Sources */,
+				F0E41E861D6CE82B00DF0AAB /* Date+Format.swift in Sources */,
+				2EAB89D91D6CE3DC000794B7 /* String+DateTools.swift in Sources */,
 				56D193BD1D675CF2001BD246 /* TimeChunk.swift in Sources */,
 				56D193A31D675ADE001BD246 /* TimePeriod.swift in Sources */,
 				F0997A441D67580B00EBCF5C /* ViewController.swift in Sources */,
@@ -275,6 +286,7 @@
 				56D1939E1D675ADE001BD246 /* Constants.swift in Sources */,
 				56D193A41D675ADE001BD246 /* TimePeriodChain.swift in Sources */,
 				56D193A11D675ADE001BD246 /* Error.swift in Sources */,
+				F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */,
 				56D1939F1D675ADE001BD246 /* Date+DateTools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +478,7 @@
 				5658E37F1D6B556B00D1465A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0997A391D67580B00EBCF5C /* Build configuration list for PBXProject "DateToolsTests" */ = {
 			isa = XCConfigurationList;

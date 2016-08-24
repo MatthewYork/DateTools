@@ -71,7 +71,7 @@ class TimePeriodTests : XCTestCase {
     }
     
     func testDurationInSeconds() {
-        let testPeriod: TimePeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: self.controlTimePeriod.beginning.add(4.hours))
+        let testPeriod: TimePeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: self.controlTimePeriod.beginning!.add(4.hours))
         XCTAssertEqual(14400, testPeriod.seconds, "%s Failed", file: #function)
     }
     
@@ -83,13 +83,13 @@ class TimePeriodTests : XCTestCase {
         XCTAssertTrue(self.controlTimePeriod.equals(period: self.controlTimePeriod), "%s Failed", file: #function)
         //Different ending
         var differentEndPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: self.controlTimePeriod.end!.add(1.years))
-        XCTAssertFalse(self.controlTimePeriod.equals(differentEndPeriod), "%s Failed", file: #function)
+        XCTAssertFalse(self.controlTimePeriod.equals(period: differentEndPeriod), "%s Failed", file: #function)
         //Different beginning
-        var differentStartPeriod = TimePeriod (beginning: self.controlTimePeriod.beginning!.subtract(1.years), end: self.controlTimePeriod.end)
+        var differentStartPeriod = TimePeriod (beginning: self.controlTimePeriod.beginning!.subtract(1.years), end: self.controlTimePeriod.end!)
         XCTAssertFalse(self.controlTimePeriod.equals(differentStartPeriod), "%s Failed", file: #function)
         //Both endings different
         var differentStartAndEndPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!.subtract(1.weeks), end: self.controlTimePeriod.end!.subtract(1.weeks))
-        XCTAssertFalse(self.controlTimePeriod.equals(differentStartAndEndPeriod), "%s Failed", file: #function)
+        XCTAssertFalse(self.controlTimePeriod.equals(period: differentStartAndEndPeriod), "%s Failed", file: #function)
     }
     
     func testInside() {
