@@ -119,9 +119,11 @@ struct TimeChunk {
     static func +(leftAddend: TimeChunk, rightAddend: TimeChunk) -> TimeChunk {
         return leftAddend.lengthen(by: rightAddend)
     }
+    
     static func -(minuend: TimeChunk, subtrahend: TimeChunk) -> TimeChunk {
         return minuend.shorten(by: subtrahend)
     }
+    
     static func ==(left: TimeChunk, right: TimeChunk) -> Bool {
         return left.equals(chunk: right)
     }
