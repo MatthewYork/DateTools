@@ -109,7 +109,7 @@ class TimePeriod {
     
     // MARK: - Information
     
-    func isMoment() -> Bool {
+    var isMoment: Bool {
         return false
     }
     
