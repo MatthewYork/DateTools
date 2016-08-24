@@ -153,7 +153,7 @@ class TimePeriod {
     }
     
     func equals(period: TimePeriod) -> Bool {
-        return false
+        return self.beginning == period.beginning && self.end == period.end
     }
     
     func inside(of: TimePeriod) -> Bool {
@@ -173,11 +173,7 @@ class TimePeriod {
     }
     
     func intersects(with period: TimePeriod) -> Bool {
-        return false
-    }
-    
-    func touches(period: TimePeriod) -> Bool {
-        return false
+        return self.relation(to: period) != .after && self.relation(to: period) != .before
     }
     
     func hasGap(between period: TimePeriod) -> Bool {
@@ -190,6 +186,14 @@ class TimePeriod {
     
     func gap(between period: TimePeriod) -> TimeChunk {
         return 0.days
+    }
+    
+    func isAfter(period: TimePeriod) -> Bool {
+        return self.relation(to: period) == .after
+    }
+    
+    func isBefore(period: TimePeriod) -> Bool {
+        return self.relation(to: period) == .before
     }
     
     
