@@ -210,12 +210,22 @@ class TimePeriod {
     
     // MARK: - Lengthen / Shorten
     
-    func lengthen(by interval: TimeInterval, at anchor: Anchor) {
-        
+    // Do not lengthen by month at anchor center. Month cannot be divided reliably.
+    
+    func lengthen(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
     }
     
-    func lengthen(by chunk: TimeChunk, at anchor: Anchor) {
-        
+    func lengthen(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
+    }
+    
+    func shorten(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
+    }
+    
+    func shorten(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
     }
     
     
