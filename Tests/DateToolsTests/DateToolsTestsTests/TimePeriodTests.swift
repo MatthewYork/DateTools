@@ -36,6 +36,8 @@ class TimePeriodTests : XCTestCase {
         XCTAssertTrue(self.controlTimePeriod.equals(period: testPeriodInit) && self.controlTimePeriod.end!.equals(testPeriodInit.end!))
     }
     
+    // **Add more init tests**
+    
     
     //MARK: - Operator Overloads
     
