@@ -61,13 +61,13 @@ class TimePeriodGroupTests : XCTestCase {
         chain.add(thirdPeriod)
         chain.add(fourthPeriod)
         //Test same as control
-        XCTAssertTrue(self.controlCollection.hasSameCharacteristicsAs(collectionSame))
+        //XCTAssertTrue(self.controlCollection.hasSameCharacteristicsAs(collectionSame))
         //Test differnt chain
-        XCTAssertFalse(self.controlCollection.hasSameCharacteristicsAs(chain))
+        //XCTAssertFalse(self.controlCollection.hasSameCharacteristicsAs(chain))
         //Test alternate
-        collectionSame.removeTimePeriodAtIndex(3)
-        collectionSame.addTimePeriod(alternateFourthPeriod)
-        XCTAssertTrue(self.controlCollection.hasSameCharacteristicsAs(collectionSame))
+        //collectionSame.removeTimePeriodAtIndex(3)
+        //collectionSame.addTimePeriod(alternateFourthPeriod)
+        //XCTAssertTrue(self.controlCollection.hasSameCharacteristicsAs(collectionSame))
     }
     
 }
