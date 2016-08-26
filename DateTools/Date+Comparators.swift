@@ -6,7 +6,7 @@
 //  Copyright © 2016 Matthew York. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension Date {
 

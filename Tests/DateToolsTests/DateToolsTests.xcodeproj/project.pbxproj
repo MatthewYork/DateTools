@@ -32,6 +32,7 @@
 		F0997A471D67580B00EBCF5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A451D67580B00EBCF5C /* Main.storyboard */; };
 		F0997A491D67580B00EBCF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0997A481D67580B00EBCF5C /* Assets.xcassets */; };
 		F0997A4C1D67580B00EBCF5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A4A1D67580B00EBCF5C /* LaunchScreen.storyboard */; };
+		F0D7EB7F1D70EA1F0037F330 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7EB7E1D70EA1F0037F330 /* Enums.swift */; };
 		F0E41E861D6CE82B00DF0AAB /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */; };
 		F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		F0997A481D67580B00EBCF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0997A4B1D67580B00EBCF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0997A4D1D67580B00EBCF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0D7EB7E1D70EA1F0037F330 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = ../../../DateTools/Enums.swift; sourceTree = "<group>"; };
 		F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Format.swift"; path = "../../../DateTools/Date+Format.swift"; sourceTree = "<group>"; };
 		F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+TimeAgo.swift"; path = "../../../DateTools/Date+TimeAgo.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 				56D193961D675ADE001BD246 /* Date+DateTools.swift */,
 				F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */,
 				F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */,
+				F0D7EB7E1D70EA1F0037F330 /* Enums.swift */,
 				56D193981D675ADE001BD246 /* Error.swift */,
 				56D193991D675ADE001BD246 /* Integer+DateTools.swift */,
 				2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */,
@@ -311,6 +314,7 @@
 				F0885D041D708A07002843B5 /* Date+Comparators.swift in Sources */,
 				F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */,
 				56D1939F1D675ADE001BD246 /* Date+DateTools.swift in Sources */,
+				F0D7EB7F1D70EA1F0037F330 /* Enums.swift in Sources */,
 				F0885D0A1D708AD0002843B5 /* Date+Components.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
