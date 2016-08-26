@@ -210,22 +210,41 @@ class TimePeriod {
     
     // MARK: - Lengthen / Shorten
     
+    // MARK: New
+    
+    func lengthened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
+    }
+    
+    func lengthened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
+    }
+    
+    func shortened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
+    }
+    
+    func shortened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
+        return TimePeriod()
+    }
+    
+    // MARK: In Place
     // Do not lengthen by month at anchor center. Month cannot be divided reliably.
     
-    func lengthen(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
-        return TimePeriod()
+    func lengthen(by interval: TimeInterval, at anchor: Anchor) {
+        
     }
     
-    func lengthen(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
-        return TimePeriod()
+    func lengthen(by chunk: TimeChunk, at anchor: Anchor) {
+        
     }
     
-    func shorten(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
-        return TimePeriod()
+    func shorten(by interval: TimeInterval, at anchor: Anchor) {
+        
     }
     
-    func shorten(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
-        return TimePeriod()
+    func shorten(by chunk: TimeChunk, at anchor: Anchor) {
+        
     }
     
     
@@ -240,20 +259,20 @@ class TimePeriod {
     
     // Default anchor = end
     static func +(leftAddend: TimePeriod, rightAddend: TimeInterval) -> TimePeriod {
-       return leftAddend.lengthen(by: rightAddend, at: .end)
+       return leftAddend.lengthened(by: rightAddend, at: .end)
     }
     
     static func +(leftAddend: TimePeriod, rightAddend: TimeChunk) -> TimePeriod {
-        return leftAddend.lengthen(by: rightAddend, at: .end)
+        return leftAddend.lengthened(by: rightAddend, at: .end)
     }
     
     // Default anchor = end
     static func -(minuend: TimePeriod, subtrahend: TimeInterval) -> TimePeriod {
-        return minuend.lengthen(by: subtrahend, at: .end)
+        return minuend.shortened(by: subtrahend, at: .end)
     }
     
     static func -(minuend: TimePeriod, subtrahend: TimeChunk) -> TimePeriod {
-        return minuend.lengthen(by: subtrahend, at: .end)
+        return minuend.shortened(by: subtrahend, at: .end)
     }
     
     static func ==(left: TimePeriod, right: TimePeriod) -> Bool {
