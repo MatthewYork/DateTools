@@ -42,24 +42,8 @@ class TimePeriodGroupTests : XCTestCase {
     }
     
     // MARK: - Group Info
-    func testDurationInWeeks() {
-        XCTAssertEqual(156, self.controlCollection.durationInWeeks)
-    }
-    
-    func testDurationInDays() {
-        XCTAssertEqual(1096, self.controlCollection.durationInDays)
-    }
-    
-    func testDurationInHours() {
-        XCTAssertEqual(26304, self.controlCollection.durationInHours)
-    }
-    
-    func testDurationInMinutes() {
-        XCTAssertEqual(1578240, self.controlCollection.durationInMinutes)
-    }
-    
-    func testDurationInSeconds() {
-        XCTAssertEqual(94694400, self.controlCollection.durationInSeconds)
+    func testDuration() {
+        XCTAssertEqual(94694400, self.controlCollection.duration)
     }
     
     // MARK: - Comparison
