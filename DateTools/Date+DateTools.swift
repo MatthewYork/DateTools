@@ -88,6 +88,13 @@ extension Date {
     }
     
     
+    // MARK: - Time Between
+    
+    func timeBetween(date: Date) -> TimeInterval {
+        return TimeInterval()
+    }
+    
+    
     // MARK: - Comparisons
     
     func equals(_ date: Date) -> Bool {
