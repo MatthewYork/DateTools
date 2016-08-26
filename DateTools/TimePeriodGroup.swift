@@ -19,6 +19,30 @@ class TimePeriodGroup {
     
     // MARK: - Variables
     
+    var beginning: Date?
+    var end: Date?
+    
     private var periods: [TimePeriod] = []
+    
+    var duration: TimeInterval {
+        if beginning != nil && end != nil {
+            return beginning!.timeBetween(date: end!)
+        }
+        return 0
+    }
+    
+    // MARK: - Mutations
+    
+    func add(_ period: TimePeriod) {
+        periods.append(period)
+        if beginning != nil && period.beginning != nil {
+            beginning = min(beginning!, period.beginning!)
+            end = max(end!, period.end!)
+        } else {
+            if let uBeginning = period.beginning {
+                self.beginning = uBeginning
+            }
+        }
+    }
     
 }
