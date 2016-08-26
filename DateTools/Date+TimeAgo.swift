@@ -251,15 +251,4 @@ extension Date {
         return (self.timeIntervalSince1970 >= date.timeIntervalSince1970) ? self : date
     }
     
-    var year: Int {
-        return 0
-    }
-    var day: Int {
-        let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
-        let dateComponents = Calendar.current.component(.day, from: self)
-        
-        return dateComponents
-    }
-    
-    
 }
