@@ -22,7 +22,7 @@ class TimePeriodGroup {
     var beginning: Date?
     var end: Date?
     
-    private var periods: [TimePeriod] = []
+    private var periods: [TimePeriodProtocol] = []
     
     var duration: TimeInterval {
         if beginning != nil && end != nil {
@@ -33,7 +33,7 @@ class TimePeriodGroup {
     
     // MARK: - Mutations
     
-    func add(_ period: TimePeriod) {
+    func add(_ period: TimePeriodProtocol) {
         periods.append(period)
         if beginning != nil && period.beginning != nil {
             beginning = min(beginning!, period.beginning!)

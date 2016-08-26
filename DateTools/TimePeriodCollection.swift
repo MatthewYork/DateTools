@@ -24,11 +24,11 @@ class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Sorting
     
-    func sort(by areInIncreasingOrder: (TimePeriod, TimePeriod) -> Bool) {
+    func sort(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
         
     }
     
-    func sorted(by areInIncreasingOrder: (TimePeriod, TimePeriod) -> Bool) -> TimePeriodCollection {
+    func sorted(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) -> TimePeriodCollection {
         return TimePeriodCollection()
     }
     
@@ -39,7 +39,7 @@ class TimePeriodCollection: TimePeriodGroup {
     /**
         Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s whose start and end dates fall completely inside the interval of the given ```TimePeriod```
      */
-    func allInside(in period: TimePeriod) -> TimePeriodCollection {
+    func allInside(in period: TimePeriodProtocol) -> TimePeriodCollection {
         return TimePeriodCollection()
     }
     
@@ -53,7 +53,7 @@ class TimePeriodCollection: TimePeriodGroup {
     /**
      Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing either the start date or the end date--or both--of the given ```TimePeriod```
      */
-    func periodsIntersected(by period: TimePeriod) -> TimePeriodCollection {
+    func periodsIntersected(by period: TimePeriodProtocol) -> TimePeriodCollection {
         return TimePeriodCollection()
     }
     
