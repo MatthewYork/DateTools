@@ -1,5 +1,5 @@
 //
-//  TimeBlock.swift
+//  TimeChunk.swift
 //  DateTools
 //
 //  Created by Grayson Webster on 8/19/16.
