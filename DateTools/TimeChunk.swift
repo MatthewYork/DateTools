@@ -42,7 +42,7 @@ struct TimeChunk {
     }
     
     
-    //MARK: - Lengthen / Shorten
+    // MARK: - Lengthen / Shorten
     
     func lengthened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
