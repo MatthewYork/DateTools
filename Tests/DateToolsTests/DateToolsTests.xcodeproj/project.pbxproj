@@ -121,26 +121,34 @@
 			path = DateToolsTestsTests;
 			sourceTree = "<group>";
 		};
-		56D193941D675AC3001BD246 /* DateTools */ = {
+		569181F01D70EC02007244B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				56D193971D675ADE001BD246 /* DateTools.bundle */,
-				56D193951D675ADE001BD246 /* Constants.swift */,
 				F0885D091D708AD0002843B5 /* Date+Components.swift */,
 				F0885D031D708A07002843B5 /* Date+Comparators.swift */,
 				56D193961D675ADE001BD246 /* Date+DateTools.swift */,
 				F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */,
 				F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */,
-				F0D7EB7E1D70EA1F0037F330 /* Enums.swift */,
-				56D193981D675ADE001BD246 /* Error.swift */,
 				56D193991D675ADE001BD246 /* Integer+DateTools.swift */,
 				2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */,
+				569181EA1D70BDC3007244B4 /* TimeInterval+Conversion.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		56D193941D675AC3001BD246 /* DateTools */ = {
+			isa = PBXGroup;
+			children = (
+				569181F01D70EC02007244B4 /* Extensions */,
+				56D193971D675ADE001BD246 /* DateTools.bundle */,
+				56D193951D675ADE001BD246 /* Constants.swift */,
+				F0D7EB7E1D70EA1F0037F330 /* Enums.swift */,
+				56D193981D675ADE001BD246 /* Error.swift */,
 				56D193BC1D675CF2001BD246 /* TimeChunk.swift */,
 				56D1939A1D675ADE001BD246 /* TimePeriod.swift */,
 				56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */,
 				56D1939C1D675ADE001BD246 /* TimePeriodCollection.swift */,
 				56D1939D1D675ADE001BD246 /* TimePeriodGroup.swift */,
-				569181EA1D70BDC3007244B4 /* TimeInterval+Conversion.swift */,
 			);
 			name = DateTools;
 			sourceTree = "<group>";
