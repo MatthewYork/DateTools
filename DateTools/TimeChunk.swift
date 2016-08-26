@@ -44,7 +44,7 @@ struct TimeChunk {
     
     //MARK: - Lengthen / Shorten
     
-    func lengthen(by chunk: TimeChunk) -> TimeChunk {
+    func lengthened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
         newChunk.seconds = seconds + chunk.seconds
         newChunk.minutes = minutes + chunk.minutes
@@ -57,7 +57,7 @@ struct TimeChunk {
         return newChunk
     }
     
-    func shorten(by chunk: TimeChunk) -> TimeChunk {
+    func shortened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
         newChunk.seconds = seconds - chunk.seconds
         newChunk.minutes = minutes - chunk.minutes
@@ -73,7 +73,7 @@ struct TimeChunk {
     
     // MARK: - Mutation
     
-    mutating func lengthened(by chunk: TimeChunk) {
+    mutating func lengthen(by chunk: TimeChunk) {
         seconds += chunk.seconds
         minutes += chunk.minutes
         hours += chunk.hours
@@ -83,7 +83,7 @@ struct TimeChunk {
         years += chunk.years
     }
     
-    mutating func shortened(by chunk: TimeChunk) {
+    mutating func shorten(by chunk: TimeChunk) {
         seconds -= chunk.seconds
         minutes -= chunk.minutes
         hours -= chunk.hours
@@ -97,11 +97,11 @@ struct TimeChunk {
     // MARK: - Operator Overloads
     
     static func +(leftAddend: TimeChunk, rightAddend: TimeChunk) -> TimeChunk {
-        return leftAddend.lengthen(by: rightAddend)
+        return leftAddend.lengthened(by: rightAddend)
     }
     
     static func -(minuend: TimeChunk, subtrahend: TimeChunk) -> TimeChunk {
-        return minuend.shorten(by: subtrahend)
+        return minuend.shortened(by: subtrahend)
     }
     
     static func ==(left: TimeChunk, right: TimeChunk) -> Bool {
