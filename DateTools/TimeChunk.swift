@@ -44,6 +44,8 @@ struct TimeChunk {
     
     // MARK: - Lengthen / Shorten
     
+    // MARK: In Place
+    
     func lengthened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
         newChunk.seconds = seconds + chunk.seconds
@@ -71,7 +73,7 @@ struct TimeChunk {
     }
     
     
-    // MARK: - Mutation
+    // MARK: Mutation
     
     mutating func lengthen(by chunk: TimeChunk) {
         seconds += chunk.seconds

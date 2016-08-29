@@ -82,5 +82,197 @@ class TimeChunkTests: XCTestCase {
     }
     
     
+    // MARK: - Lengthen / Shorten
+    
+    // MARK: In Place
+    
+    // Lengthened
+    func testLengthenedBySeconds() {
+        let testChunk = controlChunkSeconds.lengthened(by: 30.seconds)
+        XCTAssertTrue(testChunk == 90.seconds)
+    }
+    
+    func testLengthenedByMinutes() {
+        let testChunk = controlChunkMinutes.lengthened(by: 30.minutes)
+        XCTAssertTrue(testChunk == 90.minutes)
+    }
+    
+    func testLengthenedByHours() {
+        let testChunk = controlChunkHours.lengthened(by: 3.hours)
+        XCTAssertTrue(testChunk == 27.hours)
+    }
+    
+    func testLengthenedByDays() {
+        let testChunk = controlChunkDays.lengthened(by: 2.days)
+        XCTAssertTrue(testChunk == 9.days)
+    }
+    
+    func testLengthenedByWeeks() {
+        let testChunk = controlChunkWeeks.lengthened(by: 1.weeks)
+        XCTAssertTrue(testChunk == 6.weeks)
+    }
+    
+    func testLengthenedByMonths() {
+        let testChunk = controlChunkMonths.lengthened(by: 4.months)
+        XCTAssertTrue(testChunk == 16.months)
+    }
+    
+    func testLengthenedByYears() {
+        let testChunk = controlChunkYears.lengthened(by: 5.years)
+        XCTAssertTrue(testChunk == 7.years)
+    }
+    
+    // Shortened
+    func testShortenedBySeconds() {
+        let testChunk = controlChunkSeconds.shortened(by: 30.seconds)
+        XCTAssertTrue(testChunk == 30.seconds)
+    }
+    
+    func testShortenedByMinutes() {
+        let testChunk = controlChunkMinutes.shortened(by: 30.minutes)
+        XCTAssertTrue(testChunk == 30.minutes)
+    }
+    
+    func testShortenedByHours() {
+        let testChunk = controlChunkHours.shortened(by: 3.hours)
+        XCTAssertTrue(testChunk == 21.hours)
+    }
+    
+    func testShortenedByDays() {
+        let testChunk = controlChunkDays.shortened(by: 2.days)
+        XCTAssertTrue(testChunk == 5.days)
+    }
+    
+    func testShortenedByWeeks() {
+        let testChunk = controlChunkWeeks.shortened(by: 1.weeks)
+        XCTAssertTrue(testChunk == 4.weeks)
+    }
+    
+    func testShortenedByMonths() {
+        let testChunk = controlChunkMonths.shortened(by: 4.months)
+        XCTAssertTrue(testChunk == 8.months)
+    }
+    
+    func testShortenedByYears() {
+        let testChunk = controlChunkYears.shortened(by: 5.years)
+        XCTAssertTrue(testChunk == -3.years)
+    }
+    
+    // MARK: Mutation
+    
+    // Lengthen
+    func testLenghtenBySeconds() {
+        controlChunkSeconds.lengthen(by: 30.seconds)
+        XCTAssertTrue(controlChunkSeconds == 90.seconds)
+    }
+    
+    func testLengthenByMinutes() {
+        controlChunkMinutes.lengthen(by: 30.minutes)
+        XCTAssertTrue(controlChunkMinutes == 90.minutes)
+    }
+    
+    func testLengthenByHours() {
+        controlChunkHours.lengthen(by: 3.hours)
+        XCTAssertTrue(controlChunkHours == 27.hours)
+    }
+    
+    func testLenghtenByDays() {
+        controlChunkDays.lengthen(by: 2.days)
+        XCTAssertTrue(controlChunkDays == 9.days)
+    }
+    
+    func testLenghtenByWeeks() {
+        controlChunkWeeks.lengthen(by: 4.weeks)
+        XCTAssertTrue(controlChunkWeeks == 9.weeks)
+    }
+    
+    func testLengthenByYears() {
+        controlChunkYears.lengthen(by: 1.years)
+        XCTAssertTrue(controlChunkYears == 3.years)
+    }
+    
+    // Shorten
+    func testShortenBySeconds() {
+        controlChunkSeconds.shorten(by: 30.seconds)
+        XCTAssertTrue(controlChunkSeconds == 30.seconds)
+    }
+    
+    func testShortenByMinutes() {
+        controlChunkMinutes.shorten(by: 30.minutes)
+        XCTAssertTrue(controlChunkMinutes == 30.minutes)
+    }
+    
+    func testShortenByHours() {
+        controlChunkHours.shorten(by: 3.hours)
+        XCTAssertTrue(controlChunkHours == 21.hours)
+    }
+    
+    func testShortenByDays() {
+        controlChunkDays.shorten(by: 2.days)
+        XCTAssertTrue(controlChunkDays == 5.days)
+    }
+    
+    func testShortenByWeeks() {
+        controlChunkWeeks.shorten(by: 4.weeks)
+        XCTAssertTrue(controlChunkWeeks == 1.weeks)
+    }
+    
+    func testShortenByYears() {
+        controlChunkYears.shorten(by: 1.years)
+        XCTAssertTrue(controlChunkYears == 1.years)
+    }
+    
+    
+    // MARK: - Operator Overloads
+    
+    func testEqualsOperator() {
+        let testChunk = 4.seconds
+        XCTAssertTrue(testChunk == 4.seconds)
+    }
+    
+    func testPlusOperator() {
+        let testChunk = controlChunkSeconds + 5.seconds
+        XCTAssertTrue(testChunk == 65.seconds)
+    }
+    
+    func testMinusOperator() {
+        let testChunk = controlChunkSeconds - 10.seconds
+        XCTAssertTrue(testChunk == 50.seconds)
+    }
+    
+    func testNegativeSeconds() {
+        let testChunk = -controlChunkSeconds
+        XCTAssertTrue(testChunk == -60.seconds)
+    }
+    
+    func testNegativeMinutes() {
+        let testChunk = -controlChunkMinutes
+        XCTAssertTrue(testChunk == -60.minutes)
+    }
+    
+    func testNegativeHours() {
+        let testChunk = -controlChunkHours
+        XCTAssertTrue(testChunk == -24.hours)
+    }
+    
+    func testNegativeDays() {
+        let testChunk = -controlChunkDays
+        XCTAssertTrue(testChunk == -7.days)
+    }
+    
+    func testNegativeWeeks() {
+        let testChunk = -controlChunkWeeks
+        XCTAssertTrue(testChunk == -5.weeks)
+    }
+    
+    func testNegativeMonths() {
+        let testChunk = -controlChunkMonths
+        XCTAssertTrue(testChunk == -12.months)
+    }
+    
+    func testNegativeYears() {
+        let testChunk = -controlChunkYears
+        XCTAssertTrue(testChunk == -2.years)
+    }
     
 }
