@@ -18,6 +18,7 @@ import Foundation
 class TimePeriodGroup: Sequence {
     
     // MARK: - Variables
+    
     internal var _beginning: Date?
     internal var _end: Date?
     
@@ -41,35 +42,44 @@ class TimePeriodGroup: Sequence {
         return 0
     }
     
+    
+    // MARK: - Comparisons
+    
+    func samePeriods(_ group: TimePeriodGroup) -> Bool {
+        return self.containSameElements(array1: self.periods, group.periods)
+    }
+    
+    
     // MARK: - Mutations
     
-    func append(_ period: TimePeriodProtocol) {
+    func append<T: TimePeriodProtocol>(_ period: T) {
         periods.append(period)
         updateExtremes(period: period)
     }
     
-    func append<C : Collection>(_ collection: C) where C.Iterator.Element == TimePeriodProtocol {
-        periods.append(contentsOf: collection)
-        for period in collection {
+    func append<C: TimePeriodGroup>(_ group: C) {
+        for period in group as TimePeriodGroup {
+            periods.append(period)
             updateExtremes(period: period)
         }
-        
     }
     
+
     // MARK: - Sequence Protocol
+    
     func makeIterator() -> IndexingIterator<Array<TimePeriodProtocol>> {
         return periods.makeIterator()
     }
     
-    func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
+    internal func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
         return try periods.map(transform)
     }
     
-    func filter(_ isIncluded: (TimePeriodProtocol) throws -> Bool) rethrows -> [TimePeriodProtocol] {
+    internal func filter(_ isIncluded: (TimePeriodProtocol) throws -> Bool) rethrows -> [TimePeriodProtocol] {
         return try periods.filter(isIncluded)
     }
     
-    func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
+    internal func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
         return try periods.reduce(initialResult, nextPartialResult)
     }
     
@@ -93,8 +103,29 @@ class TimePeriodGroup: Sequence {
             _end = end!.laterDate(period.end!)
         } else {
             if let uBeginning = period.beginning {
-                _beginning = uBeginning
+                if let uEnd = period.end {
+                    _beginning = uBeginning
+                    _end = uEnd
+                }
             }
         }
     }
+    
+    internal func containSameElements(array1: [TimePeriodProtocol], _ array2: [TimePeriodProtocol]) -> Bool {
+        guard array1.count == array2.count else {
+            return false // No need to sorting if they already have different counts
+        }
+        
+        var compArray1: [TimePeriodProtocol] = array1.sorted {$0.beginning! > $1.beginning!}
+        var compArray2: [TimePeriodProtocol] = array2.sorted {$0.beginning! > $1.beginning!}
+        for x in 0..<compArray1.count {
+            if !compArray1[x].equals(period: compArray2[x]) {
+                return false
+            }
+        }
+        return true
+    }
+    
+    
+    
 }

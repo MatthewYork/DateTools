@@ -75,15 +75,15 @@ extension TimePeriodProtocol {
     
     // MARK: - Time Period Relationships
     
-    func relation(to period: TimePeriod) -> Relation {
+    func relation(to period: TimePeriodProtocol) -> Relation {
         return .none
     }
     
-    func equals(period: TimePeriod) -> Bool {
+    func equals(period: TimePeriodProtocol) -> Bool {
         return self.beginning == period.beginning && self.end == period.end
     }
     
-    func inside(of: TimePeriod) -> Bool {
+    func inside(of: TimePeriodProtocol) -> Bool {
         return false
     }
     
@@ -91,35 +91,35 @@ extension TimePeriodProtocol {
         return false
     }
     
-    func contains(period: TimePeriod) -> Bool {
+    func contains(period: TimePeriodProtocol) -> Bool {
         return false
     }
     
-    func overlaps(with period: TimePeriod) -> Bool {
+    func overlaps(with period: TimePeriodProtocol) -> Bool {
         return false
     }
     
-    func intersects(with period: TimePeriod) -> Bool {
+    func intersects(with period: TimePeriodProtocol) -> Bool {
         return self.relation(to: period) != .after && self.relation(to: period) != .before
     }
     
-    func hasGap(between period: TimePeriod) -> Bool {
+    func hasGap(between period: TimePeriodProtocol) -> Bool {
         return false
     }
     
-    func gap(between period: TimePeriod) -> TimeInterval {
+    func gap(between period: TimePeriodProtocol) -> TimeInterval {
         return 0
     }
     
-    func gap(between period: TimePeriod) -> TimeChunk {
+    func gap(between period: TimePeriodProtocol) -> TimeChunk {
         return 0.days
     }
     
-    func isAfter(period: TimePeriod) -> Bool {
+    func isAfter(period: TimePeriodProtocol) -> Bool {
         return self.relation(to: period) == .after
     }
     
-    func isBefore(period: TimePeriod) -> Bool {
+    func isBefore(period: TimePeriodProtocol) -> Bool {
         return self.relation(to: period) == .before
     }
     
@@ -137,19 +137,19 @@ extension TimePeriodProtocol {
     
     // MARK: New
     
-    func lengthened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+    func lengthened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriodProtocol {
         return TimePeriod()
     }
     
-    func lengthened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
+    func lengthened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriodProtocol {
         return TimePeriod()
     }
     
-    func shortened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+    func shortened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriodProtocol {
         return TimePeriod()
     }
     
-    func shortened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriod {
+    func shortened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriodProtocol {
         return TimePeriod()
     }
     
@@ -178,9 +178,6 @@ extension TimePeriodProtocol {
     func copy() -> TimePeriod {
         return TimePeriod()
     }
-    
-    
-    
 }
 
 /**
@@ -236,20 +233,20 @@ class TimePeriod: TimePeriodProtocol {
     
     // Default anchor = end
     static func +(leftAddend: TimePeriod, rightAddend: TimeInterval) -> TimePeriod {
-       return leftAddend.lengthened(by: rightAddend, at: .end)
+       return leftAddend.lengthened(by: rightAddend, at: .end) as! TimePeriod
     }
     
     static func +(leftAddend: TimePeriod, rightAddend: TimeChunk) -> TimePeriod {
-        return leftAddend.lengthened(by: rightAddend, at: .end)
+        return leftAddend.lengthened(by: rightAddend, at: .end) as! TimePeriod
     }
     
     // Default anchor = end
     static func -(minuend: TimePeriod, subtrahend: TimeInterval) -> TimePeriod {
-        return minuend.shortened(by: subtrahend, at: .end)
+        return minuend.shortened(by: subtrahend, at: .end) as! TimePeriod
     }
     
     static func -(minuend: TimePeriod, subtrahend: TimeChunk) -> TimePeriod {
-        return minuend.shortened(by: subtrahend, at: .end)
+        return minuend.shortened(by: subtrahend, at: .end) as! TimePeriod
     }
     
     static func ==(left: TimePeriod, right: TimePeriod) -> Bool {

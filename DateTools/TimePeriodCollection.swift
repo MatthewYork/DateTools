@@ -89,6 +89,20 @@ class TimePeriodCollection: TimePeriodGroup {
     }
     
     
+    // MARK: - Map, Filter, Reduce
+    
+    func map(_ transform: (TimePeriodProtocol) throws -> TimePeriodProtocol) rethrows -> TimePeriodCollection {
+        var mappedArray = [TimePeriodProtocol]()
+        mappedArray = try periods.map(transform)
+        let mappedCollection = TimePeriodCollection()
+        for period in mappedArray {
+            mappedCollection.periods.append(period)
+            mappedCollection.updateExtremes(period: period)
+        }
+        return mappedCollection
+    }
+    
+    
     // MARK: - Operator Overloads
     
     static func +(leftAddend: TimePeriodCollection, rightAddend: TimePeriodCollection) -> TimePeriodCollection {

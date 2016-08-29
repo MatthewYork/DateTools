@@ -30,10 +30,10 @@ class TimePeriodGroupTests : XCTestCase {
         thirdPeriod = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
         fourthPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 4 05 18:15:12.000")!, end: self.formatter.date(from: "2017 4 05 18:15:12.000")!)
         //Add test periods
-        self.controlCollection.add(firstPeriod)
-        self.controlCollection.add(secondPeriod)
-        self.controlCollection.add(thirdPeriod)
-        self.controlCollection.add(fourthPeriod)
+        self.controlCollection.append(firstPeriod)
+        self.controlCollection.append(secondPeriod)
+        self.controlCollection.append(thirdPeriod)
+        self.controlCollection.append(fourthPeriod)
     }
     
     override func tearDown() {
@@ -41,34 +41,86 @@ class TimePeriodGroupTests : XCTestCase {
         super.tearDown()
     }
     
+    
+    // MARK: - Getters
+    
+    func testBeginning() {
+        XCTAssertTrue(controlCollection.beginning == firstPeriod.beginning)
+    }
+    
+    func testEnd() {
+        XCTAssertTrue(controlCollection.end == thirdPeriod.end)
+    }
+    
+    
     // MARK: - Group Info
+    
+    func testCount() {
+        XCTAssertTrue(controlCollection.count == 4)
+    }
+    
     func testDuration() {
         XCTAssertEqual(94694400, self.controlCollection.duration)
     }
     
+    
     // MARK: - Comparison
-    func testHasSameCharacteristicsAs() {
-        var collectionSame: TimePeriodCollection = TimePeriodCollection()
-        var chain: TimePeriodChain = TimePeriodChain()
-        //Create test TimePeriods to construct same as control
-        //Add test periods
-        collectionSame.add(firstPeriod)
-        collectionSame.add(secondPeriod)
-        collectionSame.add(thirdPeriod)
-        collectionSame.add(fourthPeriod)
-        chain.add(firstPeriod)
-        chain.add(secondPeriod)
-        chain.add(thirdPeriod)
-        chain.add(fourthPeriod)
-        //Test same as control
-        //XCTAssertTrue(self.controlCollection.hasSameCharacteristicsAs(collectionSame))
-        //Test differnt chain
-        //XCTAssertFalse(self.controlCollection.hasSameCharacteristicsAs(chain))
-        //Test alternate
-        //collectionSame.removeTimePeriodAtIndex(3)
-        //collectionSame.addTimePeriod(alternateFourthPeriod)
-        //XCTAssertTrue(self.controlCollection.hasSameCharacteristicsAs(collectionSame))
+    
+    func testSamePeriods() {
+        let collectionSame: TimePeriodCollection = TimePeriodCollection()
+        let chain: TimePeriodChain = TimePeriodChain()
+        // Create test TimePeriods to construct same as control
+        // Add test periods
+        collectionSame.append(firstPeriod)
+        collectionSame.append(secondPeriod)
+        collectionSame.append(thirdPeriod)
+        collectionSame.append(fourthPeriod)
+        chain.append(firstPeriod)
+        chain.append(secondPeriod)
+        chain.append(thirdPeriod)
+        chain.append(fourthPeriod)
+        // Test same as control
+        XCTAssertTrue(self.controlCollection.samePeriods(collectionSame))
+        // Test different collection
+        collectionSame.append(firstPeriod)
+        XCTAssertFalse(self.controlCollection.samePeriods(collectionSame))
+        // Test same chain with same periods
+        XCTAssertTrue(self.controlCollection.samePeriods(chain))
+        // Test different chain
+        chain.append(firstPeriod)
+        XCTAssertFalse(self.controlCollection.samePeriods(chain))
     }
     
+    
+    // MARK: - Mutations
+    
+    func testAppendPeriod() {
+        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
+        controlCollection.append(testPeriod)
+        XCTAssertTrue(controlCollection.count == 5)
+    }
+    
+    func testAppendCollection() {
+        let testCollection = TimePeriodCollection()
+        testCollection.append(controlCollection)
+        
+    }
+    
+    
+    // MARK: - Sequence Protocol 
+    
+    func testMakeIterator() {
+        var testIterator = controlCollection.makeIterator()
+        let testPeriod = testIterator.next()! as! TimePeriod
+        XCTAssertTrue(testPeriod.equals(period: controlCollection[0] as! TimePeriod))
+    }
+    
+    func testMap() {
+        let saveDuration = controlCollection.duration
+        let testCollection = controlCollection.map { (timePeriod) -> TimePeriodProtocol in
+            timePeriod as! TimePeriod + 2.days
+        }
+        XCTAssertTrue(testCollection.duration == saveDuration + 2.days)
+    }
 }
 
