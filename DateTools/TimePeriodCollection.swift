@@ -21,6 +21,19 @@ class TimePeriodCollection: TimePeriodGroup {
     
     // Manipulation will be implemented by overriding CollectionType methods
     
+    func remove(at: Int) {
+        periods.remove(at: at)
+    }
+    
+    func removeAll() {
+        periods.removeAll()
+    }
+    
+    func insert(_ newElement: TimePeriodProtocol, at i: Int) {
+        periods.insert(newElement, at: i)
+        updateExtremes(period: newElement)
+        
+    }
     
     // MARK: - Sorting
     
