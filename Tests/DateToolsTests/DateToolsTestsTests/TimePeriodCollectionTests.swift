@@ -10,27 +10,25 @@ import XCTest
 @testable import DateToolsTests
 
 
-class TimePeriodChainTests : XCTestCase {
+class TimePeriodCollectionTests : XCTestCase {
     
-    var formatter: DateFormatter?
-    var controlChain: TimePeriodChain?
+    var formatter = DateFormatter()
+    var controlCollection = TimePeriodCollection()
     
     override func setUp() {
-        super.up = nil
-        //Initialize control TimePeriodChain
-        self.controlChain = TimePeriodChain()
         //Initialize formatter
-        self.formatter = DateFormatter()
-        self.formatter?.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+        self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
         //Create test TimePeriods that are 1 year long
-        var firstPeriod: TimePeriod = TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"))
-        var secondPeriod: TimePeriod = TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"))
-        var thirdPeriod: TimePeriod = TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000"))
-        var fourthPeriod: TimePeriod = TimePeriod(startDate: self.formatter.dateFromString("2015 4 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 4 05 18:15:12.000"))
+        let firstPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 4 05 18:15:12.000")!, end: self.formatter.date(from: "2017 4 05 18:15:12.000")!)
+        let secondPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
+        let thirdPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
+        let fourthPeriod = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
+        
         //Add test periods
-        self.controlChain.addTimePeriod(firstPeriod)
-        self.controlChain.addTimePeriod(secondPeriod)
-        self.controlChain.addTimePeriod(thirdPeriod)
+        self.controlCollection.append(firstPeriod)
+        self.controlCollection.append(secondPeriod)
+        self.controlCollection.append(thirdPeriod)
+        self.controlCollection.append(fourthPeriod)
     }
     
     override func tearDown() {
@@ -38,123 +36,89 @@ class TimePeriodChainTests : XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Custom Init / Factory Chain
-    func testInitsAndFactories() {
-        var initCompareChain: TimePeriodChain = TimePeriodChain()
-        var factoryCompareChain: TimePeriodChain = TimePeriodChain.chain()
-        XCTAssertTrue(initCompareChain.isEqualToChain(factoryCompareChain), "%s Failed", file: #function)
+    
+    // MARK: - Collection Manipulation
+    
+    func testRemove() {
+        controlCollection.remove(at: 3)
+        XCTAssertTrue(controlCollection.count == 3)
     }
     
-    // MARK: - Chain Existence Manipulation
-    func testAddTimePeriod() {
-        //Create test chain
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
+    func testRemoveAll() {
+        controlCollection.removeAll()
+        XCTAssertTrue(controlCollection.count == 0)
     }
     
-    func testInsertTimePeriod() {
-        //Create test chain
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        testChain.insertTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")), atInedx: 1)
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
+    func testInsert() {
+        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 4 05 18:15:12.000")!, end: self.formatter.date(from: "2017 4 05 18:15:12.000")!)
+        controlCollection.insert(testPeriod, at: 0)
+        XCTAssertTrue(controlCollection[0] as! TimePeriod == testPeriod)
     }
     
-    func testRemoveTimePeriodAtIndex() {
-        //Create test chain
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        self.controlChain.removeTimePeriodAtIndex(1)
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
+    
+    // MARK: - Sorting
+    
+    func testSort() {
+        XCTAssertFalse(controlCollection[0].beginning! < controlCollection[1].beginning!)
+        controlCollection.sort()
+        XCTAssertTrue(controlCollection[0].beginning! < controlCollection[1].beginning!)
     }
     
-    func testRemoveLatestTimePeriod() {
-        //Create test chain
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")))
-        self.controlChain.removeLatestTimePeriod()
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
+    func testSorted() {
+        let testCollection = controlCollection.sorted()
+        XCTAssertFalse(testCollection[0].beginning == controlCollection[0].beginning)
+        controlCollection.sort()
+        XCTAssertTrue(testCollection[0].beginning == controlCollection[0].beginning)
     }
     
-    func testRemoveEarliestTimePeriod() {
-        //Create test chain
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        testChain.shiftEarlierWithSize(TimePeriodSizeSecond, amount: TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")).durationInSeconds())
-        self.controlChain.removeEarliestTimePeriod()
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
+    
+    // MARK: - Collection Relationship
+    
+    func testAllInside() {
+        let failPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2020 11 05 18:15:12.000")!)
+        let successPeriod = TimePeriod(beginning: self.formatter.date(from: "2010 11 05 18:15:12.000")!, end: self.formatter.date(from: "2020 11 05 18:15:12.000")!)
+        XCTAssertFalse(controlCollection.allInside(in: failPeriod) == controlCollection)
+        XCTAssertTrue(controlCollection.allInside(in: successPeriod) == controlCollection)
     }
     
-    // MARK: - Chain Time Manipulation
-    func testShiftEarlier() {
-        //Create test chain
-        var testChainOriginal: TimePeriodChain = TimePeriodChain.chain()
-        testChainOriginal.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        testChainOriginal.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")))
-        testChainOriginal.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        //Create test chain
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2012 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2013 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2013 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2014 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        //Shift control chain
-        self.controlChain.shiftEarlierWithSize(TimePeriodSizeYear, amount: 2)
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
-        //Check equal
-        XCTAssertFalse(self.controlChain.isEqualToChain(testChainOriginal), "%s Failed", file: #function)
+    func testPeriodsIntersectedByDate() {
+        let failDate = self.formatter.date(from: "2020 11 05 18:15:12.000")!
+        let successDate = self.formatter.date(from: "2015 10 05 18:15:12.000")!
+        XCTAssertFalse(controlCollection.periodsIntersected(by: failDate).count == 3)
+        XCTAssertTrue(controlCollection.periodsIntersected(by: successDate).count == 3)
     }
     
-    func testShiftLater() {
-        //Create test chain
-        var testChainOriginal: TimePeriodChain = TimePeriodChain.chain()
-        testChainOriginal.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        testChainOriginal.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")))
-        testChainOriginal.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        //Create test chain
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2017 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2018 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2018 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2019 11 05 18:15:12.000")))
-        //Shift control chain
-        self.controlChain.shiftLaterWithSize(TimePeriodSizeYear, amount: 2)
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
-        //Check equal
-        XCTAssertFalse(self.controlChain.isEqualToChain(testChainOriginal), "%s Failed", file: #function)
+    func testPeriodsIntersectedByTimePeriod() {
+        let failPeriod = TimePeriod(beginning: self.formatter.date(from: "2020 11 05 18:15:12.000")!, end: self.formatter.date(from: "2021 11 05 18:15:12.000")!)
+        let successPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 9 05 18:15:12.000")!, end: self.formatter.date(from: "2015 10 05 18:15:12.000")!)
+        XCTAssertFalse(controlCollection.periodsIntersected(by: failPeriod).count == 2)
+        XCTAssertTrue(controlCollection.periodsIntersected(by: successPeriod).count == 2)
     }
     
-    // MARK: - Chain Relationship
-    func testIsEqualToChain() {
-        //Create test chains
-        var testChain: TimePeriodChain = TimePeriodChain.chain()
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")))
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        var testChainOutOfOrder: TimePeriodChain = TimePeriodChain.chain()
-        testChainOutOfOrder.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2015 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2016 11 05 18:15:12.000")))
-        testChainOutOfOrder.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2016 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2017 11 05 18:15:12.000")))
-        testChainOutOfOrder.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        //Check equal
-        XCTAssertTrue(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
-        //Check unequal
-        testChain.addTimePeriod(TimePeriod(startDate: self.formatter.dateFromString("2014 11 05 18:15:12.000"), endDate: self.formatter.dateFromString("2015 11 05 18:15:12.000")))
-        XCTAssertFalse(self.controlChain.isEqualToChain(testChain), "%s Failed", file: #function)
-        //Check same periods out of order
-        XCTAssertFalse(self.controlChain.isEqualToChain(testChainOutOfOrder), "%s Failed", file: #function)
+    func testEquals() {
+        let testCollection = controlCollection
+        XCTAssertTrue(testCollection.equals(collection: controlCollection))
     }
+    
+    
+    // MARK: - Helper Methods
+    
+    func testCopy() {
+        let testCollection = controlCollection.copy()
+        XCTAssertTrue(testCollection == controlCollection)
+    }
+    
+    
+    // MARK: - Map, Filter, Reduce
+    
+    
+    // MARK: - Operator Overloads
+    
+    func testEqualsOperator() {
+        let testCollection = controlCollection
+        XCTAssertTrue(testCollection == controlCollection)
+    }
+    
     
 }
 

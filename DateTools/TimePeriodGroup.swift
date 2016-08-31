@@ -116,8 +116,8 @@ class TimePeriodGroup: Sequence {
             return false // No need to sorting if they already have different counts
         }
         
-        var compArray1: [TimePeriodProtocol] = array1.sorted {$0.beginning! > $1.beginning!}
-        var compArray2: [TimePeriodProtocol] = array2.sorted {$0.beginning! > $1.beginning!}
+        var compArray1: [TimePeriodProtocol] = array1.sorted {$0.beginning! < $1.beginning!}
+        var compArray2: [TimePeriodProtocol] = array2.sorted {$0.beginning! < $1.beginning!}
         for x in 0..<compArray1.count {
             if !compArray1[x].equals(period: compArray2[x]) {
                 return false
