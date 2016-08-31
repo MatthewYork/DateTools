@@ -30,6 +30,7 @@ class TimePeriodChain: TimePeriodGroup {
     
     
     // MARK: - Updates
+    
     func updateVariables() {
         
     }

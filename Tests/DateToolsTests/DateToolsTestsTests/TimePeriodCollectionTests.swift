@@ -118,7 +118,5 @@ class TimePeriodCollectionTests : XCTestCase {
         let testCollection = controlCollection
         XCTAssertTrue(testCollection == controlCollection)
     }
-    
-    
 }
 
