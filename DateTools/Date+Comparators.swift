@@ -50,16 +50,4 @@ extension Date {
 	static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
 		return minuend.subtract(subtrahend)
 	}
-	
-	static func >(left: Date, right: Date) -> Bool {
-		return left.greater(than: right)
-	}
-	
-	static func <(left: Date, right: Date) -> Bool {
-		return left.less(than: right)
-	}
-	
-	static func ==(left: Date, right: Date) -> Bool {
-		return left.equals(right)
-	}
 }
