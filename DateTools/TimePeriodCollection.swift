@@ -37,12 +37,32 @@ class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Sorting
     
+    // In place
+    func sort() {
+        self.periods.sort { $0.beginning! < $1.beginning! }
+    }
+    
     func sort(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
-        
+        self.periods.sort { $0.beginning! < $1.beginning! }
+    }
+    
+    // New collection
+    func sorted() -> TimePeriodCollection {
+        let array = self.periods.sorted { $0.beginning! < $1.beginning! }
+        let collection = TimePeriodCollection()
+        collection.periods = array
+        collection._beginning = self.beginning
+        collection._end = self.end
+        return collection
     }
     
     func sorted(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) -> TimePeriodCollection {
-        return TimePeriodCollection()
+        let array = self.periods.sorted { $0.beginning! < $1.beginning! }
+        let collection = TimePeriodCollection()
+        collection.periods = array
+        collection._beginning = self.beginning
+        collection._end = self.end
+        return collection
     }
     
     
@@ -105,12 +125,6 @@ class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Operator Overloads
     
-    static func +(leftAddend: TimePeriodCollection, rightAddend: TimePeriodCollection) -> TimePeriodCollection {
-        return TimePeriodCollection()
-    }
-    static func -(minuend: TimePeriodCollection, subtrahend: TimePeriodCollection) -> TimePeriodCollection {
-        return TimePeriodCollection()
-    }
     static func ==(left: TimePeriodCollection, right: TimePeriodCollection) -> Bool {
         return left.equals(collection: right)
     }
