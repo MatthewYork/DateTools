@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
 	func component(_ component: Calendar.Component, from date: Date) -> Int {
 		let calendar = Calendar.autoupdatingCurrent
 		return calendar.component(component, from: date)

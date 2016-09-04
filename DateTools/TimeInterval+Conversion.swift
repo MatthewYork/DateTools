@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension TimeInterval {
+public extension TimeInterval {
     
     var seconds: Double {
         return self

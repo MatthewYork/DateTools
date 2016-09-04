@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     
     
     //MARK: - Time Ago
@@ -57,16 +57,8 @@ extension Date {
     var shortTimeAgoSinceNow: String {
         return self.shortTimeAgo(since:Date())
     }
-
-    func timeAgo(since date:Date) -> String {
-        return self.timeAgo(since: date, numericDates:false)
-    }
     
-    func timeAgo(since date:Date, numericDates: Bool) -> String {
-        return self.timeAgo(since: date, numericDates: numericDates, numericTimes:false)
-    }
-    
-    func timeAgo(since date:Date, numericDates: Bool, numericTimes: Bool) -> String {
+    func timeAgo(since date:Date, numericDates: Bool = false, numericTimes: Bool = false) -> String {
         let calendar = NSCalendar.current
         let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
         let earliest = self.earlierDate(date)
@@ -204,13 +196,13 @@ extension Date {
     }
 
     
-    func logicalLocalizedStringFromFormat(format: String, value: Int) -> String{
+    private func logicalLocalizedStringFromFormat(format: String, value: Int) -> String{
         let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
         return String.init(format: DateToolsLocalizedStrings(localeFormat), value)
     }
     
     
-    func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String{
+    private func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String{
         let localCode = Bundle.main.preferredLocalizations[0]
         if (localCode == "ru" || localCode == "uk") {
             let XY = Int(floor(value).truncatingRemainder(dividingBy: 100))
@@ -234,7 +226,7 @@ extension Date {
 
     
     //MARK: Localization
-    func DateToolsLocalizedStrings(_ string: String) -> String {
+    private func DateToolsLocalizedStrings(_ string: String) -> String {
         //let classBundle = Bundle(for:TimeChunk.self as! AnyClass.Type).resourcePath!.appending("DateTools.bundle")
         
         //let bundelPath = Bundle(path:classBundle)!

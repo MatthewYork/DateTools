@@ -15,7 +15,7 @@ import Foundation
  
     [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-collections) for more information.
  */
-class TimePeriodCollection: TimePeriodGroup {
+open class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Collection Manipulation
     
