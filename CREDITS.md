@@ -72,3 +72,5 @@ frin added sl Slovenian strings. http://github.com/frin
 Nikhil Nigade added hi (Hindi) and gu (Gujarati) strings. https://github.com/dezinezync
 
 Faiz Mokhtar added ms Malay strings. https://github.com/faizmokhtar
+
+Jakub Olejník (https://github.com/olejnjak) and Jakub Truhlář (https://github.com/kubatru) added sk (Slovak) strings
