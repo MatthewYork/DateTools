@@ -19,7 +19,38 @@ class TimePeriodChain: TimePeriodGroup {
     
     // MARK: - Chain Existence Manipulation
     
-    // Manipulation will be implemented by overriding CollectionType methods
+    func append<T: TimePeriodProtocol>(_ period: T) {
+        
+    }
+    
+    func append<C: TimePeriodGroup>(_ group: C) {
+        
+    }
+    
+    func remove(at index: Int) {
+        
+    }
+    
+    func removeAll() {
+        
+    }
+    
+    internal override func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
+        return try periods.map(transform)
+    }
+    
+    internal override func filter(_ isIncluded: (TimePeriodProtocol) throws -> Bool) rethrows -> [TimePeriodProtocol] {
+        return try periods.filter(isIncluded)
+    }
+    
+    internal override func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
+        return try periods.reduce(initialResult, nextPartialResult)
+    }
+    
+    func pop() -> TimePeriodProtocol {
+        return TimePeriod()
+    }
+    
     
     
     // MARK: - Chain Relationship
