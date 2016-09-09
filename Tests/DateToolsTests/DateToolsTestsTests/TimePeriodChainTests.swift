@@ -36,7 +36,7 @@ class TimePeriodChainTests : XCTestCase {
     
     // MARK: - Chain Manipulation
     
-    func testAdd() {
+    func testAppend() {
         
     }
     
@@ -52,11 +52,19 @@ class TimePeriodChainTests : XCTestCase {
         
     }
     
-    func testPop() {
+    func testMap() {
         
     }
     
-    func testDequeue() {
+    func testFilter() {
+        
+    }
+    
+    func testReduce() {
+        
+    }
+    
+    func testPop() {
         
     }
     
