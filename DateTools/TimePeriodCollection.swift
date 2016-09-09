@@ -19,7 +19,17 @@ class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Collection Manipulation
     
-    // Manipulation will be implemented by overriding CollectionType methods
+    func append<T: TimePeriodProtocol>(_ period: T) {
+        periods.append(period)
+        updateExtremes(period: period)
+    }
+    
+    func append<C: TimePeriodGroup>(_ group: C) {
+        for period in group as TimePeriodGroup {
+            periods.append(period)
+            updateExtremes(period: period)
+        }
+    }
     
     func remove(at: Int) {
         periods.remove(at: at)

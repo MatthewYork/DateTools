@@ -49,21 +49,6 @@ class TimePeriodGroup: Sequence {
         return self.containSameElements(array1: self.periods, group.periods)
     }
     
-    
-    // MARK: - Mutations
-    
-    func append<T: TimePeriodProtocol>(_ period: T) {
-        periods.append(period)
-        updateExtremes(period: period)
-    }
-    
-    func append<C: TimePeriodGroup>(_ group: C) {
-        for period in group as TimePeriodGroup {
-            periods.append(period)
-            updateExtremes(period: period)
-        }
-    }
-    
 
     // MARK: - Sequence Protocol
     
