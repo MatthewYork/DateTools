@@ -178,6 +178,7 @@ extension TimePeriodProtocol {
     func copy() -> TimePeriod {
         return TimePeriod()
     }
+    
 }
 
 /**
@@ -225,9 +226,14 @@ class TimePeriod: TimePeriodProtocol {
     }
     
     init(end: Date, duration: TimeChunk) {
-        
+        self.end = end
+        self.beginning = end - duration
     }
     
+    init(chunk: TimeChunk) {
+        self.beginning = Date()
+        self.end = self.beginning?.add(chunk)
+    }
     
     // MARK: - Operator Overloads
     
