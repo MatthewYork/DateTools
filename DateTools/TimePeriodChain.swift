@@ -27,6 +27,10 @@ class TimePeriodChain: TimePeriodGroup {
         
     }
     
+    func insert(_ period: TimePeriod, at index: Int) {
+        
+    }
+    
     func remove(at index: Int) {
         
     }
@@ -52,11 +56,10 @@ class TimePeriodChain: TimePeriodGroup {
     }
     
     
-    
     // MARK: - Chain Relationship
     
-    func equals(chain: TimePeriodChain) {
-        
+    func equals(chain: TimePeriodChain) -> Bool {
+        return true
     }
     
     
