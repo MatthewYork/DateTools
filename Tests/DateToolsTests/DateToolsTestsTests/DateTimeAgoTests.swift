@@ -21,6 +21,16 @@ class DateTimeAgoTests: XCTestCase {
         super.tearDown()
     }
     
+    func testTimeAgo() {
+        let testTimeAgo = Date().timeAgo(since: Date() - 5)
+        XCTAssertTrue("5 seconds ago" == testTimeAgo)
+    }
+    
+    func testShortTimeAgo() {
+        let testTimeAgo = Date().shortTimeAgo(since: Date() - 5)
+        XCTAssertTrue("5s ago" == testTimeAgo)
+    }
+    
     func testStaticTimeAgo() {
         let testTimeAgo =  Date.timeAgo(since: Date() - 3)
         XCTAssertTrue("3 seconds ago" == testTimeAgo)
@@ -30,5 +40,17 @@ class DateTimeAgoTests: XCTestCase {
         let testTimeAgo = Date.shortTimeAgo(since: Date() - 3)
         XCTAssertTrue("3s ago" == testTimeAgo)
     }
+    
+    func testTimeAgoSinceNow() {
+        let testTimeAgo = Date().timeAgoSinceNow
+        XCTAssertTrue("0 seconds ago" == testTimeAgo)
+    }
+    
+    func testShortTimeAgoSinceNow() {
+        let testTimeAgo = Date().shortTimeAgoSinceNow
+        XCTAssertTrue("0s ago" == testTimeAgo)
+    }
+    
+    
     
 }
