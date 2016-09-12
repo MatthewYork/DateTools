@@ -13,7 +13,6 @@ extension Date {
     
     //MARK: - Time Ago
     
-    
     /**
      *  Takes in a date and returns a string with the most convenient unit of time representing
      *  how far in the past that date is from now.
@@ -203,14 +202,12 @@ extension Date {
         }
     }
 
-    
-    func logicalLocalizedStringFromFormat(format: String, value: Int) -> String{
+    internal func logicalLocalizedStringFromFormat(format: String, value: Int) -> String{
         let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
         return String.init(format: DateToolsLocalizedStrings(localeFormat), value)
     }
     
-    
-    func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String{
+    internal func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String{
         let localCode = Bundle.main.preferredLocalizations[0]
         if (localCode == "ru" || localCode == "uk") {
             let XY = Int(floor(value).truncatingRemainder(dividingBy: 100))
@@ -233,7 +230,8 @@ extension Date {
     }
 
     
-    //MARK: Localization
+    // MARK: - Localization
+    
     func DateToolsLocalizedStrings(_ string: String) -> String {
         //let classBundle = Bundle(for:TimeChunk.self as! AnyClass.Type).resourcePath!.appending("DateTools.bundle")
         
@@ -242,7 +240,9 @@ extension Date {
         return NSLocalizedString(string, tableName: "DateTools", bundle: Bundle.main, value: "", comment: "")
     }
     
-    //OTHERS
+    
+    // MARK: - Date Earlier/Later
+    
     func earlierDate(_ date:Date) -> Date{
         return (self.timeIntervalSince1970 <= date.timeIntervalSince1970) ? self : date
     }
