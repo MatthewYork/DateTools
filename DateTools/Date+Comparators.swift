@@ -19,12 +19,24 @@ extension Date {
 	func subtract(_ timeChunk: TimeChunk) -> Date {
 		return Date()
 	}
+    
+    func add(_ timeInterval: TimeInterval) -> Date {
+        return Date()
+    }
+    
+    func subtract(_ timeInterval: TimeInterval) -> Date {
+        return Date()
+    }
 	
 	// MARK: - Time Between
 	
 	func timeBetween(date: Date) -> TimeInterval {
 		return TimeInterval()
 	}
+    
+    func chunkBetween(date: Date) -> TimeChunk {
+        return TimeChunk()
+    }
 	
 	
 	// MARK: - Comparisons
@@ -41,6 +53,7 @@ extension Date {
 		return self.compare(date) == .orderedAscending
 	}
 	
+    
 	// MARK: - Operator Overloads
 	
 	static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
@@ -50,4 +63,12 @@ extension Date {
 	static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
 		return minuend.subtract(subtrahend)
 	}
+    
+    static func +(leftAddend: Date, rightAddend: Int) -> Date {
+        return leftAddend.add(TimeInterval(rightAddend))
+    }
+    
+    static func -(minuend: Date, subtrahend: Int) -> Date {
+        return minuend.subtract(TimeInterval(subtrahend))
+    }
 }
