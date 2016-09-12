@@ -42,8 +42,8 @@ class TimePeriodCollection: TimePeriodGroup {
     func insert(_ newElement: TimePeriodProtocol, at i: Int) {
         periods.insert(newElement, at: i)
         updateExtremes(period: newElement)
-        
     }
+    
     
     // MARK: - Sorting
     

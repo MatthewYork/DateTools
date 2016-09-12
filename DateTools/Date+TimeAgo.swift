@@ -23,7 +23,7 @@ extension Date {
      *  @return NSString - Formatted return string
      */
     static func timeAgo(since date:Date) -> String{
-        return date.timeAgo(since:Date())
+        return date.timeAgo(since: Date(), numericDates: false, numericTimes: false)
     }
     
     /**
@@ -35,7 +35,7 @@ extension Date {
      *  @return NSString - Formatted return string
      */
     static func shortTimeAgo(since date:Date) -> String {
-        return date.shortTimeAgo(since:Date());
+        return date.shortTimeAgo(since:Date())
     }
     
     /**
@@ -58,19 +58,19 @@ extension Date {
         return self.shortTimeAgo(since:Date())
     }
 
-    func timeAgo(since date:Date) -> String {
+    func timeAgo(since date: Date) -> String {
         return self.timeAgo(since: date, numericDates:false)
     }
     
-    func timeAgo(since date:Date, numericDates: Bool) -> String {
+    func timeAgo(since date: Date, numericDates: Bool) -> String {
         return self.timeAgo(since: date, numericDates: numericDates, numericTimes:false)
     }
     
-    func timeAgo(since date:Date, numericDates: Bool, numericTimes: Bool) -> String {
+    func timeAgo(since date: Date, numericDates: Bool, numericTimes: Bool) -> String {
         let calendar = NSCalendar.current
         let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
         let earliest = self.earlierDate(date)
-        let latest = (earliest == self) ? date : self //Should pbe triple equals, but not extended to Date at this time
+        let latest = (earliest == self) ? date : self //Should be triple equals, but not extended to Date at this time
         
         
         let components = calendar.dateComponents(unitFlags, from: earliest, to: latest)

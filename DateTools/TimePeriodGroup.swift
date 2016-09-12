@@ -19,6 +19,8 @@ class TimePeriodGroup: Sequence {
     
     // MARK: - Variables
     
+    internal var periods: [TimePeriodProtocol] = []
+    
     internal var _beginning: Date?
     internal var _end: Date?
     
@@ -28,8 +30,6 @@ class TimePeriodGroup: Sequence {
     var end: Date? {
         return _end
     }
-    
-    internal var periods: [TimePeriodProtocol] = []
     
     var count: Int {
         return periods.count
@@ -110,7 +110,4 @@ class TimePeriodGroup: Sequence {
         }
         return true
     }
-    
-    
-    
 }
