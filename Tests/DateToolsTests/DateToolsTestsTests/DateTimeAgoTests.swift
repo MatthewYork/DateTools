@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import DateToolsTests
 
 class DateTimeAgoTests: XCTestCase {
     
@@ -20,16 +21,14 @@ class DateTimeAgoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testStaticTimeAgo() {
+        let testTimeAgo =  Date.timeAgo(since: Date() - 3)
+        XCTAssertTrue("3 seconds ago" == testTimeAgo)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testStaticShortTimeAgo() {
+        let testTimeAgo = Date.shortTimeAgo(since: Date() - 3)
+        XCTAssertTrue("3s ago" == testTimeAgo)
     }
     
 }
