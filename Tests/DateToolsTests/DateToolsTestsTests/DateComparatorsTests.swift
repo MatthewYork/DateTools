@@ -7,12 +7,19 @@
 //
 
 import XCTest
+@testable import DateToolsTests
 
 class DateComparatorsTests: XCTestCase {
     
+    var controlDate = Date()
+    var formatter = DateFormatter()
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+        self.controlDate = self.formatter.date(from: "2016 09 16 13:30:25.000")!
+        
     }
     
     override func tearDown() {
@@ -20,16 +27,18 @@ class DateComparatorsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testChunkBetweenFuture() {
+        let testDate1 = self.formatter.date(from: "2018 09 16 13:30:25.000")!
+        var resultChunk = self.controlDate.chunkBetween(date: testDate1)
+        XCTAssertTrue(resultChunk.years == 2)
+        let testDate2 = self.formatter.date(from: "2018 08 14 13:30:25.000")!
+        resultChunk = self.controlDate.chunkBetween(date: testDate2)
+        print(resultChunk)
+        XCTAssertTrue(resultChunk.years == 1 && resultChunk.months == 10 && resultChunk.days == 28)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testChunkBetweenPast() {
+        
     }
     
 }

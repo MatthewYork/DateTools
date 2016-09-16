@@ -102,7 +102,7 @@ class TimePeriodGroupTests : XCTestCase {
     
     func testAppendCollection() {
         let testCollection = TimePeriodCollection()
-        testCollection.append(controlCollection)
+        testCollection.append(contentsOf: controlCollection)
         
     }
     
