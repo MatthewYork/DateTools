@@ -20,23 +20,49 @@ class TimePeriodChain: TimePeriodGroup {
     // MARK: - Chain Existence Manipulation
     
     func append<T: TimePeriodProtocol>(_ period: T) {
-        
+        let newPeriod = TimePeriod(beginning: self.periods[self.periods.count-1].end!, duration: period.duration)
+        self.periods.append(newPeriod)
     }
     
-    func append<C: TimePeriodGroup>(contentsOf newPeriods: C) {
-        
+    func append<G: TimePeriodGroup>(contentsOf group: G) {
+        for period in group.periods {
+            let newPeriod = TimePeriod(beginning: self.periods[self.periods.count-1].end!, duration: period.duration)
+            self.periods.append(newPeriod)
+        }
     }
     
     func insert(_ period: TimePeriod, at index: Int) {
+        //Insert new period
+        let newPeriod = TimePeriod(beginning: self.periods[self.periods.count-1].end!, duration: period.duration)
+        periods.insert(period, at: index)
         
+        //Shift all periods after inserted period
+        for i in 0..<periods.count {
+            if i > index {
+                periods[i].beginning = periods[i].beginning!.addingTimeInterval(newPeriod.duration)
+                periods[i].end = periods[i].end!.addingTimeInterval(newPeriod.duration)
+            }
+        }
     }
     
     func remove(at index: Int) {
+        //Retrieve duration of period to be removed
+        let duration = periods[index].duration
         
+        //Remove period
+        periods.remove(at: index)
+        
+        //Shift all periods after inserted period
+        for i in 0..<periods.count {
+            if i > index {
+                periods[i].beginning = periods[i].beginning!.addingTimeInterval(-duration)
+                periods[i].end = periods[i].end!.addingTimeInterval(-duration)
+            }
+        }
     }
     
     func removeAll() {
-        
+        self.periods.removeAll()
     }
     
     internal override func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
