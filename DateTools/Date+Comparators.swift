@@ -37,14 +37,96 @@ extension Date {
 	}
     
 	
-	// MARK: - Time Between
+	// MARK: - Chunk between
 	
-	func timeBetween(date: Date) -> TimeInterval {
-		return TimeInterval()
-	}
-    
     func chunkBetween(date: Date) -> TimeChunk {
-        return TimeChunk()
+        let calendar = Calendar.autoupdatingCurrent
+        var selfComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        var diffComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        var yearDelta = diffComponents.year! - selfComponents.year!
+        var monthDelta = diffComponents.month! - selfComponents.month!
+        var dayDelta = diffComponents.day! - selfComponents.day!
+        var hourDelta = diffComponents.hour! - selfComponents.hour!
+        var minuteDelta = diffComponents.minute! - selfComponents.minute!
+        var secondDelta = diffComponents.second! - selfComponents.second!
+        
+        var month = selfComponents.month! + monthDelta
+        var year = selfComponents.year! + yearDelta
+        
+        var inFuture = self.l
+        
+        
+        if yearDelta > 0 {
+            if monthDelta < 0 {
+                yearDelta -= 1
+                monthDelta += 12
+            }
+            if dayDelta < 0 {
+                monthDelta -= 1
+                month -= 1
+                if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
+                    // 31 day month
+                    dayDelta += 31
+                } else if month == 2 && date.isInLeapYear {
+                    // February with leap year
+                    dayDelta += 29
+                } else if month == 2 && !date.isInLeapYear {
+                    // February without leap year
+                    dayDelta += 28
+                } else {
+                    // 30 day month
+                    dayDelta += 30
+                }
+            }
+            if hourDelta < 0 {
+                dayDelta -= 1
+                hourDelta += 24
+            }
+            if minuteDelta < 0 {
+                hourDelta -= 1
+                minuteDelta += 60
+            }
+            if secondDelta < 0 {
+                minuteDelta -= 1
+                secondDelta += 60
+            }
+        } else if yearDelta < 0 {
+            if monthDelta > 0 {
+                yearDelta += 1
+                monthDelta += 12
+            }
+            if dayDelta > 0 {
+                monthDelta += 1
+                month += 1
+                if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
+                    // 31 day month
+                    dayDelta -= 31
+                } else if month == 2 && year % 4 == 0 {
+                    // February with leap year
+                    dayDelta -= 29
+                } else if month == 2 && year % 4 != 0 {
+                    // February without leap year
+                    dayDelta -= 28
+                } else {
+                    // 30 day month
+                    dayDelta -= 30
+                }
+            }
+            if hourDelta > 0 {
+                dayDelta -= 1
+                hourDelta += 24
+            }
+            if minuteDelta < 0 {
+                hourDelta -= 1
+                minuteDelta += 60
+            }
+            if secondDelta < 0 {
+                minuteDelta -= 1
+                secondDelta += 60
+            }
+
+        }
+        return TimeChunk(seconds: secondDelta, minutes: minuteDelta, hours: hourDelta, days: dayDelta, weeks: 0, months: monthDelta, years: yearDelta)
     }
 	
 	

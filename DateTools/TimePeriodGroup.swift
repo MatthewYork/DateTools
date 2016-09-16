@@ -37,7 +37,7 @@ class TimePeriodGroup: Sequence {
     
     var duration: TimeInterval {
         if beginning != nil && end != nil {
-            return beginning!.timeBetween(date: end!)
+            return beginning!.timeIntervalSince(end!)
         }
         return 0
     }
