@@ -51,12 +51,11 @@ extension Date {
         var secondDelta = diffComponents.second! - selfComponents.second!
         
         var month = selfComponents.month! + monthDelta
-        var year = selfComponents.year! + yearDelta
+        let year = selfComponents.year! + yearDelta
         
-        var inFuture = self.l
+        let inFuture = self.less(than: date)
         
-        
-        if yearDelta > 0 {
+        if inFuture {
             if monthDelta < 0 {
                 yearDelta -= 1
                 monthDelta += 12
@@ -90,10 +89,10 @@ extension Date {
                 minuteDelta -= 1
                 secondDelta += 60
             }
-        } else if yearDelta < 0 {
+        } else {
             if monthDelta > 0 {
                 yearDelta += 1
-                monthDelta += 12
+                monthDelta -= 12
             }
             if dayDelta > 0 {
                 monthDelta += 1
@@ -113,18 +112,18 @@ extension Date {
                 }
             }
             if hourDelta > 0 {
-                dayDelta -= 1
-                hourDelta += 24
+                dayDelta += 1
+                hourDelta -= 24
             }
-            if minuteDelta < 0 {
-                hourDelta -= 1
-                minuteDelta += 60
+            if minuteDelta > 0 {
+                hourDelta += 1
+                minuteDelta -= 60
             }
-            if secondDelta < 0 {
-                minuteDelta -= 1
-                secondDelta += 60
+            if secondDelta > 0 {
+                minuteDelta += 1
+                secondDelta -= 60
             }
-
+            
         }
         return TimeChunk(seconds: secondDelta, minutes: minuteDelta, hours: hourDelta, days: dayDelta, weeks: 0, months: monthDelta, years: yearDelta)
     }
