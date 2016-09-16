@@ -50,7 +50,7 @@ extension Date {
         var minuteDelta = diffComponents.minute! - selfComponents.minute!
         var secondDelta = diffComponents.second! - selfComponents.second!
         
-        var month = selfComponents.month! + monthDelta
+        let month = selfComponents.month! + monthDelta
         let year = selfComponents.year! + yearDelta
         
         let inFuture = self.less(than: date)
@@ -62,7 +62,6 @@ extension Date {
             }
             if dayDelta < 0 {
                 monthDelta -= 1
-                month -= 1
                 if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
                     // 31 day month
                     dayDelta += 31
@@ -96,7 +95,6 @@ extension Date {
             }
             if dayDelta > 0 {
                 monthDelta += 1
-                month += 1
                 if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
                     // 31 day month
                     dayDelta -= 31
