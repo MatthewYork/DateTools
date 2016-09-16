@@ -77,15 +77,25 @@ class TimePeriodChain: TimePeriodGroup {
         return try periods.reduce(initialResult, nextPartialResult)
     }
     
-    func pop() -> TimePeriodProtocol {
-        return TimePeriod()
+    func pop() -> TimePeriodProtocol? {
+        return self.periods.popLast()
     }
     
     
     // MARK: - Chain Relationship
     
     func equals(chain: TimePeriodChain) -> Bool {
-        return true
+        if self.count == chain.count {
+            //Compare all beginning and end dates
+            for i in 0..<periods.count {
+                if periods[i].beginning != chain.periods[i].beginning || periods[i].end != chain.periods[i].end  {
+                    return false
+                }
+            }
+            return true
+        }
+        
+        return false
     }
     
     
