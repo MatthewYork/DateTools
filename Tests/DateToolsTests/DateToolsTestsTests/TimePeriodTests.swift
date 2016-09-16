@@ -48,12 +48,12 @@ class TimePeriodTests : XCTestCase {
     
     func testPlusOperator() {
         let testPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: self.controlTimePeriod.end!)
-        XCTAssertTrue((testPeriod + 1.days).time > self.controlTimePeriod.time)
+        XCTAssertTrue((testPeriod + 1.days).duration > self.controlTimePeriod.duration)
     }
     
     func testMinusOperator() {
         let testPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: self.controlTimePeriod.end!)
-        XCTAssertTrue((testPeriod + 1.days).time < self.controlTimePeriod.time)
+        XCTAssertTrue((testPeriod + 1.days).duration < self.controlTimePeriod.duration)
     }
     
     
