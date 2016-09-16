@@ -125,17 +125,13 @@ extension Date {
 	}
 	
 	var isTomorrow: Bool {
-		if Date().add(1.days) == self {
-			return true
-		}
-		return false
+		let calendar = Calendar.autoupdatingCurrent
+        return calendar.isDateInTomorrow(self)
 	}
 	
 	var isYesterday: Bool {
-		if Date().subtract(1.days) == self {
-			return true
-		}
-		return false
+		let calendar = Calendar.autoupdatingCurrent
+        return calendar.isDateInYesterday(self)
 	}
 	
 	var isWeekend: Bool {
