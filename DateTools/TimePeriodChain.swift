@@ -23,7 +23,7 @@ class TimePeriodChain: TimePeriodGroup {
         
     }
     
-    func append<C: TimePeriodGroup>(_ group: C) {
+    func append<C: TimePeriodGroup>(contentsOf newPeriods: C) {
         
     }
     

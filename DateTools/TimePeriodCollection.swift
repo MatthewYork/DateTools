@@ -24,8 +24,8 @@ class TimePeriodCollection: TimePeriodGroup {
         updateExtremes(period: period)
     }
     
-    func append<C: TimePeriodGroup>(_ group: C) {
-        for period in group as TimePeriodGroup {
+    func append<C: TimePeriodGroup>(contentsOf newPeriods: C) {
+        for period in newPeriods as TimePeriodGroup {
             periods.append(period)
             updateExtremes(period: period)
         }
