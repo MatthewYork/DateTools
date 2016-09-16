@@ -13,11 +13,27 @@ extension Date {
 	// MARK: - Addition / Subtractions
 	
 	func add(_ timeChunk: TimeChunk) -> Date {
-		return Date()
+		let calendar = Calendar.autoupdatingCurrent
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        components.year! += timeChunk.years
+        components.month! += timeChunk.months
+        components.day! += timeChunk.days
+        components.hour! += timeChunk.hours
+        components.minute! += timeChunk.minutes
+        components.second! += timeChunk.seconds
+        return calendar.date(from: components)!
 	}
 	
 	func subtract(_ timeChunk: TimeChunk) -> Date {
-		return Date()
+        let calendar = Calendar.autoupdatingCurrent
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        components.year! -= timeChunk.years
+        components.month! -= timeChunk.months
+        components.day! -= timeChunk.days
+        components.hour! -= timeChunk.hours
+        components.minute! -= timeChunk.minutes
+        components.second! -= timeChunk.seconds
+        return calendar.date(from: components)!
 	}
     
     func add(_ timeInterval: TimeInterval) -> Date {
