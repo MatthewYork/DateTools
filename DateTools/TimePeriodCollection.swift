@@ -19,7 +19,7 @@ class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Collection Manipulation
     
-    func append<T: TimePeriodProtocol>(_ period: T) {
+    func append(_ period: TimePeriodProtocol) {
         periods.append(period)
         updateExtremes(period: period)
     }
@@ -33,10 +33,12 @@ class TimePeriodCollection: TimePeriodGroup {
     
     func remove(at: Int) {
         periods.remove(at: at)
+        updateExtremes()
     }
     
     func removeAll() {
         periods.removeAll()
+        updateExtremes()
     }
     
     func insert(_ newElement: TimePeriodProtocol, at i: Int) {
@@ -83,41 +85,37 @@ class TimePeriodCollection: TimePeriodGroup {
         Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s whose start and end dates fall completely inside the interval of the given ```TimePeriod```
      */
     func allInside(in period: TimePeriodProtocol) -> TimePeriodCollection {
-        return TimePeriodCollection()
+        let collection = TimePeriodCollection()
+        //Filter by periop
+        collection.periods = self.periods.filter({ (timePeriod: TimePeriodProtocol) -> Bool in
+            return timePeriod.inside(of: period)
+        })
+        return collection
     }
     
     /**
         Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing the given date
      */
     func periodsIntersected(by date: Date) -> TimePeriodCollection {
-        return TimePeriodCollection()
+        let collection = TimePeriodCollection()
+        //Filter by periop
+        collection.periods = self.periods.filter({ (timePeriod: TimePeriodProtocol) -> Bool in
+            return timePeriod.contains(date: date, interval: .closed)
+        })
+        return collection
     }
     
     /**
      Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing either the start date or the end date--or both--of the given ```TimePeriod```
      */
     func periodsIntersected(by period: TimePeriodProtocol) -> TimePeriodCollection {
-        return TimePeriodCollection()
+        let collection = TimePeriodCollection()
+        //Filter by periop
+        collection.periods = self.periods.filter({ (timePeriod: TimePeriodProtocol) -> Bool in
+            return timePeriod.intersects(with: period)
+        })
+        return collection
     }
-    
-    func equals(collection: TimePeriodCollection) -> Bool {
-        return false
-    }
-    
-    
-    // MARK: - Helper Methods
-    
-    func copy() -> TimePeriodCollection {
-        return TimePeriodCollection()
-    }
-    
-    
-    // MARK: - Updates
-    
-    func updateVariables() {
-        
-    }
-    
     
     // MARK: - Map, Filter, Reduce
     
@@ -132,11 +130,50 @@ class TimePeriodCollection: TimePeriodGroup {
         return mappedCollection
     }
     
-    
     // MARK: - Operator Overloads
     
     static func ==(left: TimePeriodCollection, right: TimePeriodCollection) -> Bool {
-        return left.equals(collection: right)
+        return left.equals(group: right)
     }
     
+    //MARK: - Helpers
+    
+    internal func updateExtremes(period: TimePeriodProtocol) {
+        //Check incoming period against previous beginning and end date
+        _beginning = nilOrEarlier(date1: _beginning, date2: period.beginning)
+        _end = nilOrLater(date1: _end, date2: period.end)
+    }
+    
+    internal func updateExtremes() {
+        if periods.count == 0 {
+            _beginning = nil
+            _end = nil
+        }
+        else {
+            _beginning = periods[0].beginning
+            _end = periods[0].end
+            for i in 1..<periods.count {
+                _beginning = nilOrEarlier(date1: _beginning, date2: periods[i].beginning)
+                _end = nilOrEarlier(date1: _end, date2: periods[i].end)
+            }
+        }
+    }
+    
+    internal func nilOrEarlier(date1: Date?, date2: Date?) -> Date? {
+        if date1 == nil || date2 == nil {
+            return nil
+        }
+        else {
+            return date1!.earlierDate(date2!)
+        }
+    }
+    
+    internal func nilOrLater(date1: Date?, date2: Date?) -> Date? {
+        if date1 == nil || date2 == nil {
+            return nil
+        }
+        else {
+            return date1!.laterDate(date2!)
+        }
+    }
 }

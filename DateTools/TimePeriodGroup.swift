@@ -45,8 +45,8 @@ class TimePeriodGroup: Sequence {
     
     // MARK: - Comparisons
     
-    func samePeriods(_ group: TimePeriodGroup) -> Bool {
-        return self.containSameElements(array1: self.periods, group.periods)
+    func equals(group: TimePeriodGroup) -> Bool {
+        return containSameElements(array1: self.periods, group.periods)
     }
     
 
@@ -82,19 +82,6 @@ class TimePeriodGroup: Sequence {
         }
     }
     
-    internal func updateExtremes(period: TimePeriodProtocol) {
-        if beginning != nil && period.beginning != nil {
-            _beginning = beginning!.earlierDate(period.beginning!)
-            _end = end!.laterDate(period.end!)
-        } else {
-            if let uBeginning = period.beginning {
-                if let uEnd = period.end {
-                    _beginning = uBeginning
-                    _end = uEnd
-                }
-            }
-        }
-    }
     
     internal func containSameElements(array1: [TimePeriodProtocol], _ array2: [TimePeriodProtocol]) -> Bool {
         guard array1.count == array2.count else {
