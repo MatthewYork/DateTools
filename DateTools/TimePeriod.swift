@@ -68,7 +68,7 @@ extension TimePeriodProtocol {
         return 0.days
     }
     
-    var time: TimeInterval {
+    var duration: TimeInterval {
         return 0
     }
     
