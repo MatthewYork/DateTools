@@ -33,8 +33,10 @@ class DateComparatorsTests: XCTestCase {
         XCTAssertTrue(resultChunk.years == 2)
         let testDate2 = self.formatter.date(from: "2018 08 14 13:30:25.000")!
         resultChunk = self.controlDate.chunkBetween(date: testDate2)
-        print(resultChunk)
-        XCTAssertTrue(resultChunk.years == 1 && resultChunk.months == 10 && resultChunk.days == 28)
+        XCTAssertTrue(resultChunk.years == 1 && resultChunk.months == 10 && resultChunk.days == 29)
+        let testDate3 = self.formatter.date(from: "2020 03 09 13:30:25.000")!
+        resultChunk = self.controlDate.chunkBetween(date: testDate3)
+        XCTAssertTrue(resultChunk.years == 3 && resultChunk.months == 5 && resultChunk.days == 22)
     }
     
     func testChunkBetweenPast() {
