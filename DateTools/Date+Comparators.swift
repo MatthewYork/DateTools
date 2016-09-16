@@ -36,13 +36,6 @@ extension Date {
         return calendar.date(from: components)!
 	}
     
-    func add(_ timeInterval: TimeInterval) -> Date {
-        return Date()
-    }
-    
-    func subtract(_ timeInterval: TimeInterval) -> Date {
-        return Date()
-    }
 	
 	// MARK: - Time Between
 	
@@ -81,10 +74,10 @@ extension Date {
 	}
     
     static func +(leftAddend: Date, rightAddend: Int) -> Date {
-        return leftAddend.add(TimeInterval(rightAddend))
+        return leftAddend.addingTimeInterval((TimeInterval(rightAddend)))
     }
     
     static func -(minuend: Date, subtrahend: Int) -> Date {
-        return minuend.subtract(TimeInterval(subtrahend))
+        return minuend.addingTimeInterval(-(TimeInterval(subtrahend)))
     }
 }
