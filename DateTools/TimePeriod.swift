@@ -217,7 +217,8 @@ open class TimePeriod: TimePeriodProtocol {
     }
     
     init(end: Date, duration: TimeInterval) {
-        
+        self.end = end
+        self.beginning = end.addingTimeInterval(-duration)
     }
     
     init(beginning: Date, duration: TimeChunk) {
