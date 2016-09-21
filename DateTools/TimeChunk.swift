@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TimeChunk {
+public struct TimeChunk {
     
     // MARK: - Variables
     

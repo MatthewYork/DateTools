@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension String {
+public extension String {
 	init(_ date: Date) {
 		self = "\(date)"
 	}

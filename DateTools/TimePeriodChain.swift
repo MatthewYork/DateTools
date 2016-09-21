@@ -15,7 +15,7 @@ import Foundation
  
     [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-chains) for more information.
  */
-class TimePeriodChain: TimePeriodGroup {
+open class TimePeriodChain: TimePeriodGroup {
     
     // MARK: - Chain Existence Manipulation
     
@@ -79,11 +79,11 @@ class TimePeriodChain: TimePeriodGroup {
         updateExtremes()
     }
     
-    internal override func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
+    public override func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
         return try periods.map(transform)
     }
     
-    internal override func filter(_ isIncluded: (TimePeriodProtocol) throws -> Bool) rethrows -> [TimePeriodProtocol] {
+    public override func filter(_ isIncluded: (TimePeriodProtocol) throws -> Bool) rethrows -> [TimePeriodProtocol] {
         return try periods.filter(isIncluded)
     }
     

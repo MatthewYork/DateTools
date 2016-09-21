@@ -16,7 +16,7 @@ import Foundation
  
  [Visit our github page](https://github.com/MatthewYork/DateTools#time-periods) for more information.
  */
-protocol TimePeriodProtocol {
+public protocol TimePeriodProtocol {
     
     // MARK: - Variables
     
@@ -31,7 +31,7 @@ protocol TimePeriodProtocol {
     var end: Date? {get set}
 }
 
-extension TimePeriodProtocol {
+public extension TimePeriodProtocol {
     
     
     // MARK: - Information
@@ -188,17 +188,17 @@ extension TimePeriodProtocol {
  
     [Visit our github page](https://github.com/MatthewYork/DateTools#time-periods) for more information.
  */
-class TimePeriod: TimePeriodProtocol {
+open class TimePeriod: TimePeriodProtocol {
     
     /**
      The start date for a TimePeriod representing the starting boundary of the time period
      */
-    var beginning: Date?
+    public var beginning: Date?
     
     /**
      *  The end date for a TimePeriod representing the ending boundary of the time period
      */
-    var end: Date?
+    public var end: Date?
     
     // MARK: - Initializers
     

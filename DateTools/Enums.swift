@@ -13,7 +13,7 @@
  
  Further reading: [GitHub](https://github.com/MatthewYork/DateTools#relationships), [CodeProject](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
  */
-enum Relation {
+public enum Relation {
     case after
     case startTouching
     case startInside
@@ -38,7 +38,7 @@ enum Relation {
  
  Open: The boundary moment of time represents a boundary value which is excluded in regard to calculations.
  */
-enum Interval {
+public enum Interval {
     case open
     case closed
 }
@@ -46,7 +46,7 @@ enum Interval {
 /**
  When a time periods is lengthened or shortened, it does so anchoring one date of the time period and then changing the other one. There is also an option to anchor the centerpoint of the time period, changing both the start and end dates.
  */
-enum Anchor {
+public enum Anchor {
     case beginning
     case center
     case end

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Int {
+public extension Int {
     
     //MARK: TimePeriod
     var seconds: TimeChunk {
