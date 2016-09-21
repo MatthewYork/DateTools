@@ -10,9 +10,14 @@ import XCTest
 
 class DateDateToolsTests: XCTestCase {
     
+    var formatter = DateFormatter()
+    var controlDate = Date()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+        controlDate = self.formatter.date(from: "2011 12 25 4:30:30.000")!
     }
     
     override func tearDown() {
@@ -20,16 +25,14 @@ class DateDateToolsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testInitWithAll() {
+        let testDate = Date(year: 2011, month: 12, day: 25, hour: 4, minute: 30, second: 30)
+        XCTAssertTrue(testDate == controlDate)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testInitWithYearMonthDay() {
+        let testDate = Date(year: 2011, month: 12, day: 25)
+        XCTAssertTrue(testDate.year == controlDate.year && testDate.month == controlDate.month && testDate.day == controlDate.day)
     }
     
 }
