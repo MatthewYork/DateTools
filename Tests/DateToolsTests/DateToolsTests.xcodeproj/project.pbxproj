@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2EAB89D91D6CE3DC000794B7 /* String+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */; };
 		5658E3801D6B559900D1465A /* TimePeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E35B1D67782D00D1465A /* TimePeriodTests.swift */; };
 		5658E3811D6B55C800D1465A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5658E37A1D6B556B00D1465A /* Info.plist */; };
 		5658E38E1D6B59B300D1465A /* DateToolsTestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E3881D6B59B300D1465A /* DateToolsTestsTests.swift */; };
@@ -57,7 +56,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+DateTools.swift"; path = "../../../DateTools/String+DateTools.swift"; sourceTree = "<group>"; };
 		5658E35B1D67782D00D1465A /* TimePeriodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodTests.swift; sourceTree = "<group>"; };
 		5658E3701D6B53B000D1465A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateToolsTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,7 +148,6 @@
 				F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */,
 				F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */,
 				56D193991D675ADE001BD246 /* Integer+DateTools.swift */,
-				2EAB89D81D6CE3DC000794B7 /* String+DateTools.swift */,
 				569181EA1D70BDC3007244B4 /* TimeInterval+Conversion.swift */,
 			);
 			name = Extensions;
@@ -353,7 +350,6 @@
 				56D193A21D675ADE001BD246 /* Integer+DateTools.swift in Sources */,
 				56D193A61D675ADE001BD246 /* TimePeriodGroup.swift in Sources */,
 				F0E41E861D6CE82B00DF0AAB /* Date+Format.swift in Sources */,
-				2EAB89D91D6CE3DC000794B7 /* String+DateTools.swift in Sources */,
 				56D193BD1D675CF2001BD246 /* TimeChunk.swift in Sources */,
 				56D193A31D675ADE001BD246 /* TimePeriod.swift in Sources */,
 				F0997A441D67580B00EBCF5C /* ViewController.swift in Sources */,
