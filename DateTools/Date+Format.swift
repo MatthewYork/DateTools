@@ -14,7 +14,7 @@ public extension Date {
     
     func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone, locale: Locale) -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateStyle = dateStyle
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
         
