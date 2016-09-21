@@ -9,9 +9,17 @@
 import XCTest
 
 class DateComponentsTests: XCTestCase {
+    
+    var controlDate = Date()
+    var formatter = DateFormatter()
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        
+        
+        formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+        self.controlDate = formatter.date(from: "2014 11 05 18:15:12.000")!
     }
     
     override func tearDown() {
