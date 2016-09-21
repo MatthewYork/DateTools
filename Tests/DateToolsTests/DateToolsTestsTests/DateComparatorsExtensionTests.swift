@@ -16,14 +16,11 @@ class DateComparatorsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
         self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
         self.controlDate = self.formatter.date(from: "2016 09 16 13:30:25.000")!
-        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     

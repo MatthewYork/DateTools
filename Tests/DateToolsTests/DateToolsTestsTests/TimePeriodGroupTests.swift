@@ -20,16 +20,16 @@ class TimePeriodGroupTests : XCTestCase {
     var fourthPeriod = TimePeriod()
     
     override func setUp() {
-        //Initialize control TimePeriodChain
+        // Initialize control TimePeriodChain
         self.controlCollection = TimePeriodCollection()
-        //Initialize formatter
+        // Initialize formatter
         self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
-        //Create test TimePeriods that are 1 year long
+        // Create test TimePeriods that are 1 year long
         firstPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
         secondPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
         thirdPeriod = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
         fourthPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 4 05 18:15:12.000")!, end: self.formatter.date(from: "2017 4 05 18:15:12.000")!)
-        //Add test periods
+        // Add test periods
         self.controlCollection.append(firstPeriod)
         self.controlCollection.append(secondPeriod)
         self.controlCollection.append(thirdPeriod)
@@ -37,7 +37,6 @@ class TimePeriodGroupTests : XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     

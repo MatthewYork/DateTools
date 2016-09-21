@@ -15,15 +15,12 @@ class TimePeriodTests : XCTestCase {
     var controlTimePeriod = TimePeriod()
     
     override func setUp() {
-        // ut setup code here. This method is called before the invocation of each test method in the class.
-        //Create TimePeriod that is 2 years long
         self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
         self.controlTimePeriod.beginning = self.formatter.date(from: "2014 11 05 18:15:12.000")
         self.controlTimePeriod.end = self.formatter.date(from: "2016 11 05 18:15:12.000")
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
