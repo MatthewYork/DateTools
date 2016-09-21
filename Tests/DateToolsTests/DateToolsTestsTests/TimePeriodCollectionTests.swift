@@ -97,15 +97,7 @@ class TimePeriodCollectionTests : XCTestCase {
     
     func testEquals() {
         let testCollection = controlCollection
-        XCTAssertTrue(testCollection.equals(collection: controlCollection))
-    }
-    
-    
-    // MARK: - Helper Methods
-    
-    func testCopy() {
-        let testCollection = controlCollection.copy()
-        XCTAssertTrue(testCollection == controlCollection)
+        XCTAssertTrue(testCollection.equals(group: controlCollection))
     }
     
     

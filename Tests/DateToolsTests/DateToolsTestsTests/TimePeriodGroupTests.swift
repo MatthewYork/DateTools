@@ -80,15 +80,15 @@ class TimePeriodGroupTests : XCTestCase {
         chain.append(thirdPeriod)
         chain.append(fourthPeriod)
         // Test same as control
-        XCTAssertTrue(self.controlCollection.samePeriods(collectionSame))
+        XCTAssertTrue(self.controlCollection.equals(group: collectionSame))
         // Test different collection
         collectionSame.append(firstPeriod)
-        XCTAssertFalse(self.controlCollection.samePeriods(collectionSame))
+        XCTAssertFalse(self.controlCollection.equals(group: collectionSame))
         // Test same chain with same periods
-        XCTAssertTrue(self.controlCollection.samePeriods(chain))
+        XCTAssertTrue(self.controlCollection.equals(group: chain))
         // Test different chain
         chain.append(firstPeriod)
-        XCTAssertFalse(self.controlCollection.samePeriods(chain))
+        XCTAssertFalse(self.controlCollection.equals(group: chain))
     }
     
     

@@ -112,7 +112,7 @@ class TimePeriodChainTests : XCTestCase {
         testChain.append(testPeriod1)
         testChain.append(testPeriod2)
         testChain.append(testPeriod3)
-        XCTAssertTrue(controlChain.equals(chain: testChain))
+        XCTAssertTrue(controlChain.equals(group: testChain))
     }
     
     
