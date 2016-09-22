@@ -76,7 +76,7 @@ static NSCalendar *implicitCalendar = nil;
  *  Takes in a date and returns a string with the most convenient unit of time representing
  *  how far in the past that date is from now.
  *
- *  @param NSDate - Date to be measured from now
+ *  @param date - Date to be measured from now
  *
  *  @return NSString - Formatted return string
  */
@@ -88,7 +88,7 @@ static NSCalendar *implicitCalendar = nil;
  *  Takes in a date and returns a shortened string with the most convenient unit of time representing
  *  how far in the past that date is from now.
  *
- *  @param NSDate - Date to be measured from now
+ *  @param date - Date to be measured from now
  *
  *  @return NSString - Formatted return string
  */
@@ -848,7 +848,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of months.
  *
- *  @param years NSInteger - Number of months to add
+ *  @param months NSInteger - Number of months to add
  *
  *  @return NSDate - Date modified by the number of desired months
  */
@@ -863,7 +863,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of weeks.
  *
- *  @param years NSInteger - Number of weeks to add
+ *  @param weeks NSInteger - Number of weeks to add
  *
  *  @return NSDate - Date modified by the number of desired weeks
  */
@@ -878,7 +878,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of days.
  *
- *  @param years NSInteger - Number of days to add
+ *  @param days NSInteger - Number of days to add
  *
  *  @return NSDate - Date modified by the number of desired days
  */
@@ -893,7 +893,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of hours.
  *
- *  @param years NSInteger - Number of hours to add
+ *  @param hours NSInteger - Number of hours to add
  *
  *  @return NSDate - Date modified by the number of desired hours
  */
@@ -908,7 +908,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of minutes.
  *
- *  @param years NSInteger - Number of minutes to add
+ *  @param minutes NSInteger - Number of minutes to add
  *
  *  @return NSDate - Date modified by the number of desired minutes
  */
@@ -923,7 +923,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted later by the provided number of seconds.
  *
- *  @param years NSInteger - Number of seconds to add
+ *  @param seconds NSInteger - Number of seconds to add
  *
  *  @return NSDate - Date modified by the number of desired seconds
  */
@@ -954,7 +954,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted earlier by the provided number of months.
  *
- *  @param years NSInteger - Number of months to subtract
+ *  @param months NSInteger - Number of months to subtract
  *
  *  @return NSDate - Date modified by the number of desired months
  */
@@ -969,7 +969,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted earlier by the provided number of weeks.
  *
- *  @param years NSInteger - Number of weeks to subtract
+ *  @param weeks NSInteger - Number of weeks to subtract
  *
  *  @return NSDate - Date modified by the number of desired weeks
  */
@@ -984,7 +984,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted earlier by the provided number of days.
  *
- *  @param years NSInteger - Number of days to subtract
+ *  @param days NSInteger - Number of days to subtract
  *
  *  @return NSDate - Date modified by the number of desired days
  */
@@ -999,7 +999,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted earlier by the provided number of hours.
  *
- *  @param years NSInteger - Number of hours to subtract
+ *  @param hours NSInteger - Number of hours to subtract
  *
  *  @return NSDate - Date modified by the number of desired hours
  */
@@ -1014,7 +1014,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted earlier by the provided number of minutes.
  *
- *  @param years NSInteger - Number of minutes to subtract
+ *  @param minutes NSInteger - Number of minutes to subtract
  *
  *  @return NSDate - Date modified by the number of desired minutes
  */
@@ -1029,7 +1029,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns a date representing the receivers date shifted earlier by the provided number of seconds.
  *
- *  @param years NSInteger - Number of seconds to subtract
+ *  @param seconds NSInteger - Number of seconds to subtract
  *
  *  @return NSDate - Date modified by the number of desired seconds
  */
