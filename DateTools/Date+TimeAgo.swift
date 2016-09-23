@@ -226,7 +226,7 @@ public extension Date {
     
     // MARK: - Localization
     
-    func DateToolsLocalizedStrings(_ string: String) -> String {
+    private func DateToolsLocalizedStrings(_ string: String) -> String {
         //let classBundle = Bundle(for:TimeChunk.self as! AnyClass.Type).resourcePath!.appending("DateTools.bundle")
         
         //let bundelPath = Bundle(path:classBundle)!
