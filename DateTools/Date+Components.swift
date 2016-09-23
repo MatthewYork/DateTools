@@ -9,103 +9,145 @@
 import Foundation
 
 public extension Date {
-	func component(_ component: Calendar.Component, from date: Date) -> Int {
+	func component(_ component: Calendar.Component) -> Int {
 		let calendar = Calendar.autoupdatingCurrent
-		return calendar.component(component, from: date)
+		return calendar.component(component, from: self)
 	}
 	
-	func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component, for date: Date) -> Int? {
+	func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
 		let calendar = Calendar.autoupdatingCurrent
-		return calendar.ordinality(of: smaller, in: larger, for: date)
+		return calendar.ordinality(of: smaller, in: larger, for: self)
 	}
 	
-	func unit(of smaller: Calendar.Component, in larger: Calendar.Component, date: Date) -> Int? {
+	func unit(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
 		let calendar = Calendar.autoupdatingCurrent
-		let units = calendar.range(of: .day, in: .month, for: date)
-		return units?.count
+        var units = 1
+        var unitRange: Range<Int>?
+        if larger.hashValue < smaller.hashValue {
+            for x in larger.hashValue..<smaller.hashValue {
+                
+                var stepLarger: Calendar.Component
+                var stepSmaller: Calendar.Component
+                
+                switch(x) {
+                case 0:
+                    stepLarger = Calendar.Component.era
+                    stepSmaller = Calendar.Component.year
+                    unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
+                    break
+                case 1:
+                    if smaller.hashValue > 2 {
+                        break
+                    } else {
+                        stepLarger = Calendar.Component.year
+                        stepSmaller = Calendar.Component.month
+                        unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
+                    }
+                    break
+                case 2:
+                    if larger.hashValue < 2 {
+                        if self.isInLeapYear {
+                            unitRange = Range.init(uncheckedBounds: (lower: 0, upper: 366))
+                        } else {
+                            unitRange = Range.init(uncheckedBounds: (lower: 0, upper: 365))
+                        }
+                    } else {
+                        stepLarger = Calendar.Component.month
+                        stepSmaller = Calendar.Component.day
+                        unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
+                    }
+                    break
+                case 3:
+                    stepLarger = Calendar.Component.day
+                    stepSmaller = Calendar.Component.hour
+                    unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
+                    break
+                case 4:
+                    stepLarger = Calendar.Component.hour
+                    stepSmaller = Calendar.Component.minute
+                    unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
+                    break
+                case 5:
+                    stepLarger = Calendar.Component.minute
+                    stepSmaller = Calendar.Component.second
+                    unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
+                    break
+                default:
+                    return nil
+                }
+                
+                if unitRange?.count != nil {
+                    units *= (unitRange?.count)!
+                }
+            }
+            return units
+        }
+        return nil
 	}
 	
 	// MARK: - Components
 	
 	var era: Int {
-		return component(.era, from: self)
+		return component(.era)
 	}
 	
 	var year: Int {
-		return component(.year, from: self)
+		return component(.year)
 	}
 	
 	var month: Int {
-		return component(.month, from: self)
+		return component(.month)
 	}
 	
 	var week: Int {
-		return component(.weekday, from: self)
+		return component(.weekday)
 	}
 	
 	var day: Int {
-		return component(.day, from: self)
+		return component(.day)
 	}
 	
 	var hour: Int {
-		return component(.hour, from: self)
+		return component(.hour)
 	}
 	
 	var minute: Int {
-		return component(.minute, from: self)
+		return component(.minute)
 	}
 	
 	var second: Int {
-		return component(.second, from: self)
+		return component(.second)
 	}
 	
 	var weekday: Int {
-		return component(.weekday, from: self)
+		return component(.weekday)
 	}
 	
 	var weekdayOrdinal: Int {
-		return component(.weekdayOrdinal, from: self)
+		return component(.weekdayOrdinal)
 	}
 	
 	var quarter: Int {
-		return component(.quarter, from: self)
+		return component(.quarter)
 	}
 	
 	var weekOfMonth: Int {
-		return component(.weekOfMonth, from: self)
+		return component(.weekOfMonth)
 	}
 	
 	var weekOfYear: Int {
-		return component(.weekOfYear, from: self)
+		return component(.weekOfYear)
 	}
 	
 	var yearForWeekOfYear: Int {
-		return component(.yearForWeekOfYear, from: self)
+		return component(.yearForWeekOfYear)
 	}
-	
-	var dayOfYear: Int {
-		guard let dayOfYear = ordinality(of: .day, in: .year, for: self) else {
-			return 0
-		}
-		return dayOfYear
-	}
-	
-	var daysInMonth: Int {
-		guard let unit = unit(of: .day, in: .month, date: self) else {
-			return 0
-		}
-		return unit
-	}
-	
-	var daysInYear: Int {
-		guard let unit = unit(of: .day, in: .year, date: self) else {
-			return 0
-		}
-		return unit
-	}
+    
+    
+    // MARK: - Bools
 	
 	var isInLeapYear: Bool {
-		let yearComponent = component(.year, from: self)
+		let yearComponent = component(.year)
 		
 		if yearComponent % 400 == 0 {
 			return true
@@ -135,7 +177,7 @@ public extension Date {
 	}
 	
 	var isWeekend: Bool {
-		if weekday == 6 || weekday == 7 {
+		if weekday == 7 || weekday == 1 {
 			return true
 		}
 		return false
