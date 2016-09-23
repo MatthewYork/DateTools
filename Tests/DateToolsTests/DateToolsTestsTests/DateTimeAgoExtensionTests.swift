@@ -20,13 +20,13 @@ class DateTimeAgoTests: XCTestCase {
     }
     
     func testTimeAgo() {
-        let testTimeAgo = Date().timeAgo(since: Date() - 5)
-        XCTAssertTrue("5 seconds ago" == testTimeAgo)
+        let testTimeAgo = Date().timeAgo(since: Date() - 60)
+        XCTAssertTrue("A minute ago" == testTimeAgo)
     }
     
     func testShortTimeAgo() {
-        let testTimeAgo = Date().shortTimeAgo(since: Date() - 5)
-        XCTAssertTrue("5s ago" == testTimeAgo)
+        let testTimeAgo = Date().shortTimeAgo(since: Date() - 4.minutes)
+        XCTAssertTrue("4m" == testTimeAgo)
     }
     
     func testStaticTimeAgo() {
@@ -35,18 +35,32 @@ class DateTimeAgoTests: XCTestCase {
     }
     
     func testStaticShortTimeAgo() {
-        let testTimeAgo = Date.shortTimeAgo(since: Date() - 3)
-        XCTAssertTrue("3s ago" == testTimeAgo)
+        let testTimeAgo = Date.shortTimeAgo(since: Date() - 3.hours)
+        XCTAssertTrue("3h" == testTimeAgo)
     }
     
     func testTimeAgoSinceNow() {
         let testTimeAgo = Date().timeAgoSinceNow
-        XCTAssertTrue("0 seconds ago" == testTimeAgo)
+        XCTAssertTrue("Just now" == testTimeAgo)
     }
     
     func testShortTimeAgoSinceNow() {
         let testTimeAgo = Date().shortTimeAgoSinceNow
-        XCTAssertTrue("0s ago" == testTimeAgo)
+        XCTAssertTrue("0s" == testTimeAgo)
+    }
+    
+    func testEarlierDate() {
+        let testTimeAgo = Date()
+        XCTAssertTrue(testTimeAgo.earlierDate(testTimeAgo + 2.seconds) == testTimeAgo)
+        XCTAssertTrue((testTimeAgo - 3.minutes).earlierDate(testTimeAgo) == testTimeAgo - 3.minutes)
+        XCTAssertTrue(testTimeAgo.earlierDate(testTimeAgo) == testTimeAgo)
+    }
+    
+    func testLaterDate() {
+        let testTimeAgo = Date()
+        XCTAssertTrue(testTimeAgo.laterDate(testTimeAgo + 2.seconds) == testTimeAgo + 2.seconds)
+        XCTAssertTrue((testTimeAgo - 3.minutes).laterDate(testTimeAgo) == testTimeAgo)
+        XCTAssertTrue(testTimeAgo.laterDate(testTimeAgo) == testTimeAgo)
     }
     
     
