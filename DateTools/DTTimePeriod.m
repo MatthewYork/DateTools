@@ -57,7 +57,7 @@
  *  @return DTTimePeriod - new instance
  */
 +(instancetype)timePeriodWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate{
-    return [[DTTimePeriod alloc] initWithStartDate:startDate endDate:endDate];
+    return [[self.class alloc] initWithStartDate:startDate endDate:endDate];
 }
 
 /**
@@ -70,7 +70,7 @@
  *  @return DTTimePeriod - new instance
  */
 +(instancetype)timePeriodWithSize:(DTTimePeriodSize)size startingAt:(NSDate *)date{
-    return [[DTTimePeriod alloc] initWithStartDate:date endDate:[DTTimePeriod dateWithAddedTime:size amount:1 baseDate:date]];
+    return [[self.class alloc] initWithStartDate:date endDate:[DTTimePeriod dateWithAddedTime:size amount:1 baseDate:date]];
 }
 
 /**
@@ -84,7 +84,7 @@
  *  @return DTTimePeriod - new instance
  */
 +(instancetype)timePeriodWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount startingAt:(NSDate *)date{
-    return [[DTTimePeriod alloc] initWithStartDate:date endDate:[DTTimePeriod dateWithAddedTime:size amount:amount baseDate:date]];
+    return [[self.class alloc] initWithStartDate:date endDate:[DTTimePeriod dateWithAddedTime:size amount:amount baseDate:date]];
 }
 
 /**
@@ -97,7 +97,7 @@
  *  @return DTTimePeriod - new instance
  */
 +(instancetype)timePeriodWithSize:(DTTimePeriodSize)size endingAt:(NSDate *)date{
-    return [[DTTimePeriod alloc] initWithStartDate:[DTTimePeriod dateWithSubtractedTime:size amount:1 baseDate:date] endDate:date];
+    return [[self.class alloc] initWithStartDate:[DTTimePeriod dateWithSubtractedTime:size amount:1 baseDate:date] endDate:date];
 }
 
 /**
@@ -111,7 +111,7 @@
  *  @return DTTimePeriod - new instance
  */
 +(instancetype)timePeriodWithSize:(DTTimePeriodSize)size amount:(NSInteger)amount endingAt:(NSDate *)date{
-    return [[DTTimePeriod alloc] initWithStartDate:[DTTimePeriod dateWithSubtractedTime:size amount:amount baseDate:date] endDate:date];
+    return [[self.class alloc] initWithStartDate:[DTTimePeriod dateWithSubtractedTime:size amount:amount baseDate:date] endDate:date];
 }
 
 /**
@@ -121,7 +121,7 @@
  *  @return DTTimePeriod - new instance
  */
 +(instancetype)timePeriodWithAllTime{
-    return [[DTTimePeriod alloc] initWithStartDate:[NSDate distantPast] endDate:[NSDate distantFuture]];
+    return [[self.class alloc] initWithStartDate:[NSDate distantPast] endDate:[NSDate distantFuture]];
 }
 
 /**
