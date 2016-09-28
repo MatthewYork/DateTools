@@ -53,7 +53,7 @@ public extension Date {
         var month = selfComponents.month! + monthDelta
         let year = selfComponents.year! + yearDelta
         
-        let inFuture = self.less(than: date)
+        let inFuture = self.earlier(than: date)
         
         if inFuture {
             month -= 1
