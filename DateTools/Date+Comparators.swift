@@ -56,75 +56,186 @@ public extension Date {
         let inFuture = self.less(than: date)
         
         if inFuture {
+            month -= 1
             if monthDelta < 0 {
-                yearDelta -= 1
-                monthDelta += 12
+                if yearDelta > 0 {
+                    yearDelta -= 1
+                    monthDelta += 12
+                }
             }
             if dayDelta < 0 {
-                monthDelta -= 1
-                month -= 1
-                if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
-                    // 31 day month
-                    dayDelta += 31
-                } else if month == 2 && date.isInLeapYear {
-                    // February with leap year
-                    dayDelta += 29
-                } else if month == 2 && !date.isInLeapYear {
-                    // February without leap year
-                    dayDelta += 28
+                if monthDelta > 0 {
+                    monthDelta -= 1
+                    dayDelta += daysInMonth(month: month, date: date)
                 } else {
-                    // 30 day month
-                    dayDelta += 30
+                    yearDelta -= 1
+                    monthDelta += 11
+                    dayDelta += daysInMonth(month: month, date: date)
                 }
             }
             if hourDelta < 0 {
-                dayDelta -= 1
-                hourDelta += 24
+                if dayDelta > 0 {
+                    dayDelta -= 1
+                    hourDelta += 24
+                } else if monthDelta > 0 {
+                    monthDelta -= 1
+                    dayDelta += daysInMonth(month: month, date: date)
+                } else if year > 0 {
+                    yearDelta -= 1
+                    monthDelta += 11
+                    dayDelta += daysInMonth(month: month, date: date) - 1
+                    hourDelta += 24
+                }
             }
             if minuteDelta < 0 {
-                hourDelta -= 1
-                minuteDelta += 60
+                if hourDelta > 0 {
+                    hourDelta -= 1
+                    minuteDelta += 60
+                } else if dayDelta > 0 {
+                    dayDelta -= 1
+                    hourDelta += 23
+                    minuteDelta += 60
+                } else if monthDelta > 0 {
+                    monthDelta -= 1
+                    dayDelta += daysInMonth(month: month, date: date) - 1
+                    hourDelta += 23
+                    minuteDelta += 60
+                } else if year > 0 {
+                    yearDelta -= 1
+                    monthDelta += 11
+                    dayDelta += daysInMonth(month: month, date: date) - 1
+                    hourDelta += 23
+                    minuteDelta += 60
+                }
             }
             if secondDelta < 0 {
-                minuteDelta -= 1
-                secondDelta += 60
+                if minuteDelta > 0 {
+                    minuteDelta -= 1
+                    secondDelta += 60
+                } else if hourDelta > 0 {
+                    hourDelta -= 1
+                    minuteDelta += 59
+                    secondDelta += 60
+                } else if dayDelta > 0 {
+                    dayDelta -= 1
+                    hourDelta += 23
+                    minuteDelta += 59
+                    secondDelta += 60
+                } else if monthDelta > 0 {
+                    monthDelta -= 1
+                    dayDelta += daysInMonth(month: month, date: date) - 1
+                    hourDelta += 23
+                    minuteDelta += 59
+                    secondDelta += 60
+                } else if year > 0 {
+                    yearDelta -= 1
+                    monthDelta += 11
+                    dayDelta += daysInMonth(month: month, date: date) - 1
+                    hourDelta += 23
+                    minuteDelta += 59
+                    secondDelta += 60
+                }
             }
         } else {
             if monthDelta > 0 {
-                yearDelta += 1
-                monthDelta -= 12
+                if yearDelta < 0 {
+                    yearDelta += 1
+                    monthDelta -= 12
+                }
             }
             if dayDelta > 0 {
-                monthDelta += 1
-                if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
-                    // 31 day month
-                    dayDelta -= 31
-                } else if month == 2 && year % 4 == 0 {
-                    // February with leap year
-                    dayDelta -= 29
-                } else if month == 2 && year % 4 != 0 {
-                    // February without leap year
-                    dayDelta -= 28
-                } else {
-                    // 30 day month
-                    dayDelta -= 30
+                if monthDelta < 0 {
+                    monthDelta += 1
+                    dayDelta -= daysInMonth(month: month, date: date)
+                } else if yearDelta < 0 {
+                    yearDelta += 1
+                    monthDelta -= 11
+                    dayDelta -= daysInMonth(month: month, date: date)
                 }
             }
             if hourDelta > 0 {
-                dayDelta += 1
-                hourDelta -= 24
+                if dayDelta < 0 {
+                    dayDelta += 1
+                    hourDelta -= 24
+                } else if monthDelta < 0 {
+                    monthDelta += 1
+                    dayDelta -= daysInMonth(month: month, date: date) + 1
+                    hourDelta -= 24
+                } else if yearDelta < 0 {
+                    yearDelta += 1
+                    monthDelta -= 11
+                    dayDelta -= daysInMonth(month: month, date: date) + 1
+                    hourDelta -= 24
+                }
             }
             if minuteDelta > 0 {
-                hourDelta += 1
-                minuteDelta -= 60
+                if hourDelta < 0 {
+                    hourDelta += 1
+                    minuteDelta -= 60
+                } else if dayDelta < 0 {
+                    dayDelta += 1
+                    hourDelta -= 23
+                    minuteDelta -= 60
+                } else if monthDelta < 0 {
+                    monthDelta += 1
+                    dayDelta -= daysInMonth(month: month, date: date) + 1
+                    hourDelta -= 23
+                    minuteDelta -= 60
+                } else if yearDelta < 0 {
+                    yearDelta += 1
+                    monthDelta -= 11
+                    dayDelta -= daysInMonth(month: month, date: date) + 1
+                    hourDelta -= 23
+                    minuteDelta -= 60
+                }
             }
             if secondDelta > 0 {
-                minuteDelta += 1
-                secondDelta -= 60
+                if minuteDelta < 0 {
+                    minuteDelta += 1
+                    secondDelta -= 60
+                } else if hourDelta < 0 {
+                    hourDelta += 1
+                    minuteDelta -= 59
+                    secondDelta -= 60
+                } else if dayDelta < 0 {
+                    dayDelta += 1
+                    hourDelta -= 23
+                    minuteDelta -= 59
+                    secondDelta -= 60
+                } else if monthDelta < 0 {
+                    monthDelta += 1
+                    dayDelta -= daysInMonth(month: month, date: date) + 1
+                    hourDelta -= 23
+                    minuteDelta -= 59
+                    secondDelta -= 60
+                } else if yearDelta < 0 {
+                    yearDelta += 1
+                    monthDelta -= 11
+                    dayDelta -= daysInMonth(month: month, date: date) + 1
+                    hourDelta -= 23
+                    minuteDelta -= 59
+                    secondDelta -= 60
+                }
             }
             
         }
         return TimeChunk(seconds: secondDelta, minutes: minuteDelta, hours: hourDelta, days: dayDelta, weeks: 0, months: monthDelta, years: yearDelta)
+    }
+    
+    internal func daysInMonth(month: Int, date: Date) -> Int {
+        if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
+            // 31 day month
+            return 31
+        } else if month == 2 && date.isInLeapYear {
+            // February with leap year
+            return 29
+        } else if month == 2 && !date.isInLeapYear {
+            // February without leap year
+            return 28
+        } else {
+            // 30 day month
+            return 30
+        }
     }
 	
 	
