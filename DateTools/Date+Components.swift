@@ -144,6 +144,33 @@ public extension Date {
 	}
     
     
+    // MARK: - Set Components
+    
+    mutating func year(_ year: Int) {
+        self = Date.init(year: year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
+    }
+    
+    mutating func month(_ month: Int) {
+        self = Date.init(year: self.year, month: month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
+    }
+    
+    mutating func day(_ day: Int) {
+        self = Date.init(year: self.year, month: self.month, day: day, hour: self.hour, minute: self.minute, second: self.second)
+    }
+    
+    mutating func hour(_ hour: Int) {
+        self = Date.init(year: self.year, month: self.month, day: self.day, hour: hour, minute: self.minute, second: self.second)
+    }
+    
+    mutating func minute(_ minute: Int) {
+        self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: minute, second: self.second)
+    }
+    
+    mutating func second(_ second: Int) {
+        self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: second)
+    }
+    
+    
     // MARK: - Bools
 	
 	var isInLeapYear: Bool {

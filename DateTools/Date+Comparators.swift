@@ -10,33 +10,6 @@ import Foundation
 
 public extension Date {
 	
-	// MARK: - Addition / Subtractions
-	
-	func add(_ timeChunk: TimeChunk) -> Date {
-		let calendar = Calendar.autoupdatingCurrent
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
-        components.year! += timeChunk.years
-        components.month! += timeChunk.months
-        components.day! += timeChunk.days
-        components.hour! += timeChunk.hours
-        components.minute! += timeChunk.minutes
-        components.second! += timeChunk.seconds
-        return calendar.date(from: components)!
-	}
-	
-	func subtract(_ timeChunk: TimeChunk) -> Date {
-        let calendar = Calendar.autoupdatingCurrent
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
-        components.year! -= timeChunk.years
-        components.month! -= timeChunk.months
-        components.day! -= timeChunk.days
-        components.hour! -= timeChunk.hours
-        components.minute! -= timeChunk.minutes
-        components.second! -= timeChunk.seconds
-        return calendar.date(from: components)!
-	}
-    
-	
 	// MARK: - Chunk between
 	
     func chunkBetween(date: Date) -> TimeChunk {
@@ -253,22 +226,4 @@ public extension Date {
 		return self.compare(date) == .orderedAscending
 	}
 	
-    
-	// MARK: - Operator Overloads
-	
-	static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
-		return leftAddend.add(rightAddend)
-	}
-	
-	static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
-		return minuend.subtract(subtrahend)
-	}
-    
-    static func +(leftAddend: Date, rightAddend: Int) -> Date {
-        return leftAddend.addingTimeInterval((TimeInterval(rightAddend)))
-    }
-    
-    static func -(minuend: Date, subtrahend: Int) -> Date {
-        return minuend.addingTimeInterval(-(TimeInterval(subtrahend)))
-    }
 }

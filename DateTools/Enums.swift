@@ -51,3 +51,12 @@ public enum Anchor {
     case center
     case end
 }
+
+public enum Component {
+    case year
+    case month
+    case day
+    case hour
+    case minute
+    case second
+}
