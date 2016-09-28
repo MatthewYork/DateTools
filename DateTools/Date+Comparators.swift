@@ -245,11 +245,11 @@ public extension Date {
 		return self.compare(date) == .orderedSame
 	}
 	
-	func greater(than date: Date) -> Bool {
+	func later(than date: Date) -> Bool {
 		return self.compare(date) == .orderedDescending
 	}
 	
-	func less(than date: Date) -> Bool {
+	func earlier(than date: Date) -> Bool {
 		return self.compare(date) == .orderedAscending
 	}
 	
