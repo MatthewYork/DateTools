@@ -29,39 +29,42 @@ public extension Date {
             self.second(0)
             self.minute(0)
             self.hour(0)
-            self.day(0)
+            self.day(1)
         } else if component == .year {
             self.second(0)
             self.minute(0)
             self.hour(0)
-            self.day(0)
-            self.month(0)
+            self.day(1)
+            self.month(1)
         }
     }
     
     mutating func end(of component: Component) {
         if component == .second {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
-            let formatString = "\(self.year) \(self.month) \(self.day) \(self.hour):\(self.minute):\(self.second).999"
-            self = formatter.date(from: formatString)!
+            self.second(self.second + 1)
+            self = self - 0.001
         }
         else if component == .minute {
-            self.second(59)
+            self.second(60)
+            self = self - 0.001
         } else if component == .hour {
-            self.second(59)
+            self.second(60)
+            self = self - 0.001
             self.minute(59)
         } else if component == .day {
-            self.second(59)
+            self.second(60)
+            self = self - 0.001
             self.minute(59)
             self.hour(23)
         } else if component == .month {
-            self.second(59)
+            self.second(60)
+            self = self - 0.001
             self.minute(59)
             self.hour(23)
             self.day(daysInMonth(date: self))
         } else if component == .year {
-            self.second(59)
+            self.second(60)
+            self = self - 0.001
             self.minute(59)
             self.hour(23)
             self.month(12)
