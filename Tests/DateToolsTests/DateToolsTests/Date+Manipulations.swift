@@ -39,6 +39,50 @@ public extension Date {
         }
     }
     
+    mutating func end(of component: Component) {
+        if component == .second {
+            self.second(self.second)
+        }
+        else if component == .minute {
+            self.second(59)
+        } else if component == .hour {
+            self.second(59)
+            self.minute(59)
+        } else if component == .day {
+            self.second(59)
+            self.minute(59)
+            self.hour(23)
+        } else if component == .month {
+            self.second(59)
+            self.minute(59)
+            self.hour(23)
+            self.day(daysInMonth(date: self))
+        } else if component == .year {
+            self.second(59)
+            self.minute(59)
+            self.hour(23)
+            self.day(daysInMonth(date: self))
+            self.month(12)
+        }
+    }
+    
+    internal func daysInMonth(date: Date) -> Int {
+        let month = date.month
+        if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
+            // 31 day month
+            return 31
+        } else if month == 2 && date.isInLeapYear {
+            // February with leap year
+            return 29
+        } else if month == 2 && !date.isInLeapYear {
+            // February without leap year
+            return 28
+        } else {
+            // 30 day month
+            return 30
+        }
+    }
+    
     
     // MARK: - Addition / Subtractions
     
