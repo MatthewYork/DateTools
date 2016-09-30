@@ -9,7 +9,7 @@
 import XCTest
 @testable import DateToolsTests
 
-class IntegerExtensionTests: XCTestCase {
+class IntegerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

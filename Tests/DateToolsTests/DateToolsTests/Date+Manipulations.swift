@@ -41,7 +41,10 @@ public extension Date {
     
     mutating func end(of component: Component) {
         if component == .second {
-            self.second(self.second)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+            let formatString = "\(self.year) \(self.month) \(self.day) \(self.hour):\(self.minute):\(self.second).999"
+            self = formatter.date(from: formatString)!
         }
         else if component == .minute {
             self.second(59)
@@ -61,8 +64,8 @@ public extension Date {
             self.second(59)
             self.minute(59)
             self.hour(23)
-            self.day(daysInMonth(date: self))
             self.month(12)
+            self.day(31)
         }
     }
     
