@@ -20,7 +20,9 @@ open class TimePeriodChain: TimePeriodGroup {
     // MARK: - Chain Existence Manipulation
     
     func append(_ period: TimePeriodProtocol) {
-        let newPeriod = TimePeriod(beginning: self.periods[self.periods.count-1].end!, duration: period.duration)
+        let beginning = (self.periods.count > 0) ? self.periods[self.periods.count-1].end! : period.beginning
+        
+        let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
         self.periods.append(newPeriod)
         updateExtremes()
     }

@@ -97,7 +97,7 @@ public extension Date {
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
         components.year! += timeChunk.years
         components.month! += timeChunk.months
-        components.day! += timeChunk.days
+        components.day! += timeChunk.days + (timeChunk.weeks*7)
         components.hour! += timeChunk.hours
         components.minute! += timeChunk.minutes
         components.second! += timeChunk.seconds
@@ -109,7 +109,7 @@ public extension Date {
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
         components.year! -= timeChunk.years
         components.month! -= timeChunk.months
-        components.day! -= timeChunk.days
+        components.day! -= timeChunk.days - (timeChunk.weeks*7)
         components.hour! -= timeChunk.hours
         components.minute! -= timeChunk.minutes
         components.second! -= timeChunk.seconds

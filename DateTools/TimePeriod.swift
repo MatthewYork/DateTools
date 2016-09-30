@@ -9,6 +9,7 @@
 import Foundation
 
 
+
 /**
  # TimePeriod
  
@@ -37,39 +38,60 @@ public extension TimePeriodProtocol {
     // MARK: - Information
     
     var isMoment: Bool {
-        return false
+        return self.beginning == self.end
     }
     
-    var years: TimeInterval {
-        return 0
+    var years: Int {
+        if self.beginning != nil && self.end != nil {
+            return self.beginning!.yearsEarlierThan(self.end!)
+        }
+        return Int.max
     }
     
-    var weeks: TimeInterval {
-        return 0
+    var weeks: Int {
+        if self.beginning != nil && self.end != nil {
+            return self.beginning!.weeksEarlierThan(self.end!)
+        }
+        return Int.max
     }
     
-    var days: TimeInterval {
-        return 0
+    var days: Int {
+        if self.beginning != nil && self.end != nil {
+            return self.beginning!.daysEarlierThan(self.end!)
+        }
+        return Int.max
     }
     
-    var hours: TimeInterval {
-        return 0
+    var hours: Int {
+        if self.beginning != nil && self.end != nil {
+            return self.beginning!.hoursEarlierThan(self.end!)
+        }
+        return Int.max
     }
     
-    var minutes: TimeInterval {
-        return 0
+    var minutes: Int {
+        if self.beginning != nil && self.end != nil {
+            return self.beginning!.minutesEarlierThan(self.end!)
+        }
+        return Int.max
     }
     
-    var seconds: TimeInterval {
-        return 0
+    var seconds: Int {
+        if self.beginning != nil && self.end != nil {
+            return self.beginning!.secondsEarlierThan(self.end!)
+        }
+        return Int.max
     }
     
     var chunk: TimeChunk {
-        return 0.days
+        return TimeChunk(seconds: seconds, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
     }
     
     var duration: TimeInterval {
-        return 0
+        if self.beginning != nil && self.end != nil {
+            return abs(self.beginning!.timeIntervalSince(self.end!))
+        }
+        return TimeInterval(DBL_MAX)
     }
     
     
@@ -125,12 +147,14 @@ public extension TimePeriodProtocol {
     
     // MARK: - Shifts
     
-    func shift(by interval: TimeInterval) {
-        
+    mutating func shift(by interval: TimeInterval) {
+        self.beginning?.addTimeInterval(interval)
+        self.end?.addTimeInterval(interval)
     }
     
-    func shift(by chunk: TimeChunk) {
-        
+    mutating func shift(by chunk: TimeChunk) {
+        self.beginning = self.beginning?.add(chunk)
+        self.end = self.end?.add(chunk)
     }
     
     // MARK: - Lengthen / Shorten
@@ -138,38 +162,146 @@ public extension TimePeriodProtocol {
     // MARK: New
     
     func lengthened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriodProtocol {
-        return TimePeriod()
+        let timePeriod = TimePeriod()
+        switch anchor {
+        case .beginning:
+            timePeriod.beginning = beginning
+            timePeriod.end = end?.addingTimeInterval(interval)
+            break
+        case .center:
+            timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            timePeriod.beginning = beginning?.addingTimeInterval(-interval)
+            timePeriod.end = end
+            break
+        }
+
+        return timePeriod
     }
     
     func lengthened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriodProtocol {
-        return TimePeriod()
+        let timePeriod = TimePeriod()
+        switch anchor {
+        case .beginning:
+            timePeriod.beginning = beginning
+            timePeriod.end = end?.add(chunk)
+            break
+        case .center:
+            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            timePeriod.beginning = beginning?.add(-chunk)
+            timePeriod.end = end
+            break
+        }
+        
+        return timePeriod
     }
     
     func shortened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriodProtocol {
-        return TimePeriod()
+        let timePeriod = TimePeriod()
+        switch anchor {
+        case .beginning:
+            timePeriod.beginning = beginning
+            timePeriod.end = end?.addingTimeInterval(-interval)
+            break
+        case .center:
+            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            timePeriod.beginning = beginning?.addingTimeInterval(interval)
+            timePeriod.end = end
+            break
+        }
+        
+        return timePeriod
     }
     
     func shortened(by chunk: TimeChunk, at anchor: Anchor) -> TimePeriodProtocol {
-        return TimePeriod()
+        let timePeriod = TimePeriod()
+        switch anchor {
+        case .beginning:
+            timePeriod.beginning = beginning
+            timePeriod.end = end?.subtract(chunk)
+            break
+        case .center:
+            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            timePeriod.beginning = beginning?.add(-chunk)
+            timePeriod.end = end
+            break
+        }
+        
+        return timePeriod
     }
     
     // MARK: In Place
     // Do not lengthen by month at anchor center. Month cannot be divided reliably.
     
-    func lengthen(by interval: TimeInterval, at anchor: Anchor) {
-        
+    mutating func lengthen(by interval: TimeInterval, at anchor: Anchor) {
+        switch anchor {
+        case .beginning:
+            self.end = end?.addingTimeInterval(interval)
+            break
+        case .center:
+            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            self.beginning = beginning?.addingTimeInterval(-interval)
+            break
+        }
     }
     
-    func lengthen(by chunk: TimeChunk, at anchor: Anchor) {
-        
+    mutating func lengthen(by chunk: TimeChunk, at anchor: Anchor) {
+        switch anchor {
+        case .beginning:
+            self.end = end?.add(chunk)
+            break
+        case .center:
+            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            self.beginning = beginning?.subtract(chunk)
+            break
+        }
     }
     
-    func shorten(by interval: TimeInterval, at anchor: Anchor) {
-        
+    mutating func shorten(by interval: TimeInterval, at anchor: Anchor) {
+        switch anchor {
+        case .beginning:
+            self.end = end?.addingTimeInterval(-interval)
+            break
+        case .center:
+            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            self.beginning = beginning?.addingTimeInterval(interval)
+            break
+        }
     }
     
-    func shorten(by chunk: TimeChunk, at anchor: Anchor) {
-        
+    mutating func shorten(by chunk: TimeChunk, at anchor: Anchor) {
+        switch anchor {
+        case .beginning:
+            self.end = end?.subtract(chunk)
+            break
+        case .center:
+            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
+            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            break
+        case .end:
+            self.beginning = beginning?.add(chunk)
+            break
+        }
     }
     
     
@@ -178,6 +310,7 @@ public extension TimePeriodProtocol {
     func copy() -> TimePeriod {
         return TimePeriod()
     }
+    
     
 }
 
@@ -240,23 +373,25 @@ open class TimePeriod: TimePeriodProtocol {
     
     // Default anchor = end
     static func +(leftAddend: TimePeriod, rightAddend: TimeInterval) -> TimePeriod {
-       return leftAddend.lengthened(by: rightAddend, at: .end) as! TimePeriod
+        return leftAddend.lengthened(by: rightAddend, at: .beginning) as! TimePeriod
     }
     
     static func +(leftAddend: TimePeriod, rightAddend: TimeChunk) -> TimePeriod {
-        return leftAddend.lengthened(by: rightAddend, at: .end) as! TimePeriod
+        return leftAddend.lengthened(by: rightAddend, at: .beginning) as! TimePeriod
     }
     
     // Default anchor = end
     static func -(minuend: TimePeriod, subtrahend: TimeInterval) -> TimePeriod {
-        return minuend.shortened(by: subtrahend, at: .end) as! TimePeriod
+        return minuend.shortened(by: subtrahend, at: .beginning) as! TimePeriod
     }
     
     static func -(minuend: TimePeriod, subtrahend: TimeChunk) -> TimePeriod {
-        return minuend.shortened(by: subtrahend, at: .end) as! TimePeriod
+        return minuend.shortened(by: subtrahend, at: .beginning) as! TimePeriod
     }
     
-    static func ==(left: TimePeriod, right: TimePeriod) -> Bool {
+    static func ==(left: TimePeriod, right: TimePeriodProtocol) -> Bool {
         return left.equals(period: right)
     }
+    
+    
 }
