@@ -227,10 +227,18 @@ public extension Date {
 	func later(than date: Date) -> Bool {
 		return self.compare(date) == .orderedDescending
 	}
+    
+    func laterThanOrEqual(to date: Date) -> Bool {
+        return self.compare(date) == .orderedDescending || self.compare(date) == .orderedSame
+    }
 	
 	func earlier(than date: Date) -> Bool {
 		return self.compare(date) == .orderedAscending
 	}
+    
+    func earlierThanOrEqual(to date: Date) -> Bool {
+        return self.compare(date) == .orderedAscending || self.compare(date) == .orderedSame
+    }
 	
     //Mark: - Date Comparison
     //Mark Time From
