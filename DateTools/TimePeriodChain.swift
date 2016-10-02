@@ -20,16 +20,18 @@ open class TimePeriodChain: TimePeriodGroup {
     // MARK: - Chain Existence Manipulation
     
     func append(_ period: TimePeriodProtocol) {
-        let beginning = (self.periods.count > 0) ? self.periods[self.periods.count-1].end! : period.beginning
+        let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
         
-        let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
+        let newPeriod = TimePeriod(beginning: beginning!, duration: period.chunk)
         self.periods.append(newPeriod)
         updateExtremes()
     }
     
     func append<G: TimePeriodGroup>(contentsOf group: G) {
         for period in group.periods {
-            let newPeriod = TimePeriod(beginning: self.periods[self.periods.count-1].end!, duration: period.duration)
+            let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
+            
+            let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
             self.periods.append(newPeriod)
         }
         updateExtremes()
@@ -104,4 +106,11 @@ open class TimePeriodChain: TimePeriodGroup {
         _beginning = periods.first?.beginning
         _end = periods.last?.end
     }
+    
+    // MARK: - Operator Overloads
+    
+    static func ==(left: TimePeriodChain, right: TimePeriodChain) -> Bool {
+        return left.equals(group: right)
+    }
+
 }

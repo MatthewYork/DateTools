@@ -14,14 +14,17 @@ class TimePeriodChainTests : XCTestCase {
     
     var formatter = DateFormatter()
     var controlChain = TimePeriodChain()
+    var firstPeriod = TimePeriod()
+    var secondPeriod = TimePeriod()
+    var thirdPeriod = TimePeriod()
     
     override func setUp() {
         //Initialize control TimePeriodChain
         self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
         //Create test TimePeriods that are 1 year long
-        let firstPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
-        let secondPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
-        let thirdPeriod = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
+        firstPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
+        secondPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
+        thirdPeriod = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
         //Add test periods
         self.controlChain.append(firstPeriod)
         self.controlChain.append(secondPeriod)
@@ -37,9 +40,18 @@ class TimePeriodChainTests : XCTestCase {
     
     func testAppendPeriod() {
         let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
+        
+        //Build test chain
+        let testChain = TimePeriodChain()
+        testChain.periods.append(firstPeriod)
+        testChain.periods.append(TimePeriod(beginning: secondPeriod.beginning!, duration: secondPeriod.chunk))
+        testChain.periods.append(TimePeriod(beginning: thirdPeriod.beginning!, duration: thirdPeriod.chunk))
+        testChain.periods.append(TimePeriod(beginning: testChain[2].end!, duration: testPeriod.chunk))
+        
+        //Append to control
         controlChain.append(testPeriod)
-        XCTAssertTrue(controlChain.count == 4)
-        XCTAssertTrue(controlChain[3] as! TimePeriod == testPeriod)
+        
+        XCTAssertTrue(testChain == controlChain)
     }
     
     func testAppendGroup() {
