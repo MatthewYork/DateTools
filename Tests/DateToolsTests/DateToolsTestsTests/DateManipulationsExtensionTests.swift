@@ -27,96 +27,96 @@ class DateManipulationsTests: XCTestCase {
     // MARK: - Start Of
     
     func testStartOfSecond() {
-        controlDate.start(of: .second)
-        XCTAssertTrue(controlDate.second == 12)
+        let testDate = controlDate.start(of: .second)
+        XCTAssertTrue(testDate.second == 12)
     }
     
     func testStartOfMinute() {
-        controlDate.start(of: .minute)
-        XCTAssertTrue(controlDate.minute == 50)
-        XCTAssertTrue(controlDate.second == 0)
+        let testDate = controlDate.start(of: .minute)
+        XCTAssertTrue(testDate.minute == 50)
+        XCTAssertTrue(testDate.second == 0)
     }
     
     func testStartOfHour() {
-        controlDate.start(of: .hour)
-        XCTAssertTrue(controlDate.hour == 14)
-        XCTAssertTrue(controlDate.minute == 0)
-        XCTAssertTrue(controlDate.second == 0)
+        let testDate = controlDate.start(of: .hour)
+        XCTAssertTrue(testDate.hour == 14)
+        XCTAssertTrue(testDate.minute == 0)
+        XCTAssertTrue(testDate.second == 0)
     }
     
     func testStartOfDay() {
-        controlDate.start(of: .day)
-        XCTAssertTrue(controlDate.day == 24)
-        XCTAssertTrue(controlDate.hour == 0)
-        XCTAssertTrue(controlDate.minute == 0)
-        XCTAssertTrue(controlDate.second == 0)
+        let testDate = controlDate.start(of: .day)
+        XCTAssertTrue(testDate.day == 24)
+        XCTAssertTrue(testDate.hour == 0)
+        XCTAssertTrue(testDate.minute == 0)
+        XCTAssertTrue(testDate.second == 0)
     }
     
     func testStartOfMonth() {
-        controlDate.start(of: .month)
-        XCTAssertTrue(controlDate.month == 11)
-        XCTAssertTrue(controlDate.day == 1)
-        XCTAssertTrue(controlDate.hour == 0)
-        XCTAssertTrue(controlDate.minute == 0)
-        XCTAssertTrue(controlDate.second == 0)
+        let testDate = controlDate.start(of: .month)
+        XCTAssertTrue(testDate.month == 11)
+        XCTAssertTrue(testDate.day == 1)
+        XCTAssertTrue(testDate.hour == 0)
+        XCTAssertTrue(testDate.minute == 0)
+        XCTAssertTrue(testDate.second == 0)
     }
     
     func testStartOfYear() {
-        controlDate.start(of: .year)
-        XCTAssertTrue(controlDate.year == 2015)
-        XCTAssertTrue(controlDate.month == 1)
-        XCTAssertTrue(controlDate.day == 1)
-        XCTAssertTrue(controlDate.hour == 0)
-        XCTAssertTrue(controlDate.minute == 0)
-        XCTAssertTrue(controlDate.second == 0)
+        let testDate = controlDate.start(of: .year)
+        XCTAssertTrue(testDate.year == 2015)
+        XCTAssertTrue(testDate.month == 1)
+        XCTAssertTrue(testDate.day == 1)
+        XCTAssertTrue(testDate.hour == 0)
+        XCTAssertTrue(testDate.minute == 0)
+        XCTAssertTrue(testDate.second == 0)
     }
     
     
     // MARK: - End Of
     
     func testEndOfSecond() {
-        controlDate.end(of: .second)
-        XCTAssertTrue(controlDate.second == 12)
+        let testDate = controlDate.end(of: .second)
+        XCTAssertTrue(testDate.second == 12)
     }
     
     func testEndOfMinute() {
-        controlDate.end(of: .minute)
-        XCTAssertTrue(controlDate.minute == 50)
-        XCTAssertTrue(controlDate.second == 59)
+        let testDate = controlDate.end(of: .minute)
+        XCTAssertTrue(testDate.minute == 50)
+        XCTAssertTrue(testDate.second == 59)
     }
     
     func testEndOfHour() {
-        controlDate.end(of: .hour)
-        XCTAssertTrue(controlDate.hour == 14)
-        XCTAssertTrue(controlDate.minute == 59)
-        XCTAssertTrue(controlDate.second == 59)
+        let testDate = controlDate.end(of: .hour)
+        XCTAssertTrue(testDate.hour == 14)
+        XCTAssertTrue(testDate.minute == 59)
+        XCTAssertTrue(testDate.second == 59)
     }
     
     func testEndOfDay() {
-        controlDate.end(of: .day)
-        XCTAssertTrue(controlDate.day == 24)
-        XCTAssertTrue(controlDate.hour == 23)
-        XCTAssertTrue(controlDate.minute == 59)
-        XCTAssertTrue(controlDate.second == 59)
+        let testDate = controlDate.end(of: .day)
+        XCTAssertTrue(testDate.day == 24)
+        XCTAssertTrue(testDate.hour == 23)
+        XCTAssertTrue(testDate.minute == 59)
+        XCTAssertTrue(testDate.second == 59)
     }
     
     func testEndOfMonth() {
-        controlDate.end(of: .month)
-        XCTAssertTrue(controlDate.month == 11)
-        XCTAssertTrue(controlDate.day == 30)
-        XCTAssertTrue(controlDate.hour == 23)
-        XCTAssertTrue(controlDate.minute == 59)
-        XCTAssertTrue(controlDate.second == 59)
+        let testDate = controlDate.end(of: .month)
+        XCTAssertTrue(testDate.month == 11)
+        XCTAssertTrue(testDate.day == 30)
+        XCTAssertTrue(testDate.hour == 23)
+        XCTAssertTrue(testDate.minute == 59)
+        XCTAssertTrue(testDate.second == 59)
     }
     
     func testEndOfYear() {
-        controlDate.end(of: .year)
-        XCTAssertTrue(controlDate.year == 2015)
-        XCTAssertTrue(controlDate.month == 12)
-        XCTAssertTrue(controlDate.day == 31)
-        XCTAssertTrue(controlDate.hour == 23)
-        XCTAssertTrue(controlDate.minute == 59)
-        XCTAssertTrue(controlDate.second == 59)
+        let testDate = controlDate.end(of: .year)
+        XCTAssertTrue(testDate.year == 2015)
+        XCTAssertTrue(testDate.month == 12)
+        XCTAssertTrue(testDate.day == 31)
+        XCTAssertTrue(testDate.hour == 23)
+        XCTAssertTrue(testDate.minute == 59)
+        XCTAssertTrue(testDate.second == 59)
     }
     
     
@@ -127,7 +127,8 @@ class DateManipulationsTests: XCTestCase {
         
         let testDate = formatter.date(from: "2016 10 19 18:40:24.001")!
         let testChunk = TimeChunk(seconds: 12, minutes: -10, hours: 4, days: 2, weeks: -1, months: -1, years: 1)
-        XCTAssertTrue(controlDate + testChunk == testDate)
+        let testAddedDate = controlDate + testChunk;
+        XCTAssertTrue(testAddedDate == testDate)
     }
     
     func testAdditionOperatorChunk() {

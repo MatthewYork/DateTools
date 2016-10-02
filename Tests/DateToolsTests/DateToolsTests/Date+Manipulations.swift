@@ -12,64 +12,70 @@ public extension Date {
     
     // MARK: - StartOf
     
-    mutating func start(of component: Component) {
+    func start(of component: Component) -> Date {
+        var newDate = self;
         if component == .second {
-            self.second(self.second)
+            newDate.second(self.second)
         }
         else if component == .minute {
-            self.second(0)
+            newDate.second(0)
         } else if component == .hour {
-            self.second(0)
-            self.minute(0)
+            newDate.second(0)
+            newDate.minute(0)
         } else if component == .day {
-            self.second(0)
-            self.minute(0)
-            self.hour(0)
+            newDate.second(0)
+            newDate.minute(0)
+            newDate.hour(0)
         } else if component == .month {
-            self.second(0)
-            self.minute(0)
-            self.hour(0)
-            self.day(1)
+            newDate.second(0)
+            newDate.minute(0)
+            newDate.hour(0)
+            newDate.day(1)
         } else if component == .year {
-            self.second(0)
-            self.minute(0)
-            self.hour(0)
-            self.day(1)
-            self.month(1)
+            newDate.second(0)
+            newDate.minute(0)
+            newDate.hour(0)
+            newDate.day(1)
+            newDate.month(1)
         }
+        
+        return newDate
     }
     
-    mutating func end(of component: Component) {
+    func end(of component: Component) -> Date {
+        var newDate = self;
         if component == .second {
-            self.second(self.second + 1)
-            self = self - 0.001
+            newDate.second(newDate.second + 1)
+            newDate = newDate - 0.001
         }
         else if component == .minute {
-            self.second(60)
-            self = self - 0.001
+            newDate.second(60)
+            newDate = newDate - 0.001
         } else if component == .hour {
-            self.second(60)
-            self = self - 0.001
-            self.minute(59)
+            newDate.second(60)
+            newDate = newDate - 0.001
+            newDate.minute(59)
         } else if component == .day {
-            self.second(60)
-            self = self - 0.001
-            self.minute(59)
-            self.hour(23)
+            newDate.second(60)
+            newDate = newDate - 0.001
+            newDate.minute(59)
+            newDate.hour(23)
         } else if component == .month {
-            self.second(60)
-            self = self - 0.001
-            self.minute(59)
-            self.hour(23)
-            self.day(daysInMonth(date: self))
+            newDate.second(60)
+            newDate = newDate - 0.001
+            newDate.minute(59)
+            newDate.hour(23)
+            newDate.day(daysInMonth(date: newDate))
         } else if component == .year {
-            self.second(60)
-            self = self - 0.001
-            self.minute(59)
-            self.hour(23)
-            self.month(12)
-            self.day(31)
+            newDate.second(60)
+            newDate = newDate - 0.001
+            newDate.minute(59)
+            newDate.hour(23)
+            newDate.month(12)
+            newDate.day(31)
         }
+        
+        return newDate
     }
     
     internal func daysInMonth(date: Date) -> Int {
@@ -94,14 +100,22 @@ public extension Date {
     
     func add(_ timeChunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
-        components.year! += timeChunk.years
-        components.month! += timeChunk.months
-        components.day! += timeChunk.days + (timeChunk.weeks*7)
-        components.hour! += timeChunk.hours
-        components.minute! += timeChunk.minutes
-        components.second! += timeChunk.seconds
-        return calendar.date(from: components)!
+        var components = DateComponents()
+        //var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        components.year = timeChunk.years
+        components.month = timeChunk.months
+        components.day = timeChunk.days + (timeChunk.weeks*7)
+        components.hour = timeChunk.hours
+        components.minute = timeChunk.minutes
+        components.second = timeChunk.seconds
+        
+        //Account for milliseconds
+        let date = calendar.date(byAdding: components, to: self)!
+        print(self.format(with: "yyyy MM dd hh:mm:ss.SSS"))
+        print(date.format(with: "yyyy MM dd hh:mm:ss.SSS"))
+        //let subMillisecondDifference = self.timeIntervalSinceNow - self.start(of: .second).timeIntervalSinceNow
+        //date = date.addingTimeInterval(abs(subMillisecondDifference))
+        return date
     }
     
     func subtract(_ timeChunk: TimeChunk) -> Date {
