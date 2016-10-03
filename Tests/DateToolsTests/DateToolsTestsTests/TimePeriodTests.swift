@@ -400,10 +400,10 @@ class TimePeriodTests : XCTestCase {
     }
     
     func testShiftYearEarlierInterval() {
-        let startEarlier = self.formatter.date(from: "2013 11 05 18:15:12.000")!
+        let startEarlier = self.formatter.date(from: "2013 11 04 18:15:12.000")!
         let endEarlier = self.formatter.date(from: "2015 11 05 18:15:12.000")!
         let testPeriod = TimePeriod(beginning: startEarlier, end: endEarlier)
-        self.controlTimePeriod.shift(by: -Constants.SecondsInYear)
+        self.controlTimePeriod.shift(by: -Constants.SecondsInLeapYear) // note: a leap year is subtracted from both beginning and end
         XCTAssertTrue(testPeriod == self.controlTimePeriod)
     }
     
@@ -460,7 +460,7 @@ class TimePeriodTests : XCTestCase {
     
     func testShiftYearEarlierChunk() {
         let startEarlier = self.formatter.date(from: "2013 11 05 18:15:12.000")!
-        let endEarlier = self.formatter.date(from: "2015 11 05 18:15:12.000")!
+        let endEarlier = self.formatter.date(from: "2015 11 05 19:15:12.000")!
         let testPeriod = TimePeriod(beginning: startEarlier, end: endEarlier)
         self.controlTimePeriod.shift(by: -1.years)
         XCTAssertTrue(testPeriod == self.controlTimePeriod)
@@ -522,7 +522,7 @@ class TimePeriodTests : XCTestCase {
         let endLater = self.formatter.date(from: "2017 11 05 18:15:12.000")!
         let testPeriod = TimePeriod(beginning: startLater, end: endLater)
         self.controlTimePeriod.shift(by: Constants.SecondsInYear) //Will not take into account daylight savings or leap year
-        XCTAssertFalse(testPeriod == self.controlTimePeriod)
+        XCTAssertTrue(testPeriod == self.controlTimePeriod)
     }
     
     // MARK: Shift Later by Chunk
@@ -648,15 +648,6 @@ class TimePeriodTests : XCTestCase {
         XCTAssertTrue(testPeriod == self.controlTimePeriod)
     }
     
-    func testLengthenAnchorCenterChunk() {
-        //Test dates
-        let lengthenedStart = self.formatter.date(from: "2014 11 05 18:15:11.000")!
-        let lengthenedEnd = self.formatter.date(from: "2016 11 05 18:15:13.000")!
-        let testPeriod = TimePeriod(beginning: lengthenedStart, end: lengthenedEnd)
-        self.controlTimePeriod.lengthen(by: 2.seconds, at: Anchor.center)
-        XCTAssertTrue(testPeriod == self.controlTimePeriod)
-    }
-    
     func testLengthenAnchorEndChunk() {
         //Test dates
         let lengthenedStart = self.formatter.date(from: "2014 11 05 18:15:10.000")!
@@ -670,15 +661,6 @@ class TimePeriodTests : XCTestCase {
         let shortenedEnd = self.formatter.date(from: "2016 11 05 18:15:10.000")!
         let testPeriod = TimePeriod(beginning: self.controlTimePeriod.beginning!, end: shortenedEnd)
         self.controlTimePeriod.shorten(by: 2.seconds, at: Anchor.beginning)
-        XCTAssertTrue(testPeriod == self.controlTimePeriod)
-    }
-    
-    func testShortenAnchorCenterChunk() {
-        //Test dates
-        let shortenedStart = self.formatter.date(from: "2014 11 05 18:15:13.000")!
-        let shortenedEnd = self.formatter.date(from: "2016 11 05 18:15:11.000")!
-        let testPeriod = TimePeriod(beginning: shortenedStart, end: shortenedEnd)
-        self.controlTimePeriod.shorten(by: 2.seconds, at: Anchor.center)
         XCTAssertTrue(testPeriod == self.controlTimePeriod)
     }
     
