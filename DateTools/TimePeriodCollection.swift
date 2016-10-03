@@ -140,16 +140,21 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     internal func updateExtremes(period: TimePeriodProtocol) {
         //Check incoming period against previous beginning and end date
-        _beginning = nilOrEarlier(date1: _beginning, date2: period.beginning)
-        _end = nilOrLater(date1: _end, date2: period.end)
+        if self.count == 1 {
+            _beginning = period.beginning
+            _end = period.end
+        } else {
+            _beginning = nilOrEarlier(date1: _beginning, date2: period.beginning)
+            _end = nilOrLater(date1: _end, date2: period.end)
+        }
+        
     }
     
     internal func updateExtremes() {
         if periods.count == 0 {
             _beginning = nil
             _end = nil
-        }
-        else {
+        } else {
             _beginning = periods[0].beginning
             _end = periods[0].end
             for i in 1..<periods.count {
@@ -162,8 +167,7 @@ open class TimePeriodCollection: TimePeriodGroup {
     internal func nilOrEarlier(date1: Date?, date2: Date?) -> Date? {
         if date1 == nil || date2 == nil {
             return nil
-        }
-        else {
+        } else {
             return date1!.earlierDate(date2!)
         }
     }
@@ -171,8 +175,7 @@ open class TimePeriodCollection: TimePeriodGroup {
     internal func nilOrLater(date1: Date?, date2: Date?) -> Date? {
         if date1 == nil || date2 == nil {
             return nil
-        }
-        else {
+        } else {
             return date1!.laterDate(date2!)
         }
     }
