@@ -13,7 +13,8 @@ import Foundation
     Time conversions used across DateTools
  */
 class Constants {
-    static let SecondsInYear: TimeInterval = 31556900
+    static let SecondsInYear: TimeInterval = 31536000
+    static let SecondsInLeapYear: TimeInterval = 31622400
     static let SecondsInMonth28: TimeInterval = 2419200
     static let SecondsInMonth29: TimeInterval = 2505600
     static let SecondsInMonth30: TimeInterval = 2592000
