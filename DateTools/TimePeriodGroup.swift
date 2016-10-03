@@ -35,11 +35,11 @@ open class TimePeriodGroup: Sequence {
         return periods.count
     }
     
-    var duration: TimeInterval {
+    var duration: TimeInterval? {
         if beginning != nil && end != nil {
-            return beginning!.timeIntervalSince(end!)
+            return end!.timeIntervalSince(beginning!)
         }
-        return 0
+        return nil
     }
     
     
