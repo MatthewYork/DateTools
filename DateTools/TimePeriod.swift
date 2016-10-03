@@ -461,6 +461,7 @@ open class TimePeriod: TimePeriodProtocol {
         return timePeriod
     }
     
+    
     // MARK: - Operator Overloads
     
     // Default anchor = end
@@ -484,6 +485,5 @@ open class TimePeriod: TimePeriodProtocol {
     static func ==(left: TimePeriod, right: TimePeriodProtocol) -> Bool {
         return left.equals(period: right)
     }
-    
     
 }

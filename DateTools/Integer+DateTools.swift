@@ -11,6 +11,7 @@ import Foundation
 public extension Int {
     
     //MARK: TimePeriod
+    
     var seconds: TimeChunk {
         return TimeChunk(seconds: self, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
     }

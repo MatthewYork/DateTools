@@ -20,9 +20,7 @@ public struct TimeChunk {
     var months = 0
     var years = 0
     
-    init() {
-    
-    }
+    init() {}
     
     init(seconds: Int, minutes: Int, hours: Int, days: Int, weeks: Int, months: Int, years: Int) {
         self.seconds = seconds

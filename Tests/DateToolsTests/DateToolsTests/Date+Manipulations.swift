@@ -38,7 +38,6 @@ public extension Date {
             newDate.day(1)
             newDate.month(1)
         }
-        
         return newDate
     }
     
