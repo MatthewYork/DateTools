@@ -24,6 +24,7 @@ class TimePeriodGroupTests : XCTestCase {
         self.controlCollection = TimePeriodCollection()
         // Initialize formatter
         self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+        self.formatter.timeZone = TimeZone(abbreviation: "UTC")
         // Create test TimePeriods that are 1 year long
         firstPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
         secondPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
