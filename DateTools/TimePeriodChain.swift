@@ -22,7 +22,7 @@ open class TimePeriodChain: TimePeriodGroup {
     func append(_ period: TimePeriodProtocol) {
         let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
         
-        let newPeriod = TimePeriod(beginning: beginning!, duration: period.chunk)
+        let newPeriod = TimePeriod(beginning: beginning!, duration: TimeInterval(period.seconds))
         self.periods.append(newPeriod)
         updateExtremes()
     }
