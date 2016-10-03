@@ -22,7 +22,11 @@ public extension Date {
     }
     
     func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone) -> String? {
-        return format(with: dateStyle, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
+        #if os(Linux)
+            return format(with: dateStyle, timeZone: timeZone, locale: Locale.current)
+        #else
+            return format(with: dateStyle, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
+        #endif
     }
     
     func format(with dateStyle: DateFormatter.Style, locale: Locale) -> String? {
@@ -30,7 +34,11 @@ public extension Date {
     }
     
     func format(with dateStyle: DateFormatter.Style) -> String? {
-        return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
+        #if os(Linux)
+            return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.current)
+        #else
+            return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
+        #endif
     }
     
     
@@ -46,7 +54,11 @@ public extension Date {
     }
     
     func format(with dateFormat: String, timeZone: TimeZone) -> String? {
-        return format(with: dateFormat, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
+        #if os(Linux)
+            return format(with: dateFormat, timeZone: timeZone, locale: Locale.current)
+        #else
+            return format(with: dateFormat, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
+        #endif
     }
     
     func format(with dateFormat: String, locale: Locale) -> String? {
@@ -54,6 +66,10 @@ public extension Date {
     }
     
     func format(with dateFormat: String) -> String? {
-        return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
+        #if os(Linux)
+            return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.current)
+        #else
+            return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
+        #endif
     }
 }
