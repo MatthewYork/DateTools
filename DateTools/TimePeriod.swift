@@ -84,6 +84,9 @@ public extension TimePeriodProtocol {
     }
     
     var chunk: TimeChunk {
+        if beginning != nil && end != nil {
+            return beginning!.chunkBetween(date: end!)
+        }
         return TimeChunk(seconds: seconds, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
     }
     
@@ -323,7 +326,7 @@ open class TimePeriod: TimePeriodProtocol {
         
     }
     
-    init(beginning:Date, end:Date) {
+    init(beginning: Date?, end: Date?) {
         self.beginning = beginning
         self.end = end
     }
