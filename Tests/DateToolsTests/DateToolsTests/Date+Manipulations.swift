@@ -101,27 +101,18 @@ public extension Date {
     func add(_ timeChunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
-        //var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
         components.year = timeChunk.years
         components.month = timeChunk.months
         components.day = timeChunk.days + (timeChunk.weeks*7)
         components.hour = timeChunk.hours
         components.minute = timeChunk.minutes
         components.second = timeChunk.seconds
-        
-        //Account for milliseconds
-        let date = calendar.date(byAdding: components, to: self)!
-        print(self.format(with: "yyyy MM dd hh:mm:ss.SSS"))
-        print(date.format(with: "yyyy MM dd hh:mm:ss.SSS"))
-        //let subMillisecondDifference = self.timeIntervalSinceNow - self.start(of: .second).timeIntervalSinceNow
-        //date = date.addingTimeInterval(abs(subMillisecondDifference))
-        return date
+        return calendar.date(byAdding: components, to: self)!
     }
     
     func subtract(_ timeChunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
-        //var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
         components.year = -timeChunk.years
         components.month = -timeChunk.months
         components.day = -(timeChunk.days + (timeChunk.weeks*7))
