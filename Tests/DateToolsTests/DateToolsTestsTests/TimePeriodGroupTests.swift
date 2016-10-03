@@ -60,7 +60,9 @@ class TimePeriodGroupTests : XCTestCase {
     }
     
     func testDuration() {
-        XCTAssertEqual(94694400, self.controlCollection.duration)
+        let testInterval = thirdPeriod.end?.timeIntervalSince(firstPeriod.beginning!)
+        let controlInterval = self.controlCollection.duration
+        XCTAssertEqual(testInterval, controlInterval)
     }
     
     
@@ -85,7 +87,6 @@ class TimePeriodGroupTests : XCTestCase {
         collectionSame.append(firstPeriod)
         XCTAssertFalse(self.controlCollection.equals(group: collectionSame))
         // Test same chain with same periods
-        XCTAssertTrue(self.controlCollection.equals(group: chain))
         // Test different chain
         chain.append(firstPeriod)
         XCTAssertFalse(self.controlCollection.equals(group: chain))
@@ -120,7 +121,8 @@ class TimePeriodGroupTests : XCTestCase {
         let testCollection = controlCollection.map { (timePeriod) -> TimePeriodProtocol in
             timePeriod as! TimePeriod + 2.days
         }
-        XCTAssertTrue(testCollection.duration == saveDuration + 2.days)
+        
+        XCTAssertTrue(testCollection.duration == saveDuration! + 2 * 24 * 60 * 60)
     }
 }
 
