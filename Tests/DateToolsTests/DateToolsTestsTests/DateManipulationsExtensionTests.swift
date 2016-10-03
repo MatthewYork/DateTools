@@ -144,6 +144,11 @@ class DateManipulationsTests: XCTestCase {
 
     func testSubtraction() {
         XCTAssertTrue(controlDate.subtract(5.days).day == 19)
+        
+        let testDate = formatter.date(from: "2016 10 19 18:40:24.001")!
+        let testChunk = TimeChunk(seconds: -12, minutes: 10, hours: -4, days: -2, weeks: 1, months: 1, years: -1)
+        let testAddedDate = controlDate - testChunk;
+        XCTAssertTrue(testAddedDate == testDate)
     }
     
     func testSubtractionOperatorChunk() {

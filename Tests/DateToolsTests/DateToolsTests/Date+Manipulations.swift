@@ -120,14 +120,15 @@ public extension Date {
     
     func subtract(_ timeChunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
-        components.year! -= timeChunk.years
-        components.month! -= timeChunk.months
-        components.day! -= timeChunk.days - (timeChunk.weeks*7)
-        components.hour! -= timeChunk.hours
-        components.minute! -= timeChunk.minutes
-        components.second! -= timeChunk.seconds
-        return calendar.date(from: components)!
+        var components = DateComponents()
+        //var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        components.year = -timeChunk.years
+        components.month = -timeChunk.months
+        components.day = -(timeChunk.days + (timeChunk.weeks*7))
+        components.hour = -timeChunk.hours
+        components.minute = -timeChunk.minutes
+        components.second = -timeChunk.seconds
+        return calendar.date(byAdding: components, to: self)!
     }
     
     
