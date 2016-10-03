@@ -91,7 +91,11 @@ public extension TimePeriodProtocol {
         if self.beginning != nil && self.end != nil {
             return abs(self.beginning!.timeIntervalSince(self.end!))
         }
-        return TimeInterval(DBL_MAX)
+        #if os(Linux)
+            return TimeInterval(Double.greatestFiniteMagnitude)
+        #else
+            return TimeInterval(DBL_MAX)
+        #endif
     }
     
     
