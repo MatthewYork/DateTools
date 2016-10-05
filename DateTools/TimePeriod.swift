@@ -462,6 +462,10 @@ open class TimePeriod: TimePeriodProtocol {
     
     // MARK: - Operator Overloads
     
+    static func ==(leftAddend: TimePeriod, rightAddend: TimePeriod) -> Bool {
+        return leftAddend.equals(period: rightAddend)
+    }
+    
     // Default anchor = end
     static func +(leftAddend: TimePeriod, rightAddend: TimeInterval) -> TimePeriod {
         return leftAddend.lengthened(by: rightAddend, at: .beginning)
