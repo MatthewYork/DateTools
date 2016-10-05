@@ -31,7 +31,7 @@ open class TimePeriodChain: TimePeriodGroup {
         for period in group.periods {
             let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
             
-            let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
+            let newPeriod = TimePeriod(beginning: beginning!, chunk: period.chunk)
             self.periods.append(newPeriod)
         }
         updateExtremes()

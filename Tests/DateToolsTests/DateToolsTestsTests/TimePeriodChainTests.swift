@@ -60,11 +60,21 @@ class TimePeriodChainTests : XCTestCase {
         let testPeriod1 = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
         let testPeriod2 = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2018 11 05 18:15:12.000")!)
         let testPeriod3 = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2019 11 05 18:15:12.000")!)
-        testCollection.append(testPeriod1)
-        testCollection.append(testPeriod2)
-        testCollection.append(testPeriod3)
-        controlChain.append(contentsOf: testCollection)
-        XCTAssertTrue(controlChain.count == 6)
+        
+        //Build test chain
+        let testChain = TimePeriodChain()
+        testChain.periods.append(testPeriod1)
+        testChain.periods.append(TimePeriod(beginning: testChain[0].end!, chunk: testPeriod2.chunk))
+        testChain.periods.append(TimePeriod(beginning: testChain[1].end!, chunk: testPeriod3.chunk))
+        
+        let appendCollection = TimePeriodCollection();
+        appendCollection.append(testPeriod1)
+        appendCollection.append(testPeriod2)
+        appendCollection.append(testPeriod3)
+        let appendChain = TimePeriodChain()
+        appendChain.append(contentsOf: appendCollection)
+        
+        XCTAssertTrue(testChain == appendChain)
     }
     
     func testInsert() {
@@ -96,10 +106,14 @@ class TimePeriodChainTests : XCTestCase {
     }
     
     func testPop() {
-        let testPeriod: TimePeriod = controlChain.pop() as! TimePeriod
-        let comparePeriod = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
-        XCTAssertTrue(controlChain.count == 2)
-        XCTAssertTrue(testPeriod == comparePeriod)
+        //Build test chain
+        let testChain = TimePeriodChain()
+        testChain.periods.append(firstPeriod)
+        testChain.periods.append(TimePeriod(beginning: testChain[0].end!, chunk: secondPeriod.chunk))
+        
+        let poppedPeriod = controlChain.pop()!
+        XCTAssertTrue(testChain == controlChain)
+        //Cannot accurately test popped value due to daylight savings changes
     }
     
     
