@@ -45,9 +45,9 @@ class TimePeriodChainTests : XCTestCase {
         //Build test chain
         let testChain = TimePeriodChain()
         testChain.periods.append(firstPeriod)
-        testChain.periods.append(TimePeriod(beginning: secondPeriod.beginning!, duration: secondPeriod.chunk))
-        testChain.periods.append(TimePeriod(beginning: thirdPeriod.beginning!, duration: thirdPeriod.chunk))
-        testChain.periods.append(TimePeriod(beginning: testChain[2].end!, duration: testPeriod.chunk))
+        testChain.periods.append(TimePeriod(beginning: testChain[0].end!, chunk: secondPeriod.chunk))
+        testChain.periods.append(TimePeriod(beginning: testChain[1].end!, chunk: thirdPeriod.chunk))
+        testChain.periods.append(TimePeriod(beginning: testChain[2].end!, chunk: testPeriod.chunk))
         
         //Append to control
         controlChain.append(testPeriod)
@@ -125,6 +125,7 @@ class TimePeriodChainTests : XCTestCase {
         testChain.append(testPeriod2)
         testChain.append(testPeriod3)
         XCTAssertTrue(controlChain.equals(group: testChain))
+        XCTAssertTrue(controlChain == testChain)
     }
     
     

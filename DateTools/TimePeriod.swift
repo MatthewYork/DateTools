@@ -345,14 +345,14 @@ open class TimePeriod: TimePeriodProtocol {
         self.beginning = end.addingTimeInterval(-duration)
     }
     
-    init(beginning: Date, duration: TimeChunk) {
+    init(beginning: Date, chunk: TimeChunk) {
         self.beginning = beginning
-        self.end = beginning + duration
+        self.end = beginning + chunk
     }
     
-    init(end: Date, duration: TimeChunk) {
+    init(end: Date, chunk: TimeChunk) {
         self.end = end
-        self.beginning = end - duration
+        self.beginning = end - chunk
     }
     
     init(chunk: TimeChunk) {

@@ -309,16 +309,16 @@ class TimePeriodTests : XCTestCase {
         let testPeriodNoGap = TimePeriod(beginning: self.controlTimePeriod.beginning! - 1.days, end: self.controlTimePeriod.end!.subtract(1.days))
         XCTAssertFalse(self.controlTimePeriod.hasGap(between: testPeriodNoGap))
         //Gap receiver early
-        let testPeriodReceiverEarly = TimePeriod(beginning: self.controlTimePeriod.end!.add(1.years), duration: 1.weeks)
+        let testPeriodReceiverEarly = TimePeriod(beginning: self.controlTimePeriod.end!.add(1.years), chunk: 1.weeks)
         XCTAssertTrue(self.controlTimePeriod.hasGap(between: testPeriodReceiverEarly))
         //Gap parameter early
-        let testPeriodParameterEarly = TimePeriod(end: self.controlTimePeriod.beginning! - 1.years, duration: 1.weeks)
+        let testPeriodParameterEarly = TimePeriod(end: self.controlTimePeriod.beginning! - 1.years, chunk: 1.weeks)
         XCTAssertTrue(self.controlTimePeriod.hasGap(between: testPeriodParameterEarly))
     }
     
     func testGap() {
         //Gap of 1 minute
-        let testPeriodParameter1MinuteEarly = TimePeriod(end: self.controlTimePeriod.beginning! - 1.minutes, duration: 1.seconds)
+        let testPeriodParameter1MinuteEarly = TimePeriod(end: self.controlTimePeriod.beginning! - 1.minutes, chunk: 1.seconds)
         XCTAssertEqual(60, self.controlTimePeriod.gap(between: testPeriodParameter1MinuteEarly))
     }
     
