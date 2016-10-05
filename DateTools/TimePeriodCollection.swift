@@ -24,6 +24,13 @@ open class TimePeriodCollection: TimePeriodGroup {
         updateExtremes(period: period)
     }
     
+    func append(_ periodArray: [TimePeriodProtocol]) {
+        for period in periodArray {
+            periods.append(period)
+            updateExtremes(period: period)
+        }
+    }
+    
     func append<C: TimePeriodGroup>(contentsOf newPeriods: C) {
         for period in newPeriods as TimePeriodGroup {
             periods.append(period)
@@ -117,7 +124,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         return collection
     }
     
-    // MARK: - Map, Filter, Reduce
+    // MARK: - Map
     
     func map(_ transform: (TimePeriodProtocol) throws -> TimePeriodProtocol) rethrows -> TimePeriodCollection {
         var mappedArray = [TimePeriodProtocol]()

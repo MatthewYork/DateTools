@@ -82,7 +82,6 @@ open class TimePeriodGroup: Sequence {
         }
     }
     
-    
     internal func containSameElements(array1: [TimePeriodProtocol], _ array2: [TimePeriodProtocol]) -> Bool {
         guard array1.count == array2.count else {
             return false // No need to sorting if they already have different counts

@@ -93,21 +93,6 @@ class TimePeriodGroupTests : XCTestCase {
     }
     
     
-    // MARK: - Mutations
-    
-    func testAppendPeriod() {
-        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
-        controlCollection.append(testPeriod)
-        XCTAssertTrue(controlCollection.count == 5)
-    }
-    
-    func testAppendCollection() {
-        let testCollection = TimePeriodCollection()
-        testCollection.append(contentsOf: controlCollection)
-        
-    }
-    
-    
     // MARK: - Sequence Protocol 
     
     func testMakeIterator() {
@@ -123,6 +108,37 @@ class TimePeriodGroupTests : XCTestCase {
         }
         
         XCTAssertTrue(testCollection.duration == saveDuration! + 2 * 24 * 60 * 60)
+    }
+    
+    func testFilter() {
+        let testCollectionArray = controlCollection.filter { (timePeriod) -> Bool in
+            timePeriod.isAfter(period: TimePeriod(beginning: Date.init(dateString: "2014 11 05 18:15:12.000", format: "yyyy MM dd HH:mm:ss.SSS"), duration: 1))
+        }
+        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 4 05 18:15:12.000")!)
+        let newDuration = controlCollection.duration! - TimeInterval(testPeriod.seconds)
+        let testCollection = TimePeriodCollection()
+        testCollection.append(testCollectionArray)
+        XCTAssertTrue(testCollection.duration == newDuration)
+    }
+    
+    func testForEach() {
+        let testCollection = TimePeriodCollection()
+        for period in controlCollection {
+            testCollection.append(period)
+        }
+        XCTAssert(testCollection.equals(group: controlCollection))
+    }
+    
+    func testSplit() {
+        let testCollectionSplit = controlCollection.split { (timePeriod) -> Bool in
+            timePeriod.contains(date: self.formatter.date(from: "2016 12 05 18:15:12.000")!, interval: .closed)
+        }
+        let testCollection = TimePeriodCollection()
+        for period in testCollectionSplit[0] {
+            testCollection.append(period)
+        }
+        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
+        XCTAssertTrue(testCollection.duration == TimeInterval(testPeriod.seconds))
     }
 }
 

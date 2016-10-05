@@ -9,7 +9,6 @@
 import XCTest
 @testable import DateToolsTests
 
-
 class TimePeriodCollectionTests : XCTestCase {
     
     var formatter = DateFormatter()
@@ -36,8 +35,34 @@ class TimePeriodCollectionTests : XCTestCase {
         super.tearDown()
     }
     
-    
     // MARK: - Collection Manipulation
+    
+    func testAppendPeriod() {
+        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
+        controlCollection.append(testPeriod)
+        XCTAssertTrue(controlCollection[4] as! TimePeriod == testPeriod)
+    }
+    
+    func testAppendPeriodArray() {
+        let firstPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
+        let secondPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
+        let thirdPeriod = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2017 11 05 18:15:12.000")!)
+        let fourthPeriod = TimePeriod(beginning: self.formatter.date(from: "2015 4 05 18:15:12.000")!, end: self.formatter.date(from: "2017 4 05 18:15:12.000")!)
+        var periodArray: Array<TimePeriod> = []
+        periodArray.append(firstPeriod)
+        periodArray.append(secondPeriod)
+        periodArray.append(thirdPeriod)
+        periodArray.append(fourthPeriod)
+        let testCollection = TimePeriodCollection()
+        testCollection.append(periodArray)
+        XCTAssertTrue(controlCollection == testCollection)
+    }
+    
+    func testAppendCollection() {
+        let testCollection = TimePeriodCollection()
+        testCollection.append(contentsOf: controlCollection)
+        
+    }
     
     func testRemove() {
         controlCollection.remove(at: 3)
@@ -116,8 +141,16 @@ class TimePeriodCollectionTests : XCTestCase {
     }
     
     
-    // MARK: - Map, Filter, Reduce
+    // MARK: - Map
     
+    func testMap() {
+        let saveDuration = controlCollection.duration
+        let testCollection = controlCollection.map { (timePeriod) -> TimePeriodProtocol in
+            timePeriod as! TimePeriod + 2.days
+        }
+        
+        XCTAssertTrue(testCollection.duration == saveDuration! + 2 * 24 * 60 * 60)
+    }
     
     // MARK: - Operator Overloads
     
