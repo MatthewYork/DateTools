@@ -114,41 +114,41 @@ public extension TimePeriodProtocol {
                 if (period.end!.earlier(than: self.beginning!)) {
                     return .after
                 }
-                else if (period.end!.equals(self.beginning!)){
-                    return .startTouching;
+                else if (period.end!.equals(self.beginning!)) {
+                    return .startTouching
                 }
-                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.earlier(than: self.end!)){
-                    return .startInside;
+                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.earlier(than: self.end!)) {
+                    return .startInside
                 }
-                else if (period.beginning!.equals(self.beginning!) && period.end!.later(than: self.end!)){
-                    return .insideStartTouching;
+                else if (period.beginning!.equals(self.beginning!) && period.end!.later(than: self.end!)) {
+                    return .insideStartTouching
                 }
-                else if (period.beginning!.equals(self.beginning!) && period.end!.earlier(than: self.end!)){
-                    return .enclosingStartTouching;
+                else if (period.beginning!.equals(self.beginning!) && period.end!.earlier(than: self.end!)) {
+                    return .enclosingStartTouching
                 }
-                else if (period.beginning!.later(than: self.beginning!) && period.end!.earlier(than: self.end!)){
-                    return .enclosing;
+                else if (period.beginning!.later(than: self.beginning!) && period.end!.earlier(than: self.end!)) {
+                    return .enclosing
                 }
-                else if (period.beginning!.later(than: self.beginning!) && period.end!.equals(self.end!)){
-                    return .enclosingEndTouching;
+                else if (period.beginning!.later(than: self.beginning!) && period.end!.equals(self.end!)) {
+                    return .enclosingEndTouching
                 }
-                else if (period.beginning!.equals(self.beginning!) && period.end!.equals(self.end!)){
-                    return .exactMatch;
+                else if (period.beginning!.equals(self.beginning!) && period.end!.equals(self.end!)) {
+                    return .exactMatch
                 }
-                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.later(than: self.end!)){
-                    return .inside;
+                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.later(than: self.end!)) {
+                    return .inside
                 }
-                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.equals(self.end!)){
-                    return .insideEndTouching;
+                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.equals(self.end!)) {
+                    return .insideEndTouching
                 }
-                else if (period.beginning!.earlier(than: self.end!) && period.end!.later(than: self.end!)){
-                    return .endInside;
+                else if (period.beginning!.earlier(than: self.end!) && period.end!.later(than: self.end!)) {
+                    return .endInside
                 }
-                else if (period.beginning!.equals(self.end!) && period.end!.later(than: self.end!)){
-                    return .endTouching;
+                else if (period.beginning!.equals(self.end!) && period.end!.later(than: self.end!)) {
+                    return .endTouching
                 }
-                else if (period.beginning!.later(than: self.end!)){
-                    return .before;
+                else if (period.beginning!.later(than: self.end!)) {
+                    return .before
                 }
             }
         }
@@ -182,17 +182,17 @@ public extension TimePeriodProtocol {
     func overlaps(with period: TimePeriodProtocol) -> Bool {
         //Outside -> Inside
         if (period.beginning!.earlier(than: self.beginning!) && period.end!.later(than: self.beginning!)) {
-            return true;
+            return true
         }
             //Enclosing
         else if (period.beginning!.laterThanOrEqual(to: self.beginning!) && period.end!.earlierThanOrEqual(to: self.end!)){
-            return true;
+            return true
         }
             //Inside -> Out
         else if(period.beginning!.earlier(than: self.end!) && period.end!.later(than: self.end!)){
-            return true;
+            return true
         }
-        return false;
+        return false
     }
     
     func intersects(with period: TimePeriodProtocol) -> Bool {
@@ -210,12 +210,14 @@ public extension TimePeriodProtocol {
         else if (period.end!.earlier(than: self.beginning!)){
             return abs(period.end!.timeIntervalSince(self.beginning!));
         }
-        
         return 0
     }
     
-    func gap(between period: TimePeriodProtocol) -> TimeChunk {
-        return 0.days
+    func gap(between period: TimePeriodProtocol) -> TimeChunk? {
+        if self.end != nil && period.beginning != nil {
+            return (self.end?.chunkBetween(date: period.beginning!))!
+        }
+        return nil
     }
     
     func isAfter(period: TimePeriodProtocol) -> Bool {
@@ -229,9 +231,9 @@ public extension TimePeriodProtocol {
     // MARK: - Shifts
     
     //MARK: In Place
-    mutating func shift(by interval: TimeInterval) {
-        self.beginning?.addTimeInterval(interval)
-        self.end?.addTimeInterval(interval)
+    mutating func shift(by timeInterval: TimeInterval) {
+        self.beginning?.addTimeInterval(timeInterval)
+        self.end?.addTimeInterval(timeInterval)
     }
     
     mutating func shift(by chunk: TimeChunk) {
@@ -244,17 +246,17 @@ public extension TimePeriodProtocol {
     // MARK: In Place
     // Do not lengthen by month at anchor center. Month cannot be divided reliably.
     
-    mutating func lengthen(by interval: TimeInterval, at anchor: Anchor) {
+    mutating func lengthen(by timeInterval: TimeInterval, at anchor: Anchor) {
         switch anchor {
         case .beginning:
-            self.end = self.end?.addingTimeInterval(interval)
+            self.end = self.end?.addingTimeInterval(timeInterval)
             break
         case .center:
-            self.beginning = self.beginning?.addingTimeInterval(-interval/2.0)
-            self.end = self.end?.addingTimeInterval(interval/2.0)
+            self.beginning = self.beginning?.addingTimeInterval(-timeInterval/2.0)
+            self.end = self.end?.addingTimeInterval(timeInterval/2.0)
             break
         case .end:
-            self.beginning = self.beginning?.addingTimeInterval(-interval)
+            self.beginning = self.beginning?.addingTimeInterval(-timeInterval)
             break
         }
     }
@@ -265,8 +267,7 @@ public extension TimePeriodProtocol {
             self.end = self.end?.add(chunk)
             break
         case .center:
-            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
-            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            print("Mutation via chunk from center anchor is not supported.")
             break
         case .end:
             self.beginning = self.beginning?.subtract(chunk)
@@ -274,17 +275,17 @@ public extension TimePeriodProtocol {
         }
     }
     
-    mutating func shorten(by interval: TimeInterval, at anchor: Anchor) {
+    mutating func shorten(by timeInterval: TimeInterval, at anchor: Anchor) {
         switch anchor {
         case .beginning:
-            self.end = self.end?.addingTimeInterval(-interval)
+            self.end = self.end?.addingTimeInterval(-timeInterval)
             break
         case .center:
-            self.beginning = self.beginning?.addingTimeInterval(interval/2.0)
-            self.end = self.end?.addingTimeInterval(-interval/2.0)
+            self.beginning = self.beginning?.addingTimeInterval(timeInterval/2.0)
+            self.end = self.end?.addingTimeInterval(-timeInterval/2.0)
             break
         case .end:
-            self.beginning = self.beginning?.addingTimeInterval(interval)
+            self.beginning = self.beginning?.addingTimeInterval(timeInterval)
             break
         }
     }
@@ -295,8 +296,7 @@ public extension TimePeriodProtocol {
             self.end = self.end?.subtract(chunk)
             break
         case .center:
-            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
-            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            print("Mutation via chunk from center anchor is not supported.")
             break
         case .end:
             self.beginning = self.beginning?.add(chunk)
@@ -361,10 +361,10 @@ open class TimePeriod: TimePeriodProtocol {
     }
     
     //Mark: New
-    func shifted(by interval: TimeInterval) -> TimePeriod {
+    func shifted(by timeInterval: TimeInterval) -> TimePeriod {
         let timePeriod = TimePeriod()
-        timePeriod.beginning = self.beginning?.addingTimeInterval(interval)
-        timePeriod.end = self.end?.addingTimeInterval(interval)
+        timePeriod.beginning = self.beginning?.addingTimeInterval(timeInterval)
+        timePeriod.end = self.end?.addingTimeInterval(timeInterval)
         return timePeriod
     }
     
@@ -379,19 +379,19 @@ open class TimePeriod: TimePeriodProtocol {
     
     // MARK: New
     
-    func lengthened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+    func lengthened(by timeInterval: TimeInterval, at anchor: Anchor) -> TimePeriod {
         let timePeriod = TimePeriod()
         switch anchor {
         case .beginning:
             timePeriod.beginning = self.beginning
-            timePeriod.end = self.end?.addingTimeInterval(interval)
+            timePeriod.end = self.end?.addingTimeInterval(timeInterval)
             break
         case .center:
-            timePeriod.beginning = self.beginning?.addingTimeInterval(-interval)
-            timePeriod.end = self.end?.addingTimeInterval(interval)
+            timePeriod.beginning = self.beginning?.addingTimeInterval(-timeInterval)
+            timePeriod.end = self.end?.addingTimeInterval(timeInterval)
             break
         case .end:
-            timePeriod.beginning = self.beginning?.addingTimeInterval(-interval)
+            timePeriod.beginning = self.beginning?.addingTimeInterval(-timeInterval)
             timePeriod.end = self.end
             break
         }
@@ -407,8 +407,7 @@ open class TimePeriod: TimePeriodProtocol {
             timePeriod.end = end?.add(chunk)
             break
         case .center:
-            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
-            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            print("Mutation via chunk from center anchor is not supported.")
             break
         case .end:
             timePeriod.beginning = beginning?.add(-chunk)
@@ -419,19 +418,19 @@ open class TimePeriod: TimePeriodProtocol {
         return timePeriod
     }
     
-    func shortened(by interval: TimeInterval, at anchor: Anchor) -> TimePeriod {
+    func shortened(by timeInterval: TimeInterval, at anchor: Anchor) -> TimePeriod {
         let timePeriod = TimePeriod()
         switch anchor {
         case .beginning:
             timePeriod.beginning = beginning
-            timePeriod.end = end?.addingTimeInterval(-interval)
+            timePeriod.end = end?.addingTimeInterval(-timeInterval)
             break
         case .center:
-            timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
-            timePeriod.end = end?.addingTimeInterval(interval/2)
+            timePeriod.beginning = beginning?.addingTimeInterval(-timeInterval/2)
+            timePeriod.end = end?.addingTimeInterval(timeInterval/2)
             break
         case .end:
-            timePeriod.beginning = beginning?.addingTimeInterval(interval)
+            timePeriod.beginning = beginning?.addingTimeInterval(timeInterval)
             timePeriod.end = end
             break
         }
@@ -447,8 +446,7 @@ open class TimePeriod: TimePeriodProtocol {
             timePeriod.end = end?.subtract(chunk)
             break
         case .center:
-            //timePeriod.beginning = beginning?.addingTimeInterval(-interval/2)
-            //timePeriod.end = end?.addingTimeInterval(interval/2)
+            print("Mutation via chunk from center anchor is not supported.")
             break
         case .end:
             timePeriod.beginning = beginning?.add(-chunk)
