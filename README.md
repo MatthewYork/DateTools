@@ -2,10 +2,10 @@
 
 ## DateTools
 
-DateTools was written to streamline date and time handling in Objective-C. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](Time Period Library) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
+DateTools was written to streamline date and time handling in Objective-C. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
 
 [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
-[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/DateTools/badge.png)](http://cocoapods.org/?q=datetools)
+[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateTools/badge.png)](http://cocoapods.org/?q=datetools)
 
 ####Featured In
 <table>
@@ -37,7 +37,7 @@ DateTools was written to streamline date and time handling in Objective-C. Class
 
 ## Installation
 
-**Cocoapods**
+**CocoaPods**
 
 <code>pod 'DateTools'</code>
 
@@ -288,8 +288,6 @@ This doubles a time period of duration 1 minute to duration 2 minutes. The end d
 ####Relationships
 
 There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions may be asked using the relationship methods of DTTimePeriod.
-
-**The Basics**
 
 Below is a chart of all the possible relationships between two time periods:
 ![TimePeriods](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/PeriodRelations.png)
