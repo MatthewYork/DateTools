@@ -74,4 +74,193 @@ class DateComparatorsTests: XCTestCase {
         
     }
     
+    func testDaysInMonth() {
+        XCTFail()
+    }
+    
+    // MARK: - Comparisons
+    func testEquals() {
+        XCTFail()
+    }
+    
+    func testIsLater() {
+        XCTFail()
+    }
+    
+    func testIsLaterOrEqual() {
+        XCTFail()
+    }
+    
+    func testEarlier() {
+        XCTFail()
+    }
+    
+    func testEarlierOrEqual() {
+        XCTFail()
+    }
+    
+    // MARK: - Date Comparison
+    func testYearsFrom() {
+        XCTFail()
+    }
+    
+    func testMonthsFrom() {
+        XCTFail()
+    }
+    
+    func testWeeksFrom() {
+        XCTFail()
+    }
+    
+    func testDaysFrom() {
+        XCTFail()
+    }
+    
+    func testHoursFrom() {
+        XCTFail()
+    }
+    
+    func testMinutesFrom() {
+        XCTFail()
+    }
+    
+    func testSecondsFrom() {
+        XCTFail()
+    }
+    
+    // MARK: Time From With Calendar
+    
+    func testYearsFromWithCalendar() {
+        XCTFail()
+    }
+    
+    func testMonthsFromWithCalendar() {
+        XCTFail()
+    }
+    
+    func testWeeksFromWithCalendar() {
+        XCTFail()
+    }
+    
+    func testDaysFromWithCalendar() {
+        XCTFail()
+    }
+    
+    // MARK: Time Until
+    
+    func testYearsUntil() {
+        XCTFail()
+    }
+    
+    func testMonthsUntil() {
+        XCTFail()
+    }
+    
+    func testWeeksUntil() {
+        XCTFail()
+    }
+    
+    func testDaysUntil() {
+        XCTFail()
+    }
+    
+    func testHoursUntil() {
+        XCTFail()
+    }
+    
+    func testMinutesUntil() {
+        XCTFail()
+    }
+    
+    func testSecondsUntil() {
+        XCTFail()
+    }
+    
+    // MARK: Time Ago
+    
+    func testYearsAgo() {
+        XCTFail()
+    }
+    
+    func testMonthsAgo() {
+        XCTFail()
+    }
+    
+    func testWeeksAgo() {
+        XCTFail()
+    }
+    
+    func testDaysAgo() {
+        XCTFail()
+    }
+    
+    func testHoursAgo() {
+        XCTFail()
+    }
+    
+    func testMinutesAgo() {
+        XCTFail()
+    }
+    
+    func testSecondsAgo() {
+        XCTFail()
+    }
+    
+    // MARK: Earlier Than
+    func testYearsEarlierThan() {
+        XCTFail()
+    }
+    
+    func testMonthsEarlierThan() {
+        XCTFail()
+    }
+    
+    func testWeeksEarlierThan() {
+        XCTFail()
+    }
+    
+    func testDaysEarlierThan() {
+        XCTFail()
+    }
+    
+    func testHoursEarlierThan() {
+        XCTFail()
+    }
+    
+    func testMinutesEarlierThan() {
+        XCTFail()
+    }
+    
+    func testSecondsEarlierThan() {
+        XCTFail()
+    }
+    
+    // MARK: Later Than
+    func testYearsLaterThan() {
+        XCTFail()
+    }
+    
+    func testMonthsLaterThan() {
+        XCTFail()
+    }
+    
+    func testWeeksLaterThan() {
+        XCTFail()
+    }
+    
+    func testDaysLaterThan() {
+        XCTFail()
+    }
+    
+    func testHoursLaterThan() {
+        XCTFail()
+    }
+    
+    func testMinutesLaterThan() {
+        XCTFail()
+    }
+    
+    func testSecondsLaterThan() {
+        XCTFail()
+    }
 }
