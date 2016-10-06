@@ -97,27 +97,27 @@ public extension Date {
     
     // MARK: - Addition / Subtractions
     
-    func add(_ timeChunk: TimeChunk) -> Date {
+    func add(_ chunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
-        components.year = timeChunk.years
-        components.month = timeChunk.months
-        components.day = timeChunk.days + (timeChunk.weeks*7)
-        components.hour = timeChunk.hours
-        components.minute = timeChunk.minutes
-        components.second = timeChunk.seconds
+        components.year = chunk.years
+        components.month = chunk.months
+        components.day = chunk.days + (chunk.weeks*7)
+        components.hour = chunk.hours
+        components.minute = chunk.minutes
+        components.second = chunk.seconds
         return calendar.date(byAdding: components, to: self)!
     }
     
-    func subtract(_ timeChunk: TimeChunk) -> Date {
+    func subtract(_ chunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
-        components.year = -timeChunk.years
-        components.month = -timeChunk.months
-        components.day = -(timeChunk.days + (timeChunk.weeks*7))
-        components.hour = -timeChunk.hours
-        components.minute = -timeChunk.minutes
-        components.second = -timeChunk.seconds
+        components.year = -chunk.years
+        components.month = -chunk.months
+        components.day = -(chunk.days + (chunk.weeks*7))
+        components.hour = -chunk.hours
+        components.minute = -chunk.minutes
+        components.second = -chunk.seconds
         return calendar.date(byAdding: components, to: self)!
     }
     
