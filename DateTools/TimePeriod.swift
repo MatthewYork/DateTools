@@ -108,46 +108,46 @@ public extension TimePeriodProtocol {
         //Make sure that all start and end points exist for comparison
         if (self.beginning != nil && self.end != nil && period.beginning != nil && period.end != nil) {
             //Make sure time periods are of positive durations
-            if (self.beginning!.earlier(than: self.end!) && period.beginning!.earlier(than: period.end!)) {
+            if (self.beginning!.isEarlier(than: self.end!) && period.beginning!.isEarlier(than: period.end!)) {
                 
                 //Make comparisons
-                if (period.end!.earlier(than: self.beginning!)) {
+                if (period.end!.isEarlier(than: self.beginning!)) {
                     return .after
                 }
                 else if (period.end!.equals(self.beginning!)) {
                     return .startTouching
                 }
-                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.earlier(than: self.end!)) {
+                else if (period.beginning!.isEarlier(than: self.beginning!) && period.end!.isEarlier(than: self.end!)) {
                     return .startInside
                 }
-                else if (period.beginning!.equals(self.beginning!) && period.end!.later(than: self.end!)) {
+                else if (period.beginning!.equals(self.beginning!) && period.end!.isLater(than: self.end!)) {
                     return .insideStartTouching
                 }
-                else if (period.beginning!.equals(self.beginning!) && period.end!.earlier(than: self.end!)) {
+                else if (period.beginning!.equals(self.beginning!) && period.end!.isEarlier(than: self.end!)) {
                     return .enclosingStartTouching
                 }
-                else if (period.beginning!.later(than: self.beginning!) && period.end!.earlier(than: self.end!)) {
+                else if (period.beginning!.isLater(than: self.beginning!) && period.end!.isEarlier(than: self.end!)) {
                     return .enclosing
                 }
-                else if (period.beginning!.later(than: self.beginning!) && period.end!.equals(self.end!)) {
+                else if (period.beginning!.isLater(than: self.beginning!) && period.end!.equals(self.end!)) {
                     return .enclosingEndTouching
                 }
                 else if (period.beginning!.equals(self.beginning!) && period.end!.equals(self.end!)) {
                     return .exactMatch
                 }
-                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.later(than: self.end!)) {
+                else if (period.beginning!.isEarlier(than: self.beginning!) && period.end!.isLater(than: self.end!)) {
                     return .inside
                 }
-                else if (period.beginning!.earlier(than: self.beginning!) && period.end!.equals(self.end!)) {
+                else if (period.beginning!.isEarlier(than: self.beginning!) && period.end!.equals(self.end!)) {
                     return .insideEndTouching
                 }
-                else if (period.beginning!.earlier(than: self.end!) && period.end!.later(than: self.end!)) {
+                else if (period.beginning!.isEarlier(than: self.end!) && period.end!.isLater(than: self.end!)) {
                     return .endInside
                 }
-                else if (period.beginning!.equals(self.end!) && period.end!.later(than: self.end!)) {
+                else if (period.beginning!.equals(self.end!) && period.end!.isLater(than: self.end!)) {
                     return .endTouching
                 }
-                else if (period.beginning!.later(than: self.end!)) {
+                else if (period.beginning!.isLater(than: self.end!)) {
                     return .before
                 }
             }
@@ -160,36 +160,36 @@ public extension TimePeriodProtocol {
         return self.beginning == period.beginning && self.end == period.end
     }
     
-    func inside(of period: TimePeriodProtocol) -> Bool {
-        return period.beginning!.earlierThanOrEqual(to: self.beginning!) && period.end!.laterThanOrEqual(to: self.end!)
+    func isInside(of period: TimePeriodProtocol) -> Bool {
+        return period.beginning!.isEarlierThanOrEqual(to: self.beginning!) && period.end!.isLaterThanOrEqual(to: self.end!)
     }
     
     func contains(date: Date, interval: Interval) -> Bool {
         if (interval == .open) {
-            return self.beginning!.earlier(than: date) && self.end!.later(than: date)
+            return self.beginning!.isEarlier(than: date) && self.end!.isLater(than: date)
         }
         else if (interval == .closed){
-            return (self.beginning!.earlierThanOrEqual(to: date) && self.end!.laterThanOrEqual(to: date))
+            return (self.beginning!.isEarlierThanOrEqual(to: date) && self.end!.isLaterThanOrEqual(to: date))
         }
         
         return false
     }
     
     func contains(period: TimePeriodProtocol) -> Bool {
-        return self.beginning!.earlierThanOrEqual(to: period.beginning!) && self.end!.laterThanOrEqual(to: period.end!)
+        return self.beginning!.isEarlierThanOrEqual(to: period.beginning!) && self.end!.isLaterThanOrEqual(to: period.end!)
     }
     
     func overlaps(with period: TimePeriodProtocol) -> Bool {
         //Outside -> Inside
-        if (period.beginning!.earlier(than: self.beginning!) && period.end!.later(than: self.beginning!)) {
+        if (period.beginning!.isEarlier(than: self.beginning!) && period.end!.isLater(than: self.beginning!)) {
             return true
         }
             //Enclosing
-        else if (period.beginning!.laterThanOrEqual(to: self.beginning!) && period.end!.earlierThanOrEqual(to: self.end!)){
+        else if (period.beginning!.isLaterThanOrEqual(to: self.beginning!) && period.end!.isEarlierThanOrEqual(to: self.end!)){
             return true
         }
             //Inside -> Out
-        else if(period.beginning!.earlier(than: self.end!) && period.end!.later(than: self.end!)){
+        else if(period.beginning!.isEarlier(than: self.end!) && period.end!.isLater(than: self.end!)){
             return true
         }
         return false
@@ -204,10 +204,10 @@ public extension TimePeriodProtocol {
     }
     
     func gap(between period: TimePeriodProtocol) -> TimeInterval {
-        if (self.end!.earlier(than: period.beginning!)) {
+        if (self.end!.isEarlier(than: period.beginning!)) {
             return abs(self.end!.timeIntervalSince(period.beginning!));
         }
-        else if (period.end!.earlier(than: self.beginning!)){
+        else if (period.end!.isEarlier(than: self.beginning!)){
             return abs(period.end!.timeIntervalSince(self.beginning!));
         }
         return 0

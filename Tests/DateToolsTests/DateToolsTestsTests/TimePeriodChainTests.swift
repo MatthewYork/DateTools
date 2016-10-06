@@ -120,11 +120,11 @@ class TimePeriodChainTests : XCTestCase {
     // MARK: - Chain Time Manipulation
     
     func testShiftEarlier() {
-        
+        XCTFail()
     }
     
     func testShiftLater() {
-        
+        XCTFail()
     }
     
     

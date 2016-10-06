@@ -32,7 +32,7 @@ public extension Date {
         var month = selfComponents.month! + monthDelta
         let year = selfComponents.year! + yearDelta
         
-        let inFuture = self.earlier(than: date)
+        let inFuture = self.isEarlier(than: date)
         
         if inFuture {
             month -= 1
@@ -224,19 +224,19 @@ public extension Date {
 		return self.compare(date) == .orderedSame
 	}
 	
-	func later(than date: Date) -> Bool {
+	func isLater(than date: Date) -> Bool {
 		return self.compare(date) == .orderedDescending
 	}
     
-    func laterThanOrEqual(to date: Date) -> Bool {
+    func isLaterThanOrEqual(to date: Date) -> Bool {
         return self.compare(date) == .orderedDescending || self.compare(date) == .orderedSame
     }
 	
-	func earlier(than date: Date) -> Bool {
+	func isEarlier(than date: Date) -> Bool {
 		return self.compare(date) == .orderedAscending
 	}
     
-    func earlierThanOrEqual(to date: Date) -> Bool {
+    func isEarlierThanOrEqual(to date: Date) -> Bool {
         return self.compare(date) == .orderedAscending || self.compare(date) == .orderedSame
     }
 	

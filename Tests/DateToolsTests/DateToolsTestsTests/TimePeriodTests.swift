@@ -131,35 +131,35 @@ class TimePeriodTests : XCTestCase {
         //Test exact match
         //Test exact match
         let testTimePeriodExact = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
-        XCTAssertTrue(testTimePeriodExact.inside(of: self.controlTimePeriod))
+        XCTAssertTrue(testTimePeriodExact.isInside(of: self.controlTimePeriod))
         //Test same start
         let testTimePeriodSameStart = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2015 11 05 18:15:12.000")!)
-        XCTAssertTrue(testTimePeriodSameStart.inside(of: self.controlTimePeriod))
+        XCTAssertTrue(testTimePeriodSameStart.isInside(of: self.controlTimePeriod))
         //Test same end
         let testTimePeriodSameEnd = TimePeriod(beginning: self.formatter.date(from: "2015 12 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
-        XCTAssertTrue(testTimePeriodSameEnd.inside(of: self.controlTimePeriod))
+        XCTAssertTrue(testTimePeriodSameEnd.isInside(of: self.controlTimePeriod))
         //Test completely inside
         let testTimePeriodCompletelyInside = TimePeriod(beginning: self.formatter.date(from: "2015 12 05 18:15:12.000")!, end: self.formatter.date(from: "2016 04 05 18:15:12.000")!)
-        XCTAssertTrue(testTimePeriodCompletelyInside.inside(of: self.controlTimePeriod))
+        XCTAssertTrue(testTimePeriodCompletelyInside.isInside(of: self.controlTimePeriod))
         //NEGATIVE MATCHES
         //Test before
         let testTimePeriodBefore = TimePeriod(beginning: self.formatter.date(from: "2014 11 02 18:15:12.000")!, end: self.formatter.date(from: "2014 11 04 18:15:12.000")!)
-        XCTAssertFalse(testTimePeriodBefore.inside(of: self.controlTimePeriod))
+        XCTAssertFalse(testTimePeriodBefore.isInside(of: self.controlTimePeriod))
         //Test end same as start
         let testTimePeriodEndSameStart = TimePeriod(beginning: self.formatter.date(from: "2013 11 05 18:15:12.000")!, end: self.formatter.date(from: "2014 11 05 18:15:12.000")!)
-        XCTAssertFalse(testTimePeriodEndSameStart.inside(of: self.controlTimePeriod))
+        XCTAssertFalse(testTimePeriodEndSameStart.isInside(of: self.controlTimePeriod))
         //Test end inside
         let testTimePeriodEndInside = TimePeriod(beginning: self.formatter.date(from: "2014 11 02 18:15:12.000")!, end: self.formatter.date(from: "2014 11 07 18:15:12.000")!)
-        XCTAssertFalse(testTimePeriodEndInside.inside(of: self.controlTimePeriod))
+        XCTAssertFalse(testTimePeriodEndInside.isInside(of: self.controlTimePeriod))
         //Test start inside
         let testTimePeriodStartInside = TimePeriod(beginning: self.formatter.date(from: "2014 11 07 18:15:12.000")!, end: self.formatter.date(from: "2016 12 05 18:15:12.000")!)
-        XCTAssertFalse(testTimePeriodStartInside.inside(of: self.controlTimePeriod))
+        XCTAssertFalse(testTimePeriodStartInside.isInside(of: self.controlTimePeriod))
         //Test start same as end
         let testTimePeriodStartSameEnd = TimePeriod(beginning: self.formatter.date(from: "2016 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 10 18:15:12.000")!)
-        XCTAssertFalse(testTimePeriodStartSameEnd.inside(of: self.controlTimePeriod))
+        XCTAssertFalse(testTimePeriodStartSameEnd.isInside(of: self.controlTimePeriod))
         //Test after
         let testTimePeriodAfter = TimePeriod(beginning: self.formatter.date(from: "2016 12 05 18:15:12.000")!, end: self.formatter.date(from: "2016 12 10 18:15:12.000")!)
-        XCTAssertFalse(testTimePeriodAfter.inside(of: self.controlTimePeriod))
+        XCTAssertFalse(testTimePeriodAfter.isInside(of: self.controlTimePeriod))
     }
     
     func testContainsInterval() {
