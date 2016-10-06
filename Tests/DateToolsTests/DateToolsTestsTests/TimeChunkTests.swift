@@ -97,6 +97,14 @@ class TimeChunkTests: XCTestCase {
         XCTFail()
     }
     
+    func testEarlierThan() {
+        XCTFail()
+    }
+    
+    func testLaterThan() {
+        XCTFail()
+    }
+    
     // MARK: - Lengthen / Shorten
     
     // MARK: In Place

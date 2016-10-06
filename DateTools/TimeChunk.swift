@@ -57,6 +57,14 @@ public struct TimeChunk {
         return Date()
     }
     
+    func earlier(than: Date) -> Date {
+        return Date()
+    }
+    
+    func later(than: Date) -> Date {
+        return Date()
+    }
+    
     // MARK: - Lengthen / Shorten
     
     // MARK: In Place
