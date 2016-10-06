@@ -80,6 +80,12 @@ class TimeChunkTests: XCTestCase {
         XCTAssertFalse(controlChunkYears.equals(chunk: testChunk))
     }
     
+    // MARK: - Comparisons
+    
+    func testConversionTo() {
+        XCTFail()
+    }
+    
     
     // MARK: - Lengthen / Shorten
     

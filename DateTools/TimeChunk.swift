@@ -40,6 +40,13 @@ public struct TimeChunk {
     }
     
     
+    // MARK: - Conversion
+    
+    func to(_ component: Component) -> Int {
+        return 0
+    }
+    
+    
     // MARK: - Lengthen / Shorten
     
     // MARK: In Place
@@ -119,5 +126,5 @@ public struct TimeChunk {
         invertedChunk.years = -chunk.years
         return invertedChunk
     }
-
+    
 }
