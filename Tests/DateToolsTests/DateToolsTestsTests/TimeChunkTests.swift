@@ -87,6 +87,16 @@ class TimeChunkTests: XCTestCase {
     }
     
     
+    // MARK: - Date Creation
+    
+    func testAgo() {
+        XCTFail()
+    }
+    
+    func testUntil() {
+        XCTFail()
+    }
+    
     // MARK: - Lengthen / Shorten
     
     // MARK: In Place

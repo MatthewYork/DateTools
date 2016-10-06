@@ -47,6 +47,16 @@ public struct TimeChunk {
     }
     
     
+    // MARK: - Date Creation
+    
+    func ago() -> Date {
+        return Date()
+    }
+    
+    func until() -> Date {
+        return Date()
+    }
+    
     // MARK: - Lengthen / Shorten
     
     // MARK: In Place
