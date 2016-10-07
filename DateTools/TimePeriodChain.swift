@@ -25,7 +25,7 @@ open class TimePeriodChain: TimePeriodGroup {
     func append(_ period: TimePeriodProtocol) {
         let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
         
-        let newPeriod = TimePeriod(beginning: beginning!, chunk: period.chunk)
+        let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
         self.periods.append(newPeriod)
         updateExtremes()
     }
@@ -34,7 +34,7 @@ open class TimePeriodChain: TimePeriodGroup {
         for period in group.periods {
             let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
             
-            let newPeriod = TimePeriod(beginning: beginning!, chunk: period.chunk)
+            let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
             self.periods.append(newPeriod)
         }
         updateExtremes()
@@ -73,9 +73,8 @@ open class TimePeriodChain: TimePeriodGroup {
         
         //Shift all periods after inserted period
         for i in 0..<periods.count {
-            if i > index {
-                periods[i].beginning = periods[i].beginning!.addingTimeInterval(-duration)
-                periods[i].end = periods[i].end!.addingTimeInterval(-duration)
+            if i >= index {
+                periods[i].shift(by: -duration)
             }
         }
         updateExtremes()

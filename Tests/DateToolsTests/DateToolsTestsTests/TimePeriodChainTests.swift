@@ -85,8 +85,13 @@ class TimePeriodChainTests : XCTestCase {
     
     func testRemove() {
         controlChain.remove(at: 1)
-        XCTAssertTrue(controlChain.count == 2)
-        XCTFail()
+        
+        //Build test chain
+        let testChain = TimePeriodChain()
+        testChain.append(firstPeriod)
+        testChain.append(thirdPeriod)
+        
+        XCTAssertTrue(controlChain == testChain)
     }
     
     func testRemoveAll() {
