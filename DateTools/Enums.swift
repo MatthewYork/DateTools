@@ -52,6 +52,7 @@ public enum Anchor {
     case end
 }
 
+// Components of calendar
 public enum Component {
     case year
     case month
@@ -59,4 +60,16 @@ public enum Component {
     case hour
     case minute
     case second
+}
+
+// Time Units
+// (includes weeks, but not months since
+// their exact size is dependent on the date)
+public enum TimeUnits {
+    case years
+    case weeks
+    case days
+    case hours
+    case minutes
+    case seconds
 }

@@ -42,7 +42,13 @@ public struct TimeChunk {
     
     // MARK: - Conversion
     
-    func to(_ component: Component) -> Int {
+    // Months are not supported for conversions. They are not a
+    // well defined unit of time without the context of a calendar.
+    func to(_ unit: TimeUnits) -> Int {
+        if abs(self.months) > 0 {
+            print("Months are not supported for conversion.")
+            return 0
+        }
         return 0
     }
     

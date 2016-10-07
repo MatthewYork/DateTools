@@ -35,7 +35,6 @@ class TimeChunkTests: XCTestCase {
         super.tearDown()
     }
     
-    
     // MARK: - Comparisons
     
     func testEqualsSeconds() {
@@ -80,10 +79,58 @@ class TimeChunkTests: XCTestCase {
         XCTAssertFalse(controlChunkYears.equals(chunk: testChunk))
     }
     
+    
     // MARK: - Comparisons
     
     func testConversionTo() {
-        XCTFail()
+        
+        // Ascending tests
+        XCTAssertTrue(controlChunkSeconds.to(.minutes) == 1)
+        XCTAssertTrue(controlChunkMinutes.to(.hours) == 1)
+        XCTAssertTrue(controlChunkHours.to(.days) == 1)
+        XCTAssertTrue(controlChunkDays.to(.weeks) == 1)
+        
+        // Descending tests
+        XCTAssertTrue(controlChunkYears.to(.weeks) == 52)
+        XCTAssertTrue(controlChunkWeeks.to(.days) == 7*5)
+        XCTAssertTrue(controlChunkDays.to(.hours) == 7*24)
+        XCTAssertTrue(controlChunkHours.to(.minutes) == 60*24)
+        XCTAssertTrue(controlChunkMinutes.to(.seconds) == 60*60)
+        
+        // Large conversions (years)
+        XCTAssertTrue(controlChunkYears.to(.seconds) == 2*365*24*60*60)
+        XCTAssertTrue(controlChunkYears.to(.minutes) == 2*365*24*60)
+        XCTAssertTrue(controlChunkYears.to(.hours) == 2*365*24)
+        
+        // Large conversions (weeks)
+        XCTAssertTrue(controlChunkWeeks.to(.seconds) == 5*7*24*60*60)
+        XCTAssertTrue(controlChunkWeeks.to(.minutes) == 5*7*24*60)
+        XCTAssertTrue(controlChunkWeeks.to(.hours) == 5*7*24)
+        XCTAssertTrue(controlChunkYears.to(.days) == 365*2)
+        
+        // Large conversions (days)
+        XCTAssertTrue(controlChunkDays.to(.seconds) == 7*24*60*60)
+        XCTAssertTrue(controlChunkDays.to(.minutes) == 7*24*60)
+        
+        // Large conversions (hours)
+        XCTAssertTrue(controlChunkHours.to(.seconds) == 24*60*60)
+        
+        // Sanity checks
+        XCTAssertTrue(controlChunkSeconds.to(.hours) == 0)
+        XCTAssertTrue(controlChunkSeconds.to(.days) == 0)
+        XCTAssertTrue(controlChunkSeconds.to(.weeks) == 0)
+        XCTAssertTrue(controlChunkSeconds.to(.years) == 0)
+        
+        XCTAssertTrue(controlChunkMinutes.to(.days) == 0)
+        XCTAssertTrue(controlChunkMinutes.to(.weeks) == 0)
+        XCTAssertTrue(controlChunkMinutes.to(.years) == 0)
+        
+        XCTAssertTrue(controlChunkHours.to(.weeks) == 0)
+        XCTAssertTrue(controlChunkHours.to(.years) == 0)
+        
+        XCTAssertTrue(controlChunkDays.to(.years) == 0)
+        
+        XCTAssertTrue(controlChunkWeeks.to(.years) == 0)
     }
     
     
@@ -104,6 +151,7 @@ class TimeChunkTests: XCTestCase {
     func testLaterThan() {
         XCTFail()
     }
+    
     
     // MARK: - Lengthen / Shorten
     
