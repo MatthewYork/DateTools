@@ -141,134 +141,134 @@ class DateComparatorsTests: XCTestCase {
     }
     
     // MARK: - Date Comparison
-    func testYearsFrom() {
+    func testYears() {
         //Under a year
         let testDate = self.formatter.date(from: "2016 11 12 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.yearsFrom(testDate))
+        XCTAssertEqual(0, self.controlDate.years(from: testDate))
         
         //Exactly a year
         let testDate2 = self.formatter.date(from: "2017 09 16 13:30:25.000")!
-        XCTAssertEqual(-1, self.controlDate.yearsFrom(testDate2))
+        XCTAssertEqual(-1, self.controlDate.years(from: testDate2))
         
         //Year number later, still less than a year
         let testDate3 = self.formatter.date(from: "2017 01 16 13:30:25.000")!
-        XCTAssertEqual(0, self.controlDate.yearsFrom(testDate3))
+        XCTAssertEqual(0, self.controlDate.years(from: testDate3))
         
         //Year number earlier, still less than a year
         let testDate5 = self.formatter.date(from: "2015 11 16 13:30:25.000")!
-        XCTAssertEqual(0, self.controlDate.yearsFrom(testDate5))
+        XCTAssertEqual(0, self.controlDate.years(from: testDate5))
         
         //Over a year earlier
         let testDate6 = self.formatter.date(from: "2014 09 16 13:30:25.000")!
-        XCTAssertEqual(2, self.controlDate.yearsFrom(testDate6))
+        XCTAssertEqual(2, self.controlDate.years(from: testDate6))
         
         //Over a year later
         let testDate7 = self.formatter.date(from: "2019 11 12 18:15:12.000")!
-        XCTAssertEqual(-3, self.controlDate.yearsFrom(testDate7))
+        XCTAssertEqual(-3, self.controlDate.years(from: testDate7))
         
         //Over a year later, but less than a year in final comparison year
         let testDate8 = self.formatter.date(from: "2019 09 01 13:30:25.000")!
-        XCTAssertEqual(-2,self.controlDate.yearsFrom(testDate8))
+        XCTAssertEqual(-2,self.controlDate.years(from: testDate8))
         
         ///Over a year earlier, but less than a year in final comparison year
         let testDate9 = self.formatter.date(from: "2014 09 17 13:30:25.000")!
-        XCTAssertEqual(1, self.controlDate.yearsFrom(testDate9))
+        XCTAssertEqual(1, self.controlDate.years(from: testDate9))
     }
     
-    func testMonthsFrom() {
+    func testMonths() {
         //Under a month
         let testDate = self.formatter.date(from: "2016 09 12 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.monthsFrom(testDate))
+        XCTAssertEqual(0, self.controlDate.months(from: testDate))
         
         //Exactly a month
         let testDate2 = self.formatter.date(from: "2016 10 16 13:30:25.000")!
-        XCTAssertEqual(-1, self.controlDate.monthsFrom(testDate2))
+        XCTAssertEqual(-1, self.controlDate.months(from: testDate2))
         
         //Year number later, still less than a year
         let testDate3 = self.formatter.date(from: "2017 08 16 13:30:25.000")!
-        XCTAssertEqual(-11, self.controlDate.monthsFrom(testDate3))
+        XCTAssertEqual(-11, self.controlDate.months(from: testDate3))
         
         //Year number earlier, still less than a year
         let testDate5 = self.formatter.date(from: "2015 10 16 13:30:25.000")!
-        XCTAssertEqual(11, self.controlDate.monthsFrom(testDate5))
+        XCTAssertEqual(11, self.controlDate.months(from: testDate5))
         
         //Over a year earlier
         let testDate6 = self.formatter.date(from: "2014 09 16 13:30:25.000")!
-        XCTAssertEqual(24, self.controlDate.monthsFrom(testDate6))
+        XCTAssertEqual(24, self.controlDate.months(from: testDate6))
         
         //Over a year later
         let testDate7 = self.formatter.date(from: "2019 10 12 18:15:12.000")!
-        XCTAssertEqual(-36, self.controlDate.monthsFrom(testDate7))
+        XCTAssertEqual(-36, self.controlDate.months(from: testDate7))
     }
     
-    func testWeeksFrom() {
+    func testWeeks() {
         //Same week
         let testSameDate = self.formatter.date(from: "2016 09 12 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.weeksFrom(testSameDate))
+        XCTAssertEqual(0, self.controlDate.weeks(from: testSameDate))
         
         //Same year
         let testDate = self.formatter.date(from: "2016 09 26 18:15:12.000")!
-        XCTAssertEqual(-1, self.controlDate.weeksFrom(testDate))
+        XCTAssertEqual(-1, self.controlDate.weeks(from: testDate))
         
         //Earlier year
         let testDate2 = self.formatter.date(from: "2015 9 23 13:30:25.000")!
-        XCTAssertEqual(51, self.controlDate.weeksFrom(testDate2))
+        XCTAssertEqual(51, self.controlDate.weeks(from: testDate2))
         
         //Later year
         let testDate3 = self.formatter.date(from: "2017 9 23 13:30:25.000")!
-        XCTAssertEqual(-53, self.controlDate.weeksFrom(testDate3))
+        XCTAssertEqual(-53, self.controlDate.weeks(from: testDate3))
     }
     
-    func testDaysFrom() {
+    func testDays() {
         //Same day
         let testSameDate = self.formatter.date(from: "2016 09 16 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.daysFrom(testSameDate))
+        XCTAssertEqual(0, self.controlDate.days(from: testSameDate))
         
         //Same year
         let testDate = self.formatter.date(from: "2016 09 17 18:15:12.000")!
-        XCTAssertEqual(-1, self.controlDate.daysFrom(testDate))
+        XCTAssertEqual(-1, self.controlDate.days(from: testDate))
         
         //Earlier year
         let testDate2 = self.formatter.date(from: "2015 9 23 13:30:25.000")!
-        XCTAssertEqual(359, self.controlDate.daysFrom(testDate2)) //Would be 358, but leap year!
+        XCTAssertEqual(359, self.controlDate.days(from: testDate2)) //Would be 358, but leap year!
         
         //Later year
         let testDate3 = self.formatter.date(from: "2017 9 23 13:30:25.000")!
-        XCTAssertEqual(-372, self.controlDate.daysFrom(testDate3))
+        XCTAssertEqual(-372, self.controlDate.days(from: testDate3))
     }
     
-    func testHoursFrom() {
+    func testHours() {
         //Same year
         let testDate = self.formatter.date(from: "2016 09 16 18:15:12.000")!
-        XCTAssertEqual(-4, self.controlDate.hoursFrom(testDate))
+        XCTAssertEqual(-4, self.controlDate.hours(from: testDate))
         
         //Earlier year
         let testDate2 = self.formatter.date(from: "2016 9 16 10:30:25.000")!
-        XCTAssertEqual(3, self.controlDate.hoursFrom(testDate2))
+        XCTAssertEqual(3, self.controlDate.hours(from: testDate2))
     }
     
-    func testMinutesFrom() {
+    func testMinutes() {
         //Later
         let testDate = self.formatter.date(from: "2016 09 16 15:30:25.000")!
-        XCTAssertEqual(-120, self.controlDate.minutesFrom(testDate))
+        XCTAssertEqual(-120, self.controlDate.minutes(from: testDate))
         
         //Earlier
         let testDate2 = self.formatter.date(from: "2016 9 16 10:30:25.000")!
-        XCTAssertEqual(180, self.controlDate.minutesFrom(testDate2))
+        XCTAssertEqual(180, self.controlDate.minutes(from: testDate2))
     }
     
-    func testSecondsFrom() {
+    func testSeconds() {
         //Same
         let testSameDate = self.formatter.date(from: "2016 09 16 13:30:25.000")!
-        XCTAssertEqual(0, self.controlDate.secondsFrom(testSameDate))
+        XCTAssertEqual(0, self.controlDate.seconds(from: testSameDate))
         
         //Later
         let testDate = self.formatter.date(from: "2016 09 16 15:30:25.000")!
-        XCTAssertEqual(-7200, self.controlDate.secondsFrom(testDate))
+        XCTAssertEqual(-7200, self.controlDate.seconds(from: testDate))
         
         //Earlier
         let testDate2 = self.formatter.date(from: "2016 9 16 10:30:25.000")!
-        XCTAssertEqual(10800, self.controlDate.secondsFrom(testDate2))
+        XCTAssertEqual(10800, self.controlDate.seconds(from: testDate2))
     }
     
     // MARK: Time From With Calendar
@@ -276,97 +276,97 @@ class DateComparatorsTests: XCTestCase {
     func testYearsFromWithCalendar() {
         //Under a year
         let testDate = self.formatter.date(from: "2016 11 12 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.yearsFrom(testDate, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(0, self.controlDate.years(from: testDate, calendar: Calendar.autoupdatingCurrent))
         
         //Exactly a year
         let testDate2 = self.formatter.date(from: "2017 09 16 13:30:25.000")!
-        XCTAssertEqual(-1, self.controlDate.yearsFrom(testDate2, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-1, self.controlDate.years(from: testDate2, calendar: Calendar.autoupdatingCurrent))
         
         //Year number later, still less than a year
         let testDate3 = self.formatter.date(from: "2017 01 16 13:30:25.000")!
-        XCTAssertEqual(0, self.controlDate.yearsFrom(testDate3, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(0, self.controlDate.years(from: testDate3, calendar: Calendar.autoupdatingCurrent))
         
         //Year number earlier, still less than a year
         let testDate5 = self.formatter.date(from: "2015 11 16 13:30:25.000")!
-        XCTAssertEqual(0, self.controlDate.yearsFrom(testDate5, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(0, self.controlDate.years(from: testDate5, calendar: Calendar.autoupdatingCurrent))
         
         //Over a year earlier
         let testDate6 = self.formatter.date(from: "2014 09 16 13:30:25.000")!
-        XCTAssertEqual(2, self.controlDate.yearsFrom(testDate6, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(2, self.controlDate.years(from: testDate6, calendar: Calendar.autoupdatingCurrent))
         
         //Over a year later
         let testDate7 = self.formatter.date(from: "2019 11 12 18:15:12.000")!
-        XCTAssertEqual(-3, self.controlDate.yearsFrom(testDate7, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-3, self.controlDate.years(from: testDate7, calendar: Calendar.autoupdatingCurrent))
         
         //Over a year later, but less than a year in final comparison year
         let testDate8 = self.formatter.date(from: "2019 09 01 13:30:25.000")!
-        XCTAssertEqual(-2,self.controlDate.yearsFrom(testDate8, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-2,self.controlDate.years(from: testDate8, calendar: Calendar.autoupdatingCurrent))
         
         ///Over a year earlier, but less than a year in final comparison year
         let testDate9 = self.formatter.date(from: "2014 09 17 13:30:25.000")!
-        XCTAssertEqual(1, self.controlDate.yearsFrom(testDate9, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(1, self.controlDate.years(from: testDate9, calendar: Calendar.autoupdatingCurrent))
     }
     
     func testMonthsFromWithCalendar() {
         //Under a month
         let testDate = self.formatter.date(from: "2016 09 12 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.monthsFrom(testDate, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(0, self.controlDate.months(from: testDate, calendar: Calendar.autoupdatingCurrent))
         
         //Exactly a month
         let testDate2 = self.formatter.date(from: "2016 10 16 13:30:25.000")!
-        XCTAssertEqual(-1, self.controlDate.monthsFrom(testDate2, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-1, self.controlDate.months(from: testDate2, calendar: Calendar.autoupdatingCurrent))
         
         //Year number later, still less than a year
         let testDate3 = self.formatter.date(from: "2017 08 16 13:30:25.000")!
-        XCTAssertEqual(-11, self.controlDate.monthsFrom(testDate3, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-11, self.controlDate.months(from: testDate3, calendar: Calendar.autoupdatingCurrent))
         
         //Year number earlier, still less than a year
         let testDate5 = self.formatter.date(from: "2015 10 16 13:30:25.000")!
-        XCTAssertEqual(11, self.controlDate.monthsFrom(testDate5, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(11, self.controlDate.months(from: testDate5, calendar: Calendar.autoupdatingCurrent))
         
         //Over a year earlier
         let testDate6 = self.formatter.date(from: "2014 09 16 13:30:25.000")!
-        XCTAssertEqual(24, self.controlDate.monthsFrom(testDate6, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(24, self.controlDate.months(from: testDate6, calendar: Calendar.autoupdatingCurrent))
         
         //Over a year later
         let testDate7 = self.formatter.date(from: "2019 10 12 18:15:12.000")!
-        XCTAssertEqual(-36, self.controlDate.monthsFrom(testDate7, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-36, self.controlDate.months(from: testDate7, calendar: Calendar.autoupdatingCurrent))
     }
     
     func testWeeksFromWithCalendar() {
         //Same week
         let testSameDate = self.formatter.date(from: "2016 09 12 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.weeksFrom(testSameDate, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(0, self.controlDate.weeks(from: testSameDate, calendar: Calendar.autoupdatingCurrent))
         
         //Same year
         let testDate = self.formatter.date(from: "2016 09 26 18:15:12.000")!
-        XCTAssertEqual(-1, self.controlDate.weeksFrom(testDate, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-1, self.controlDate.weeks(from: testDate, calendar: Calendar.autoupdatingCurrent))
         
         //Earlier year
         let testDate2 = self.formatter.date(from: "2015 9 23 13:30:25.000")!
-        XCTAssertEqual(51, self.controlDate.weeksFrom(testDate2, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(51, self.controlDate.weeks(from: testDate2, calendar: Calendar.autoupdatingCurrent))
         
         //Later year
         let testDate3 = self.formatter.date(from: "2017 9 23 13:30:25.000")!
-        XCTAssertEqual(-53, self.controlDate.weeksFrom(testDate3, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-53, self.controlDate.weeks(from: testDate3, calendar: Calendar.autoupdatingCurrent))
     }
     
     func testDaysFromWithCalendar() {
         //Same day
         let testSameDate = self.formatter.date(from: "2016 09 16 18:15:12.000")!
-        XCTAssertEqual(0, self.controlDate.daysFrom(testSameDate, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(0, self.controlDate.days(from: testSameDate, calendar: Calendar.autoupdatingCurrent))
         
         //Same year
         let testDate = self.formatter.date(from: "2016 09 17 18:15:12.000")!
-        XCTAssertEqual(-1, self.controlDate.daysFrom(testDate, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-1, self.controlDate.days(from: testDate, calendar: Calendar.autoupdatingCurrent))
         
         //Earlier year
         let testDate2 = self.formatter.date(from: "2015 9 23 13:30:25.000")!
-        XCTAssertEqual(359, self.controlDate.daysFrom(testDate2, calendar: Calendar.autoupdatingCurrent)) //Would be 358, but leap year!
+        XCTAssertEqual(359, self.controlDate.days(from: testDate2, calendar: Calendar.autoupdatingCurrent)) //Would be 358, but leap year!
         
         //Later year
         let testDate3 = self.formatter.date(from: "2017 9 23 13:30:25.000")!
-        XCTAssertEqual(-372, self.controlDate.daysFrom(testDate3, calendar: Calendar.autoupdatingCurrent))
+        XCTAssertEqual(-372, self.controlDate.days(from: testDate3, calendar: Calendar.autoupdatingCurrent))
     }
     
     

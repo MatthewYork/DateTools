@@ -324,8 +324,8 @@ public extension Date {
      *
      *  @return Int - The Int representation of the years between receiver and provided date
      */
-    func yearsFrom(_ date: Date) -> Int {
-        return yearsFrom(date, calendar:nil)
+    func years(from date: Date) -> Int {
+        return years(from: date, calendar:nil)
     }
     
     /**
@@ -338,8 +338,8 @@ public extension Date {
      *
      *  @return Int - The Int representation of the years between receiver and provided date
      */
-    func monthsFrom(_ date: Date) -> Int {
-        return monthsFrom(date, calendar:nil)
+    func months(from date: Date) -> Int {
+        return months(from: date, calendar:nil)
     }
     
     /**
@@ -352,8 +352,8 @@ public extension Date {
      *
      *  @return Int - The Int representation of the weeks between receiver and provided date
      */
-    func weeksFrom(_ date: Date) -> Int {
-        return weeksFrom(date, calendar:nil)
+    func weeks(from date: Date) -> Int {
+        return weeks(from: date, calendar:nil)
     }
     
     /**
@@ -366,8 +366,8 @@ public extension Date {
      *
      *  @return Int - The Int representation of the days between receiver and provided date
      */
-    func daysFrom(_ date: Date) -> Int {
-        return daysFrom(date, calendar:nil)
+    func days(from date: Date) -> Int {
+        return days(from: date, calendar:nil)
     }
     
     /**
@@ -379,7 +379,7 @@ public extension Date {
      *
      *  @return double - The Int representation of the hours between receiver and provided date
      */
-    func hoursFrom(_ date: Date) -> Int {
+    func hours(from date: Date) -> Int {
         return Int(self.timeIntervalSince(date)/Constants.SecondsInHour);
     }
     
@@ -392,7 +392,7 @@ public extension Date {
      *
      *  @return double - The Int representation of the minutes between receiver and provided date
      */
-    func minutesFrom(_ date: Date) -> Int {
+    func minutes(from date: Date) -> Int {
         return Int(self.timeIntervalSince(date)/Constants.SecondsInMinute)
     }
     
@@ -405,7 +405,7 @@ public extension Date {
      *
      *  @return double - The Int representation of the seconds between receiver and provided date
      */
-    func secondsFrom(_ date: Date) -> Int {
+    func seconds(from date: Date) -> Int {
         return Int(timeIntervalSince(date))
     }
     
@@ -422,7 +422,7 @@ public extension Date {
      *
      *  @return Int - The Int representation of the years between receiver and provided date
      */
-    func yearsFrom(_ date: Date, calendar: Calendar?) -> Int {
+    func years(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -445,7 +445,7 @@ public extension Date {
      *
      *  @return Int - The Int representation of the months between receiver and provided date
      */
-    func monthsFrom(_ date: Date, calendar: Calendar?) -> Int{
+    func months(from date: Date, calendar: Calendar?) -> Int{
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -468,7 +468,7 @@ public extension Date {
      *
      *  @return Int - The Int representation of the weeks between receiver and provided date
      */
-    func weeksFrom(_ date: Date, calendar: Calendar?) -> Int{
+    func weeks(from date: Date, calendar: Calendar?) -> Int{
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -491,7 +491,7 @@ public extension Date {
      *
      *  @return Int - The Int representation of the days between receiver and provided date
      */
-    func daysFrom(_ date: Date, calendar: Calendar?) -> Int {
+    func days(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -663,7 +663,7 @@ public extension Date {
      *  @return Int representing the number of years
      */
     func yearsEarlier(than date: Date) -> Int {
-        return abs(min(yearsFrom(date), 0))
+        return abs(min(years(from: date), 0))
     }
     
     /**
@@ -676,7 +676,7 @@ public extension Date {
      *  @return Int representing the number of months
      */
     func monthsEarlier(than date: Date) -> Int {
-        return abs(min(monthsFrom(date), 0));
+        return abs(min(months(from: date), 0));
     }
     
     /**
@@ -689,7 +689,7 @@ public extension Date {
      *  @return Int representing the number of weeks
      */
     func weeksEarlier(than date: Date) -> Int {
-        return abs(min(weeksFrom(date), 0))
+        return abs(min(weeks(from: date), 0))
     }
     
     /**
@@ -702,7 +702,7 @@ public extension Date {
      *  @return Int representing the number of days
      */
     func daysEarlier(than date: Date) -> Int {
-        return abs(min(daysFrom(date), 0))
+        return abs(min(days(from: date), 0))
     }
     
     /**
@@ -715,7 +715,7 @@ public extension Date {
      *  @return double representing the number of hours
      */
     func hoursEarlier(than date: Date) -> Int {
-        return abs(min(hoursFrom(date), 0))
+        return abs(min(hours(from: date), 0))
     }
     
     /**
@@ -728,7 +728,7 @@ public extension Date {
      *  @return double representing the number of minutes
      */
     func minutesEarlier(than date: Date) -> Int {
-        return abs(min(minutesFrom(date), 0))
+        return abs(min(minutes(from: date), 0))
     }
     
     /**
@@ -741,7 +741,7 @@ public extension Date {
      *  @return double representing the number of seconds
      */
     func secondsEarlier(than date: Date) -> Int {
-        return abs(min(secondsFrom(date), 0))
+        return abs(min(seconds(from: date), 0))
     }
     
     
@@ -757,7 +757,7 @@ public extension Date {
      *  @return Int representing the number of years
      */
     func yearsLater(than date: Date) -> Int {
-        return max(yearsFrom(date), 0)
+        return max(years(from: date), 0)
     }
     
     /**
@@ -770,7 +770,7 @@ public extension Date {
      *  @return Int representing the number of months
      */
     func monthsLater(than date: Date) -> Int {
-        return max(monthsFrom(date), 0)
+        return max(months(from: date), 0)
     }
     
     /**
@@ -783,7 +783,7 @@ public extension Date {
      *  @return Int representing the number of weeks
      */
     func weeksLater(than date: Date) -> Int {
-        return max(weeksFrom(date), 0)
+        return max(weeks(from: date), 0)
     }
     
     /**
@@ -796,7 +796,7 @@ public extension Date {
      *  @return Int representing the number of days
      */
     func daysLater(than date: Date) -> Int {
-        return max(daysFrom(date), 0)
+        return max(days(from: date), 0)
     }
     
     /**
@@ -809,7 +809,7 @@ public extension Date {
      *  @return double representing the number of hours
      */
     func hoursLater(than date: Date) -> Int {
-        return max(hoursFrom(date), 0)
+        return max(hours(from: date), 0)
     }
     
     /**
@@ -822,7 +822,7 @@ public extension Date {
      *  @return double representing the number of minutes
      */
     func minutesLater(than date: Date) -> Int {
-        return max(minutesFrom(date), 0)
+        return max(minutes(from: date), 0)
     }
     
     /**
@@ -835,7 +835,7 @@ public extension Date {
      *  @return double representing the number of seconds
      */
     func secondsLater(than date: Date) -> Int {
-        return max(secondsFrom(date), 0)
+        return max(seconds(from: date), 0)
     }
 
 }
