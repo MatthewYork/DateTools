@@ -91,7 +91,7 @@ class TimeChunkTests: XCTestCase {
         XCTAssertTrue(controlChunkDays.to(.weeks) == 1)
         
         // Descending tests
-        XCTAssertTrue(controlChunkYears.to(.weeks) == 52)
+        XCTAssertTrue(controlChunkYears.to(.weeks) == 2*52)
         XCTAssertTrue(controlChunkWeeks.to(.days) == 7*5)
         XCTAssertTrue(controlChunkDays.to(.hours) == 7*24)
         XCTAssertTrue(controlChunkHours.to(.minutes) == 60*24)

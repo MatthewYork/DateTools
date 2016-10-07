@@ -315,12 +315,12 @@ public extension TimePeriodProtocol {
 open class TimePeriod: TimePeriodProtocol {
     
     /**
-     The start date for a TimePeriod representing the starting boundary of the time period
+        The start date for a TimePeriod representing the starting boundary of the time period
      */
     public var beginning: Date?
     
     /**
-     *  The end date for a TimePeriod representing the ending boundary of the time period
+        The end date for a TimePeriod representing the ending boundary of the time period
      */
     public var end: Date?
     
