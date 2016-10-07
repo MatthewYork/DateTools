@@ -219,25 +219,87 @@ public extension Date {
 	
 	
 	// MARK: - Comparisons
-	
+    /**
+     *  Returns a true if receiver is equal to provided comparison date, otherwise returns false
+     *
+     *  @param date Date - Provided date for comparison
+     *
+     *  @return Bool representing comparison result
+     */
 	func equals(_ date: Date) -> Bool {
 		return self.compare(date) == .orderedSame
 	}
 	
+    /**
+     *  Returns a true if receiver is later than provided comparison date, otherwise returns false
+     *
+     *  @param date Date - Provided date for comparison
+     *
+     *  @return Bool representing comparison result
+     */
 	func isLater(than date: Date) -> Bool {
 		return self.compare(date) == .orderedDescending
 	}
     
+    /**
+     *  Returns a true if receiver is later than or equal to provided comparison date, otherwise returns false
+     *
+     *  @param date Date - Provided date for comparison
+     *
+     *  @return Bool representing comparison result
+     */
     func isLaterThanOrEqual(to date: Date) -> Bool {
         return self.compare(date) == .orderedDescending || self.compare(date) == .orderedSame
     }
 	
+    /**
+     *  Returns a true if receiver is earlier than provided comparison date, otherwise returns false
+     *
+     *  @param date Date - Provided date for comparison
+     *
+     *  @return Bool representing comparison result
+     */
 	func isEarlier(than date: Date) -> Bool {
 		return self.compare(date) == .orderedAscending
 	}
     
+    /**
+     *  Returns a true if receiver is earlier than or equal to the provided comparison date, otherwise returns false
+     *
+     *  @param date Date - Provided date for comparison
+     *
+     *  @return Bool representing comparison result
+     */
     func isEarlierThanOrEqual(to date: Date) -> Bool {
         return self.compare(date) == .orderedAscending || self.compare(date) == .orderedSame
+    }
+    
+    /**
+     *  Returns whether two dates fall on the same day.
+     *
+     *  @param date Date - Date to compare with sender
+     *  @return Bool - true if both paramter dates fall on the same day, NO otherwise
+     */
+    func isSameDay(date : Date ) -> Bool {
+        return Date.isSameDay(date: self, as: date)
+    }
+    
+    /**
+     *  Returns whether two dates fall on the same day.
+     *
+     *  @param date Date - First date to compare
+     *  @param compareDate Date - Second date to compare
+     *  @return Bool - true if both paramter dates fall on the same day, NO otherwise
+     */
+    static func isSameDay(date: Date, as compareDate: Date) -> Bool {
+        let calendar = Calendar.autoupdatingCurrent
+        var components = calendar.dateComponents([.era, .year, .month, .day], from: date)
+        let dateOne = calendar.date(from: components)
+        
+        components = calendar.dateComponents([.era, .year, .month, .day], from: compareDate)
+        let dateTwo = calendar.date(from: components)
+        
+        return (dateOne?.equals(dateTwo!))!
     }
 	
     
@@ -246,88 +308,88 @@ public extension Date {
     // MARK: Time From
     
     /**
-     *  Returns an NSInteger representing the amount of time in years between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in years between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *  Uses the default Gregorian calendar
      *
      *  @param date Date - The provided date for comparison
      *
-     *  @return NSInteger - The NSInteger representation of the years between receiver and provided date
+     *  @return Int - The Int representation of the years between receiver and provided date
      */
     func yearsFrom(_ date: Date) -> Int {
         return yearsFrom(date, calendar:nil)
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in months between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in months between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *  Uses the default Gregorian calendar
      *
      *  @param date Date - The provided date for comparison
      *
-     *  @return NSInteger - The NSInteger representation of the years between receiver and provided date
+     *  @return Int - The Int representation of the years between receiver and provided date
      */
     func monthsFrom(_ date: Date) -> Int {
         return monthsFrom(date, calendar:nil)
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in weeks between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in weeks between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *  Uses the default Gregorian calendar
      *
      *  @param date Date - The provided date for comparison
      *
-     *  @return NSInteger - The double representation of the weeks between receiver and provided date
+     *  @return Int - The Int representation of the weeks between receiver and provided date
      */
     func weeksFrom(_ date: Date) -> Int {
         return weeksFrom(date, calendar:nil)
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in days between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in days between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *  Uses the default Gregorian calendar
      *
      *  @param date Date - The provided date for comparison
      *
-     *  @return NSInteger - The double representation of the days between receiver and provided date
+     *  @return Int - The Int representation of the days between receiver and provided date
      */
     func daysFrom(_ date: Date) -> Int {
         return daysFrom(date, calendar:nil)
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in hours between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in hours between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *
      *  @param date Date - The provided date for comparison
      *
-     *  @return double - The double representation of the hours between receiver and provided date
+     *  @return double - The Int representation of the hours between receiver and provided date
      */
     func hoursFrom(_ date: Date) -> Int {
         return Int(self.timeIntervalSince(date)/Constants.SecondsInHour);
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in minutes between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in minutes between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *
      *  @param date Date - The provided date for comparison
      *
-     *  @return double - The double representation of the minutes between receiver and provided date
+     *  @return double - The Int representation of the minutes between receiver and provided date
      */
     func minutesFrom(_ date: Date) -> Int {
         return Int(self.timeIntervalSince(date)/Constants.SecondsInMinute)
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in seconds between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in seconds between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *
      *  @param date Date - The provided date for comparison
      *
-     *  @return double - The double representation of the seconds between receiver and provided date
+     *  @return double - The Int representation of the seconds between receiver and provided date
      */
     func secondsFrom(_ date: Date) -> Int {
         return Int(timeIntervalSince(date))
@@ -337,13 +399,13 @@ public extension Date {
     // MARK: Time From With Calendar
     
     /**
-     *  Returns an NSInteger representing the amount of time in years between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in years between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *
      *  @param date     Date - The provided date for comparison
      *  @param calendar NSCalendar - The calendar to be used in the calculation
      *
-     *  @return NSInteger - The double representation of the years between receiver and provided date
+     *  @return Int - The Int representation of the years between receiver and provided date
      */
     func yearsFrom(_ date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
@@ -359,13 +421,13 @@ public extension Date {
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in months between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in months between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *
      *  @param date     Date - The provided date for comparison
      *  @param calendar NSCalendar - The calendar to be used in the calculation
      *
-     *  @return NSInteger - The double representation of the months between receiver and provided date
+     *  @return Int - The Int representation of the months between receiver and provided date
      */
     func monthsFrom(_ date: Date, calendar: Calendar?) -> Int{
         var calendarCopy = calendar
@@ -381,13 +443,13 @@ public extension Date {
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in weeks between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in weeks between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *
      *  @param date     Date - The provided date for comparison
      *  @param calendar NSCalendar - The calendar to be used in the calculation
      *
-     *  @return NSInteger - The double representation of the weeks between receiver and provided date
+     *  @return Int - The Int representation of the weeks between receiver and provided date
      */
     func weeksFrom(_ date: Date, calendar: Calendar?) -> Int{
         var calendarCopy = calendar
@@ -403,13 +465,13 @@ public extension Date {
     }
     
     /**
-     *  Returns an NSInteger representing the amount of time in days between the receiver and the provided date.
+     *  Returns an Int representing the amount of time in days between the receiver and the provided date.
      *  If the receiver is earlier than the provided date, the returned value will be negative.
      *
      *  @param date     Date - The provided date for comparison
      *  @param calendar NSCalendar - The calendar to be used in the calculation
      *
-     *  @return NSInteger - The double representation of the days between receiver and provided date
+     *  @return Int - The Int representation of the days between receiver and provided date
      */
     func daysFrom(_ date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
@@ -430,7 +492,7 @@ public extension Date {
     /**
      *  Returns the number of years until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
      *
-     *  @return NSInteger representiation of years
+     *  @return Int representiation of years
      */
     func yearsUntil() -> Int {
         return yearsLaterThan(Date())
@@ -439,7 +501,7 @@ public extension Date {
     /**
      *  Returns the number of months until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
      *
-     *  @return NSInteger representiation of months
+     *  @return Int representiation of months
      */
     func monthsUntil() -> Int {
         return monthsLaterThan(Date())
@@ -448,7 +510,7 @@ public extension Date {
     /**
      *  Returns the number of weeks until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
      *
-     *  @return NSInteger representiation of weeks
+     *  @return Int representiation of weeks
      */
     func weeksUntil() -> Int {
         return weeksLaterThan(Date())
@@ -457,7 +519,7 @@ public extension Date {
     /**
      *  Returns the number of days until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
      *
-     *  @return NSInteger representiation of days
+     *  @return Int representiation of days
      */
     func daysUntil() -> Int {
         return daysLaterThan(Date())
@@ -496,7 +558,7 @@ public extension Date {
     /**
      *  Returns the number of years the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
      *
-     *  @return NSInteger representiation of years
+     *  @return Int representiation of years
      */
     func yearsAgo() -> Int {
         return yearsEarlierThan(Date())
@@ -505,7 +567,7 @@ public extension Date {
     /**
      *  Returns the number of months the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
      *
-     *  @return NSInteger representiation of months
+     *  @return Int representiation of months
      */
     func monthsAgo() -> Int {
         return monthsEarlierThan(Date())
@@ -514,7 +576,7 @@ public extension Date {
     /**
      *  Returns the number of weeks the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
      *
-     *  @return NSInteger representiation of weeks
+     *  @return Int representiation of weeks
      */
     func weeksAgo() -> Int {
         return weeksEarlierThan(Date())
@@ -523,7 +585,7 @@ public extension Date {
     /**
      *  Returns the number of days the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
      *
-     *  @return NSInteger representiation of days
+     *  @return Int representiation of days
      */
     func daysAgo() -> Int {
         return daysEarlierThan(Date())
@@ -565,7 +627,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of years
+     *  @return Int representing the number of years
      */
     func yearsEarlierThan(_ date: Date) -> Int {
         return abs(min(yearsFrom(date), 0))
@@ -577,7 +639,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of months
+     *  @return Int representing the number of months
      */
     func monthsEarlierThan(_ date: Date) -> Int {
         return abs(min(monthsFrom(date), 0));
@@ -589,7 +651,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of weeks
+     *  @return Int representing the number of weeks
      */
     func weeksEarlierThan(_ date: Date) -> Int {
         return abs(min(weeksFrom(date), 0))
@@ -601,7 +663,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of days
+     *  @return Int representing the number of days
      */
     func daysEarlierThan(_ date: Date) -> Int {
         return abs(min(daysFrom(date), 0))
@@ -652,7 +714,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of years
+     *  @return Int representing the number of years
      */
     func yearsLaterThan(_ date: Date) -> Int {
         return max(yearsFrom(date), 0)
@@ -664,7 +726,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of months
+     *  @return Int representing the number of months
      */
     func monthsLaterThan(_ date: Date) -> Int {
         return max(monthsFrom(date), 0)
@@ -676,7 +738,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of weeks
+     *  @return Int representing the number of weeks
      */
     func weeksLaterThan(_ date: Date) -> Int {
         return max(weeksFrom(date), 0)
@@ -688,7 +750,7 @@ public extension Date {
      *
      *  @param date Date - Provided date for comparison
      *
-     *  @return NSInteger representing the number of days
+     *  @return Int representing the number of days
      */
     func daysLaterThan(_ date: Date) -> Int {
         return max(daysFrom(date), 0)

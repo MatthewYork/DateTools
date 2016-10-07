@@ -74,9 +74,6 @@ class DateComparatorsTests: XCTestCase {
         
     }
     
-    func testDaysInMonth() {
-        XCTFail()
-    }
     
     // MARK: - Comparisons
     func testEquals() {
