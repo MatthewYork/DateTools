@@ -92,7 +92,7 @@ open class TimePeriodGroup: Sequence {
         var compArray1: [TimePeriodProtocol] = array1.sorted {$0.beginning! < $1.beginning!}
         var compArray2: [TimePeriodProtocol] = array2.sorted {$0.beginning! < $1.beginning!}
         for x in 0..<compArray1.count {
-            if !compArray1[x].equals(period: compArray2[x]) {
+            if !compArray1[x].equals(compArray2[x]) {
                 return false
             }
         }

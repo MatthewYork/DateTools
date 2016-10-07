@@ -111,7 +111,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         let collection = TimePeriodCollection()
         //Filter by periop
         collection.periods = self.periods.filter({ (timePeriod: TimePeriodProtocol) -> Bool in
-            return timePeriod.contains(date: date, interval: .closed)
+            return timePeriod.contains(date, interval: .closed)
         })
         return collection
     }

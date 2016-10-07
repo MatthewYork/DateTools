@@ -98,7 +98,7 @@ class TimePeriodGroupTests : XCTestCase {
     func testMakeIterator() {
         var testIterator = controlCollection.makeIterator()
         let testPeriod = testIterator.next()! as! TimePeriod
-        XCTAssertTrue(testPeriod.equals(period: controlCollection[0] as! TimePeriod))
+        XCTAssertTrue(testPeriod.equals(controlCollection[0] as! TimePeriod))
     }
     
     func testMap() {
@@ -130,15 +130,17 @@ class TimePeriodGroupTests : XCTestCase {
     }
     
     func testSplit() {
-        let testCollectionSplit = controlCollection.split { (timePeriod) -> Bool in
-            timePeriod.contains(date: self.formatter.date(from: "2016 12 05 18:15:12.000")!, interval: .closed)
-        }
-        let testCollection = TimePeriodCollection()
-        for period in testCollectionSplit[0] {
-            testCollection.append(period)
-        }
-        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
-        XCTAssertTrue(testCollection.duration == TimeInterval(testPeriod.seconds))
+//        let testCollectionSplit = controlCollection.split { (timePeriod) -> Bool in
+//            timePeriod.contains(date: self.formatter.date(from: "2016 12 05 18:15:12.000")!, interval: .closed)
+//        }
+//        let testCollection = TimePeriodCollection()
+//        for period in testCollectionSplit[0] {
+//            testCollection.append(period)
+//        }
+//        let testPeriod = TimePeriod(beginning: self.formatter.date(from: "2014 11 05 18:15:12.000")!, end: self.formatter.date(from: "2016 11 05 18:15:12.000")!)
+//        XCTAssertTrue(testCollection.duration == TimeInterval(testPeriod.seconds))
+        
+        XCTFail()
     }
 }
 

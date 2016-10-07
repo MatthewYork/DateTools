@@ -158,7 +158,7 @@ public extension TimePeriodProtocol {
         return .none;
     }
     
-    func equals(period: TimePeriodProtocol) -> Bool {
+    func equals(_ period: TimePeriodProtocol) -> Bool {
         return self.beginning == period.beginning && self.end == period.end
     }
     
@@ -166,7 +166,7 @@ public extension TimePeriodProtocol {
         return period.beginning!.isEarlierThanOrEqual(to: self.beginning!) && period.end!.isLaterThanOrEqual(to: self.end!)
     }
     
-    func contains(date: Date, interval: Interval) -> Bool {
+    func contains(_ date: Date, interval: Interval) -> Bool {
         if (interval == .open) {
             return self.beginning!.isEarlier(than: date) && self.end!.isLater(than: date)
         }
@@ -177,7 +177,7 @@ public extension TimePeriodProtocol {
         return false
     }
     
-    func contains(period: TimePeriodProtocol) -> Bool {
+    func contains(_ period: TimePeriodProtocol) -> Bool {
         return self.beginning!.isEarlierThanOrEqual(to: period.beginning!) && self.end!.isLaterThanOrEqual(to: period.end!)
     }
     
@@ -465,7 +465,7 @@ open class TimePeriod: TimePeriodProtocol {
     // MARK: - Operator Overloads
     
     static func ==(leftAddend: TimePeriod, rightAddend: TimePeriod) -> Bool {
-        return leftAddend.equals(period: rightAddend)
+        return leftAddend.equals(rightAddend)
     }
     
     // Default anchor = end
@@ -487,7 +487,7 @@ open class TimePeriod: TimePeriodProtocol {
     }
     
     static func ==(left: TimePeriod, right: TimePeriodProtocol) -> Bool {
-        return left.equals(period: right)
+        return left.equals(right)
     }
     
 }
