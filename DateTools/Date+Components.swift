@@ -143,6 +143,11 @@ public extension Date {
 		return component(.yearForWeekOfYear)
 	}
     
+    var daysInMonth: Int {
+        let calendar = Calendar.autoupdatingCurrent
+        let days = calendar.range(of: .day, in: .month, for: self)
+        return days!.count
+    }
     
     // MARK: - Set Components
     

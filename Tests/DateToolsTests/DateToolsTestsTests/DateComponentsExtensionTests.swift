@@ -194,4 +194,7 @@ class DateComponentsTests: XCTestCase {
         XCTAssertFalse(testDate3.isWeekend)
     }
     
+    func testDaysInMonth() {
+        XCTAssertEqual(30, self.controlDate.daysInMonth)
+    }
 }
