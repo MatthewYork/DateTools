@@ -9,11 +9,15 @@
 import Foundation
 
 /**
-    # TimePeriodChain
-    
-    Time period chains serve as a tightly coupled set of time periods. They are always organized by start and end date, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period chains do not allow overlaps within their set of time periods. This type of group is ideal for modeling schedules like sequential meetings or appointments.
- 
-    [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-chains) for more information.
+ *  # TimePeriodChain
+ *
+ *  Time period chains serve as a tightly coupled set of time periods. They are
+ *  always organized by start and end date, and have their own characteristics like
+ *  a StartDate and EndDate that are extrapolated from the time periods within. Time 
+ *  period chains do not allow overlaps within their set of time periods. This type of 
+ *  group is ideal for modeling schedules like sequential meetings or appointments.
+ *
+ *  [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-chains) for more information.
  */
 open class TimePeriodChain: TimePeriodGroup {
     

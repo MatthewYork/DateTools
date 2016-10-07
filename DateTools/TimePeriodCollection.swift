@@ -9,11 +9,14 @@
 import Foundation
 
 /**
-    # TimePeriodCollection
-    
-     Time period collections serve as loose sets of time periods. They are unorganized unless you decide to sort them, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period collections allow overlaps within their set of time periods.
- 
-    [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-collections) for more information.
+ *  # TimePeriodCollection
+ *
+ *  Time period collections serve as loose sets of time periods. They are
+ *  unorganized unless you decide to sort them, and have their own characteristics
+ *  like a `beginning` and `end` that are extrapolated from the time periods within. Time
+ *  period collections allow overlaps within their set of time periods.
+ *
+ *  [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-collections) for more information.
  */
 open class TimePeriodCollection: TimePeriodGroup {
     
@@ -89,7 +92,8 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     // Potentially use .reduce() instead of these functions
     /**
-        Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s whose start and end dates fall completely inside the interval of the given ```TimePeriod```
+     *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s
+     *  whose start and end dates fall completely inside the interval of the given `TimePeriod`
      */
     func allInside(in period: TimePeriodProtocol) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
@@ -101,7 +105,7 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
     
     /**
-        Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing the given date
+     *  Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing the given date
      */
     func periodsIntersected(by date: Date) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
@@ -113,7 +117,8 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
     
     /**
-     Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing either the start date or the end date--or both--of the given ```TimePeriod```
+     *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s containing either 
+     *  the start date or the end date--or both--of the given `TimePeriod`
      */
     func periodsIntersected(by period: TimePeriodProtocol) -> TimePeriodCollection {
         let collection = TimePeriodCollection()

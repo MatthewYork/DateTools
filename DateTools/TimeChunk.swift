@@ -43,13 +43,13 @@ public struct TimeChunk {
     // MARK: - Conversion
     
     /**
-        # To
-        Generic conversion method. Years are taken to mean
-        365 days. This method should not be used for accurate
-        date operations. Ex. 456.days.to(.years) will return 1.
-     
-        ! Months are not supported for conversions. They are not a
-        well defined unit of time without the context of a calendar. !
+     *  # To
+     *  Generic conversion method. Years are taken to mean
+     *  365 days. This method should not be used for accurate
+     *  date operations. Ex. 456.days.to(.years) will return 1.
+     *
+     *  ! Months are not supported for conversions. They are not a
+     *  well defined unit of time without the context of a calendar. !
      */
     func to(_ unit: TimeUnits) -> Int {
         if self.months != 0 {

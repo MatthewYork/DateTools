@@ -9,9 +9,12 @@
 // MARK: - Enums
 
 /**
- There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions may be asked using the relationship methods of DTTimePeriod.
- 
- Further reading: [GitHub](https://github.com/MatthewYork/DateTools#relationships), [CodeProject](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
+ *  There may come a need, say when you are making a scheduling app, when 
+ *  it might be good to know how two time periods relate to one another. 
+ *  Are they the same? Is one inside of another? All these questions may be 
+ *  asked using the relationship methods of DTTimePeriod.
+ *
+ *  Further reading: [GitHub](https://github.com/MatthewYork/DateTools#relationships), [CodeProject](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
  */
 public enum Relation {
     case after
@@ -32,11 +35,11 @@ public enum Relation {
 
 
 /**
- Whether the time period is Open or Closed
- 
- Closed: The boundary moment of time is included in calculations.
- 
- Open: The boundary moment of time represents a boundary value which is excluded in regard to calculations.
+ *  Whether the time period is Open or Closed
+ *
+ *  Closed: The boundary moment of time is included in calculations.
+ *
+ *  Open: The boundary moment of time represents a boundary value which is excluded in regard to calculations.
  */
 public enum Interval {
     case open
@@ -44,7 +47,9 @@ public enum Interval {
 }
 
 /**
- When a time periods is lengthened or shortened, it does so anchoring one date of the time period and then changing the other one. There is also an option to anchor the centerpoint of the time period, changing both the start and end dates.
+ *  When a time periods is lengthened or shortened, it does so anchoring one date
+ *  of the time period and then changing the other one. There is also an option to 
+ *  anchor the centerpoint of the time period, changing both the start and end dates.
  */
 public enum Anchor {
     case beginning
@@ -52,7 +57,11 @@ public enum Anchor {
     case end
 }
 
-// Components of calendar
+/**
+ *  When a time periods is lengthened or shortened, it does so anchoring one date 
+ *  of the time period and then changing the other one. There is also an option to 
+ *  anchor the centerpoint of the time period, changing both the start and end dates.
+ */
 public enum Component {
     case year
     case month

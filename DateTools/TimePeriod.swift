@@ -11,18 +11,20 @@ import Foundation
 
 
 /**
- # TimePeriod
- 
- In DateTools, time periods are represented by the TimePeriod protocol. Required variables and method impleementations are bound below. An inheritable implementation of the TimePeriodProtocol is available through the TimePeriodClass
- 
- [Visit our github page](https://github.com/MatthewYork/DateTools#time-periods) for more information.
+ *  # TimePeriod
+ *
+ *  In DateTools, time periods are represented by the TimePeriod protocol. 
+ *  Required variables and method impleementations are bound below. An inheritable 
+ *  implementation of the TimePeriodProtocol is available through the TimePeriodClass
+ *
+ *  [Visit our github page](https://github.com/MatthewYork/DateTools#time-periods) for more information.
  */
 public protocol TimePeriodProtocol {
     
     // MARK: - Variables
     
     /**
-     The start date for a TimePeriod representing the starting boundary of the time period
+     *  The start date for a TimePeriod representing the starting boundary of the time period
      */
     var beginning: Date? {get set}
     
@@ -306,21 +308,23 @@ public extension TimePeriodProtocol {
 }
 
 /**
-    # TimePeriod
-    
-    In DateTools, time periods are represented by the case TimePeriod class and come with a suite of initializaiton, manipulation, and comparison methods to make working with them a breeze.
- 
-    [Visit our github page](https://github.com/MatthewYork/DateTools#time-periods) for more information.
+ *  # TimePeriod
+ *
+ *  In DateTools, time periods are represented by the case TimePeriod class
+ *  and come with a suite of initializaiton, manipulation, and comparison methods 
+ *  to make working with them a breeze.
+ *
+ *  [Visit our github page](https://github.com/MatthewYork/DateTools#time-periods) for more information.
  */
 open class TimePeriod: TimePeriodProtocol {
     
     /**
-        The start date for a TimePeriod representing the starting boundary of the time period
+     *  The start date for a TimePeriod representing the starting boundary of the time period
      */
     public var beginning: Date?
     
     /**
-        The end date for a TimePeriod representing the ending boundary of the time period
+     *  The end date for a TimePeriod representing the ending boundary of the time period
      */
     public var end: Date?
     
