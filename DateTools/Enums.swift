@@ -14,7 +14,8 @@
  *  Are they the same? Is one inside of another? All these questions may be 
  *  asked using the relationship methods of DTTimePeriod.
  *
- *  Further reading: [GitHub](https://github.com/MatthewYork/DateTools#relationships), [CodeProject](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
+ *  Further reading: [GitHub](https://github.com/MatthewYork/DateTools#relationships), 
+ *  [CodeProject](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET)
  */
 public enum Relation {
     case after
@@ -71,9 +72,10 @@ public enum Component {
     case second
 }
 
-// Time Units
-// (includes weeks, but not months since
-// their exact size is dependent on the date)
+/**
+ *  Time units that include weeks, but not months since their exact size is dependent
+ *  on the date. Used for TimeChunk conversions.
+ */
 public enum TimeUnits {
     case years
     case weeks

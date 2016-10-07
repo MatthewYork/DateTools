@@ -10,7 +10,6 @@ import Foundation
 
 /**
  *  # TimePeriodChain
- *
  *  Time period chains serve as a tightly coupled set of time periods. They are
  *  always organized by start and end date, and have their own characteristics like
  *  a StartDate and EndDate that are extrapolated from the time periods within. Time 

@@ -16,8 +16,31 @@ public extension Date {
         return _defaultCalendarIdentifier
     }
 	
-	// MARK: - Chunk between
 	
+    /**
+     *  # Chunk Between
+     *  Given a date, returns a `TimeChunk` with components in their most natural form. Example:
+     *  ```
+     *  let formatter = DateFormatter()
+     *  formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+     *  let birthday = formatter.date(from: "2015 11 24 14:50:12.000")!
+     *  let age = birthday.chunkBetween(date: formatter.date(from: "2016 10 07 15:27:12.000")!)
+     *  ```
+     *  The age variable will have a chunk of time with year, month, day, hour, minute, and second
+     *  components (note that we do not use weeks since they are not components of `Calendar`). So if
+     *  you just wanted the age in years, you could then say: age.years.
+     *
+     *  The chunk is calculated exactly as you'd say it in real life, always converting up when a lower
+     *  unit equals 1 of the unit above it. The above example returns `TimeChunk(seconds: 0, minutes: 37,
+     *  hours: 0, days: 13, weeks: 0, months: 10, years: 0)`.
+     *
+     *  Passing a future date returns a TimeChunk with all positive components and passing a date in the past
+     *  returns one with all negative components.
+     *
+     *  @param date Date - The date of reference from the date called on.
+     *
+     *  @return TimeChunk - A TimeChunk representing the time between the dates, in natural form
+     */
     func chunkBetween(date: Date) -> TimeChunk {
         let calendar = Calendar.autoupdatingCurrent
         var selfComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)

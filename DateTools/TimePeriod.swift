@@ -12,7 +12,6 @@ import Foundation
 
 /**
  *  # TimePeriod
- *
  *  In DateTools, time periods are represented by the TimePeriod protocol. 
  *  Required variables and method impleementations are bound below. An inheritable 
  *  implementation of the TimePeriodProtocol is available through the TimePeriodClass
@@ -309,7 +308,6 @@ public extension TimePeriodProtocol {
 
 /**
  *  # TimePeriod
- *
  *  In DateTools, time periods are represented by the case TimePeriod class
  *  and come with a suite of initializaiton, manipulation, and comparison methods 
  *  to make working with them a breeze.

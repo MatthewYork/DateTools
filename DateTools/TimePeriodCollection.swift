@@ -10,7 +10,6 @@ import Foundation
 
 /**
  *  # TimePeriodCollection
- *
  *  Time period collections serve as loose sets of time periods. They are
  *  unorganized unless you decide to sort them, and have their own characteristics
  *  like a `beginning` and `end` that are extrapolated from the time periods within. Time

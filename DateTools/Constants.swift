@@ -10,7 +10,7 @@
 import Foundation
 
 /**
-    Time conversions used across DateTools
+ *  Time conversions used across DateTools
  */
 class Constants {
     static let SecondsInYear: TimeInterval = 31536000

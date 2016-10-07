@@ -10,7 +10,6 @@ import Foundation
 
 /** 
  *  # TimePeriodGroup
- *
  *  Time period groups are the final abstraction of date and time in DateTools. Here, time 
  *  periods are gathered and organized into something useful. There are two main types of time
  *  period groups, `TimePeriodCollection` and `TimePeriodChain`.
