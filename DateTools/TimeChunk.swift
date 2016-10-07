@@ -111,12 +111,20 @@ public struct TimeChunk {
     
     // MARK: - Date Creation
     
-    func earlier(than: Date = Date()) -> Date {
-        return Date()
+    var earlier: Date {
+        return earlier(than: Date())
     }
     
-    func later(than: Date = Date()) -> Date {
-        return Date()
+    var later: Date {
+        return later(than: Date())
+    }
+    
+    func earlier(than date: Date) -> Date {
+        return date.subtract(self)
+    }
+    
+    func later(than date: Date) -> Date {
+        return date.add(self)
     }
     
     // MARK: - Lengthen / Shorten

@@ -18,6 +18,8 @@ class TimeChunkTests: XCTestCase {
     var controlChunkWeeks = TimeChunk()
     var controlChunkMonths = TimeChunk()
     var controlChunkYears = TimeChunk()
+    var controlDate = Date()
+    var formatter = DateFormatter()
     
     override func setUp() {
         super.setUp()
@@ -29,6 +31,10 @@ class TimeChunkTests: XCTestCase {
         controlChunkWeeks = 5.weeks
         controlChunkMonths = 12.months
         controlChunkYears = 2.years
+        
+        self.formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
+        self.formatter.timeZone = TimeZone(abbreviation: "UTC")
+        self.controlDate = formatter.date(from: "2014 11 05 18:15:12.001")!
     }
     
     override func tearDown() {
@@ -145,20 +151,14 @@ class TimeChunkTests: XCTestCase {
     
     // MARK: - Date Creation
     
-    func testAgo() {
-        XCTFail()
-    }
-    
-    func testUntil() {
-        XCTFail()
-    }
-    
     func testEarlierThan() {
-        XCTFail()
+        let testDate = formatter.date(from: "2014 11 04 18:15:12.001")!
+        XCTAssertEqual(testDate, 1.days.earlier(than:controlDate))
     }
     
     func testLaterThan() {
-        XCTFail()
+        let testDate = formatter.date(from: "2014 11 06 18:15:12.001")!
+        XCTAssertEqual(testDate, 1.days.later(than:controlDate))
     }
     
     
