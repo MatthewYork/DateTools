@@ -137,7 +137,7 @@ class TimePeriodCollectionTests : XCTestCase {
     
     func testEquals() {
         let testCollection = controlCollection
-        XCTAssertTrue(testCollection.equals(group: controlCollection))
+        XCTAssertTrue(testCollection.equals(controlCollection))
     }
     
     

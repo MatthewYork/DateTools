@@ -114,7 +114,7 @@ open class TimePeriodChain: TimePeriodGroup {
     // MARK: - Operator Overloads
     
     static func ==(left: TimePeriodChain, right: TimePeriodChain) -> Bool {
-        return left.equals(group: right)
+        return left.equals(right)
     }
 
 }

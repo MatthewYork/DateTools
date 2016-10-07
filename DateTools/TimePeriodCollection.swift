@@ -145,7 +145,7 @@ open class TimePeriodCollection: TimePeriodGroup {
     // MARK: - Operator Overloads
     
     static func ==(left: TimePeriodCollection, right: TimePeriodCollection) -> Bool {
-        return left.equals(group: right)
+        return left.equals(right)
     }
     
     //MARK: - Helpers

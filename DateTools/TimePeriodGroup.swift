@@ -47,7 +47,7 @@ open class TimePeriodGroup: Sequence {
     
     // MARK: - Comparisons
     
-    func equals(group: TimePeriodGroup) -> Bool {
+    func equals(_ group: TimePeriodGroup) -> Bool {
         return containSameElements(array1: self.periods, group.periods)
     }
     

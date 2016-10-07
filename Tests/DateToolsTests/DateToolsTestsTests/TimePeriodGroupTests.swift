@@ -82,14 +82,14 @@ class TimePeriodGroupTests : XCTestCase {
         chain.append(thirdPeriod)
         chain.append(fourthPeriod)
         // Test same as control
-        XCTAssertTrue(self.controlCollection.equals(group: collectionSame))
+        XCTAssertTrue(self.controlCollection.equals(collectionSame))
         // Test different collection
         collectionSame.append(firstPeriod)
-        XCTAssertFalse(self.controlCollection.equals(group: collectionSame))
+        XCTAssertFalse(self.controlCollection.equals(collectionSame))
         // Test same chain with same periods
         // Test different chain
         chain.append(firstPeriod)
-        XCTAssertFalse(self.controlCollection.equals(group: chain))
+        XCTAssertFalse(self.controlCollection.equals(chain))
     }
     
     
@@ -126,7 +126,7 @@ class TimePeriodGroupTests : XCTestCase {
         for period in controlCollection {
             testCollection.append(period)
         }
-        XCTAssert(testCollection.equals(group: controlCollection))
+        XCTAssert(testCollection.equals(controlCollection))
     }
     
     func testSplit() {
