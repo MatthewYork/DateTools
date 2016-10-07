@@ -131,6 +131,15 @@ class TimeChunkTests: XCTestCase {
         XCTAssertTrue(controlChunkDays.to(.years) == 0)
         
         XCTAssertTrue(controlChunkWeeks.to(.years) == 0)
+        
+        //Complex chunk tests
+        let complexChunk = TimeChunk(seconds: 60, minutes: 59, hours: 47, days: 363, weeks: 2, months: 0, years: 0)
+        XCTAssert(complexChunk.to(.years) == 1)
+        XCTAssert(complexChunk.to(.weeks) == 54)
+        XCTAssert(complexChunk.to(.days) == 379)
+        XCTAssert(complexChunk.to(.hours) == 379 * 24)
+        XCTAssert(complexChunk.to(.minutes) == 379 * 24 * 60)
+        XCTAssert(complexChunk.to(.seconds) == 379 * 24 * 60 * 60)
     }
     
     
