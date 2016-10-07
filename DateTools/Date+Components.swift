@@ -126,62 +126,107 @@ public extension Date {
 	
 	// MARK: - Components
 	
+    /**
+     *  Convenience getter for the date's `era` component
+     */
 	var era: Int {
 		return component(.era)
 	}
 	
+    /**
+     *  Convenience getter for the date's `year` component
+     */
 	var year: Int {
 		return component(.year)
 	}
 	
+    /**
+     *  Convenience getter for the date's `month` component
+     */
 	var month: Int {
 		return component(.month)
 	}
 	
+    /**
+     *  Convenience getter for the date's `week` component
+     */
 	var week: Int {
 		return component(.weekday)
 	}
 	
+    /**
+     *  Convenience getter for the date's `day` component
+     */
 	var day: Int {
 		return component(.day)
 	}
 	
+    /**
+     *  Convenience getter for the date's `hour` component
+     */
 	var hour: Int {
 		return component(.hour)
 	}
 	
+    /**
+     *  Convenience getter for the date's `minute` component
+     */
 	var minute: Int {
 		return component(.minute)
 	}
 	
+    /**
+     *  Convenience getter for the date's `second` component
+     */
 	var second: Int {
 		return component(.second)
 	}
 	
+    /**
+     *  Convenience getter for the date's `weekday` component
+     */
 	var weekday: Int {
 		return component(.weekday)
 	}
 	
+    /**
+     *  Convenience getter for the date's `weekdayOrdinal` component
+     */
 	var weekdayOrdinal: Int {
 		return component(.weekdayOrdinal)
 	}
 	
+    /**
+     *  Convenience getter for the date's `quarter` component
+     */
 	var quarter: Int {
 		return component(.quarter)
 	}
 	
+    /**
+     *  Convenience getter for the date's `weekOfYear` component
+     */
 	var weekOfMonth: Int {
 		return component(.weekOfMonth)
 	}
 	
+    /**
+     *  Convenience getter for the date's `weekOfYear` component
+     */
 	var weekOfYear: Int {
 		return component(.weekOfYear)
 	}
 	
+    /**
+     *  Convenience getter for the date's `yearForWeekOfYear` component
+     */
 	var yearForWeekOfYear: Int {
 		return component(.yearForWeekOfYear)
 	}
     
+    /**
+     *  Convenience getter for the date's `daysInMonth` component
+     */
     var daysInMonth: Int {
         let calendar = Calendar.autoupdatingCurrent
         let days = calendar.range(of: .day, in: .month, for: self)
@@ -190,26 +235,44 @@ public extension Date {
     
     // MARK: - Set Components
     
+    /**
+     *  Convenience setter for the date's `year` component
+     */
     mutating func year(_ year: Int) {
         self = Date.init(year: year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
     }
     
+    /**
+     *  Convenience setter for the date's `month` component
+     */
     mutating func month(_ month: Int) {
         self = Date.init(year: self.year, month: month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
     }
     
+    /**
+     *  Convenience setter for the date's `day` component
+     */
     mutating func day(_ day: Int) {
         self = Date.init(year: self.year, month: self.month, day: day, hour: self.hour, minute: self.minute, second: self.second)
     }
     
+    /**
+     *  Convenience setter for the date's `hour` component
+     */
     mutating func hour(_ hour: Int) {
         self = Date.init(year: self.year, month: self.month, day: self.day, hour: hour, minute: self.minute, second: self.second)
     }
     
+    /**
+     *  Convenience setter for the date's `minute` component
+     */
     mutating func minute(_ minute: Int) {
         self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: minute, second: self.second)
     }
     
+    /**
+     *  Convenience setter for the date's `second` component
+     */
     mutating func second(_ second: Int) {
         self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: second)
     }
@@ -217,6 +280,9 @@ public extension Date {
     
     // MARK: - Bools
 	
+    /**
+     *  Determine if date is in a leap year
+     */
 	var isInLeapYear: Bool {
 		let yearComponent = component(.year)
 		
@@ -232,21 +298,33 @@ public extension Date {
 		return false
 	}
 	
+    /**
+     *  Determine if date is within the current day
+     */
 	var isToday: Bool {
 		let calendar = Calendar.autoupdatingCurrent
 		return calendar.isDateInToday(self)
 	}
 	
+    /**
+     *  Determine if date is within the day tomorrow
+     */
 	var isTomorrow: Bool {
 		let calendar = Calendar.autoupdatingCurrent
         return calendar.isDateInTomorrow(self)
 	}
 	
+    /**
+     *  Determine if date is within yesterday
+     */
 	var isYesterday: Bool {
 		let calendar = Calendar.autoupdatingCurrent
         return calendar.isDateInYesterday(self)
 	}
 	
+    /**
+     *  Determine if date is in a weekend
+     */
 	var isWeekend: Bool {
 		if weekday == 7 || weekday == 1 {
 			return true

@@ -8,14 +8,15 @@
 
 import Foundation
 
+/**
+ *  Date + Comparators
+ *
+ *  Extends the Date class by adding methods for calculating the chunk
+ *  of time between two dates and providing many variables and functions
+ *  that compare the ordinality of two dates and the space between two dates
+ *  for a given unit of time.
+ */
 public extension Date {
-    
-    static var _defaultCalendarIdentifier = Calendar.Identifier.gregorian;
-    
-    private static func defaultCalendarIdentifier() -> Calendar.Identifier {
-        return _defaultCalendarIdentifier
-    }
-	
 	
     /**
      *  # Chunk Between
