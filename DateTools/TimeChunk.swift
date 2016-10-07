@@ -111,19 +111,11 @@ public struct TimeChunk {
     
     // MARK: - Date Creation
     
-    func ago() -> Date {
+    func earlier(than: Date = Date()) -> Date {
         return Date()
     }
     
-    func until() -> Date {
-        return Date()
-    }
-    
-    func earlier(than: Date) -> Date {
-        return Date()
-    }
-    
-    func later(than: Date) -> Date {
+    func later(than: Date = Date()) -> Date {
         return Date()
     }
     
