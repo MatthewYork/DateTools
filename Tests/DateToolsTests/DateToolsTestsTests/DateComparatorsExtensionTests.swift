@@ -372,31 +372,133 @@ class DateComparatorsTests: XCTestCase {
     
     // MARK: Earlier Than
     func testYearsEarlierThan() {
-        XCTFail()
+        //Under a year
+        let testDate = self.formatter.date(from: "2016 11 12 18:15:12.000")!
+        XCTAssertEqual(0, self.controlDate.yearsEarlierThan(testDate))
+        
+        //Exactly a year
+        let testDate2 = self.formatter.date(from: "2017 09 16 13:30:25.000")!
+        XCTAssertEqual(1, self.controlDate.yearsEarlierThan(testDate2))
+        
+        //Year number later, still less than a year
+        let testDate3 = self.formatter.date(from: "2017 01 16 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.yearsEarlierThan(testDate3))
+        
+        //Year number earlier, still less than a year
+        let testDate5 = self.formatter.date(from: "2015 11 16 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.yearsEarlierThan(testDate5))
+        
+        //Over a year earlier
+        let testDate6 = self.formatter.date(from: "2018 09 16 13:30:25.000")!
+        XCTAssertEqual(2, self.controlDate.yearsEarlierThan(testDate6))
+        
+        //Over a year earlier
+        let testDate7 = self.formatter.date(from: "2013 09 16 13:15:12.000")!
+        XCTAssertEqual(0, self.controlDate.yearsEarlierThan(testDate7))
+        
+        //Over a year later, but less than a year in final comparison year
+        let testDate8 = self.formatter.date(from: "2019 09 01 13:30:25.000")!
+        XCTAssertEqual(2,self.controlDate.yearsEarlierThan(testDate8))
+        
+        ///Over a year earlier, but less than a year in final comparison year
+        let testDate9 = self.formatter.date(from: "2014 09 17 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.yearsEarlierThan(testDate9))
     }
     
     func testMonthsEarlierThan() {
-        XCTFail()
+        //Under a month
+        let testDate = self.formatter.date(from: "2016 09 18 18:15:12.000")!
+        XCTAssertEqual(0, self.controlDate.monthsEarlierThan(testDate))
+        
+        //Exactly a month
+        let testDate2 = self.formatter.date(from: "2016 10 16 13:30:25.000")!
+        XCTAssertEqual(1, self.controlDate.monthsEarlierThan(testDate2))
+        
+        //Year number later, still less than a year
+        let testDate3 = self.formatter.date(from: "2017 08 16 13:30:25.000")!
+        XCTAssertEqual(11, self.controlDate.monthsEarlierThan(testDate3))
+        
+        //Year number earlier, still less than a year
+        let testDate5 = self.formatter.date(from: "2015 10 16 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.monthsEarlierThan(testDate5))
+        
+        //Over a year earlier
+        let testDate6 = self.formatter.date(from: "2014 09 16 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.monthsEarlierThan(testDate6))
+        
+        //Over a year later
+        let testDate7 = self.formatter.date(from: "2019 10 12 18:15:12.000")!
+        XCTAssertEqual(36, self.controlDate.monthsEarlierThan(testDate7))
     }
     
     func testWeeksEarlierThan() {
-        XCTFail()
+        //Same week
+        let testSameDate = self.formatter.date(from: "2016 09 12 18:15:12.000")!
+        XCTAssertEqual(0, self.controlDate.weeksEarlierThan(testSameDate))
+        
+        //Same year
+        let testDate = self.formatter.date(from: "2016 09 26 18:15:12.000")!
+        XCTAssertEqual(1, self.controlDate.weeksEarlierThan(testDate))
+        
+        //Earlier year
+        let testDate2 = self.formatter.date(from: "2015 9 23 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.weeksEarlierThan(testDate2))
+        
+        //Later year
+        let testDate3 = self.formatter.date(from: "2017 9 23 13:30:25.000")!
+        XCTAssertEqual(53, self.controlDate.weeksEarlierThan(testDate3))
     }
     
     func testDaysEarlierThan() {
-        XCTFail()
+        //Same day
+        let testSameDate = self.formatter.date(from: "2016 09 16 18:15:12.000")!
+        XCTAssertEqual(0, self.controlDate.daysEarlierThan(testSameDate))
+        
+        //Same year
+        let testDate = self.formatter.date(from: "2016 09 17 18:15:12.000")!
+        XCTAssertEqual(1, self.controlDate.daysEarlierThan(testDate))
+        
+        //Earlier year
+        let testDate2 = self.formatter.date(from: "2015 9 23 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.daysEarlierThan(testDate2))
+        
+        //Later year
+        let testDate3 = self.formatter.date(from: "2017 9 23 13:30:25.000")!
+        XCTAssertEqual(372, self.controlDate.daysEarlierThan(testDate3))
     }
     
     func testHoursEarlierThan() {
-        XCTFail()
+        //Same year
+        let testDate = self.formatter.date(from: "2016 09 16 18:15:12.000")!
+        XCTAssertEqual(4, self.controlDate.hoursEarlierThan(testDate))
+        
+        //Earlier year
+        let testDate2 = self.formatter.date(from: "2016 9 16 10:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.hoursEarlierThan(testDate2))
     }
     
     func testMinutesEarlierThan() {
-        XCTFail()
+        //Later
+        let testDate = self.formatter.date(from: "2016 09 16 15:30:25.000")!
+        XCTAssertEqual(120, self.controlDate.minutesEarlierThan(testDate))
+        
+        //Earlier
+        let testDate2 = self.formatter.date(from: "2016 9 16 10:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.minutesEarlierThan(testDate2))
     }
     
     func testSecondsEarlierThan() {
-        XCTFail()
+        //Same
+        let testSameDate = self.formatter.date(from: "2016 09 16 13:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.secondsEarlierThan(testSameDate))
+        
+        //Later
+        let testDate = self.formatter.date(from: "2016 09 16 15:30:25.000")!
+        XCTAssertEqual(7200, self.controlDate.secondsEarlierThan(testDate))
+        
+        //Earlier
+        let testDate2 = self.formatter.date(from: "2016 9 16 10:30:25.000")!
+        XCTAssertEqual(0, self.controlDate.secondsEarlierThan(testDate2))
     }
     
     // MARK: Later Than
