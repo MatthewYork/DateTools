@@ -45,42 +45,42 @@ public extension TimePeriodProtocol {
     
     var years: Int {
         if self.beginning != nil && self.end != nil {
-            return self.beginning!.yearsEarlierThan(self.end!)
+            return self.beginning!.yearsEarlier(than: self.end!)
         }
         return Int.max
     }
     
     var weeks: Int {
         if self.beginning != nil && self.end != nil {
-            return self.beginning!.weeksEarlierThan(self.end!)
+            return self.beginning!.weeksEarlier(than: self.end!)
         }
         return Int.max
     }
     
     var days: Int {
         if self.beginning != nil && self.end != nil {
-            return self.beginning!.daysEarlierThan(self.end!)
+            return self.beginning!.daysEarlier(than: self.end!)
         }
         return Int.max
     }
     
     var hours: Int {
         if self.beginning != nil && self.end != nil {
-            return self.beginning!.hoursEarlierThan(self.end!)
+            return self.beginning!.hoursEarlier(than: self.end!)
         }
         return Int.max
     }
     
     var minutes: Int {
         if self.beginning != nil && self.end != nil {
-            return self.beginning!.minutesEarlierThan(self.end!)
+            return self.beginning!.minutesEarlier(than: self.end!)
         }
         return Int.max
     }
     
     var seconds: Int {
         if self.beginning != nil && self.end != nil {
-            return self.beginning!.secondsEarlierThan(self.end!)
+            return self.beginning!.secondsEarlier(than: self.end!)
         }
         return Int.max
     }
