@@ -18,6 +18,9 @@ public extension Date {
     // MARK: - Formatted Date - Style
     
     /**
+     *  # Format With (Date Style, Time Zone, Locale)
+     *  Get string representation of date.
+     *
      *  @param dateStyle DateFormatter.Style - The date style in which to represent the date
      *  @param timeZone  TimeZone - The time zone of the date
      *  @param locale    Locale - Encapsulates information about linguistic, cultural, and technological conventions and standards.
@@ -34,7 +37,9 @@ public extension Date {
     }
     
     /**
-     *  Locale is automatically selected as the current locale of the system
+     *  # Format With (Date Style, Time Zone)
+     *  Get string representation of date.
+     *  Locale is automatically selected as the current locale of the system.
      *
      *  @param dateStyle DateFormatter.Style - The date style in which to represent the date
      *  @param timeZone  TimeZone - The time zone of the date
@@ -50,6 +55,8 @@ public extension Date {
     }
     
     /**
+     *  # Format With (Date Style, Locale)
+     *  Get string representation of date.
      *  Time zone is automatically selected as the current time zone of the system
      *
      *  @param dateStyle DateFormatter.Style - The date style in which to represent the date
@@ -62,6 +69,8 @@ public extension Date {
     }
     
     /**
+     *  # Format With (Date Style)
+     *  Get string representation of date.
      *  Locale and time zone are automatically selected as the current locale and time zone of the system
      *
      *  @param dateStyle DateFormatter.Style - The date style in which to represent the date
@@ -80,6 +89,9 @@ public extension Date {
     // MARK: - Formatted Date - String
     
     /**
+     *  # Format With (Date Format, Time Zone, Locale)
+     *  Get string representation of date.
+     *
      *  @param dateFormat String - The date format string, according to Apple's date formatting guide in which to represent the date
      *  @param timeZone   TimeZone - The time zone of the date
      *  @param locale     Locale - Encapsulates information about linguistic, cultural, and technological conventions and standards.
@@ -96,6 +108,8 @@ public extension Date {
     }
     
     /**
+     *  # Format With (Date Format, Time Zone)
+     *  Get string representation of date.
      *  Locale is automatically selected as the current locale of the system
      *
      *  @param dateFormat String - The date format string, according to Apple's date formatting guide in which to represent the date
@@ -112,6 +126,8 @@ public extension Date {
     }
     
     /**
+     *  # Format With (Date Format, Locale)
+     *  Get string representation of date.
      *  Time zone is automatically selected as the current time zone of the system
      *
      *  @param dateFormat String - The date format string, according to Apple's date formatting guide in which to represent the date
@@ -124,6 +140,8 @@ public extension Date {
     }
     
     /**
+     *  # Format With (Date Format)
+     *  Get string representation of date.
      *  Locale and time zone are automatically selected as the current locale and time zone of the system
      *
      *  @param dateFormat String - The date format string, according to Apple's date formatting guide in which to represent the date
