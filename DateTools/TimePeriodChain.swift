@@ -27,7 +27,15 @@ open class TimePeriodChain: TimePeriodGroup {
         
         let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
         self.periods.append(newPeriod)
-        updateExtremes()
+        
+        //Update updateExtremes
+        if periods.count == 1 {
+            _beginning = period.beginning
+            _end = period.end
+        }
+        else {
+            _end = _end?.addingTimeInterval(period.duration)
+        }
     }
     
     func append<G: TimePeriodGroup>(contentsOf group: G) {
@@ -36,31 +44,42 @@ open class TimePeriodChain: TimePeriodGroup {
             
             let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
             self.periods.append(newPeriod)
+            
+            //Update updateExtremes
+            if periods.count == 1 {
+                _beginning = period.beginning
+                _end = period.end
+            }
+            else {
+                _end = _end?.addingTimeInterval(period.duration)
+            }
         }
-        updateExtremes()
     }
     
-    func insert(_ period: TimePeriod, at index: Int) {
-        let newPeriod: TimePeriodProtocol
+    func insert(_ period: TimePeriodProtocol, at index: Int) {
         //Check for special zero case which takes the beginning date
-        if index == 0 && period.beginning != nil {
+        if index == 0 && period.beginning != nil && period.end != nil {
             //Insert new period
-            newPeriod = TimePeriod(beginning: self.periods[index].beginning!, duration: period.duration)
+            periods.insert(period, at: index)
+        }
+        else if period.beginning != nil && period.end != nil {
+            //Insert new period
             periods.insert(period, at: index)
         }
         else {
-            //Insert new period
-            newPeriod = TimePeriod(beginning: self.periods[self.periods.count-1].end!, duration: period.duration)
-            periods.insert(period, at: index)
+            print("All TimePeriods in a TimePeriodChain must contain a defined start and end date")
+            return
         }
         
         //Shift all periods after inserted period
         for i in 0..<periods.count {
-            if i > index {
-                periods[i].beginning = periods[i].beginning!.addingTimeInterval(newPeriod.duration)
-                periods[i].end = periods[i].end!.addingTimeInterval(newPeriod.duration)
+            if i > index && i > 0 {
+                let currentPeriod = TimePeriod(beginning: period.beginning, end: period.end)
+                periods[i].beginning = periods[i-1].end
+                periods[i].end = periods[i].beginning!.addingTimeInterval(currentPeriod.duration)
             }
         }
+        
         updateExtremes()
     }
     
@@ -72,10 +91,8 @@ open class TimePeriodChain: TimePeriodGroup {
         periods.remove(at: index)
         
         //Shift all periods after inserted period
-        for i in 0..<periods.count {
-            if i >= index {
-                periods[i].shift(by: -duration)
-            }
+        for i in index..<periods.count {
+            periods[i].shift(by: -duration)
         }
         updateExtremes()
     }
@@ -83,6 +100,17 @@ open class TimePeriodChain: TimePeriodGroup {
     func removeAll() {
         self.periods.removeAll()
         updateExtremes()
+    }
+    
+    //MARK: - Chain Content Manipulation
+    
+    func shift(by duration: TimeInterval) {
+        for var period in self.periods {
+            period.shift(by:duration)
+        }
+        
+        _beginning = _beginning?.addingTimeInterval(duration)
+        _end = _end?.addingTimeInterval(duration)
     }
     
     public override func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
