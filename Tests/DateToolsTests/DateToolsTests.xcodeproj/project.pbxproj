@@ -17,7 +17,6 @@
 		56D1939E1D675ADE001BD246 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193951D675ADE001BD246 /* Constants.swift */; };
 		56D1939F1D675ADE001BD246 /* Date+Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193961D675ADE001BD246 /* Date+Inits.swift */; };
 		56D193A01D675ADE001BD246 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56D193971D675ADE001BD246 /* DateTools.bundle */; };
-		56D193A11D675ADE001BD246 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193981D675ADE001BD246 /* Error.swift */; };
 		56D193A21D675ADE001BD246 /* Integer+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193991D675ADE001BD246 /* Integer+DateTools.swift */; };
 		56D193A31D675ADE001BD246 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939A1D675ADE001BD246 /* TimePeriod.swift */; };
 		56D193A41D675ADE001BD246 /* TimePeriodChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */; };
@@ -66,7 +65,6 @@
 		56D193951D675ADE001BD246 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../DateTools/Constants.swift; sourceTree = "<group>"; };
 		56D193961D675ADE001BD246 /* Date+Inits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Inits.swift"; path = "../../../DateTools/Date+Inits.swift"; sourceTree = "<group>"; };
 		56D193971D675ADE001BD246 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
-		56D193981D675ADE001BD246 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = ../../../DateTools/Error.swift; sourceTree = "<group>"; };
 		56D193991D675ADE001BD246 /* Integer+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Integer+DateTools.swift"; path = "../../../DateTools/Integer+DateTools.swift"; sourceTree = "<group>"; };
 		56D1939A1D675ADE001BD246 /* TimePeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriod.swift; path = ../../../DateTools/TimePeriod.swift; sourceTree = "<group>"; };
 		56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodChain.swift; path = ../../../DateTools/TimePeriodChain.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 				56D193971D675ADE001BD246 /* DateTools.bundle */,
 				56D193951D675ADE001BD246 /* Constants.swift */,
 				F0D7EB7E1D70EA1F0037F330 /* Enums.swift */,
-				56D193981D675ADE001BD246 /* Error.swift */,
 				56D193BC1D675CF2001BD246 /* TimeChunk.swift */,
 				56D1939A1D675ADE001BD246 /* TimePeriod.swift */,
 				56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */,
@@ -350,7 +347,6 @@
 				F0997A421D67580B00EBCF5C /* AppDelegate.swift in Sources */,
 				56D1939E1D675ADE001BD246 /* Constants.swift in Sources */,
 				56D193A41D675ADE001BD246 /* TimePeriodChain.swift in Sources */,
-				56D193A11D675ADE001BD246 /* Error.swift in Sources */,
 				F0885D041D708A07002843B5 /* Date+Comparators.swift in Sources */,
 				F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */,
 				56D1939F1D675ADE001BD246 /* Date+Inits.swift in Sources */,
