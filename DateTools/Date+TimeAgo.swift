@@ -8,50 +8,59 @@
 
 import Foundation
 
+/**
+ *  Date + Time Ago
+ *
+ *  Extends the Date class by adding convenient methods to display the passage of
+ *  time in String format.
+ */
 public extension Date {
-    
     
     //MARK: - Time Ago
     
     /**
+     *  # Time Ago Since (Date)
      *  Takes in a date and returns a string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @param NSDate - Date to be measured from now
+     *  @param Date - Date to be measured from now
      *
-     *  @return NSString - Formatted return string
+     *  @return String - Formatted return string
      */
     static func timeAgo(since date:Date) -> String{
         return date.timeAgo(since: Date(), numericDates: false, numericTimes: false)
     }
     
     /**
+     *  # Short Time Ago Since (Date)
      *  Takes in a date and returns a shortened string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @param NSDate - Date to be measured from now
+     *  @param Date - Date to be measured from now
      *
-     *  @return NSString - Formatted return string
+     *  @return String - Formatted return string
      */
     static func shortTimeAgo(since date:Date) -> String {
         return date.shortTimeAgo(since:Date())
     }
     
     /**
+     *  # Time Ago Since Now
      *  Returns a string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @return NSString - Formatted return string
+     *  @return String - Formatted return string
      */
     var timeAgoSinceNow: String {
         return self.timeAgo(since:Date())
     }
     
     /**
+     *  # Short Time Ago Since Now
      *  Returns a shortened string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @return NSString - Formatted return string
+     *  @return String - Formatted return string
      */
     var shortTimeAgoSinceNow: String {
         return self.shortTimeAgo(since:Date())
