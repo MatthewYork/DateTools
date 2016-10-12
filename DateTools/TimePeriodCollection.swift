@@ -62,6 +62,18 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
     
     /*
+     *  # Insert (Time Period Protocol)
+     *  Insert period into periods array at given index.
+     *
+     *  @param newElement TimePeriodProtocol - The period to insert
+     *  @param i Int - Index to insert period at
+     */
+    func insert(_ newElement: TimePeriodProtocol, at i: Int) {
+        periods.insert(newElement, at: i)
+        updateExtremes(period: newElement)
+    }
+    
+    /*
      *  # Remove At (Int)
      *  Remove from period array at the given index.
      *
@@ -79,18 +91,6 @@ open class TimePeriodCollection: TimePeriodGroup {
     func removeAll() {
         periods.removeAll()
         updateExtremes()
-    }
-    
-    /*
-     *  # Insert (Time Period Protocol)
-     *  Insert period into periods array at given index.
-     *
-     *  @param newElement TimePeriodProtocol - The period to insert
-     *  @param i Int - Index to insert period at
-     */
-    func insert(_ newElement: TimePeriodProtocol, at i: Int) {
-        periods.insert(newElement, at: i)
-        updateExtremes(period: newElement)
     }
     
     

@@ -22,6 +22,13 @@ open class TimePeriodChain: TimePeriodGroup {
     
     // MARK: - Chain Existence Manipulation
     
+    /*
+     *  # Append (Time Period Protocol)
+     *  Append a TimePeriodProtocol to the periods array and update the Chain's
+     *  beginning and end.
+     *
+     *  @param period TimePeriodProtocol - TimePeriodProtocol to add to the collection
+     */
     func append(_ period: TimePeriodProtocol) {
         let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
         
@@ -38,6 +45,13 @@ open class TimePeriodChain: TimePeriodGroup {
         }
     }
     
+    /*
+     *  # Append (List of Time Period Protocols)
+     *  Append a TimePeriodProtocol array to the periods array and update the Chain's
+     *  beginning and end.
+     *
+     *  @param periodArray [TimePeriodProtocol] - TimePeriodProtocol list to add to the collection
+     */
     func append<G: TimePeriodGroup>(contentsOf group: G) {
         for period in group.periods {
             let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
@@ -56,6 +70,13 @@ open class TimePeriodChain: TimePeriodGroup {
         }
     }
     
+    /*
+     *  # Insert (Time Period Protocol)
+     *  Insert period into periods array at given index.
+     *
+     *  @param newElement TimePeriodProtocol - The period to insert
+     *  @param i Int - Index to insert period at
+     */
     func insert(_ period: TimePeriodProtocol, at index: Int) {
         //Check for special zero case which takes the beginning date
         if index == 0 && period.beginning != nil && period.end != nil {
@@ -83,6 +104,12 @@ open class TimePeriodChain: TimePeriodGroup {
         updateExtremes()
     }
     
+    /*
+     *  # Remove At (Int)
+     *  Remove from period array at the given index.
+     *
+     *  @param at Int - The index in the collection to remove
+     */
     func remove(at index: Int) {
         //Retrieve duration of period to be removed
         let duration = periods[index].duration
@@ -97,6 +124,10 @@ open class TimePeriodChain: TimePeriodGroup {
         updateExtremes()
     }
     
+    /*
+     *  # Remove All
+     *  Remove all periods from period array.
+     */
     func removeAll() {
         self.periods.removeAll()
         updateExtremes()
@@ -104,6 +135,12 @@ open class TimePeriodChain: TimePeriodGroup {
     
     //MARK: - Chain Content Manipulation
     
+    /**
+     *  # Shift By (Time Interval)
+     *  In place, shifts all chain time periods by a given time interval
+     *
+     *  @param duration TimeInterval - The time interval to shift the period by
+     */
     func shift(by duration: TimeInterval) {
         for var period in self.periods {
             period.shift(by:duration)
@@ -125,6 +162,11 @@ open class TimePeriodChain: TimePeriodGroup {
         return try periods.reduce(initialResult, nextPartialResult)
     }
     
+    /**
+     *  # Pop time Interval
+     *  Removes the last object from the `TimePeriodChain` and returns it
+     *
+     */
     func pop() -> TimePeriodProtocol? {
         let period = self.periods.popLast()
         updateExtremes()
@@ -139,6 +181,9 @@ open class TimePeriodChain: TimePeriodGroup {
     
     // MARK: - Operator Overloads
     
+    /**
+     *  Operator overload for comparing `TimePeriodChain`s to each other
+     */
     static func ==(left: TimePeriodChain, right: TimePeriodChain) -> Bool {
         return left.equals(right)
     }
