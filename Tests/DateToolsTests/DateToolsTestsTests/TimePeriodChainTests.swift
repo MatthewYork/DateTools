@@ -134,7 +134,7 @@ class TimePeriodChainTests : XCTestCase {
         testChain.periods.append(firstPeriod)
         testChain.periods.append(TimePeriod(beginning: testChain[0].end!, chunk: secondPeriod.chunk))
         
-        let poppedPeriod = controlChain.pop()!
+        let _ = controlChain.pop()!
         XCTAssertTrue(testChain == controlChain)
         //Cannot accurately test popped value due to daylight savings changes
     }
