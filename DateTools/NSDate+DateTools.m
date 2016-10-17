@@ -812,19 +812,26 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 + (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString timeZone:(NSTimeZone *)timeZone {
-
-	static NSDateFormatter *parser = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-	    parser = [[NSDateFormatter alloc] init];
-	});
-
-	parser.dateStyle = NSDateFormatterNoStyle;
-	parser.timeStyle = NSDateFormatterNoStyle;
-	parser.timeZone = timeZone;
-	parser.dateFormat = formatString;
-
-	return [parser dateFromString:dateString];
+    static NSCache *cache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cache = [[NSCache alloc] init];
+    });
+    
+    NSString *key = [NSString stringWithFormat:@"%@-%@", formatString, timeZone.abbreviation];
+    NSDateFormatter *parser = [cache objectForKey:key];
+    
+    if (!parser) {
+        parser = [[NSDateFormatter alloc] init];
+        parser.dateStyle = NSDateFormatterNoStyle;
+        parser.timeStyle = NSDateFormatterNoStyle;
+        parser.timeZone = timeZone;
+        parser.dateFormat = formatString;
+        
+        [cache setObject:parser forKey:key];
+    }
+    
+    return [parser dateFromString:dateString];
 }
 
 
