@@ -84,7 +84,7 @@ class TimePeriodCollectionTests : XCTestCase {
     // MARK: - Sorting
     
     func testSort() {
-        controlCollection.sort()
+        controlCollection.sortByBeginning()
         
         let testSortedCollection = TimePeriodCollection();
         testSortedCollection.append(self.controlCollection[0])
@@ -96,7 +96,7 @@ class TimePeriodCollectionTests : XCTestCase {
     }
     
     func testSorted() {
-        let testCollection = controlCollection.sorted()
+        let testCollection = controlCollection.sortedByBeginning()
         
         let testSortedCollection = TimePeriodCollection();
         testSortedCollection.append(self.controlCollection[0])

@@ -20,22 +20,43 @@ open class TimePeriodGroup: Sequence {
     
     // MARK: - Variables
     
+    /**
+     *  The array of periods that define the group.
+     */
     internal var periods: [TimePeriodProtocol] = []
     
     internal var _beginning: Date?
     internal var _end: Date?
     
+    /**
+     *  The earliest beginning date of a `TimePeriod` in the group.
+     *  Nil if any `TimePeriod` in group has a nil beginning date (indefinite).
+     *  (Read Only)
+     */
     var beginning: Date? {
         return _beginning
     }
+    
+    /**
+     *  The latest end date of a `TimePeriod` in the group.
+     *  Nil if any `TimePeriod` in group has a nil end date (indefinite).
+     *  (Read Only)
+     */
     var end: Date? {
         return _end
     }
     
+    /**
+     *  The number of periods in the periods array.
+     */
     var count: Int {
         return periods.count
     }
     
+    /**
+     *  The total amount of time between the earliest and latest dates stored in the
+     *  periods array. Nil if any beginning or end date in any contained period is nil.
+     */
     var duration: TimeInterval? {
         if beginning != nil && end != nil {
             return end!.timeIntervalSince(beginning!)
@@ -46,6 +67,14 @@ open class TimePeriodGroup: Sequence {
     
     // MARK: - Comparisons
     
+    /**
+     *  # Equals (Group)
+     *  If `self.periods` contains the exact elements as the given group's periods array.
+     *
+     *  @param group TimePeriodGroup - The group to compare to self
+     *
+     *  @return Bool - True if the periods arrays are the same
+     */
     func equals(_ group: TimePeriodGroup) -> Bool {
         return containSameElements(array1: self.periods, group.periods)
     }
@@ -65,10 +94,6 @@ open class TimePeriodGroup: Sequence {
         return try periods.filter(isIncluded)
     }
     
-    internal func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
-        return try periods.reduce(initialResult, nextPartialResult)
-    }
-    
     public func forEach(_ body: (TimePeriodProtocol) throws -> Void) rethrows {
         return try periods.forEach(body)
     }
@@ -83,13 +108,37 @@ open class TimePeriodGroup: Sequence {
         }
     }
     
+    internal func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
+        return try periods.reduce(initialResult, nextPartialResult)
+    }
+    
     internal func containSameElements(array1: [TimePeriodProtocol], _ array2: [TimePeriodProtocol]) -> Bool {
         guard array1.count == array2.count else {
             return false // No need to sorting if they already have different counts
         }
         
-        var compArray1: [TimePeriodProtocol] = array1.sorted {$0.beginning! < $1.beginning!}
-        var compArray2: [TimePeriodProtocol] = array2.sorted {$0.beginning! < $1.beginning!}
+        var compArray1: [TimePeriodProtocol] = array1.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
+            if period1.beginning == nil && period2.beginning == nil {
+                return false
+            } else if (period1.beginning == nil) {
+                return true
+            } else if (period2.beginning == nil) {
+                return false
+            } else {
+                return period2.beginning! < period1.beginning!
+            }
+        }
+        var compArray2: [TimePeriodProtocol] = array2.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
+            if period1.beginning == nil && period2.beginning == nil {
+                return false
+            } else if (period1.beginning == nil) {
+                return true
+            } else if (period2.beginning == nil) {
+                return false
+            } else {
+                return period2.beginning! < period1.beginning!
+            }
+        }
         for x in 0..<compArray1.count {
             if !compArray1[x].equals(compArray2[x]) {
                 return false

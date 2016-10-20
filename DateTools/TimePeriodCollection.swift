@@ -21,11 +21,25 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Collection Manipulation
     
+    /*
+     *  # Append (Time Period Protocol)
+     *  Append a TimePeriodProtocol to the periods array and check if the Collection's
+     *  beginning and end should change.
+     *  
+     *  @param period TimePeriodProtocol - TimePeriodProtocol to add to the collection
+     */
     func append(_ period: TimePeriodProtocol) {
         periods.append(period)
         updateExtremes(period: period)
     }
     
+    /*
+     *  # Append (List of Time Period Protocols)
+     *  Append a TimePeriodProtocol array to the periods array and check if the Collection's
+     *  beginning and end should change.
+     *
+     *  @param periodArray [TimePeriodProtocol] - TimePeriodProtocol list to add to the collection
+     */
     func append(_ periodArray: [TimePeriodProtocol]) {
         for period in periodArray {
             periods.append(period)
@@ -33,6 +47,13 @@ open class TimePeriodCollection: TimePeriodGroup {
         }
     }
     
+    /*
+     *  # Append (Time Period Group)
+     *  Append a TimePeriodGroup's periods array to the periods array of self and check if the Collection's
+     *  beginning and end should change.
+     *
+     *  @param newPeriods TimePeriodGroup - TimePeriodGroup to merge periods arrays with
+     */
     func append<C: TimePeriodGroup>(contentsOf newPeriods: C) {
         for period in newPeriods as TimePeriodGroup {
             periods.append(period)
@@ -40,49 +61,101 @@ open class TimePeriodCollection: TimePeriodGroup {
         }
     }
     
+    /*
+     *  # Insert (Time Period Protocol)
+     *  Insert period into periods array at given index.
+     *
+     *  @param newElement TimePeriodProtocol - The period to insert
+     *  @param i Int - Index to insert period at
+     */
+    func insert(_ newElement: TimePeriodProtocol, at i: Int) {
+        periods.insert(newElement, at: i)
+        updateExtremes(period: newElement)
+    }
+    
+    /*
+     *  # Remove At (Int)
+     *  Remove from period array at the given index.
+     *
+     *  @param at Int - The index in the collection to remove
+     */
     func remove(at: Int) {
         periods.remove(at: at)
         updateExtremes()
     }
     
+    /*
+     *  # Remove All
+     *  Remove all periods from period array.
+     */
     func removeAll() {
         periods.removeAll()
         updateExtremes()
-    }
-    
-    func insert(_ newElement: TimePeriodProtocol, at i: Int) {
-        periods.insert(newElement, at: i)
-        updateExtremes(period: newElement)
     }
     
     
     // MARK: - Sorting
     
     // In place
-    func sort() {
-        self.periods.sort { $0.beginning! < $1.beginning! }
+    /*
+     *  #Sort By Beginning
+     *  Sort periods array in place by beginning
+     */
+    func sortByBeginning() {
+        self.sort { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
+            if period1.beginning == nil && period2.beginning == nil {
+                return false
+            } else if (period1.beginning == nil) {
+                return true
+            } else if (period2.beginning == nil) {
+                return false
+            } else {
+                return period2.beginning! < period1.beginning!
+            }
+        }
     }
     
+    /*
+     *  #Sort
+     *  Sort periods array in place
+     */
     func sort(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
-        self.periods.sort { $0.beginning! < $1.beginning! }
+        self.periods.sort(by: areInIncreasingOrder)
     }
     
     // New collection
-    func sorted() -> TimePeriodCollection {
-        let array = self.periods.sorted { $0.beginning! < $1.beginning! }
+    /*
+     *  #Sorted By Beginning
+     *  Return collection with sorted periods array by beginning
+     *
+     *  @return TimePeriodCollection - Collection with sorted periods
+     */
+    func sortedByBeginning() -> TimePeriodCollection {
+        let array = self.periods.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
+            if period1.beginning == nil && period2.beginning == nil {
+                return false
+            } else if (period1.beginning == nil) {
+                return true
+            } else if (period2.beginning == nil) {
+                return false
+            } else {
+                return period2.beginning! < period1.beginning!
+            }
+        }
         let collection = TimePeriodCollection()
-        collection.periods = array
-        collection._beginning = self.beginning
-        collection._end = self.end
+        collection.append(array)
         return collection
     }
     
+    /*
+     *  #Sorted
+     *  Return collection with sorted periods array
+     *
+     *  @return TimePeriodCollection - Collection with sorted periods
+     */
     func sorted(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) -> TimePeriodCollection {
-        let array = self.periods.sorted { $0.beginning! < $1.beginning! }
         let collection = TimePeriodCollection()
-        collection.periods = array
-        collection._beginning = self.beginning
-        collection._end = self.end
+        collection.append(self.periods.sorted(by: areInIncreasingOrder))
         return collection
     }
     
@@ -91,12 +164,17 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     // Potentially use .reduce() instead of these functions
     /**
+     *  # All Inside In (Time Period Protocol)
      *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s
-     *  whose start and end dates fall completely inside the interval of the given `TimePeriod`
+     *  whose start and end dates fall completely inside the interval of the given `TimePeriod`.
+     *
+     *  @param period TimePeriodProtocol - The period to compare each other period against
+     *
+     *  @return TimePeriodCollection - Collection of periods inside the given period
      */
     func allInside(in period: TimePeriodProtocol) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
-        //Filter by periop
+        // Filter by period
         collection.periods = self.periods.filter({ (timePeriod: TimePeriodProtocol) -> Bool in
             return timePeriod.isInside(of: period)
         })
@@ -104,11 +182,17 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
     
     /**
-     *  Returns from the ```TimePeriodCollection``` a sub-collection of ```TimePeriod```s containing the given date
+     *  # Periods Intersected By (Date)
+     *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s containing 
+     *  the given date.
+     *
+     *  @param date Date - The date to compare each period to
+     *
+     *  @return TimePeriodCollection - Collection of periods intersected by the given date
      */
     func periodsIntersected(by date: Date) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
-        //Filter by periop
+        // Filter by period
         collection.periods = self.periods.filter({ (timePeriod: TimePeriodProtocol) -> Bool in
             return timePeriod.contains(date, interval: .closed)
         })
@@ -116,8 +200,12 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
     
     /**
-     *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s containing either 
-     *  the start date or the end date--or both--of the given `TimePeriod`
+     *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s 
+     *  containing either the start date or the end date--or both--of the given `TimePeriod`.
+     *
+     *  @param period TimePeriodProtocol - The period to compare each other period to
+     *
+     *  @return TimePeriodCollection - Collection of periods intersected by the given period
      */
     func periodsIntersected(by period: TimePeriodProtocol) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
@@ -143,6 +231,9 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Operator Overloads
     
+    /**
+     *  Operator overload for comparing `TimePeriodCollection`s to each other
+     */
     static func ==(left: TimePeriodCollection, right: TimePeriodCollection) -> Bool {
         return left.equals(right)
     }
