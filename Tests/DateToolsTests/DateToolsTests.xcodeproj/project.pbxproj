@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		562371581DBA6AF50083DF30 /* Date+Manipulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562371571DBA6AF50083DF30 /* Date+Manipulations.swift */; };
+		5623715A1DBA6E810083DF30 /* Date+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562371591DBA6E810083DF30 /* Date+Bundle.swift */; };
 		5658E3801D6B559900D1465A /* TimePeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E35B1D67782D00D1465A /* TimePeriodTests.swift */; };
 		5658E3811D6B55C800D1465A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5658E37A1D6B556B00D1465A /* Info.plist */; };
 		56890C711D771BA8004E8959 /* TimePeriodCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56890C701D771BA8004E8959 /* TimePeriodCollectionTests.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		562371571DBA6AF50083DF30 /* Date+Manipulations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Manipulations.swift"; path = "../../../DateTools/Date+Manipulations.swift"; sourceTree = "<group>"; };
+		562371591DBA6E810083DF30 /* Date+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Bundle.swift"; path = "../../../DateTools/Date+Bundle.swift"; sourceTree = "<group>"; };
 		5658E35B1D67782D00D1465A /* TimePeriodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodTests.swift; sourceTree = "<group>"; };
 		5658E3701D6B53B000D1465A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateToolsTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 		569181F01D70EC02007244B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				562371591DBA6E810083DF30 /* Date+Bundle.swift */,
 				F0885D091D708AD0002843B5 /* Date+Components.swift */,
 				F0885D031D708A07002843B5 /* Date+Comparators.swift */,
 				F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */,
@@ -346,6 +349,7 @@
 				56D193A51D675ADE001BD246 /* TimePeriodCollection.swift in Sources */,
 				F0997A421D67580B00EBCF5C /* AppDelegate.swift in Sources */,
 				56D1939E1D675ADE001BD246 /* Constants.swift in Sources */,
+				5623715A1DBA6E810083DF30 /* Date+Bundle.swift in Sources */,
 				56D193A41D675ADE001BD246 /* TimePeriodChain.swift in Sources */,
 				F0885D041D708A07002843B5 /* Date+Comparators.swift in Sources */,
 				F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */,
