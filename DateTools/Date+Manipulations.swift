@@ -8,10 +8,24 @@
 
 import Foundation
 
+/**
+ *  Date + Manipulations
+ *
+ *  Extends the Date class by adding manipulation methods for transforming dates
+ */
 public extension Date {
     
     // MARK: - StartOf
     
+    /**
+     *  # Start Of (Component)
+     *  Return a date set to the start of a given component.
+     *
+     *  @param component Component - The date component (second, minute, hour, day, month, or year)
+     *
+     *  @return Date - A date retaining the value of the given component and all larger components,
+     *  with all smaller components set to their minimum
+     */
     func start(of component: Component) -> Date {
         var newDate = self;
         if component == .second {
@@ -41,6 +55,15 @@ public extension Date {
         return newDate
     }
     
+    /**
+     *  # End Of (Component)
+     *  Return a date set to the end of a given component.
+     *
+     *  @param component Component - The date component (second, minute, hour, day, month, or year)
+     *
+     *  @return Date - A date retaining the value of the given component and all larger components,
+     *  with all smaller components set to their maximum
+     */
     func end(of component: Component) -> Date {
         var newDate = self;
         if component == .second {
@@ -97,47 +120,77 @@ public extension Date {
     
     // MARK: - Addition / Subtractions
     
-    func add(_ timeChunk: TimeChunk) -> Date {
+    /**
+     *  # Add (TimeChunk to Date)
+     *  Increase a date by the value of a given `TimeChunk`.
+     *
+     *  @param chunk TimeChunk - The amount to increase the date by (ex. 2.days, 4.years, etc.)
+     *
+     *  @return Date - A date with components increased by the values of the
+     *  corresponding `TimeChunk` variables
+     */
+    func add(_ chunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
-        components.year = timeChunk.years
-        components.month = timeChunk.months
-        components.day = timeChunk.days + (timeChunk.weeks*7)
-        components.hour = timeChunk.hours
-        components.minute = timeChunk.minutes
-        components.second = timeChunk.seconds
+        components.year = chunk.years
+        components.month = chunk.months
+        components.day = chunk.days + (chunk.weeks*7)
+        components.hour = chunk.hours
+        components.minute = chunk.minutes
+        components.second = chunk.seconds
         return calendar.date(byAdding: components, to: self)!
     }
     
-    func subtract(_ timeChunk: TimeChunk) -> Date {
+    /**
+     *  # Subtract (TimeChunk from Date)
+     *  Decrease a date by the value of a given `TimeChunk`.
+     *
+     *  @param chunk TimeChunk - The amount to decrease the date by (ex. 2.days, 4.years, etc.)
+     *
+     *  @return Date - A date with components decreased by the values of the
+     *  corresponding `TimeChunk` variables
+     */
+    func subtract(_ chunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
-        components.year = -timeChunk.years
-        components.month = -timeChunk.months
-        components.day = -(timeChunk.days + (timeChunk.weeks*7))
-        components.hour = -timeChunk.hours
-        components.minute = -timeChunk.minutes
-        components.second = -timeChunk.seconds
+        components.year = -chunk.years
+        components.month = -chunk.months
+        components.day = -(chunk.days + (chunk.weeks*7))
+        components.hour = -chunk.hours
+        components.minute = -chunk.minutes
+        components.second = -chunk.seconds
         return calendar.date(byAdding: components, to: self)!
     }
     
     
     // MARK: - Operator Overloads
     
+    /**
+     *  Operator overload for adding a `TimeChunk` to a date.
+     */
     static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
         return leftAddend.add(rightAddend)
     }
     
+    /**
+     *  Operator overload for subtracting a `TimeChunk` from a date.
+     */
     static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
         return minuend.subtract(subtrahend)
     }
     
+    /**
+     *  Operator overload for adding a `TimeInterval` to a date.
+     */
     static func +(leftAddend: Date, rightAddend: Int) -> Date {
         return leftAddend.addingTimeInterval((TimeInterval(rightAddend)))
     }
     
+    /**
+     *  Operator overload for subtracting a `TimeInterval` from a date.
+     */
     static func -(minuend: Date, subtrahend: Int) -> Date {
         return minuend.addingTimeInterval(-(TimeInterval(subtrahend)))
     }
-
+    
 }
