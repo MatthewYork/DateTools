@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  DateToolsExample
 //
-//  Created by Matthew York on 8/19/16.
-//  Copyright © 2016 Matthew York. All rights reserved.
+//  Created by Grayson Webster on 10/21/16.
+//  Copyright © 2016 Matt York. All rights reserved.
 //
 
 import UIKit
