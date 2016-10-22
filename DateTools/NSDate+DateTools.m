@@ -1041,6 +1041,223 @@ static NSCalendar *implicitCalendar = nil;
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+#pragma mark Date By Adding Float
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of years.
+ *
+ *  @param years float - Number of years to add
+ *
+ *  @return NSDate - Date modified by the number of desired years
+ */
+- (NSDate *)dateByAddingYearsFloat:(float)years{
+    NSDate *result = nil;
+    float dummy;
+    int front = (int)years;
+    result = [self dateByAddingYears:front];
+    float tail = modff(years, &dummy);
+    result = [result dateByAddingDaysFloat:(tail*365.0f)];
+    
+    return result;
+}
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of months.
+ *
+ *  @param months float - Number of months to add
+ *
+ *  @return NSDate - Date modified by the number of desired months
+ */
+- (NSDate *)dateByAddingMonthsFloat:(float)months{
+    NSDate *result = nil;
+    int front = (int)months;
+    float dummy;
+    result = [self dateByAddingMonths:front];
+    float tail = modff(months, &dummy);
+    
+    // Get number of days in the current month
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:result];
+    NSInteger numberOfDaysInMonth = rng.length;
+    
+    return [result dateByAddingDaysFloat:(tail*numberOfDaysInMonth)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of weeks.
+ *
+ *  @param weeks float - Number of weeks to add
+ *
+ *  @return NSDate - Date modified by the number of desired weeks
+ */
+- (NSDate *)dateByAddingWeeksFloat:(float)weeks{
+    NSDate *result = nil;
+    int front = (int)weeks;
+    float dummy;
+    result = [self dateByAddingWeeks:front];
+    float tail = modff(weeks, &dummy);
+    
+    return [result dateByAddingDaysFloat:(tail*7.0f)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of days.
+ *
+ *  @param days float - Number of days to add
+ *
+ *  @return NSDate - Date modified by the number of desired days
+ */
+- (NSDate *)dateByAddingDaysFloat:(float)days{
+    NSDate *result = nil;
+    int front = (int)days;
+    float dummy;
+    result = [self dateByAddingDays:front];
+    float tail = modff(days, &dummy);
+    
+    return [result dateByAddingHoursFloat:(tail*24.0f)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of hours.
+ *
+ *  @param hours float - Number of hours to add
+ *
+ *  @return NSDate - Date modified by the number of desired hours
+ */
+- (NSDate *)dateByAddingHoursFloat:(float)hours{
+    NSDate *result = nil;
+    float dummy;
+    int front = (int)hours;
+    result = [self dateByAddingHours:front];
+    float tail = modff(hours, &dummy);
+    
+    return [result dateByAddingMinutesFloat:(tail*60.0f)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted later by the provided number of minutes.
+ *
+ *  @param minutes float - Number of minutes to add
+ *
+ *  @return NSDate - Date modified by the number of desired minutes
+ */
+- (NSDate *)dateByAddingMinutesFloat:(float)minutes{
+    NSDate *result = nil;
+    float dummy;
+    int front = (int)minutes;
+    result = [self dateByAddingMinutes:front];
+    float tail = modff(minutes, &dummy);
+    
+    return [result dateByAddingSeconds:(tail*60.0f)];
+}
+
+#pragma mark Date By Subtracting Float
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of years.
+ *
+ *  @param years float - Number of years to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired years
+ */
+- (NSDate *)dateBySubtractingYearsFloat:(float)years{
+    NSDate *result = nil;
+    float dummy;
+    int front = (int)years;
+    result = [self dateBySubtractingYears:front];
+    float tail = modff(years, &dummy);
+    
+    return [result dateBySubtractingDaysFloat:(tail*365.0f)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of months.
+ *
+ *  @param months float - Number of months to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired months
+ */
+- (NSDate *)dateBySubtractingMonthsFloat:(float)months{
+    NSDate *result = nil;
+    int front = (int)months;
+    float dummy;
+    result = [self dateBySubtractingMonths:front];
+    float tail = modff(months, &dummy);
+    
+    // Get number of days in the current month
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:result];
+    NSInteger numberOfDaysInMonth = rng.length;
+    
+    return [result dateBySubtractingDaysFloat:(tail*numberOfDaysInMonth)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of weeks.
+ *
+ *  @param weeks float - Number of weeks to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired weeks
+ */
+- (NSDate *)dateBySubtractingWeeksFloat:(float)weeks{
+    NSDate *result = nil;
+    int front = (int)weeks;
+    float dummy;
+    result = [self dateBySubtractingWeeks:front];
+    float tail = modff(weeks, &dummy);
+    
+    return [result dateBySubtractingDaysFloat:(tail*7.0f)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of days.
+ *
+ *  @param days float - Number of days to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired days
+ */
+- (NSDate *)dateBySubtractingDaysFloat:(float)days{
+    NSDate *result = nil;
+    int front = (int)days;
+    float dummy;
+    result = [self dateBySubtractingDays:front];
+    float tail = modff(days, &dummy);
+    
+    return [result dateBySubtractingHoursFloat:(tail*24.0f)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of hours.
+ *
+ *  @param hours float - Number of hours to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired hours
+ */
+- (NSDate *)dateBySubtractingHoursFloat:(float)hours{
+    NSDate *result = nil;
+    float dummy;
+    int front = (int)hours;
+    result = [self dateBySubtractingHours:front];
+    float tail = modff(hours, &dummy);
+    
+    return [result dateBySubtractingMinutesFloat:(tail*60.0f)];
+}
+
+/**
+ *  Returns a date representing the receivers date shifted earlier by the provided number of minutes.
+ *
+ *  @param minutes float - Number of minutes to subtract
+ *
+ *  @return NSDate - Date modified by the number of desired minutes
+ */
+- (NSDate *)dateBySubtractingMinutesFloat:(float)minutes{
+    NSDate *result = nil;
+    float dummy;
+    int front = (int)minutes;
+    result = [self dateBySubtractingMinutes:front];
+    float tail = modff(minutes, &dummy);
+    
+    return [result dateBySubtractingSeconds:(tail*60.0f)];
+}
+
 #pragma mark - Date Comparison
 #pragma mark Time From
 /**

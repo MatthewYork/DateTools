@@ -115,6 +115,20 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours;
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes;
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds;
+#pragma mark Date By Adding Float
+- (NSDate *)dateByAddingYearsFloat:(float)years;
+- (NSDate *)dateByAddingMonthsFloat:(float)months;
+- (NSDate *)dateByAddingWeeksFloat:(float)weeks;
+- (NSDate *)dateByAddingDaysFloat:(float)days;
+- (NSDate *)dateByAddingHoursFloat:(float)hours;
+- (NSDate *)dateByAddingMinutesFloat:(float)minutes;
+#pragma mark Date By Subtracting Float
+- (NSDate *)dateBySubtractingYearsFloat:(float)years;
+- (NSDate *)dateBySubtractingMonthsFloat:(float)months;
+- (NSDate *)dateBySubtractingWeeksFloat:(float)weeks;
+- (NSDate *)dateBySubtractingDaysFloat:(float)days;
+- (NSDate *)dateBySubtractingHoursFloat:(float)hours;
+- (NSDate *)dateBySubtractingMinutesFloat:(float)minutes;
 
 #pragma mark - Date Comparison
 #pragma mark Time From
