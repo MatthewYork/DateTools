@@ -4,6 +4,6 @@ let package = Package(
     name: "DateTools",
     targets: [
         Target(name: "DateTools")
-    ]
+    ],
+    exclude: ["Examples", "Tests"]
 )
-package.exclude = ["Examples", "Tests"]

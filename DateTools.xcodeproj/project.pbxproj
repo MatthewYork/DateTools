@@ -79,7 +79,7 @@
 		467129D21DC1470E00463EDF = {
 			isa = PBXGroup;
 			children = (
-				467129E71DC1474100463EDF /* Source */,
+				467129E71DC1474100463EDF /* Sources */,
 				46712A0F1DC148CF00463EDF /* Example */,
 				467129DD1DC1470E00463EDF /* Products */,
 			);
@@ -94,7 +94,28 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		467129E71DC1474100463EDF /* Source */ = {
+		467129E71DC1474100463EDF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				46712A261DC149AC00463EDF /* DateTools */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		46712A0F1DC148CF00463EDF /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				46712A101DC148CF00463EDF /* AppDelegate.swift */,
+				46712A121DC148CF00463EDF /* ViewController.swift */,
+				46712A201DC148FF00463EDF /* Main.storyboard */,
+				46712A211DC148FF00463EDF /* Assets.xcassets */,
+				46712A221DC148FF00463EDF /* LaunchScreen.storyboard */,
+				46712A1C1DC148CF00463EDF /* Info.plist */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		46712A261DC149AC00463EDF /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
 				467129E81DC1474100463EDF /* Constants.swift */,
@@ -115,20 +136,7 @@
 				467129F81DC1474100463EDF /* TimePeriodGroup.swift */,
 				467129F21DC1474100463EDF /* Info.plist */,
 			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		46712A0F1DC148CF00463EDF /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				46712A101DC148CF00463EDF /* AppDelegate.swift */,
-				46712A121DC148CF00463EDF /* ViewController.swift */,
-				46712A201DC148FF00463EDF /* Main.storyboard */,
-				46712A211DC148FF00463EDF /* Assets.xcassets */,
-				46712A221DC148FF00463EDF /* LaunchScreen.storyboard */,
-				46712A1C1DC148CF00463EDF /* Info.plist */,
-			);
-			path = Example;
+			path = DateTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,7 +389,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/DateTools/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattyork.DateTools;
@@ -399,7 +407,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/DateTools/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattyork.DateTools;
@@ -465,6 +473,7 @@
 				46712A1F1DC148CF00463EDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
