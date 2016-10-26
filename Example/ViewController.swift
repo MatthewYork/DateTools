@@ -1,14 +1,14 @@
 //
-//  SecondViewController.swift
-//  DateToolsExample
+//  ViewController.swift
+//  Example
 //
-//  Created by Grayson Webster on 10/21/16.
-//  Copyright © 2016 Matt York. All rights reserved.
+//  Created by Andrew Breckenridge on 10/26/16.
+//  Copyright © 2016 Andrew Breckenridge. All rights reserved.
 //
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
