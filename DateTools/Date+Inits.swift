@@ -29,7 +29,7 @@ public extension Date {
      *  @param minute Int - Minute component of new date
      *  @param second Int - Second component of new date
      */
-	init(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) {
+	public init(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) {
 		var dateComponents = DateComponents()
 		dateComponents.year = year
 		dateComponents.month = month
@@ -52,7 +52,7 @@ public extension Date {
      *  @param month  Int - Month component of new date
      *  @param day    Int - Day component of new date
      */
-	init(year: Int, month: Int, day: Int) {
+	public init(year: Int, month: Int, day: Int) {
 		self.init(year: year, month: month, day: day, hour: 0, minute: 0, second: 0)
 	}
 	
@@ -63,7 +63,7 @@ public extension Date {
      *  @param format     String - Format style using Apple's date formatting guide
      *  @param timeZone   TimeZone - Time zone of date
      */
-	init(dateString: String, format: String, timeZone: TimeZone) {
+	public init(dateString: String, format: String, timeZone: TimeZone) {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateStyle = .none;
 		dateFormatter.timeStyle = .none;
@@ -84,7 +84,7 @@ public extension Date {
      *  @param dateString String - Date in the formatting given by the format parameter
      *  @param format     String - Format style using Apple's date formatting guide
      */
-	init (dateString: String, format: String) {
+	public init (dateString: String, format: String) {
 		self.init(dateString: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
 	}	
 }
