@@ -8,11 +8,12 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class TimePeriodsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.navigationBar.topItem?.title = "Time Periods"
     }
 
     override func didReceiveMemoryWarning() {

@@ -15,13 +15,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd HH:mm:ss.SSS"
-        let date = formatter.date(from: "2015 4 05 18:15:12.000")!
-        print(Date().chunkBetween(date: date))
+        let date = Date()
+        print((date + 3.years).chunkBetween(date: Date()))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
 }
