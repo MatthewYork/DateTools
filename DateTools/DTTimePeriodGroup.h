@@ -26,8 +26,8 @@
 @interface DTTimePeriodGroup : NSObject {
 @protected
     NSMutableArray *periods;
-    NSDate *StartDate;
-    NSDate *EndDate;
+    NSDate *startDate;
+    NSDate *endDate;
 }
 
 @property (nonatomic, readonly) NSDate *StartDate;

@@ -131,8 +131,8 @@
  *
  *  @return NSDate
  */
--(NSDate *)StartDate{
-    return StartDate;
+-(NSDate *)startDate{
+    return startDate;
 }
 
 /**
@@ -140,8 +140,8 @@
  *
  *  @return NSDate
  */
--(NSDate *)EndDate{
-    return EndDate;
+-(NSDate *)endDate{
+    return endDate;
 }
 
 /**
