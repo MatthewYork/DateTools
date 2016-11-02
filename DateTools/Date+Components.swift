@@ -19,11 +19,12 @@ public extension Date {
 
     /**
      *  # Component
+     *
      *  Convenient accessor of the date's `Calendar` components
      *
-     *  @param component Calendar.Component - The calendar component to access from the date
+     *  - parameter component: The calendar component to access from the date
      *
-     *  @return Int - The value of the component
+     *  - returns: The value of the component
      *
      */
     func component(_ component: Calendar.Component) -> Int {
@@ -33,12 +34,13 @@ public extension Date {
 	
     /**
      *  # Ordinality
+     *
      *  Convenient accessor of the date's `Calendar` components ordinality
      *
-     *  @param smaller Calendar.Component - The smaller calendar component to access from the date
-     *  @param larger  Calendar.Component - The larger calendar component to access from the date
+     *  - parameter smaller: The smaller calendar component to access from the date
+     *  - parameter larger: The larger calendar component to access from the date
      *
-     *  @return Int - The ordinal number of a smaller calendar component within a specified larger calendar component
+     *  - returns: The ordinal number of a smaller calendar component within a specified larger calendar component
      *
      */
 	func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
@@ -48,14 +50,16 @@ public extension Date {
 	
     /**
      *  # Unit
+     *
      *  Use calendar components to determine how many units of a smaller component are inside 1 larger unit.
+     *
      *  Ex. If used on a date in the month of February in a leap year (regardless of the day), the method would
      *  return 29 days.
      *
-     *  @param smaller Calendar.Component - The smaller calendar component to access from the date
-     *  @param larger  Calendar.Component - The larger calendar component to access from the date
+     *  - parameter smaller: The smaller calendar component to access from the date
+     *  - parameter larger: The larger calendar component to access from the date
      *
-     *  @return Int - The number of smaller units required to equal in 1 larger unit, given the date called on
+     *  - returns: The number of smaller units required to equal in 1 larger unit, given the date called on
      *
      */
 	func unit(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {

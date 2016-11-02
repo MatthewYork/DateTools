@@ -509,9 +509,7 @@ public extension Date {
      *  # Years Earlier Than
      *
      *  Returns the number of years the receiver's date is earlier than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+     *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
      *
@@ -525,9 +523,7 @@ public extension Date {
      *  # Months Earlier Than
      *
      *  Returns the number of months the receiver's date is earlier than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+     *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
      *
@@ -541,9 +537,7 @@ public extension Date {
      *  # Weeks Earlier Than
      *
      *  Returns the number of weeks the receiver's date is earlier than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+     *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
      *
@@ -557,9 +551,7 @@ public extension Date {
      *  # Days Earlier Than
      *
      *  Returns the number of days the receiver's date is earlier than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+     *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
      *
@@ -573,9 +565,7 @@ public extension Date {
      *  # Hours Earlier Than
      *
      *  Returns the number of hours the receiver's date is earlier than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+     *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
      *
@@ -589,9 +579,7 @@ public extension Date {
      *  # Minutes Earlier Than
      *
      *  Returns the number of minutes the receiver's date is earlier than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+     *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
      *
@@ -605,9 +593,7 @@ public extension Date {
      *  # Seconds Earlier Than
      *
      *  Returns the number of seconds the receiver's date is earlier than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is later than or equal to the provided comparison date.
+     *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
      *
@@ -624,9 +610,7 @@ public extension Date {
      *  # Years Later Than
      *
      *  Returns the number of years the receiver's date is later than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided 
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -641,9 +625,7 @@ public extension Date {
      *  # Months Later Than
      *
      *  Returns the number of months the receiver's date is later than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided 
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -658,9 +640,7 @@ public extension Date {
      *  # Weeks Later Than
      *
      *  Returns the number of weeks the receiver's date is later than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -675,9 +655,7 @@ public extension Date {
      *  # Days Later Than
      *
      *  Returns the number of days the receiver's date is later than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -692,9 +670,7 @@ public extension Date {
      *  # Hours Later Than
      *
      *  Returns the number of hours the receiver's date is later than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -709,9 +685,7 @@ public extension Date {
      *  # Minutes Later Than
      *
      *  Returns the number of minutes the receiver's date is later than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -726,9 +700,7 @@ public extension Date {
      *  # Seconds Later Than
      *
      *  Returns the number of seconds the receiver's date is later than the provided 
-     *  comparison date.
-     *
-     *  Returns 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
