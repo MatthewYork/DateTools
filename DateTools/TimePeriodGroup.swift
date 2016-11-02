@@ -9,7 +9,6 @@
 import Foundation
 
 /** 
- *  # TimePeriodGroup
  *  Time period groups are the final abstraction of date and time in DateTools. Here, time 
  *  periods are gathered and organized into something useful. There are two main types of time
  *  period groups, `TimePeriodCollection` and `TimePeriodChain`.
@@ -68,12 +67,11 @@ open class TimePeriodGroup: Sequence {
     // MARK: - Comparisons
     
     /**
-     *  # Equals (Group)
      *  If `self.periods` contains the exact elements as the given group's periods array.
      *
-     *  @param group TimePeriodGroup - The group to compare to self
+     *  - parameter group: The group to compare to self
      *
-     *  @return Bool - True if the periods arrays are the same
+     *  - returns: True if the periods arrays are the same
      */
     func equals(_ group: TimePeriodGroup) -> Bool {
         return containSameElements(array1: self.periods, group.periods)

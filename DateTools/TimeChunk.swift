@@ -8,6 +8,17 @@
 
 import Foundation
 
+/**
+ * TimeChunk represents an abstract collection of `DateComponent`s intended for use in date manipulation. A `TimeChunk` differs from a
+ * TimeInterval in that the former depends on the `Calendar` class (and takes into account daylight savings, leap year, etc.) while the
+ * latter depends on hard, second based adjustments that are independent from calendar constructs. 
+ *
+ * In essence, TimeChunk is meant to be a thin, more flexible layer over the `Calender` and `DateComponent` classes for ease of use.
+ * `TimeChunk`s may be created either by calling the provided initializer or shorthand like `2.days`. TimeChunks are manipulable and combine
+ * using basic arithmetic operators like + and -.
+ *
+ * For more information about the utility of TimeChunks in relation to Dates, see the `Date+Manipulations` class.
+ */
 public struct TimeChunk {
     
     // MARK: - Variables
@@ -36,12 +47,11 @@ public struct TimeChunk {
     // MARK: - Comparisons
     
     /**
-     *  # Equals
      *  Check if two `TimeChunk`s are equal.
      *
-     *  @param chunk TimeChunk - `TimeChunk` to compare with self
+     * - parameter chunk: `TimeChunk` to compare with self
      *
-     *  @return Bool - If all components in both `TimeChunk`s are equal
+     * - returns: If all components in both `TimeChunk`s are equal
      */
     func equals(chunk: TimeChunk) -> Bool {
         return (seconds == chunk.seconds && minutes == chunk.minutes && hours == chunk.hours && days == chunk.days && weeks == chunk.weeks && months == chunk.months && years == chunk.years)
@@ -51,7 +61,6 @@ public struct TimeChunk {
     // MARK: - Conversion
     
     /**
-     *  # To
      *  Generic conversion method. Years are taken to mean
      *  365 days. This method should not be used for accurate
      *  date operations. Ex. 456.days.to(.years) will return 1.
@@ -134,24 +143,22 @@ public struct TimeChunk {
     }
     
     /**
-     *  # Earlier Than (Date)
      *  Returns the given date decreased by the amount in self.
      *
-     *  @param date Date - The date to decrease
+     * - parameter date: The date to decrease
      *
-     *  @return Date - A new date with components decreased according to the variables of self
+     * - returns: A new date with components decreased according to the variables of self
      */
     func earlier(than date: Date) -> Date {
         return date.subtract(self)
     }
     
     /**
-     *  # Later Than (Date)
      *  Returns the given date increased by the amount in self.
      *
-     *  @param date Date - The date to increase
+     * - parameter date: The date to increase
      *
-     *  @return Date - A new date with components increased according to the variables of self
+     * - returns: A new date with components increased according to the variables of self
      */
     func later(than date: Date) -> Date {
         return date.add(self)
@@ -162,12 +169,11 @@ public struct TimeChunk {
     // MARK: In Place
     
     /**
-     *  # Lengthened By (Time Chunk)
      *  Increase the variables of self (`TimeChunk`) by the variables of the given `TimeChunk`.
      *
-     *  @param chunk TimeChunk - The `TimeChunk` to increase self by
+     * - parameter chunk: The `TimeChunk` to increase self by
      *
-     *  @return TimeChunk - The `TimeChunk` with variables increased
+     * - returns: The `TimeChunk` with variables increased
      */
     func lengthened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
@@ -183,12 +189,11 @@ public struct TimeChunk {
     }
     
     /**
-     *  # Shortened By (Time Chunk)
      *  Decrease the variables of self (`TimeChunk`) by the variables of the given `TimeChunk`.
      *
-     *  @param chunk TimeChunk - The `TimeChunk` to decrease self by
+     * - parameter chunk: The `TimeChunk` to decrease self by
      *
-     *  @return TimeChunk - The `TimeChunk` with variables decreased
+     * - returns: The `TimeChunk` with variables decreased
      */
     func shortened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
@@ -207,10 +212,9 @@ public struct TimeChunk {
     // MARK: Mutation
     
     /**
-     *  # Lengthened By (Time Chunk) In Place
      *  In place, increase the variables of self (`TimeChunk`) by the variables of the given `TimeChunk`.
      *
-     *  @param chunk TimeChunk - The `TimeChunk` to increase self by
+     * - parameter chunk: The `TimeChunk` to increase self by
      */
     mutating func lengthen(by chunk: TimeChunk) {
         seconds += chunk.seconds
@@ -223,10 +227,9 @@ public struct TimeChunk {
     }
     
     /**
-     *  # Shorten By (Time Chunk) In Place
      *  In place, decrease the variables of self (`TimeChunk`) by the variables of the given `TimeChunk`.
      *
-     *  @param chunk TimeChunk - The `TimeChunk` to decrease self by
+     * - parameter chunk: The `TimeChunk` to decrease self by
      */
     mutating func shorten(by chunk: TimeChunk) {
         seconds -= chunk.seconds

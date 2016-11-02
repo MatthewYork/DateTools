@@ -9,7 +9,6 @@
 import Foundation
 
 /**
- *  # TimePeriodCollection
  *  Time period collections serve as loose sets of time periods. They are
  *  unorganized unless you decide to sort them, and have their own characteristics
  *  like a `beginning` and `end` that are extrapolated from the time periods within. Time
@@ -21,24 +20,22 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     // MARK: - Collection Manipulation
     
-    /*
-     *  # Append (Time Period Protocol)
+    /**
      *  Append a TimePeriodProtocol to the periods array and check if the Collection's
      *  beginning and end should change.
      *  
-     *  @param period TimePeriodProtocol - TimePeriodProtocol to add to the collection
+     * - parameter period: TimePeriodProtocol to add to the collection
      */
     func append(_ period: TimePeriodProtocol) {
         periods.append(period)
         updateExtremes(period: period)
     }
     
-    /*
-     *  # Append (List of Time Period Protocols)
+    /**
      *  Append a TimePeriodProtocol array to the periods array and check if the Collection's
      *  beginning and end should change.
      *
-     *  @param periodArray [TimePeriodProtocol] - TimePeriodProtocol list to add to the collection
+     * - parameter periodArray: TimePeriodProtocol list to add to the collection
      */
     func append(_ periodArray: [TimePeriodProtocol]) {
         for period in periodArray {
@@ -47,12 +44,11 @@ open class TimePeriodCollection: TimePeriodGroup {
         }
     }
     
-    /*
-     *  # Append (Time Period Group)
+    /**
      *  Append a TimePeriodGroup's periods array to the periods array of self and check if the Collection's
      *  beginning and end should change.
      *
-     *  @param newPeriods TimePeriodGroup - TimePeriodGroup to merge periods arrays with
+     * - parameter newPeriods: TimePeriodGroup to merge periods arrays with
      */
     func append<C: TimePeriodGroup>(contentsOf newPeriods: C) {
         for period in newPeriods as TimePeriodGroup {
@@ -61,31 +57,28 @@ open class TimePeriodCollection: TimePeriodGroup {
         }
     }
     
-    /*
-     *  # Insert (Time Period Protocol)
+    /**
      *  Insert period into periods array at given index.
      *
-     *  @param newElement TimePeriodProtocol - The period to insert
-     *  @param i Int - Index to insert period at
+     * - parameter newElement: The period to insert
+     * - parameter index: Index to insert period at
      */
-    func insert(_ newElement: TimePeriodProtocol, at i: Int) {
-        periods.insert(newElement, at: i)
+    func insert(_ newElement: TimePeriodProtocol, at index: Int) {
+        periods.insert(newElement, at: index)
         updateExtremes(period: newElement)
     }
     
-    /*
-     *  # Remove At (Int)
+    /**
      *  Remove from period array at the given index.
      *
-     *  @param at Int - The index in the collection to remove
+     * - parameter at: The index in the collection to remove
      */
     func remove(at: Int) {
         periods.remove(at: at)
         updateExtremes()
     }
     
-    /*
-     *  # Remove All
+    /**
      *  Remove all periods from period array.
      */
     func removeAll() {
@@ -97,8 +90,7 @@ open class TimePeriodCollection: TimePeriodGroup {
     // MARK: - Sorting
     
     // In place
-    /*
-     *  #Sort By Beginning
+    /**
      *  Sort periods array in place by beginning
      */
     func sortByBeginning() {
@@ -115,8 +107,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         }
     }
     
-    /*
-     *  #Sort
+    /**
      *  Sort periods array in place
      */
     func sort(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
@@ -124,11 +115,10 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
     
     // New collection
-    /*
-     *  #Sorted By Beginning
+    /**
      *  Return collection with sorted periods array by beginning
      *
-     *  @return TimePeriodCollection - Collection with sorted periods
+     * - returns: Collection with sorted periods
      */
     func sortedByBeginning() -> TimePeriodCollection {
         let array = self.periods.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
@@ -147,11 +137,10 @@ open class TimePeriodCollection: TimePeriodGroup {
         return collection
     }
     
-    /*
-     *  #Sorted
+    /**
      *  Return collection with sorted periods array
      *
-     *  @return TimePeriodCollection - Collection with sorted periods
+     * - returns: Collection with sorted periods
      */
     func sorted(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
@@ -164,13 +153,12 @@ open class TimePeriodCollection: TimePeriodGroup {
     
     // Potentially use .reduce() instead of these functions
     /**
-     *  # All Inside In (Time Period Protocol)
      *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s
      *  whose start and end dates fall completely inside the interval of the given `TimePeriod`.
      *
-     *  @param period TimePeriodProtocol - The period to compare each other period against
+     * - parameter period: The period to compare each other period against
      *
-     *  @return TimePeriodCollection - Collection of periods inside the given period
+     * - returns: Collection of periods inside the given period
      */
     func allInside(in period: TimePeriodProtocol) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
@@ -182,13 +170,12 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
     
     /**
-     *  # Periods Intersected By (Date)
      *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s containing 
      *  the given date.
      *
-     *  @param date Date - The date to compare each period to
+     * - parameter date: The date to compare each period to
      *
-     *  @return TimePeriodCollection - Collection of periods intersected by the given date
+     * - returns: Collection of periods intersected by the given date
      */
     func periodsIntersected(by date: Date) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
@@ -203,9 +190,9 @@ open class TimePeriodCollection: TimePeriodGroup {
      *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s 
      *  containing either the start date or the end date--or both--of the given `TimePeriod`.
      *
-     *  @param period TimePeriodProtocol - The period to compare each other period to
+     *  - parameter period: The period to compare each other period to
      *
-     *  @return TimePeriodCollection - Collection of periods intersected by the given period
+     *  - returns: Collection of periods intersected by the given period
      */
     func periodsIntersected(by period: TimePeriodProtocol) -> TimePeriodCollection {
         let collection = TimePeriodCollection()
