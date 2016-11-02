@@ -9,8 +9,6 @@
 import Foundation
 
 /**
- *  Date + Components
- *
  *  Extends the Date class by adding convenient accessors of calendar
  *  components. Meta information about the date is also accessible via
  *  several computed Bools.
@@ -18,9 +16,7 @@ import Foundation
 public extension Date {
 
     /**
-     *  # Component
-     *
-     *  Convenient accessor of the date's `Calendar` components
+     *  Convenient accessor of the date's `Calendar` components.
      *
      *  - parameter component: The calendar component to access from the date
      *
@@ -33,9 +29,7 @@ public extension Date {
 	}
 	
     /**
-     *  # Ordinality
-     *
-     *  Convenient accessor of the date's `Calendar` components ordinality
+     *  Convenient accessor of the date's `Calendar` components ordinality.
      *
      *  - parameter smaller: The smaller calendar component to access from the date
      *  - parameter larger: The larger calendar component to access from the date
@@ -49,8 +43,6 @@ public extension Date {
 	}
 	
     /**
-     *  # Unit
-     *
      *  Use calendar components to determine how many units of a smaller component are inside 1 larger unit.
      *
      *  Ex. If used on a date in the month of February in a leap year (regardless of the day), the method would

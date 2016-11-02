@@ -9,8 +9,6 @@
 import Foundation
 
 /**
- *  Date + Comparators
- *
  *  Extends the Date class by adding methods for calculating the chunk
  *  of time between two dates and providing many variables and functions
  *  that compare the ordinality of two dates and the space between two dates
@@ -18,9 +16,9 @@ import Foundation
  */
 public extension Date {
 	
+    // MARK: - Comparisons
+    
     /**
-     *  # Chunk Between
-     *
      *  Given a date, returns a `TimeChunk` with components in their most natural form. Example:
      *
      *  ```
@@ -41,7 +39,7 @@ public extension Date {
      *  Passing a future date returns a TimeChunk with all positive components and passing 
      *  a date in the past returns one with all negative components.
      *
-     *  - parameter date: The date of reference from the date called on.
+     *  - parameter date: The date of reference from the date called on
      *
      *  - returns: A TimeChunk representing the time between the dates, in natural form
      */
@@ -51,11 +49,7 @@ public extension Date {
         // TimeChunk(seconds: secondDelta, minutes: minuteDelta, hours: hourDelta, days: dayDelta, weeks: 0, months: monthDelta, years: yearDelta)
     }
 	
-	
-	// MARK: - Comparisons
     /**
-     *  # Equals
-     *
      *  Returns a true if receiver is equal to provided comparison date, otherwise returns false
      *
      *  - parameter date: Provided date for comparison
@@ -67,9 +61,7 @@ public extension Date {
 	}
 	
     /**
-     *  # Is Later Than
-     *
-     *  Returns a true if receiver is later than provided comparison date, otherwise 
+     *  Returns a true if receiver is later than provided comparison date, otherwise
      *  returns false
      *
      *  - parameter date: Provided date for comparison
@@ -81,9 +73,7 @@ public extension Date {
 	}
     
     /**
-     *  # Is Later Than or Equal to
-     *
-     *  Returns a true if receiver is later than or equal to provided comparison date, 
+     *  Returns a true if receiver is later than or equal to provided comparison date,
      *  otherwise returns false
      *
      *  - parameter date: Provided date for comparison
@@ -95,9 +85,7 @@ public extension Date {
     }
 	
     /**
-     *  # Is Earlier Than
-     *
-     *  Returns a true if receiver is earlier than provided comparison date, otherwise 
+     *  Returns a true if receiver is earlier than provided comparison date, otherwise
      *  returns false
      *
      *  - parameter date: Provided date for comparison
@@ -109,9 +97,7 @@ public extension Date {
 	}
     
     /**
-     *  # Is Earlier Than or Equal to
-     *
-     *  Returns a true if receiver is earlier than or equal to the provided comparison date, 
+     *  Returns a true if receiver is earlier than or equal to the provided comparison date,
      *  otherwise returns false
      *
      *  - parameter date: Provided date for comparison
@@ -123,8 +109,6 @@ public extension Date {
     }
     
     /**
-     *  # Is Same Day
-     *
      *  Returns whether two dates fall on the same day.
      *
      *  - parameter date: Date to compare with sender
@@ -136,8 +120,6 @@ public extension Date {
     }
     
     /**
-     *  # Is Same Day (Static)
-     *
      *  Returns whether two dates fall on the same day.
      *
      *  - parameter date: First date to compare
@@ -162,9 +144,7 @@ public extension Date {
     // MARK: Time From
     
     /**
-     *  # Years From
-     *
-     *  Returns an Int representing the amount of time in years between the receiver and 
+     *  Returns an Int representing the amount of time in years between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -179,9 +159,7 @@ public extension Date {
     }
     
     /**
-     *  # Months From
-     *
-     *  Returns an Int representing the amount of time in months between the receiver and 
+     *  Returns an Int representing the amount of time in months between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -196,9 +174,7 @@ public extension Date {
     }
     
     /**
-     *  # Weeks From
-     *
-     *  Returns an Int representing the amount of time in weeks between the receiver and 
+     *  Returns an Int representing the amount of time in weeks between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -213,9 +189,7 @@ public extension Date {
     }
     
     /**
-     *  # Days From
-     *
-     *  Returns an Int representing the amount of time in days between the receiver and 
+     *  Returns an Int representing the amount of time in days between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -230,9 +204,7 @@ public extension Date {
     }
     
     /**
-     *  # Hours From
-     *
-     *  Returns an Int representing the amount of time in hours between the receiver and 
+     *  Returns an Int representing the amount of time in hours between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -246,9 +218,7 @@ public extension Date {
     }
     
     /**
-     *  # Minutes From
-     *
-     *  Returns an Int representing the amount of time in minutes between the receiver and 
+     *  Returns an Int representing the amount of time in minutes between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -262,9 +232,7 @@ public extension Date {
     }
     
     /**
-     *  # Seconds From
-     *
-     *  Returns an Int representing the amount of time in seconds between the receiver and 
+     *  Returns an Int representing the amount of time in seconds between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -281,9 +249,7 @@ public extension Date {
     // MARK: Time From With Calendar
     
     /**
-     *  # Years From (With Calendar)
-     *
-     *  Returns an Int representing the amount of time in years between the receiver and 
+     *  Returns an Int representing the amount of time in years between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -307,9 +273,7 @@ public extension Date {
     }
     
     /**
-     *  # Months From (With Calendar)
-     *
-     *  Returns an Int representing the amount of time in months between the receiver and 
+     *  Returns an Int representing the amount of time in months between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -333,9 +297,7 @@ public extension Date {
     }
     
     /**
-     *  # Weeks From (With Calendar)
-     *
-     *  Returns an Int representing the amount of time in weeks between the receiver and 
+     *  Returns an Int representing the amount of time in weeks between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -359,9 +321,7 @@ public extension Date {
     }
     
     /**
-     *  # Days From (With Calendar)
-     *
-     *  Returns an Int representing the amount of time in days between the receiver and 
+     *  Returns an Int representing the amount of time in days between the receiver and
      *  the provided date.
      *
      *  If the receiver is earlier than the provided date, the returned value will be negative.
@@ -506,9 +466,7 @@ public extension Date {
     // MARK: Earlier Than
     
     /**
-     *  # Years Earlier Than
-     *
-     *  Returns the number of years the receiver's date is earlier than the provided 
+     *  Returns the number of years the receiver's date is earlier than the provided
      *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -520,9 +478,7 @@ public extension Date {
     }
     
     /**
-     *  # Months Earlier Than
-     *
-     *  Returns the number of months the receiver's date is earlier than the provided 
+     *  Returns the number of months the receiver's date is earlier than the provided
      *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -534,9 +490,7 @@ public extension Date {
     }
     
     /**
-     *  # Weeks Earlier Than
-     *
-     *  Returns the number of weeks the receiver's date is earlier than the provided 
+     *  Returns the number of weeks the receiver's date is earlier than the provided
      *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -548,9 +502,7 @@ public extension Date {
     }
     
     /**
-     *  # Days Earlier Than
-     *
-     *  Returns the number of days the receiver's date is earlier than the provided 
+     *  Returns the number of days the receiver's date is earlier than the provided
      *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -562,9 +514,7 @@ public extension Date {
     }
     
     /**
-     *  # Hours Earlier Than
-     *
-     *  Returns the number of hours the receiver's date is earlier than the provided 
+     *  Returns the number of hours the receiver's date is earlier than the provided
      *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -576,9 +526,7 @@ public extension Date {
     }
     
     /**
-     *  # Minutes Earlier Than
-     *
-     *  Returns the number of minutes the receiver's date is earlier than the provided 
+     *  Returns the number of minutes the receiver's date is earlier than the provided
      *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -590,9 +538,7 @@ public extension Date {
     }
     
     /**
-     *  # Seconds Earlier Than
-     *
-     *  Returns the number of seconds the receiver's date is earlier than the provided 
+     *  Returns the number of seconds the receiver's date is earlier than the provided
      *  comparison date, 0 if the receiver's date is later than or equal to the provided comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -607,9 +553,7 @@ public extension Date {
     // MARK: Later Than
     
     /**
-     *  # Years Later Than
-     *
-     *  Returns the number of years the receiver's date is later than the provided 
+     *  Returns the number of years the receiver's date is later than the provided
      *  comparison date, 0 if the receiver's date is earlier than or equal to the provided 
      *  comparison date.
      *
@@ -622,9 +566,7 @@ public extension Date {
     }
     
     /**
-     *  # Months Later Than
-     *
-     *  Returns the number of months the receiver's date is later than the provided 
+     *  Returns the number of months the receiver's date is later than the provided
      *  comparison date, 0 if the receiver's date is earlier than or equal to the provided 
      *  comparison date.
      *
@@ -637,9 +579,7 @@ public extension Date {
     }
     
     /**
-     *  # Weeks Later Than
-     *
-     *  Returns the number of weeks the receiver's date is later than the provided 
+     *  Returns the number of weeks the receiver's date is later than the provided
      *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
@@ -652,9 +592,7 @@ public extension Date {
     }
     
     /**
-     *  # Days Later Than
-     *
-     *  Returns the number of days the receiver's date is later than the provided 
+     *  Returns the number of days the receiver's date is later than the provided
      *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
@@ -667,9 +605,7 @@ public extension Date {
     }
     
     /**
-     *  # Hours Later Than
-     *
-     *  Returns the number of hours the receiver's date is later than the provided 
+     *  Returns the number of hours the receiver's date is later than the provided
      *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
@@ -682,9 +618,7 @@ public extension Date {
     }
     
     /**
-     *  # Minutes Later Than
-     *
-     *  Returns the number of minutes the receiver's date is later than the provided 
+     *  Returns the number of minutes the receiver's date is later than the provided
      *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
@@ -697,9 +631,7 @@ public extension Date {
     }
     
     /**
-     *  # Seconds Later Than
-     *
-     *  Returns the number of seconds the receiver's date is later than the provided 
+     *  Returns the number of seconds the receiver's date is later than the provided
      *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *

@@ -9,8 +9,6 @@
 import Foundation
 
 /**
- *  Date + Time Ago
- *
  *  Extends the Date class by adding convenient methods to display the passage of
  *  time in String format.
  */
@@ -19,48 +17,44 @@ public extension Date {
     //MARK: - Time Ago
     
     /**
-     *  # Time Ago Since (Date)
      *  Takes in a date and returns a string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @param Date - Date to be measured from now
+     *  - parameter date: Date to be measured from now
      *
-     *  @return String - Formatted return string
+     *  - returns String - Formatted return string
      */
     static func timeAgo(since date:Date) -> String{
         return date.timeAgo(since: Date(), numericDates: false, numericTimes: false)
     }
     
     /**
-     *  # Short Time Ago Since (Date)
      *  Takes in a date and returns a shortened string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @param Date - Date to be measured from now
+     *  - parameter date: Date to be measured from now
      *
-     *  @return String - Formatted return string
+     *  - returns String - Formatted return string
      */
     static func shortTimeAgo(since date:Date) -> String {
         return date.shortTimeAgo(since:Date())
     }
     
     /**
-     *  # Time Ago Since Now
      *  Returns a string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @return String - Formatted return string
+     *  - returns String - Formatted return string
      */
     var timeAgoSinceNow: String {
         return self.timeAgo(since:Date())
     }
     
     /**
-     *  # Short Time Ago Since Now
      *  Returns a shortened string with the most convenient unit of time representing
      *  how far in the past that date is from now.
      *
-     *  @return String - Formatted return string
+     *  - returns String - Formatted return string
      */
     var shortTimeAgoSinceNow: String {
         return self.shortTimeAgo(since:Date())
@@ -256,10 +250,24 @@ public extension Date {
     
     // MARK: - Date Earlier/Later
     
+    /**
+     *  Return the earlier of two dates, between self and a given date.
+     *  
+     *  - parameter date: The date to compare to self
+     *
+     *  - returns: The date that is earlier
+     */
     func earlierDate(_ date:Date) -> Date{
         return (self.timeIntervalSince1970 <= date.timeIntervalSince1970) ? self : date
     }
     
+    /**
+     *  Return the later of two dates, between self and a given date.
+     *
+     *  - parameter date: The date to compare to self
+     *
+     *  - returns: The date that is later
+     */
     func laterDate(_ date:Date) -> Date{
         return (self.timeIntervalSince1970 >= date.timeIntervalSince1970) ? self : date
     }

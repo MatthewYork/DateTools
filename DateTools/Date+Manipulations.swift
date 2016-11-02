@@ -9,8 +9,6 @@
 import Foundation
 
 /**
- *  Date + Manipulations
- *
  *  Extends the Date class by adding manipulation methods for transforming dates
  */
 public extension Date {
@@ -18,12 +16,11 @@ public extension Date {
     // MARK: - StartOf
     
     /**
-     *  # Start Of (Component)
      *  Return a date set to the start of a given component.
      *
-     *  @param component Component - The date component (second, minute, hour, day, month, or year)
+     *  - parameter component: The date component (second, minute, hour, day, month, or year)
      *
-     *  @return Date - A date retaining the value of the given component and all larger components,
+     *  - returns: A date retaining the value of the given component and all larger components,
      *  with all smaller components set to their minimum
      */
     func start(of component: Component) -> Date {
@@ -56,12 +53,11 @@ public extension Date {
     }
     
     /**
-     *  # End Of (Component)
      *  Return a date set to the end of a given component.
      *
-     *  @param component Component - The date component (second, minute, hour, day, month, or year)
+     *  - parameter component: The date component (second, minute, hour, day, month, or year)
      *
-     *  @return Date - A date retaining the value of the given component and all larger components,
+     *  - returns: A date retaining the value of the given component and all larger components,
      *  with all smaller components set to their maximum
      */
     func end(of component: Component) -> Date {
@@ -124,9 +120,9 @@ public extension Date {
      *  # Add (TimeChunk to Date)
      *  Increase a date by the value of a given `TimeChunk`.
      *
-     *  @param chunk TimeChunk - The amount to increase the date by (ex. 2.days, 4.years, etc.)
+     *  - parameter chunk: The amount to increase the date by (ex. 2.days, 4.years, etc.)
      *
-     *  @return Date - A date with components increased by the values of the
+     *  - returns: A date with components increased by the values of the
      *  corresponding `TimeChunk` variables
      */
     func add(_ chunk: TimeChunk) -> Date {
@@ -145,9 +141,9 @@ public extension Date {
      *  # Subtract (TimeChunk from Date)
      *  Decrease a date by the value of a given `TimeChunk`.
      *
-     *  @param chunk TimeChunk - The amount to decrease the date by (ex. 2.days, 4.years, etc.)
+     *  - parameter chunk: The amount to decrease the date by (ex. 2.days, 4.years, etc.)
      *
-     *  @return Date - A date with components decreased by the values of the
+     *  - returns: A date with components decreased by the values of the
      *  corresponding `TimeChunk` variables
      */
     func subtract(_ chunk: TimeChunk) -> Date {
