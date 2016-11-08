@@ -4,23 +4,16 @@ Pod::Spec.new do |s|
   s.summary      = 'Dates and time made easy in Objective-C'
   s.homepage     = 'https://github.com/MatthewYork/DateTools'
 
-  s.description  = <<-DESC
-                    DateTools was written to streamline date and time handling in Objective-C.
-                   DESC
+  s.description  = 'DateTools was written to streamline date and time handling in Objective-C.'
 
-  s.license      = "MIT"
-
-  # s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Matthew York" => "my3681@gmail.com" }
 
   # s.source       = { :git => "https://github.com/MatthewYork/DateTools.git",
   #                    :tag => "v#{s.version.to_s}" }
   s.source       = { :git => "https://github.com/michal-olszewski/DateTools.git" }
 
-  # s.ios.platform = :ios, '7.0'
-  # s.osx.platform = :iox, '10.7'
-  s.ios.deployment_target = "7.0"
-  s.osx.deployment_target = "10.7"
+  s.platforms = { :ios => '7.0', :osx => '10.7' }
 
   s.requires_arc = true
 
