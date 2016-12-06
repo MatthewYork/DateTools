@@ -20,10 +20,18 @@
 // ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+@import Foundation;
+
+//! Project version number for DateTools
+FOUNDATION_EXPORT double DateToolsVersionNumber;
+
+//! Project version string for DateTools.
+FOUNDATION_EXPORT const unsigned char DateToolsVersionString[];
+
 #import "DTConstants.h"
 #import "DTError.h"
-#import "NSDate+DateTools.h"
 #import "DTTimePeriod.h"
-#import "DTTimePeriodGroup.h"
-#import "DTTimePeriodCollection.h"
 #import "DTTimePeriodChain.h"
+#import "DTTimePeriodCollection.h"
+#import "DTTimePeriodGroup.h"
+#import "NSDate+DateTools.h"
