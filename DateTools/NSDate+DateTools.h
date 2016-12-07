@@ -115,6 +115,9 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours;
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes;
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds;
+#pragma mark Date Bounds
+- (NSDate *)dateAtStartOfDay;
+- (NSDate *)dateAtEndOfDay;
 
 #pragma mark - Date Comparison
 #pragma mark Time From

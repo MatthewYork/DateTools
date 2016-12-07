@@ -264,6 +264,16 @@
     XCTAssertEqual(YES, [[self.controlDate dateBySubtractingSeconds:60] isEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
 }
 
+#pragma mark Date Bounds
+- (void)testDateAtStartOfDay{
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 00:00:00.000"];
+    XCTAssertEqual(YES, [[self.controlDate dateAtStartOfDay] isEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+}
+- (void)testDateAtEndOfDay{
+    NSDate *testDate = [self.formatter dateFromString:@"2014 11 05 23:59:59.000"];
+    XCTAssertEqual(YES, [[self.controlDate dateAtEndOfDay] isEqualToDate:testDate], @"%s Failed", __PRETTY_FUNCTION__);
+}
+
 #pragma mark - Date Comparison
 #pragma mark Time From
 -(void)testYearsFrom{
