@@ -23,7 +23,7 @@ public extension Date {
      *  - returns: A date retaining the value of the given component and all larger components,
      *  with all smaller components set to their minimum
      */
-    func start(of component: Component) -> Date {
+    public func start(of component: Component) -> Date {
         var newDate = self;
         if component == .second {
             newDate.second(self.second)
@@ -60,7 +60,7 @@ public extension Date {
      *  - returns: A date retaining the value of the given component and all larger components,
      *  with all smaller components set to their maximum
      */
-    func end(of component: Component) -> Date {
+    public func end(of component: Component) -> Date {
         var newDate = self;
         if component == .second {
             newDate.second(newDate.second + 1)
@@ -96,7 +96,7 @@ public extension Date {
         return newDate
     }
     
-    internal func daysInMonth(date: Date) -> Int {
+    public func daysInMonth(date: Date) -> Int {
         let month = date.month
         if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
             // 31 day month
@@ -125,7 +125,7 @@ public extension Date {
      *  - returns: A date with components increased by the values of the
      *  corresponding `TimeChunk` variables
      */
-    func add(_ chunk: TimeChunk) -> Date {
+    public func add(_ chunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
         components.year = chunk.years
@@ -146,7 +146,7 @@ public extension Date {
      *  - returns: A date with components decreased by the values of the
      *  corresponding `TimeChunk` variables
      */
-    func subtract(_ chunk: TimeChunk) -> Date {
+    public func subtract(_ chunk: TimeChunk) -> Date {
         let calendar = Calendar.autoupdatingCurrent
         var components = DateComponents()
         components.year = -chunk.years
@@ -164,28 +164,28 @@ public extension Date {
     /**
      *  Operator overload for adding a `TimeChunk` to a date.
      */
-    static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
+    public static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
         return leftAddend.add(rightAddend)
     }
     
     /**
      *  Operator overload for subtracting a `TimeChunk` from a date.
      */
-    static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
+    public static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
         return minuend.subtract(subtrahend)
     }
     
     /**
      *  Operator overload for adding a `TimeInterval` to a date.
      */
-    static func +(leftAddend: Date, rightAddend: Int) -> Date {
+    public static func +(leftAddend: Date, rightAddend: Int) -> Date {
         return leftAddend.addingTimeInterval((TimeInterval(rightAddend)))
     }
     
     /**
      *  Operator overload for subtracting a `TimeInterval` from a date.
      */
-    static func -(minuend: Date, subtrahend: Int) -> Date {
+    public static func -(minuend: Date, subtrahend: Int) -> Date {
         return minuend.addingTimeInterval(-(TimeInterval(subtrahend)))
     }
     

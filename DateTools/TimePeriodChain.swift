@@ -27,7 +27,7 @@ open class TimePeriodChain: TimePeriodGroup {
      *
      * - parameter period: TimePeriodProtocol to add to the collection
      */
-    func append(_ period: TimePeriodProtocol) {
+    public func append(_ period: TimePeriodProtocol) {
         let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
         
         let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
@@ -49,7 +49,7 @@ open class TimePeriodChain: TimePeriodGroup {
      *
      * - parameter periodArray: TimePeriodProtocol list to add to the collection
      */
-    func append<G: TimePeriodGroup>(contentsOf group: G) {
+    public func append<G: TimePeriodGroup>(contentsOf group: G) {
         for period in group.periods {
             let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
             
@@ -73,7 +73,7 @@ open class TimePeriodChain: TimePeriodGroup {
      * - parameter newElement: The period to insert
      * - parameter index: Index to insert period at
      */
-    func insert(_ period: TimePeriodProtocol, at index: Int) {
+    public func insert(_ period: TimePeriodProtocol, at index: Int) {
         //Check for special zero case which takes the beginning date
         if index == 0 && period.beginning != nil && period.end != nil {
             //Insert new period
@@ -105,7 +105,7 @@ open class TimePeriodChain: TimePeriodGroup {
      *
      * - parameter at: The index in the collection to remove
      */
-    func remove(at index: Int) {
+    public func remove(at index: Int) {
         //Retrieve duration of period to be removed
         let duration = periods[index].duration
         
@@ -122,7 +122,7 @@ open class TimePeriodChain: TimePeriodGroup {
     /**
      *  Remove all periods from period array.
      */
-    func removeAll() {
+    public func removeAll() {
         self.periods.removeAll()
         updateExtremes()
     }
@@ -134,7 +134,7 @@ open class TimePeriodChain: TimePeriodGroup {
      *
      * - parameter duration: The time interval to shift the period by
      */
-    func shift(by duration: TimeInterval) {
+    public func shift(by duration: TimeInterval) {
         for var period in self.periods {
             period.shift(by:duration)
         }
@@ -159,7 +159,7 @@ open class TimePeriodChain: TimePeriodGroup {
      *  Removes the last object from the `TimePeriodChain` and returns it
      *
      */
-    func pop() -> TimePeriodProtocol? {
+    public func pop() -> TimePeriodProtocol? {
         let period = self.periods.popLast()
         updateExtremes()
         
@@ -176,8 +176,7 @@ open class TimePeriodChain: TimePeriodGroup {
     /**
      *  Operator overload for comparing `TimePeriodChain`s to each other
      */
-    static func ==(left: TimePeriodChain, right: TimePeriodChain) -> Bool {
+    public static func ==(left: TimePeriodChain, right: TimePeriodChain) -> Bool {
         return left.equals(right)
     }
-
 }

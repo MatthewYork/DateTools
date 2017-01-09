@@ -43,7 +43,7 @@ public extension Date {
      *
      *  - returns: A TimeChunk representing the time between the dates, in natural form
      */
-    func chunkBetween(date: Date) -> TimeChunk {
+    public func chunkBetween(date: Date) -> TimeChunk {
         var compenentsBetween = Calendar.autoupdatingCurrent.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: date)
         return TimeChunk(seconds: compenentsBetween.second!, minutes: compenentsBetween.minute!, hours: compenentsBetween.hour!, days: compenentsBetween.day!, weeks: 0, months: compenentsBetween.month!, years: compenentsBetween.year!)
         // TimeChunk(seconds: secondDelta, minutes: minuteDelta, hours: hourDelta, days: dayDelta, weeks: 0, months: monthDelta, years: yearDelta)
@@ -56,7 +56,7 @@ public extension Date {
      *
      *  - returns: Bool representing comparison result
      */
-	func equals(_ date: Date) -> Bool {
+	public func equals(_ date: Date) -> Bool {
 		return self.compare(date) == .orderedSame
 	}
 	
@@ -68,7 +68,7 @@ public extension Date {
      *
      *  - returns: Bool representing comparison result
      */
-	func isLater(than date: Date) -> Bool {
+	public func isLater(than date: Date) -> Bool {
 		return self.compare(date) == .orderedDescending
 	}
     
@@ -80,7 +80,7 @@ public extension Date {
      *
      *  - returns: Bool representing comparison result
      */
-    func isLaterThanOrEqual(to date: Date) -> Bool {
+    public func isLaterThanOrEqual(to date: Date) -> Bool {
         return self.compare(date) == .orderedDescending || self.compare(date) == .orderedSame
     }
 	
@@ -92,7 +92,7 @@ public extension Date {
      *
      *  - returns: Bool representing comparison result
      */
-	func isEarlier(than date: Date) -> Bool {
+	public func isEarlier(than date: Date) -> Bool {
 		return self.compare(date) == .orderedAscending
 	}
     
@@ -104,7 +104,7 @@ public extension Date {
      *
      *  - returns:  Bool representing comparison result
      */
-    func isEarlierThanOrEqual(to date: Date) -> Bool {
+    public func isEarlierThanOrEqual(to date: Date) -> Bool {
         return self.compare(date) == .orderedAscending || self.compare(date) == .orderedSame
     }
     
@@ -115,7 +115,7 @@ public extension Date {
      *
      *  - returns: True if both paramter dates fall on the same day, false otherwise
      */
-    func isSameDay(date : Date ) -> Bool {
+    public func isSameDay(date : Date ) -> Bool {
         return Date.isSameDay(date: self, as: date)
     }
     
@@ -127,7 +127,7 @@ public extension Date {
      *
      *  - returns: True if both paramter dates fall on the same day, false otherwise
      */
-    static func isSameDay(date: Date, as compareDate: Date) -> Bool {
+    public static func isSameDay(date: Date, as compareDate: Date) -> Bool {
         let calendar = Calendar.autoupdatingCurrent
         var components = calendar.dateComponents([.era, .year, .month, .day], from: date)
         let dateOne = calendar.date(from: components)
@@ -154,7 +154,7 @@ public extension Date {
      *
      *  - returns: The years between receiver and provided date
      */
-    func years(from date: Date) -> Int {
+    public func years(from date: Date) -> Int {
         return years(from: date, calendar:nil)
     }
     
@@ -169,7 +169,7 @@ public extension Date {
      *
      *  - returns: The years between receiver and provided date
      */
-    func months(from date: Date) -> Int {
+    public func months(from date: Date) -> Int {
         return months(from: date, calendar:nil)
     }
     
@@ -184,7 +184,7 @@ public extension Date {
      *
      *  - returns: The weeks between receiver and provided date
      */
-    func weeks(from date: Date) -> Int {
+    public func weeks(from date: Date) -> Int {
         return weeks(from: date, calendar:nil)
     }
     
@@ -199,7 +199,7 @@ public extension Date {
      *
      *  - returns: The days between receiver and provided date
      */
-    func days(from date: Date) -> Int {
+    public func days(from date: Date) -> Int {
         return days(from: date, calendar:nil)
     }
     
@@ -213,7 +213,7 @@ public extension Date {
      *
      *  - returns: The hours between receiver and provided date
      */
-    func hours(from date: Date) -> Int {
+    public func hours(from date: Date) -> Int {
         return Int(self.timeIntervalSince(date)/Constants.SecondsInHour);
     }
     
@@ -227,7 +227,7 @@ public extension Date {
      *
      *  - returns: The minutes between receiver and provided date
      */
-    func minutes(from date: Date) -> Int {
+    public func minutes(from date: Date) -> Int {
         return Int(self.timeIntervalSince(date)/Constants.SecondsInMinute)
     }
     
@@ -241,7 +241,7 @@ public extension Date {
      *
      *  - returns: The seconds between receiver and provided date
      */
-    func seconds(from date: Date) -> Int {
+    public func seconds(from date: Date) -> Int {
         return Int(timeIntervalSince(date))
     }
     
@@ -259,7 +259,7 @@ public extension Date {
      *
      *  - returns: The years between receiver and provided date
      */
-    func years(from date: Date, calendar: Calendar?) -> Int {
+    public func years(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -283,7 +283,7 @@ public extension Date {
      *
      *  - returns: The months between receiver and provided date
      */
-    func months(from date: Date, calendar: Calendar?) -> Int{
+    public func months(from date: Date, calendar: Calendar?) -> Int{
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -307,7 +307,7 @@ public extension Date {
      *
      *  - returns: The weeks between receiver and provided date
      */
-    func weeks(from date: Date, calendar: Calendar?) -> Int{
+    public func weeks(from date: Date, calendar: Calendar?) -> Int{
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -331,7 +331,7 @@ public extension Date {
      *
      *  - returns: The days between receiver and provided date
      */
-    func days(from date: Date, calendar: Calendar?) -> Int {
+    public func days(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
         if (calendar == nil) {
             calendarCopy = Calendar.autoupdatingCurrent
@@ -351,7 +351,7 @@ public extension Date {
      *  The number of years until the receiver's date (0 if the receiver is the same or 
      *  earlier than now).
      */
-    var yearsUntil: Int {
+    public var yearsUntil: Int {
         return yearsLater(than: Date())
     }
     
@@ -359,7 +359,7 @@ public extension Date {
      *  The number of months until the receiver's date (0 if the receiver is the same or 
      *  earlier than now).
      */
-    var monthsUntil: Int {
+    public var monthsUntil: Int {
         return monthsLater(than: Date())
     }
     
@@ -367,7 +367,7 @@ public extension Date {
      *  The number of weeks until the receiver's date (0 if the receiver is the same or 
      *  earlier than now).
      */
-    var weeksUntil: Int {
+    public var weeksUntil: Int {
         return weeksLater(than: Date())
     }
     
@@ -375,7 +375,7 @@ public extension Date {
      *  The number of days until the receiver's date (0 if the receiver is the same or 
      *  earlier than now).
      */
-    var daysUntil: Int {
+    public var daysUntil: Int {
         return daysLater(than: Date())
     }
     
@@ -383,7 +383,7 @@ public extension Date {
      *  The number of hours until the receiver's date (0 if the receiver is the same or 
      *  earlier than now).
      */
-    var hoursUntil: Int{
+    public var hoursUntil: Int{
         return hoursLater(than: Date())
     }
     
@@ -391,7 +391,7 @@ public extension Date {
      *  The number of minutes until the receiver's date (0 if the receiver is the same or 
      *  earlier than now).
      */
-    var minutesUntil: Int{
+    public var minutesUntil: Int{
         return minutesLater(than: Date())
     }
     
@@ -399,7 +399,7 @@ public extension Date {
      *  The number of seconds until the receiver's date (0 if the receiver is the same or 
      *  earlier than now).
      */
-    var secondsUntil: Int{
+    public var secondsUntil: Int{
         return secondsLater(than: Date())
     }
     
@@ -410,7 +410,7 @@ public extension Date {
      *  The number of years the receiver's date is earlier than now (0 if the receiver is 
      *  the same or earlier than now).
      */
-    var yearsAgo: Int {
+    public var yearsAgo: Int {
         return yearsEarlier(than: Date())
     }
     
@@ -418,7 +418,7 @@ public extension Date {
      *  The number of months the receiver's date is earlier than now (0 if the receiver is 
      *  the same or earlier than now).
      */
-    var monthsAgo: Int {
+    public var monthsAgo: Int {
         return monthsEarlier(than: Date())
     }
     
@@ -426,7 +426,7 @@ public extension Date {
      *  The number of weeks the receiver's date is earlier than now (0 if the receiver is 
      *  the same or earlier than now).
      */
-    var weeksAgo: Int {
+    public var weeksAgo: Int {
         return weeksEarlier(than: Date())
     }
     
@@ -434,7 +434,7 @@ public extension Date {
      *  The number of days the receiver's date is earlier than now (0 if the receiver is 
      *  the same or earlier than now).
      */
-    var daysAgo: Int {
+    public var daysAgo: Int {
         return daysEarlier(than: Date())
     }
     
@@ -442,7 +442,7 @@ public extension Date {
      *  The number of hours the receiver's date is earlier than now (0 if the receiver is 
      *  the same or earlier than now).
      */
-    var hoursAgo: Int {
+    public var hoursAgo: Int {
         return hoursEarlier(than: Date())
     }
     
@@ -450,7 +450,7 @@ public extension Date {
      *  The number of minutes the receiver's date is earlier than now (0 if the receiver is 
      *  the same or earlier than now).
      */
-    var minutesAgo: Int {
+    public var minutesAgo: Int {
         return minutesEarlier(than: Date())
     }
     
@@ -458,7 +458,7 @@ public extension Date {
      *  The number of seconds the receiver's date is earlier than now (0 if the receiver is 
      *  the same or earlier than now).
      */
-    var secondsAgo: Int{
+    public var secondsAgo: Int{
         return secondsEarlier(than: Date())
     }
     
@@ -473,7 +473,7 @@ public extension Date {
      *
      *  - returns: The number of years
      */
-    func yearsEarlier(than date: Date) -> Int {
+    public func yearsEarlier(than date: Date) -> Int {
         return abs(min(years(from: date), 0))
     }
     
@@ -485,7 +485,7 @@ public extension Date {
      *
      *  - returns: The number of months
      */
-    func monthsEarlier(than date: Date) -> Int {
+    public func monthsEarlier(than date: Date) -> Int {
         return abs(min(months(from: date), 0));
     }
     
@@ -497,7 +497,7 @@ public extension Date {
      *
      *  - returns: The number of weeks
      */
-    func weeksEarlier(than date: Date) -> Int {
+    public func weeksEarlier(than date: Date) -> Int {
         return abs(min(weeks(from: date), 0))
     }
     
@@ -509,7 +509,7 @@ public extension Date {
      *
      *  - returns: The number of days
      */
-    func daysEarlier(than date: Date) -> Int {
+    public func daysEarlier(than date: Date) -> Int {
         return abs(min(days(from: date), 0))
     }
     
@@ -521,7 +521,7 @@ public extension Date {
      *
      *  - returns: The number of hours
      */
-    func hoursEarlier(than date: Date) -> Int {
+    public func hoursEarlier(than date: Date) -> Int {
         return abs(min(hours(from: date), 0))
     }
     
@@ -533,7 +533,7 @@ public extension Date {
      *
      *  - returns: The number of minutes
      */
-    func minutesEarlier(than date: Date) -> Int {
+    public func minutesEarlier(than date: Date) -> Int {
         return abs(min(minutes(from: date), 0))
     }
     
@@ -545,7 +545,7 @@ public extension Date {
      *
      *  - returns: The number of seconds
      */
-    func secondsEarlier(than date: Date) -> Int {
+    public func secondsEarlier(than date: Date) -> Int {
         return abs(min(seconds(from: date), 0))
     }
     
@@ -561,7 +561,7 @@ public extension Date {
      *
      *  - returns: The number of years
      */
-    func yearsLater(than date: Date) -> Int {
+    public func yearsLater(than date: Date) -> Int {
         return max(years(from: date), 0)
     }
     
@@ -574,7 +574,7 @@ public extension Date {
      *
      *  - returns: The number of months
      */
-    func monthsLater(than date: Date) -> Int {
+    public func monthsLater(than date: Date) -> Int {
         return max(months(from: date), 0)
     }
     
@@ -587,7 +587,7 @@ public extension Date {
      *
      *  - returns: The number of weeks
      */
-    func weeksLater(than date: Date) -> Int {
+    public func weeksLater(than date: Date) -> Int {
         return max(weeks(from: date), 0)
     }
     
@@ -600,7 +600,7 @@ public extension Date {
      *
      *  - returns: The number of days
      */
-    func daysLater(than date: Date) -> Int {
+    public func daysLater(than date: Date) -> Int {
         return max(days(from: date), 0)
     }
     
@@ -613,7 +613,7 @@ public extension Date {
      *
      *  - returns: The number of hours
      */
-    func hoursLater(than date: Date) -> Int {
+    public func hoursLater(than date: Date) -> Int {
         return max(hours(from: date), 0)
     }
     
@@ -626,7 +626,7 @@ public extension Date {
      *
      *  - returns: The number of minutes
      */
-    func minutesLater(than date: Date) -> Int {
+    public func minutesLater(than date: Date) -> Int {
         return max(minutes(from: date), 0)
     }
     
@@ -639,8 +639,7 @@ public extension Date {
      *
      *  - returns: The number of seconds
      */
-    func secondsLater(than date: Date) -> Int {
+    public func secondsLater(than date: Date) -> Int {
         return max(seconds(from: date), 0)
     }
-
 }

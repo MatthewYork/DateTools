@@ -23,13 +23,13 @@ public struct TimeChunk {
     
     // MARK: - Variables
     
-    var seconds = 0
-    var minutes = 0
-    var hours = 0
-    var days = 0
-    var weeks = 0
-    var months = 0
-    var years = 0
+    public var seconds = 0
+    public var minutes = 0
+    public var hours = 0
+    public var days = 0
+    public var weeks = 0
+    public var months = 0
+    public var years = 0
     
     public init() {}
     
@@ -53,7 +53,7 @@ public struct TimeChunk {
      *
      * - returns: If all components in both `TimeChunk`s are equal
      */
-    func equals(chunk: TimeChunk) -> Bool {
+    public func equals(chunk: TimeChunk) -> Bool {
         return (seconds == chunk.seconds && minutes == chunk.minutes && hours == chunk.hours && days == chunk.days && weeks == chunk.weeks && months == chunk.months && years == chunk.years)
     }
     
@@ -68,7 +68,7 @@ public struct TimeChunk {
      *  ! Months are not supported for conversions. They are not a
      *  well defined unit of time without the context of a calendar. !
      */
-    func to(_ unit: TimeUnits) -> Int {
+    public func to(_ unit: TimeUnits) -> Int {
         if self.months != 0 {
             print("Months are not supported for conversion due to their uncertain number of days.")
             return 0
@@ -131,14 +131,14 @@ public struct TimeChunk {
     /**
      *  Returns the current date decreased by the amount in self
      */
-    var earlier: Date {
+    public var earlier: Date {
         return earlier(than: Date())
     }
     
     /**
      *  Returns the current date increased by the amount in self
      */
-    var later: Date {
+    public var later: Date {
         return later(than: Date())
     }
     
@@ -149,7 +149,7 @@ public struct TimeChunk {
      *
      * - returns: A new date with components decreased according to the variables of self
      */
-    func earlier(than date: Date) -> Date {
+    public func earlier(than date: Date) -> Date {
         return date.subtract(self)
     }
     
@@ -160,7 +160,7 @@ public struct TimeChunk {
      *
      * - returns: A new date with components increased according to the variables of self
      */
-    func later(than date: Date) -> Date {
+    public func later(than date: Date) -> Date {
         return date.add(self)
     }
     
@@ -175,7 +175,7 @@ public struct TimeChunk {
      *
      * - returns: The `TimeChunk` with variables increased
      */
-    func lengthened(by chunk: TimeChunk) -> TimeChunk {
+    public func lengthened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
         newChunk.seconds = seconds + chunk.seconds
         newChunk.minutes = minutes + chunk.minutes
@@ -195,7 +195,7 @@ public struct TimeChunk {
      *
      * - returns: The `TimeChunk` with variables decreased
      */
-    func shortened(by chunk: TimeChunk) -> TimeChunk {
+    public func shortened(by chunk: TimeChunk) -> TimeChunk {
         var newChunk = TimeChunk()
         newChunk.seconds = seconds - chunk.seconds
         newChunk.minutes = minutes - chunk.minutes
@@ -216,7 +216,7 @@ public struct TimeChunk {
      *
      * - parameter chunk: The `TimeChunk` to increase self by
      */
-    mutating func lengthen(by chunk: TimeChunk) {
+    public mutating func lengthen(by chunk: TimeChunk) {
         seconds += chunk.seconds
         minutes += chunk.minutes
         hours += chunk.hours
@@ -231,7 +231,7 @@ public struct TimeChunk {
      *
      * - parameter chunk: The `TimeChunk` to decrease self by
      */
-    mutating func shorten(by chunk: TimeChunk) {
+    public mutating func shorten(by chunk: TimeChunk) {
         seconds -= chunk.seconds
         minutes -= chunk.minutes
         hours -= chunk.hours
@@ -247,28 +247,28 @@ public struct TimeChunk {
     /**
      *  Operator overload for adding two `TimeChunk`s
      */
-    static func +(leftAddend: TimeChunk, rightAddend: TimeChunk) -> TimeChunk {
+    public static func +(leftAddend: TimeChunk, rightAddend: TimeChunk) -> TimeChunk {
         return leftAddend.lengthened(by: rightAddend)
     }
     
     /**
      *  Operator overload for subtracting two `TimeChunk`s
      */
-    static func -(minuend: TimeChunk, subtrahend: TimeChunk) -> TimeChunk {
+    public static func -(minuend: TimeChunk, subtrahend: TimeChunk) -> TimeChunk {
         return minuend.shortened(by: subtrahend)
     }
     
     /**
      *  Operator overload for checking if two `TimeChunk`s are equal
      */
-    static func ==(left: TimeChunk, right: TimeChunk) -> Bool {
+    public static func ==(left: TimeChunk, right: TimeChunk) -> Bool {
         return left.equals(chunk: right)
     }
     
     /**
      *  Operator overload for inverting (negating all variables) a `TimeChunk`
      */
-    static prefix func -(chunk: TimeChunk) -> TimeChunk {
+    public static prefix func -(chunk: TimeChunk) -> TimeChunk {
         var invertedChunk = chunk;
         invertedChunk.seconds = -chunk.seconds
         invertedChunk.minutes = -chunk.minutes

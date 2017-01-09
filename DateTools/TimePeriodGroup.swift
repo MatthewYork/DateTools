@@ -32,7 +32,7 @@ open class TimePeriodGroup: Sequence {
      *  Nil if any `TimePeriod` in group has a nil beginning date (indefinite).
      *  (Read Only)
      */
-    var beginning: Date? {
+    public var beginning: Date? {
         return _beginning
     }
     
@@ -41,14 +41,14 @@ open class TimePeriodGroup: Sequence {
      *  Nil if any `TimePeriod` in group has a nil end date (indefinite).
      *  (Read Only)
      */
-    var end: Date? {
+    public var end: Date? {
         return _end
     }
     
     /**
      *  The number of periods in the periods array.
      */
-    var count: Int {
+    public var count: Int {
         return periods.count
     }
     
@@ -56,7 +56,7 @@ open class TimePeriodGroup: Sequence {
      *  The total amount of time between the earliest and latest dates stored in the
      *  periods array. Nil if any beginning or end date in any contained period is nil.
      */
-    var duration: TimeInterval? {
+    public var duration: TimeInterval? {
         if beginning != nil && end != nil {
             return end!.timeIntervalSince(beginning!)
         }
@@ -73,7 +73,7 @@ open class TimePeriodGroup: Sequence {
      *
      *  - returns: True if the periods arrays are the same
      */
-    func equals(_ group: TimePeriodGroup) -> Bool {
+    public func equals(_ group: TimePeriodGroup) -> Bool {
         return containSameElements(array1: self.periods, group.periods)
     }
     
