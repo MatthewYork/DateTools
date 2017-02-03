@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name         = 'DateTools'
+  s.name         = 'DateToolsSwift'
   s.version      = '2.0.0'
-  s.summary      = 'Dates and time made easy in Objective-c'
+  s.summary      = 'Dates and time made easy in Swift'
   s.homepage     = 'https://github.com/MatthewYork/DateTools'
 
   s.description  = 'DateTools was written to streamline date and time handling in Swift.'
@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.9'
   s.requires_arc = true
 
-  s.source_files = 'DateTools/DateTools'
-  s.resources    = 'DateTools/DateTools/DateTools.bundle'
+  s.source_files = 'DateToolsSwift/DateTools'
+  s.resources    = 'DateToolsSwift/DateTools/DateTools.bundle'
 end
