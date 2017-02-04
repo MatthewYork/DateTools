@@ -1,11 +1,12 @@
-![Banner](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/DateToolsHeader.png)
+![Banner](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/DateToolsHeader2.png)
 
 ## DateTools
 
-DateTools was written to streamline date and time handling in Objective-C. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
+DateTools was written to streamline date and time handling in iOS. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
 
 [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
 [![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateTools/badge.png)](http://cocoapods.org/?q=datetools)
+[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateToolsSwift/badge.png)](http://cocoapods.org/?q=datetoolsswift)
 
 ####Featured In
 <table>
@@ -39,12 +40,37 @@ DateTools was written to streamline date and time handling in Objective-C. Class
 
 **CocoaPods**
 
+Swift
+
+<code>pod 'DateToolsSwift'</code>
+
+Objective-C (Legacy)
+
 <code>pod 'DateTools'</code>
 
 **Manual Installation**
 
 All the classes required for DateTools are located in the DateTools folder in the root of this repository. They are listed below:
 
+Swift (Found in DateToolsSwift/DateTools)
+* <code>Constants.swift</code>
+* <code>Date+Bundle.swift</code>
+* <code>Date+Comparators.swift</code>
+* <code>Date+Components.swift</code>
+* <code>Date+Format.swift</code>
+* <code>Date+Inits.swift</code>
+* <code>Date+Manipulations.swift</code>
+* <code>Date+TimeAgo.swift</code>
+* <code>DateTools.bundle</code>
+* <code>Enums.swift</code>
+* <code>Integer.DateTools.swift</code>
+* <code>TimeChunk.swift</code>
+* <code>TimePeriod.swift</code>
+* <code>TimePeriodChain.swift</code>
+* <code>TimePeriodCollection.swift</code>
+* <code>TimePeriodGroup.swift</code>
+
+Objective-C (Found in DateTools/DateTools)
 * <code>DateTools.h</code>
 * <code>NSDate+DateTools.{h,m}</code>
 * <code>DTConstants.h</code>
