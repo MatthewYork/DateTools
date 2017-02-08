@@ -76,5 +76,5 @@
 "%dw" = "%dW"; // week
 "%dd" = "%dT"; // day
 "%dh" = "%dh"; // hour
-"%dm" = "%dm"; // minute
+"%dm" = "%dmin"; // minute
 "%ds" = "%ds"; // second
