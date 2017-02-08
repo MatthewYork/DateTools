@@ -85,7 +85,7 @@
 "%dw" = "%dw"; // week
 "%dd" = "%dd"; // day
 "%dh" = "%dh"; // hour
-"%dm" = "%dm"; // minute
+"%dm" = "%dmin"; // minute
 "%ds" = "%ds"; // second
 
 /* Week format for */
