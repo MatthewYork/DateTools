@@ -93,7 +93,7 @@ The following bundle is necessary if you would like to support internationalizat
 
 ## Table of Contents
 
-* [**NSDate+DateTools**](#nsdate-datetools)
+* [**DateTools**](#datetools)
   * [Time Ago](#time-ago)
   * [Date Components](#date-components)
   * [Date Editing](#date-editing)
