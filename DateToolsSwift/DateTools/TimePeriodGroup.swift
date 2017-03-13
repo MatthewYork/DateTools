@@ -63,6 +63,11 @@ open class TimePeriodGroup: Sequence {
         return nil
     }
     
+    // MARK: - Initializers
+    
+    public init() {
+        
+    }
     
     // MARK: - Comparisons
     
