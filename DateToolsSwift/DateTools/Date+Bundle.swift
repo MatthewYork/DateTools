@@ -12,7 +12,7 @@ public extension Bundle {
   
   class func dateToolsBundle() -> Bundle {
     let assetPath = Bundle(for: Constants.self).resourcePath!
-    return Bundle(path: (assetPath as NSString).appendingPathComponent("DateTools.bundle"))!
+    return Bundle(path: NSString(string: assetPath).appendingPathComponent("DateTools.bundle"))!
   }
 }
 
