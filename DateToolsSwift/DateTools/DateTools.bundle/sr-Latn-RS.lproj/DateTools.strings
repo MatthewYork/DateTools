@@ -1,23 +1,37 @@
 /* No comment provided by engineer. */
 "%d days ago" = "Pre %d dana";
+"%d _days ago" = "Pre %d dana";
+"%d __days ago" = "Pre %d dan";
 
 /* No comment provided by engineer. */
 "%d hours ago" = "Pre %d sati";
+"%d _hours ago" = "Pre %d sata";
+"%d __hours ago" = "Pre %d sat";
 
 /* No comment provided by engineer. */
 "%d minutes ago" = "Pre %d minuta";
+"%d _minutes ago" = "Pre %d minuta";
+"%d __minutes ago" = "Pre %d minut";
 
 /* No comment provided by engineer. */
-"%d months ago" = "Pre %d meseca";
+"%d months ago" = "Pre %d meseci";
+"%d _months ago" = "Pre %d meseca";
+"%d __months ago" = "Pre %d mesec";
 
 /* No comment provided by engineer. */
 "%d seconds ago" = "Pre %d sekundi";
+"%d _seconds ago" = "Pre %d sekunde";
+"%d __seconds ago" = "Pre %d sekund";
 
 /* No comment provided by engineer. */
-"%d weeks ago" = "Pre %d nedelje";
+"%d weeks ago" = "Pre %d nedelja";
+"%d _weeks ago" = "Pre %d nedelje";
+"%d __weeks ago" = "Pre %d nedelju";
 
 /* No comment provided by engineer. */
-"%d years ago" = "Pre %d godine";
+"%d years ago" = "Pre %d godina";
+"%d _years ago" = "Pre %d godine";
+"%d __years ago" = "Pre %d godinu";
 
 /* No comment provided by engineer. */
 "A minute ago" = "Pre minut";
@@ -29,7 +43,7 @@
 "Just now" = "Upravo sada";
 
 /* No comment provided by engineer. */
-"Last month" = "Prošlog meseca";
+"Last month" = "Prošli mesec";
 
 /* No comment provided by engineer. */
 "Last week" = "Prošle nedelje";

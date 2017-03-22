@@ -1,23 +1,37 @@
 /* No comment provided by engineer. */
 "%d days ago" = "Пре %d дана";
+"%d _days ago" = "Пре %d дана";
+"%d __days ago" = "Пре %d дан";
 
 /* No comment provided by engineer. */
 "%d hours ago" = "Пре %d сати";
+"%d _hours ago" = "Пре %d сата";
+"%d __hours ago" = "Пре %d сат";
 
 /* No comment provided by engineer. */
 "%d minutes ago" = "Пре %d минута";
+"%d _minutes ago" = "Пре %d минута";
+"%d __minutes ago" = "Пре %d минут";
 
 /* No comment provided by engineer. */
-"%d months ago" = "Пре %d месеца";
+"%d months ago" = "Пре %d месеци";
+"%d _months ago" = "Пре %d месеца";
+"%d __months ago" = "Пре %d месец";
 
 /* No comment provided by engineer. */
 "%d seconds ago" = "Пре %d секунди";
+"%d _seconds ago" = "Пре %d секунде";
+"%d __seconds ago" = "Пре %d секунд";
 
 /* No comment provided by engineer. */
-"%d weeks ago" = "Пре %d недеље";
+"%d weeks ago" = "Пре %d недеља";
+"%d _weeks ago" = "Пре %d недеље";
+"%d __weeks ago" = "Пре %d недељу";
 
 /* No comment provided by engineer. */
-"%d years ago" = "Пре %d године";
+"%d years ago" = "Pre %d godina";
+"%d _years ago" = "Pre %d godine";
+"%d __years ago" = "Pre %d godinu";
 
 /* No comment provided by engineer. */
 "A minute ago" = "Пре минут";
