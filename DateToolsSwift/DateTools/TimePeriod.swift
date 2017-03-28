@@ -132,7 +132,7 @@ public extension TimePeriodProtocol {
         #if os(Linux)
             return TimeInterval(Double.greatestFiniteMagnitude)
         #else
-            return TimeInterval(DBL_MAX)
+            return TimeInterval(Double.greatestFiniteMagnitude)
         #endif
     }
     
