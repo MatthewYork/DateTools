@@ -178,7 +178,7 @@ This project is user driven (by people like you). Pull requests close faster tha
 
 Thanks to Kevin Lawler for his work on [NSDate+TimeAgo](https://github.com/kevinlawler/NSDate-TimeAgo), which has been officially merged into this library.
 
-####Date Components
+#### Date Components
 
 There is a lot of boilerplate associated with getting date components from an Date. You have to set up a calendar, use the desired flags for the components you want, and finally extract them out of the calendar. 
 
@@ -266,7 +266,7 @@ Methods for comparison in this category include:
 
 Just for kicks, DateTools has a few convenience methods for quickly creating strings from dates. Those two methods are <code>formattedDateWithStyle:</code> and <code>formattedDateWithFormat:</code>. The current locale is used unless otherwise specified by additional method parameters. Again, just for kicks, really.
 
-##Time Periods
+## Time Periods
 
 Dates are important, but the real world is a little less discrete than that. Life is made up of spans of time, like an afternoon appointment or a weeklong vacation. In DateTools, time periods are represented by the TimePeriod class and come with a suite of initializaiton, manipulation, and comparison methods to make working with them a breeze.
 
