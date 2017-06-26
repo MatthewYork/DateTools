@@ -24,7 +24,7 @@ public extension Date {
      *
      */
     public func component(_ component: Calendar.Component) -> Int {
-		let calendar = Calendar.autoupdatingCurrent
+		let calendar = Date.autoupdatingCurrentCalendar
 		return calendar.component(component, from: self)
 	}
 	
@@ -38,7 +38,7 @@ public extension Date {
      *
      */
 	public func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
-		let calendar = Calendar.autoupdatingCurrent
+		let calendar = Date.autoupdatingCurrentCalendar
 		return calendar.ordinality(of: smaller, in: larger, for: self)
 	}
 	
@@ -55,7 +55,7 @@ public extension Date {
      *
      */
 	public func unit(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
-		let calendar = Calendar.autoupdatingCurrent
+		let calendar = Date.autoupdatingCurrentCalendar
         var units = 1
         var unitRange: Range<Int>?
         if larger.hashValue < smaller.hashValue {
@@ -224,7 +224,7 @@ public extension Date {
      *  Convenience getter for the date's `daysInMonth` component
      */
     public var daysInMonth: Int {
-        let calendar = Calendar.autoupdatingCurrent
+        let calendar = Date.autoupdatingCurrentCalendar
         let days = calendar.range(of: .day, in: .month, for: self)
         return days!.count
     }
@@ -298,7 +298,7 @@ public extension Date {
      *  Determine if date is within the current day
      */
 	public var isToday: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+		let calendar = Date.autoupdatingCurrentCalendar
 		return calendar.isDateInToday(self)
 	}
 	
@@ -306,7 +306,7 @@ public extension Date {
      *  Determine if date is within the day tomorrow
      */
 	public var isTomorrow: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+		let calendar = Date.autoupdatingCurrentCalendar
         return calendar.isDateInTomorrow(self)
 	}
 	
@@ -314,7 +314,7 @@ public extension Date {
      *  Determine if date is within yesterday
      */
 	public var isYesterday: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+		let calendar = Date.autoupdatingCurrentCalendar
         return calendar.isDateInYesterday(self)
 	}
 	
