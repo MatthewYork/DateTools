@@ -69,3 +69,21 @@
 
 /* No comment provided by engineer. */
 "This year" = "Este ano";
+
+/* Short format for */
+"%dy" = "%da"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dS"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%dh"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second
+
+/* Week format for */
+"Mon" = "Seg";
+"Tue" = "Ter";
+"Wed" = "Qua";
+"Thu" = "Qui";
+"Fri" = "Sex";
+"Sat" = "Sab";
+"Sun" = "Dom";
