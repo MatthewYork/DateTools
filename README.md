@@ -5,8 +5,9 @@
 DateTools was written to streamline date and time handling in iOS. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
 
 [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
-[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateTools/badge.png)](http://cocoapods.org/?q=datetools)
-[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateToolsSwift/badge.png)](http://cocoapods.org/?q=datetoolsswift)
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/DateToolsSwift.svg)](https://img.shields.io/cocoapods/v/DateToolsSwift.svg)
+[![Platform](https://img.shields.io/cocoapods/p/DateToolsSwift.svg?style=flat)](http://cocoadocs.org/docsets/DateToolsSwift)
+[![License](https://img.shields.io/cocoapods/l/DateToolsSwift.svg?style=flat)](http://cocoadocs.org/docsets/DateToolsSwift)
 
 ####Featured In
 <table>
