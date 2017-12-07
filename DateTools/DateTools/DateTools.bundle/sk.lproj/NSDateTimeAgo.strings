@@ -78,3 +78,12 @@
 "%dh" = "%dh"; // hour
 "%dm" = "%dm"; // minute
 "%ds" = "%ds"; // second
+
+/* Week format for */
+"Mon" = "Pon";
+"Tue" = "Ut";
+"Wed" = "Str";
+"Thu" = "Štv";
+"Fri" = "Pia";
+"Sat" = "Sob";
+"Sun" = "Ne";
