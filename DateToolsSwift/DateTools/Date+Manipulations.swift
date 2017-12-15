@@ -24,31 +24,33 @@ public extension Date {
      *  with all smaller components set to their minimum
      */
     public func start(of component: Component) -> Date {
-        var newDate = self;
-        if component == .second {
-            newDate.second(self.second)
-        }
-        else if component == .minute {
+        var newDate = self
+
+        switch component {
+        case .second:
+            newDate.second(second)
+        case .minute:
             newDate.second(0)
-        } else if component == .hour {
+        case .hour:
             newDate.second(0)
             newDate.minute(0)
-        } else if component == .day {
+        case .day:
             newDate.second(0)
             newDate.minute(0)
             newDate.hour(0)
-        } else if component == .month {
+        case .month:
             newDate.second(0)
             newDate.minute(0)
             newDate.hour(0)
             newDate.day(1)
-        } else if component == .year {
+        case .year:
             newDate.second(0)
             newDate.minute(0)
             newDate.hour(0)
             newDate.day(1)
             newDate.month(1)
         }
+
         return newDate
     }
     
@@ -61,30 +63,31 @@ public extension Date {
      *  with all smaller components set to their maximum
      */
     public func end(of component: Component) -> Date {
-        var newDate = self;
-        if component == .second {
+        var newDate = self
+
+        switch component {
+        case .second:
             newDate.second(newDate.second + 1)
             newDate = newDate - 0.001
-        }
-        else if component == .minute {
+        case .minute:
             newDate.second(60)
             newDate = newDate - 0.001
-        } else if component == .hour {
+        case .hour:
             newDate.second(60)
             newDate = newDate - 0.001
             newDate.minute(59)
-        } else if component == .day {
+        case .day:
             newDate.second(60)
             newDate = newDate - 0.001
             newDate.minute(59)
             newDate.hour(23)
-        } else if component == .month {
+        case .month:
             newDate.second(60)
             newDate = newDate - 0.001
             newDate.minute(59)
             newDate.hour(23)
             newDate.day(daysInMonth(date: newDate))
-        } else if component == .year {
+        case .year:
             newDate.second(60)
             newDate = newDate - 0.001
             newDate.minute(59)
@@ -92,7 +95,7 @@ public extension Date {
             newDate.month(12)
             newDate.day(31)
         }
-        
+
         return newDate
     }
     
