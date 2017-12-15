@@ -100,19 +100,15 @@ public extension Date {
     }
     
     public func daysInMonth(date: Date) -> Int {
+        let monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+        // Leap Year handling
         let month = date.month
-        if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
-            // 31 day month
-            return 31
-        } else if month == 2 && date.isInLeapYear {
-            // February with leap year
-            return 29
-        } else if month == 2 && !date.isInLeapYear {
-            // February without leap year
-            return 28
+        if date.isInLeapYear && month == 2 {
+             // Leap Year have 29 days in February, (month - 1) for array indexing
+            return monthDays[month - 1] + 1
         } else {
-            // 30 day month
-            return 30
+            return monthDays[month - 1]
         }
     }
     
