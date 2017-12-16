@@ -27,7 +27,7 @@ DateTools was written to streamline date and time handling in iOS. Classes and c
   <a href="https://itunes.apple.com/us/app/youtube-music/id1017492454?mt=8"><img src="http://is1.mzstatic.com/image/thumb/Purple128/v4/e7/95/2c/e7952c89-2642-0e3c-eacc-482a95d73318/source/100x100bb.jpg" /></a>
   </td>
   <td align="center">
-  <a href="https://itunes.apple.com/us/app/algo-traffic-by-aldot-alea/id1141136558?mt=8"><img src="http://is1.mzstatic.com/image/thumb/Purple122/v4/ec/b5/15/ecb51565-e3fa-e701-9829-a604df3b9508/source/100x100bb.jpg" /></a>
+  <a href="https://itunes.apple.com/us/app/khan-academy/id469863705?mt=8"><img src="http://is2.mzstatic.com/image/thumb/Purple118/v4/da/b2/55/dab255a6-80b5-c4fb-f5c4-b4c143b8d4a8/source/100x100bb.jpg" /></a>
   </td>
   <tr>
    <td align="center">Yahoo! Livetext</td>
@@ -35,7 +35,7 @@ DateTools was written to streamline date and time handling in iOS. Classes and c
    <td align="center">ALDI</td>
    <td align="center">Guidebook</td>
    <td align="center">Youtube Music</td>
-   <td align="center">ALGO Traffic</td>
+   <td align="center">Khan Academy</td>
   </tr>
  </tr>
 </table>
