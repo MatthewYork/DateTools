@@ -8,7 +8,7 @@ DateTools was written to streamline date and time handling in iOS. Classes and c
 [![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateTools/badge.png)](http://cocoapods.org/?q=datetools)
 [![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateToolsSwift/badge.png)](http://cocoapods.org/?q=datetoolsswift)
 
-####Featured In
+#### Featured In
 <table>
  <tr>
   <td align="center">
@@ -24,7 +24,7 @@ DateTools was written to streamline date and time handling in iOS. Classes and c
   <a href="https://itunes.apple.com/us/app/guidebook/id428713847?mt=8"><img src="http://a5.mzstatic.com/us/r30/Purple7/v4/e4/af/db/e4afdbc1-9ceb-c403-4d06-299e7e693120/icon100x100.png" /></a>
   </td>
   <td align="center">
-  <a href="https://itunes.apple.com/us/app/pitch-locator-pro/id964965940?mt=8"><img src="http://a2.mzstatic.com/us/r30/Purple7/v4/39/ed/24/39ed248b-afab-ce8d-4276-35ba0459ac60/icon100x100.png" /></a>
+  <a href="https://itunes.apple.com/us/app/youtube-music/id1017492454?mt=8"><img src="http://is1.mzstatic.com/image/thumb/Purple128/v4/e7/95/2c/e7952c89-2642-0e3c-eacc-482a95d73318/source/100x100bb.jpg" /></a>
   </td>
   <td align="center">
   <a href="https://itunes.apple.com/us/app/algo-traffic-by-aldot-alea/id1141136558?mt=8"><img src="http://is1.mzstatic.com/image/thumb/Purple122/v4/ec/b5/15/ecb51565-e3fa-e701-9829-a604df3b9508/source/100x100bb.jpg" /></a>
@@ -34,12 +34,16 @@ DateTools was written to streamline date and time handling in iOS. Classes and c
    <td align="center">My Disney Experience</td>
    <td align="center">ALDI</td>
    <td align="center">Guidebook</td>
-   <td align="center">Pitch Locator Pro</td>
+   <td align="center">Youtube Music</td>
    <td align="center">ALGO Traffic</td>
   </tr>
  </tr>
 </table>
 
+#### Donate
+
+<span><img width=13px src="https://i.pinimg.com/originals/c2/9e/0c/c29e0cba21b01826ab5d87187bd2c793.png" />
+</span><span><b>bitcoin:</b>     17ZEBFw5peuoUwYaEJeGkpoJwP1htViLUY </span>
 
 ## Installation
 
