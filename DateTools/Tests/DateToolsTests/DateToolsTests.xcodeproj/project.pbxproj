@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0AFD486018F08640004D0FE1 /* DTTimeAgoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFD485F18F08640004D0FE1 /* DTTimeAgoTests.m */; };
+		9E1C4C331FEACBAC0027CE47 /* DTTimeLaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C4C321FEACBAC0027CE47 /* DTTimeLaterTests.m */; };
 		F00762C218DE5D7500A99075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00762C118DE5D7500A99075 /* Foundation.framework */; };
 		F00762C418DE5D7500A99075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00762C318DE5D7500A99075 /* CoreGraphics.framework */; };
 		F00762C618DE5D7500A99075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00762C518DE5D7500A99075 /* UIKit.framework */; };
@@ -51,6 +52,7 @@
 		0AFD486118F0AB99004D0FE1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		0AFD486218F0AB99004D0FE1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0AFD486318F0AB99004D0FE1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9E1C4C321FEACBAC0027CE47 /* DTTimeLaterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimeLaterTests.m; sourceTree = "<group>"; };
 		F00762BE18DE5D7500A99075 /* DateToolsTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateToolsTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00762C118DE5D7500A99075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F00762C318DE5D7500A99075 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +178,7 @@
 		F00762E618DE5D7500A99075 /* DateToolsTestsTests */ = {
 			isa = PBXGroup;
 			children = (
+				9E1C4C321FEACBAC0027CE47 /* DTTimeLaterTests.m */,
 				F00762F618DE5D9900A99075 /* DateToolsTests.m */,
 				F00762F718DE5D9900A99075 /* DTTimePeriodTests.m */,
 				F00762F818DE5D9900A99075 /* DTTimePeriodGroupTests.m */,
@@ -339,6 +342,7 @@
 				F00762FB18DE5D9900A99075 /* DateToolsTests.m in Sources */,
 				F00762FD18DE5D9900A99075 /* DTTimePeriodGroupTests.m in Sources */,
 				F00762FF18DE5D9900A99075 /* DTTimePeriodCollectionTests.m in Sources */,
+				9E1C4C331FEACBAC0027CE47 /* DTTimeLaterTests.m in Sources */,
 				F00762FC18DE5D9900A99075 /* DTTimePeriodTests.m in Sources */,
 				F00762FE18DE5D9900A99075 /* DTTimePeriodChainTests.m in Sources */,
 			);
