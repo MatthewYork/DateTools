@@ -13,6 +13,8 @@ import Foundation
  */
 public extension Date {
     
+    static let autoupdatingCurrentCalendar = Calendar.autoupdatingCurrent
+    
     // MARK: - StartOf
     
     /**
@@ -126,7 +128,7 @@ public extension Date {
      *  corresponding `TimeChunk` variables
      */
     public func add(_ chunk: TimeChunk) -> Date {
-        let calendar = Calendar.autoupdatingCurrent
+        let calendar = Date.autoupdatingCurrentCalendar
         var components = DateComponents()
         components.year = chunk.years
         components.month = chunk.months
@@ -147,7 +149,7 @@ public extension Date {
      *  corresponding `TimeChunk` variables
      */
     public func subtract(_ chunk: TimeChunk) -> Date {
-        let calendar = Calendar.autoupdatingCurrent
+        let calendar = Date.autoupdatingCurrentCalendar
         var components = DateComponents()
         components.year = -chunk.years
         components.month = -chunk.months
