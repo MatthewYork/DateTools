@@ -129,6 +129,7 @@ public extension TimePeriodProtocol {
         if self.beginning != nil && self.end != nil {
             return abs(self.beginning!.timeIntervalSince(self.end!))
         }
+        
         return TimeInterval(Double.greatestFiniteMagnitude)
     }
     
