@@ -813,12 +813,8 @@ static NSCalendar *implicitCalendar = nil;
 
 + (NSDate *)dateWithString:(NSString *)dateString formatString:(NSString *)formatString timeZone:(NSTimeZone *)timeZone {
 
-	static NSDateFormatter *parser = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-	    parser = [[NSDateFormatter alloc] init];
-	});
-
+	
+  NSDateFormatter *parser = [[NSDateFormatter alloc] init];
 	parser.dateStyle = NSDateFormatterNoStyle;
 	parser.timeStyle = NSDateFormatterNoStyle;
 	parser.timeZone = timeZone;
@@ -1619,12 +1615,8 @@ static NSCalendar *implicitCalendar = nil;
  *  @return NSString representing the formatted date string
  */
 -(NSString *)formattedDateWithStyle:(NSDateFormatterStyle)style timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
-    static NSDateFormatter *formatter = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        formatter = [[NSDateFormatter alloc] init];
-    });
-
+  
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:style];
     [formatter setTimeZone:timeZone];
     [formatter setLocale:locale];
