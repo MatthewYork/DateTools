@@ -60,14 +60,16 @@ public extension Date {
      *  - parameter dateString: Date in the formatting given by the format parameter
      *  - parameter format: Format style using Apple's date formatting guide
      *  - parameter timeZone: Time zone of date
+     *  - parameter calendar: The calendar to generate the date against. By default it is the current calendar
      */
-	public init(dateString: String, format: String, timeZone: TimeZone) {
+    public init(dateString: String, format: String, timeZone: TimeZone, calendar: Calendar = Calendar.current) {
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateStyle = .none;
-		dateFormatter.timeStyle = .none;
-		dateFormatter.timeZone = timeZone;
-		dateFormatter.dateFormat = format;
-		
+		dateFormatter.dateStyle = .none
+		dateFormatter.timeStyle = .none
+		dateFormatter.timeZone = timeZone
+		dateFormatter.dateFormat = format
+        dateFormatter.calendar = calendar
+
 		guard let date = dateFormatter.date(from: dateString) else {
 			self = Date()
 			return
