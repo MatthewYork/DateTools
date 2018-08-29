@@ -176,6 +176,8 @@ Assuming you have added the localization to your project, `DateTools` currently 
 - cy (Welsh)
 - hr (Croatian)
 
+Note that not all localizations support the `shortTimeAgoSinceNow` format.
+
 If you know a language not listed here, please consider submitting a translation. [Localization codes by language](http://stackoverflow.com/questions/3040677/locale-codes-for-iphone-lproj-folders).
 
 This project is user driven (by people like you). Pull requests close faster than issues (merged or rejected).
