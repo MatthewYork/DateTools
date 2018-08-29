@@ -42,3 +42,12 @@
 
 /* No comment provided by engineer. */
 "1 year ago" = "Prije 1 godina";
+
+/* Short format for */
+"%dy" = "%dg"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dt"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%dS"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second

@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Năm nay";
+
+/* Short format for */
+"%dy" = "%dN"; // year
+"%dM" = "%dT"; // month
+"%dw" = "%dt"; // week
+"%dd" = "%dn"; // day
+"%dh" = "%dG"; // hour
+"%dm" = "%dp"; // minute
+"%ds" = "%dg"; // second
