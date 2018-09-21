@@ -119,6 +119,9 @@ public extension Date {
             
             return DateToolsLocalizedStrings("Yesterday");
         }
+        else if (components.day! >= 1) {
+          return DateToolsLocalizedStrings("1 day ago")
+        }
         else if (components.hour! >= 2) {
             return self.logicalLocalizedStringFromFormat(format: "%%d %@hours ago", value: components.hour!)
         }
