@@ -74,10 +74,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8251C8052203183200E285B4 /* DateToolsSwift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateToolsSwift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8251C8242203185700E285B4 /* DateTools_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8251C8312203186400E285B4 /* DateTools_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8251C84D2203187100E285B4 /* DateTools_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8251C8052203183200E285B4 /* DateTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8251C8242203185700E285B4 /* DateTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8251C8312203186400E285B4 /* DateTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8251C84D2203187100E285B4 /* DateTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8251C867220318EF00E285B4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8251C868220318EF00E285B4 /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		8251C869220318EF00E285B4 /* Date+Manipulations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Manipulations.swift"; sourceTree = "<group>"; };
@@ -141,10 +141,10 @@
 		8251C8062203183200E285B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8251C8052203183200E285B4 /* DateToolsSwift_iOS.framework */,
-				8251C8242203185700E285B4 /* DateTools_watchOS.framework */,
-				8251C8312203186400E285B4 /* DateTools_tvOS.framework */,
-				8251C84D2203187100E285B4 /* DateTools_macOS.framework */,
+				8251C8052203183200E285B4 /* DateTools.framework */,
+				8251C8242203185700E285B4 /* DateTools.framework */,
+				8251C8312203186400E285B4 /* DateTools.framework */,
+				8251C84D2203187100E285B4 /* DateTools.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,7 +241,7 @@
 			);
 			name = "DateToolsSwift iOS";
 			productName = DateToolsSwift;
-			productReference = 8251C8052203183200E285B4 /* DateToolsSwift_iOS.framework */;
+			productReference = 8251C8052203183200E285B4 /* DateTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8251C8232203185700E285B4 /* DateTools watchOS */ = {
@@ -259,7 +259,7 @@
 			);
 			name = "DateTools watchOS";
 			productName = "DateTools watchOS";
-			productReference = 8251C8242203185700E285B4 /* DateTools_watchOS.framework */;
+			productReference = 8251C8242203185700E285B4 /* DateTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8251C8302203186400E285B4 /* DateTools tvOS */ = {
@@ -277,7 +277,7 @@
 			);
 			name = "DateTools tvOS";
 			productName = "DateTools tvOS";
-			productReference = 8251C8312203186400E285B4 /* DateTools_tvOS.framework */;
+			productReference = 8251C8312203186400E285B4 /* DateTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8251C84C2203187100E285B4 /* DateTools macOS */ = {
@@ -295,7 +295,7 @@
 			);
 			name = "DateTools macOS";
 			productName = "DateTools macOS";
-			productReference = 8251C84D2203187100E285B4 /* DateTools_macOS.framework */;
+			productReference = 8251C84D2203187100E285B4 /* DateTools.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -523,6 +523,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_MODULE_NAME = DateTools;
+				PRODUCT_NAME = DateTools;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -582,6 +583,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_MODULE_NAME = DateTools;
+				PRODUCT_NAME = DateTools;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -608,7 +610,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateToolsSwift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -632,7 +633,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateToolsSwift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -656,7 +656,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateTools-watchOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -682,7 +681,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateTools-watchOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -707,7 +705,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateTools-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -732,7 +729,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateTools-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -760,7 +756,6 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateTools-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -786,7 +781,6 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattYork.DateTools-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
