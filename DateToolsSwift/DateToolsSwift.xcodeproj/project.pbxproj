@@ -71,6 +71,10 @@
 		8251C8BB2203196100E285B4 /* DateToolsSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8251C8B82203195700E285B4 /* DateToolsSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8251C8BC2203196200E285B4 /* DateToolsSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8251C8B82203195700E285B4 /* DateToolsSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8251C8BD2203196200E285B4 /* DateToolsSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8251C8B82203195700E285B4 /* DateToolsSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8251C9362203311900E285B4 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8251C9352203311900E285B4 /* DateTools.bundle */; };
+		8251C9372203311900E285B4 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8251C9352203311900E285B4 /* DateTools.bundle */; };
+		8251C9382203311900E285B4 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8251C9352203311900E285B4 /* DateTools.bundle */; };
+		8251C9392203311900E285B4 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8251C9352203311900E285B4 /* DateTools.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +99,7 @@
 		8251C875220318EF00E285B4 /* TimePeriodCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCollection.swift; sourceTree = "<group>"; };
 		8251C8B82203195700E285B4 /* DateToolsSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateToolsSwift.h; sourceTree = "<group>"; };
 		8251C8B92203195700E285B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8251C9352203311900E285B4 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +157,7 @@
 		8251C865220318EF00E285B4 /* DateTools */ = {
 			isa = PBXGroup;
 			children = (
+				8251C9352203311900E285B4 /* DateTools.bundle */,
 				8251C867220318EF00E285B4 /* Constants.swift */,
 				8251C86D220318EF00E285B4 /* Enums.swift */,
 				8251C86E220318EF00E285B4 /* TimeChunk.swift */,
@@ -347,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8251C9362203311900E285B4 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8251C9372203311900E285B4 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8251C9382203311900E285B4 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8251C9392203311900E285B4 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

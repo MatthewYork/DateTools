@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8251C8042203183200E285B4"
-               BuildableName = "DateToolsSwift_iOS.framework"
+               BuildableName = "DateTools.framework"
                BlueprintName = "DateToolsSwift iOS"
                ReferencedContainer = "container:DateToolsSwift.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8251C8042203183200E285B4"
-            BuildableName = "DateToolsSwift_iOS.framework"
+            BuildableName = "DateTools.framework"
             BlueprintName = "DateToolsSwift iOS"
             ReferencedContainer = "container:DateToolsSwift.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8251C8042203183200E285B4"
-            BuildableName = "DateToolsSwift_iOS.framework"
+            BuildableName = "DateTools.framework"
             BlueprintName = "DateToolsSwift iOS"
             ReferencedContainer = "container:DateToolsSwift.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8251C8042203183200E285B4"
-            BuildableName = "DateToolsSwift_iOS.framework"
+            BuildableName = "DateTools.framework"
             BlueprintName = "DateToolsSwift iOS"
             ReferencedContainer = "container:DateToolsSwift.xcodeproj">
          </BuildableReference>
