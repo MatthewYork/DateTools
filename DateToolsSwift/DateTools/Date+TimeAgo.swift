@@ -24,7 +24,7 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public static func timeAgo(since date:Date) -> String{
+    static func timeAgo(since date:Date) -> String{
         return date.timeAgo(since: Date(), numericDates: false, numericTimes: false)
     }
     
@@ -36,7 +36,7 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public static func shortTimeAgo(since date:Date) -> String {
+    static func shortTimeAgo(since date:Date) -> String {
         return date.shortTimeAgo(since:Date())
     }
     
@@ -46,7 +46,7 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public var timeAgoSinceNow: String {
+    var timeAgoSinceNow: String {
         return self.timeAgo(since:Date())
     }
     
@@ -56,11 +56,11 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public var shortTimeAgoSinceNow: String {
+    var shortTimeAgoSinceNow: String {
         return self.shortTimeAgo(since:Date())
     }
     
-    public func timeAgo(since date:Date, numericDates: Bool = false, numericTimes: Bool = false) -> String {
+    func timeAgo(since date:Date, numericDates: Bool = false, numericTimes: Bool = false) -> String {
         let calendar = NSCalendar.current
         let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
         let earliest = self.earlierDate(date)
@@ -155,7 +155,7 @@ public extension Date {
     }
     
     
-    public func shortTimeAgo(since date:Date) -> String {
+    func shortTimeAgo(since date:Date) -> String {
         let calendar = NSCalendar.current
         let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
         let earliest = self.earlierDate(date)
@@ -257,7 +257,7 @@ public extension Date {
      *
      *  - returns: The date that is earlier
      */
-    public func earlierDate(_ date:Date) -> Date{
+    func earlierDate(_ date:Date) -> Date{
         return (self.timeIntervalSince1970 <= date.timeIntervalSince1970) ? self : date
     }
     
@@ -268,7 +268,7 @@ public extension Date {
      *
      *  - returns: The date that is later
      */
-    public func laterDate(_ date:Date) -> Date{
+    func laterDate(_ date:Date) -> Date{
         return (self.timeIntervalSince1970 >= date.timeIntervalSince1970) ? self : date
     }
     
