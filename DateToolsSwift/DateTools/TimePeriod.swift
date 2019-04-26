@@ -40,7 +40,7 @@ public extension TimePeriodProtocol {
     /**
      *  True if the `TimePeriod`'s duration is zero
      */
-    public var isMoment: Bool {
+    var isMoment: Bool {
         return self.beginning == self.end
     }
     
@@ -48,7 +48,7 @@ public extension TimePeriodProtocol {
      *  The duration of the `TimePeriod` in years.
      *  Returns the max int if beginning or end are nil.
      */
-    public var years: Int {
+    var years: Int {
         if self.beginning != nil && self.end != nil {
             return self.beginning!.yearsEarlier(than: self.end!)
         }
@@ -59,7 +59,7 @@ public extension TimePeriodProtocol {
      *  The duration of the `TimePeriod` in weeks.
      *  Returns the max int if beginning or end are nil.
      */
-    public var weeks: Int {
+    var weeks: Int {
         if self.beginning != nil && self.end != nil {
             return self.beginning!.weeksEarlier(than: self.end!)
         }
@@ -70,7 +70,7 @@ public extension TimePeriodProtocol {
      *  The duration of the `TimePeriod` in days.
      *  Returns the max int if beginning or end are nil.
      */
-    public var days: Int {
+    var days: Int {
         if self.beginning != nil && self.end != nil {
             return self.beginning!.daysEarlier(than: self.end!)
         }
@@ -81,7 +81,7 @@ public extension TimePeriodProtocol {
      *  The duration of the `TimePeriod` in hours.
      *  Returns the max int if beginning or end are nil.
      */
-    public var hours: Int {
+    var hours: Int {
         if self.beginning != nil && self.end != nil {
             return self.beginning!.hoursEarlier(than: self.end!)
         }
@@ -92,7 +92,7 @@ public extension TimePeriodProtocol {
      *  The duration of the `TimePeriod` in minutes.
      *  Returns the max int if beginning or end are nil.
      */
-    public var minutes: Int {
+    var minutes: Int {
         if self.beginning != nil && self.end != nil {
             return self.beginning!.minutesEarlier(than: self.end!)
         }
@@ -103,7 +103,7 @@ public extension TimePeriodProtocol {
      *  The duration of the `TimePeriod` in seconds.
      *  Returns the max int if beginning or end are nil.
      */
-    public var seconds: Int {
+    var seconds: Int {
         if self.beginning != nil && self.end != nil {
             return self.beginning!.secondsEarlier(than: self.end!)
         }
@@ -114,7 +114,7 @@ public extension TimePeriodProtocol {
      *  The duration of the `TimePeriod` in a time chunk.
      *  Returns a time chunk with all zeroes if beginning or end are nil.
      */
-    public var chunk: TimeChunk {
+    var chunk: TimeChunk {
         if beginning != nil && end != nil {
             return beginning!.chunkBetween(date: end!)
         }
@@ -125,15 +125,11 @@ public extension TimePeriodProtocol {
      *  The length of time between the beginning and end dates of the
      * `TimePeriod` as a `TimeInterval`.
      */
-    public var duration: TimeInterval {
+    var duration: TimeInterval {
         if self.beginning != nil && self.end != nil {
             return abs(self.beginning!.timeIntervalSince(self.end!))
         }
-        #if os(Linux)
-            return TimeInterval(Double.greatestFiniteMagnitude)
-        #else
-            return TimeInterval(DBL_MAX)
-        #endif
+        return TimeInterval(Double.greatestFiniteMagnitude)
     }
     
     
@@ -150,7 +146,7 @@ public extension TimePeriodProtocol {
      *  
      * - returns: The relationship between self and the given time period
      */
-    public func relation(to period: TimePeriodProtocol) -> Relation {
+    func relation(to period: TimePeriodProtocol) -> Relation {
         //Make sure that all start and end points exist for comparison
         if (self.beginning != nil && self.end != nil && period.beginning != nil && period.end != nil) {
             //Make sure time periods are of positive durations
@@ -210,7 +206,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if the periods are the same
      */
-    public func equals(_ period: TimePeriodProtocol) -> Bool {
+    func equals(_ period: TimePeriodProtocol) -> Bool {
         return self.beginning == period.beginning && self.end == period.end
     }
     
@@ -222,7 +218,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if self is inside of the given `TimePeriod`
      */
-    public func isInside(of period: TimePeriodProtocol) -> Bool {
+    func isInside(of period: TimePeriodProtocol) -> Bool {
         return period.beginning!.isEarlierThanOrEqual(to: self.beginning!) && period.end!.isLaterThanOrEqual(to: self.end!)
     }
     
@@ -234,7 +230,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if the given `TimePeriod` is inside of self
      */
-    public func contains(_ date: Date, interval: Interval) -> Bool {
+    func contains(_ date: Date, interval: Interval) -> Bool {
         if (interval == .open) {
             return self.beginning!.isEarlier(than: date) && self.end!.isLater(than: date)
         }
@@ -253,7 +249,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if the given `TimePeriod` is inside of self
      */
-    public func contains(_ period: TimePeriodProtocol) -> Bool {
+    func contains(_ period: TimePeriodProtocol) -> Bool {
         return self.beginning!.isEarlierThanOrEqual(to: period.beginning!) && self.end!.isLaterThanOrEqual(to: period.end!)
     }
     
@@ -264,7 +260,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if there is a period of time that is shared by both `TimePeriod`s
      */
-    public func overlaps(with period: TimePeriodProtocol) -> Bool {
+    func overlaps(with period: TimePeriodProtocol) -> Bool {
         //Outside -> Inside
         if (period.beginning!.isEarlier(than: self.beginning!) && period.end!.isLater(than: self.beginning!)) {
             return true
@@ -287,7 +283,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if there is a period of time or moment that is shared by both `TimePeriod`s
      */
-    public func intersects(with period: TimePeriodProtocol) -> Bool {
+    func intersects(with period: TimePeriodProtocol) -> Bool {
         return self.relation(to: period) != .after && self.relation(to: period) != .before
     }
     
@@ -298,7 +294,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if there is a period of time between self and the given `TimePeriod` not contained by either period
      */
-    public func hasGap(between period: TimePeriodProtocol) -> Bool {
+    func hasGap(between period: TimePeriodProtocol) -> Bool {
         return self.isBefore(period: period) || self.isAfter(period: period)
     }
     
@@ -309,7 +305,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: The gap between the periods. Zero if there is no gap.
      */
-    public func gap(between period: TimePeriodProtocol) -> TimeInterval {
+    func gap(between period: TimePeriodProtocol) -> TimeInterval {
         if (self.end!.isEarlier(than: period.beginning!)) {
             return abs(self.end!.timeIntervalSince(period.beginning!));
         }
@@ -327,7 +323,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: The gap between the periods, zero if there is no gap
      */
-    public func gap(between period: TimePeriodProtocol) -> TimeChunk? {
+    func gap(between period: TimePeriodProtocol) -> TimeChunk? {
         if self.end != nil && period.beginning != nil {
             return (self.end?.chunkBetween(date: period.beginning!))!
         }
@@ -341,7 +337,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if self is after the given `TimePeriod`
      */
-    public func isAfter(period: TimePeriodProtocol) -> Bool {
+    func isAfter(period: TimePeriodProtocol) -> Bool {
         return self.relation(to: period) == .after
     }
     
@@ -352,7 +348,7 @@ public extension TimePeriodProtocol {
      *
      * - returns: True if self is after the given `TimePeriod`
      */
-    public func isBefore(period: TimePeriodProtocol) -> Bool {
+    func isBefore(period: TimePeriodProtocol) -> Bool {
         return self.relation(to: period) == .before
     }
     
@@ -365,7 +361,7 @@ public extension TimePeriodProtocol {
      *
      * - parameter timeInterval: The time interval to shift the period by
      */
-    public mutating func shift(by timeInterval: TimeInterval) {
+    mutating func shift(by timeInterval: TimeInterval) {
         self.beginning?.addTimeInterval(timeInterval)
         self.end?.addTimeInterval(timeInterval)
     }
@@ -375,7 +371,7 @@ public extension TimePeriodProtocol {
      *
      * - parameter chunk: The time chunk to shift the period by
      */
-    public mutating func shift(by chunk: TimeChunk) {
+    mutating func shift(by chunk: TimeChunk) {
         self.beginning = self.beginning?.add(chunk)
         self.end = self.end?.add(chunk)
     }
@@ -391,7 +387,7 @@ public extension TimePeriodProtocol {
      * - parameter timeInterval: The time interval to lengthen the period by
      * - parameter anchor: The anchor point from which to make the change
      */
-    public mutating func lengthen(by timeInterval: TimeInterval, at anchor: Anchor) {
+    mutating func lengthen(by timeInterval: TimeInterval, at anchor: Anchor) {
         switch anchor {
         case .beginning:
             self.end = self.end?.addingTimeInterval(timeInterval)
@@ -412,7 +408,7 @@ public extension TimePeriodProtocol {
      * - parameter chunk: The time chunk to lengthen the period by
      * - parameter anchor: The anchor point from which to make the change
      */
-    public mutating func lengthen(by chunk: TimeChunk, at anchor: Anchor) {
+    mutating func lengthen(by chunk: TimeChunk, at anchor: Anchor) {
         switch anchor {
         case .beginning:
             self.end = self.end?.add(chunk)
@@ -433,7 +429,7 @@ public extension TimePeriodProtocol {
      * - parameter timeInterval: The time interval to shorten the period by
      * - parameter anchor: The anchor point from which to make the change
      */
-    public mutating func shorten(by timeInterval: TimeInterval, at anchor: Anchor) {
+    mutating func shorten(by timeInterval: TimeInterval, at anchor: Anchor) {
         switch anchor {
         case .beginning:
             self.end = self.end?.addingTimeInterval(-timeInterval)
@@ -454,7 +450,7 @@ public extension TimePeriodProtocol {
      * - parameter chunk: The time chunk to shorten the period by
      * - parameter anchor: The anchor point from which to make the change
      */
-    public mutating func shorten(by chunk: TimeChunk, at anchor: Anchor) {
+    mutating func shorten(by chunk: TimeChunk, at anchor: Anchor) {
         switch anchor {
         case .beginning:
             self.end = self.end?.subtract(chunk)

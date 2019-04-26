@@ -18,7 +18,7 @@ class ExtensionsViewController: UIViewController {
     @IBOutlet weak var weeksLabel: UILabel!
     @IBOutlet weak var monthsLabel: UILabel!
     @IBOutlet weak var yearsLabel: UILabel!
-    
+
     @IBOutlet weak var slider: UISlider!
 
     override func viewDidLoad() {
@@ -32,11 +32,11 @@ class ExtensionsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func sliderChanged(_ sender: AnyObject) {
         updateLabels()
     }
-    
+
     func updateLabels() {
         let date = Date() + TimeInterval(1000000000 * slider.value)
         dateLabel.text = date.format(with: "MMMM d y")
@@ -50,4 +50,3 @@ class ExtensionsViewController: UIViewController {
     }
 
 }
-
