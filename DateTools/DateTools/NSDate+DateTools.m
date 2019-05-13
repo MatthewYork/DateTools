@@ -512,11 +512,11 @@ static NSCalendar *implicitCalendar = nil;
 -(BOOL)isYesterday{
     NSCalendar *cal = [NSCalendar currentCalendar];
 	NSDateComponents *components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[[NSDate date] dateBySubtractingDays:1]];
-	NSDate *tomorrow = [cal dateFromComponents:components];
+	NSDate *yesterday = [cal dateFromComponents:components];
 	components = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:self];
 	NSDate *otherDate = [cal dateFromComponents:components];
     
-	return [tomorrow isEqualToDate:otherDate];
+	return [yesterday isEqualToDate:otherDate];
 }
 
 - (BOOL)isWeekend {
