@@ -44,8 +44,8 @@ public extension Date {
      *  - returns: A TimeChunk representing the time between the dates, in natural form
      */
     func chunkBetween(date: Date) -> TimeChunk {
-        var compenentsBetween = Date.autoupdatingCurrentCalendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: date)
-        return TimeChunk(seconds: compenentsBetween.second!, minutes: compenentsBetween.minute!, hours: compenentsBetween.hour!, days: compenentsBetween.day!, weeks: 0, months: compenentsBetween.month!, years: compenentsBetween.year!)
+        let componentsBetween = Date.autoupdatingCurrentCalendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: date)
+        return TimeChunk(seconds: componentsBetween.second!, minutes: componentsBetween.minute!, hours: componentsBetween.hour!, days: componentsBetween.day!, weeks: 0, months: componentsBetween.month!, years: componentsBetween.year!)
         // TimeChunk(seconds: secondDelta, minutes: minuteDelta, hours: hourDelta, days: dayDelta, weeks: 0, months: monthDelta, years: yearDelta)
     }
 	
