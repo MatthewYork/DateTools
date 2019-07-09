@@ -23,8 +23,8 @@ public extension Date {
      *  - returns: The value of the component
      *
      */
-    public func component(_ component: Calendar.Component) -> Int {
-		let calendar = Calendar.autoupdatingCurrent
+    func component(_ component: Calendar.Component) -> Int {
+		let calendar = Date.autoupdatingCurrentCalendar
 		return calendar.component(component, from: self)
 	}
 	
@@ -37,8 +37,8 @@ public extension Date {
      *  - returns: The ordinal number of a smaller calendar component within a specified larger calendar component
      *
      */
-	public func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
-		let calendar = Calendar.autoupdatingCurrent
+    func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
+		let calendar = Date.autoupdatingCurrentCalendar
 		return calendar.ordinality(of: smaller, in: larger, for: self)
 	}
 	
@@ -54,8 +54,8 @@ public extension Date {
      *  - returns: The number of smaller units required to equal in 1 larger unit, given the date called on
      *
      */
-	public func unit(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
-		let calendar = Calendar.autoupdatingCurrent
+    func unit(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
+		let calendar = Date.autoupdatingCurrentCalendar
         var units = 1
         var unitRange: Range<Int>?
         if larger.hashValue < smaller.hashValue {
@@ -125,106 +125,106 @@ public extension Date {
     /**
      *  Convenience getter for the date's `era` component
      */
-	public var era: Int {
+    var era: Int {
 		return component(.era)
 	}
 	
     /**
      *  Convenience getter for the date's `year` component
      */
-	public var year: Int {
+    var year: Int {
 		return component(.year)
 	}
 	
     /**
      *  Convenience getter for the date's `month` component
      */
-	public var month: Int {
+    var month: Int {
 		return component(.month)
 	}
 	
     /**
      *  Convenience getter for the date's `week` component
      */
-	public var week: Int {
+    var week: Int {
 		return component(.weekday)
 	}
 	
     /**
      *  Convenience getter for the date's `day` component
      */
-	public var day: Int {
+    var day: Int {
 		return component(.day)
 	}
 	
     /**
      *  Convenience getter for the date's `hour` component
      */
-	public var hour: Int {
+    var hour: Int {
 		return component(.hour)
 	}
 	
     /**
      *  Convenience getter for the date's `minute` component
      */
-	public var minute: Int {
+    var minute: Int {
 		return component(.minute)
 	}
 	
     /**
      *  Convenience getter for the date's `second` component
      */
-	public var second: Int {
+    var second: Int {
 		return component(.second)
 	}
 	
     /**
      *  Convenience getter for the date's `weekday` component
      */
-	public var weekday: Int {
+    var weekday: Int {
 		return component(.weekday)
 	}
 	
     /**
      *  Convenience getter for the date's `weekdayOrdinal` component
      */
-	public var weekdayOrdinal: Int {
+    var weekdayOrdinal: Int {
 		return component(.weekdayOrdinal)
 	}
 	
     /**
      *  Convenience getter for the date's `quarter` component
      */
-	public var quarter: Int {
+    var quarter: Int {
 		return component(.quarter)
 	}
 	
     /**
      *  Convenience getter for the date's `weekOfYear` component
      */
-	public var weekOfMonth: Int {
+    var weekOfMonth: Int {
 		return component(.weekOfMonth)
 	}
 	
     /**
      *  Convenience getter for the date's `weekOfYear` component
      */
-	public var weekOfYear: Int {
+    var weekOfYear: Int {
 		return component(.weekOfYear)
 	}
 	
     /**
      *  Convenience getter for the date's `yearForWeekOfYear` component
      */
-	public var yearForWeekOfYear: Int {
+    var yearForWeekOfYear: Int {
 		return component(.yearForWeekOfYear)
 	}
     
     /**
      *  Convenience getter for the date's `daysInMonth` component
      */
-    public var daysInMonth: Int {
-        let calendar = Calendar.autoupdatingCurrent
+    var daysInMonth: Int {
+        let calendar = Date.autoupdatingCurrentCalendar
         let days = calendar.range(of: .day, in: .month, for: self)
         return days!.count
     }
@@ -234,42 +234,42 @@ public extension Date {
     /**
      *  Convenience setter for the date's `year` component
      */
-    public mutating func year(_ year: Int) {
+    mutating func year(_ year: Int) {
         self = Date.init(year: year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
     }
     
     /**
      *  Convenience setter for the date's `month` component
      */
-    public mutating func month(_ month: Int) {
+    mutating func month(_ month: Int) {
         self = Date.init(year: self.year, month: month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
     }
     
     /**
      *  Convenience setter for the date's `day` component
      */
-    public mutating func day(_ day: Int) {
+    mutating func day(_ day: Int) {
         self = Date.init(year: self.year, month: self.month, day: day, hour: self.hour, minute: self.minute, second: self.second)
     }
     
     /**
      *  Convenience setter for the date's `hour` component
      */
-    public mutating func hour(_ hour: Int) {
+    mutating func hour(_ hour: Int) {
         self = Date.init(year: self.year, month: self.month, day: self.day, hour: hour, minute: self.minute, second: self.second)
     }
     
     /**
      *  Convenience setter for the date's `minute` component
      */
-    public mutating func minute(_ minute: Int) {
+    mutating func minute(_ minute: Int) {
         self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: minute, second: self.second)
     }
     
     /**
      *  Convenience setter for the date's `second` component
      */
-    public mutating func second(_ second: Int) {
+    mutating func second(_ second: Int) {
         self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: second)
     }
     
@@ -279,7 +279,7 @@ public extension Date {
     /**
      *  Determine if date is in a leap year
      */
-	public var isInLeapYear: Bool {
+    var isInLeapYear: Bool {
 		let yearComponent = component(.year)
 		
 		if yearComponent % 400 == 0 {
@@ -297,31 +297,31 @@ public extension Date {
     /**
      *  Determine if date is within the current day
      */
-	public var isToday: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+    var isToday: Bool {
+		let calendar = Date.autoupdatingCurrentCalendar
 		return calendar.isDateInToday(self)
 	}
 	
     /**
      *  Determine if date is within the day tomorrow
      */
-	public var isTomorrow: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+    var isTomorrow: Bool {
+		let calendar = Date.autoupdatingCurrentCalendar
         return calendar.isDateInTomorrow(self)
 	}
 	
     /**
      *  Determine if date is within yesterday
      */
-	public var isYesterday: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+    var isYesterday: Bool {
+		let calendar = Date.autoupdatingCurrentCalendar
         return calendar.isDateInYesterday(self)
 	}
 	
     /**
      *  Determine if date is in a weekend
      */
-	public var isWeekend: Bool {
+    var isWeekend: Bool {
 		if weekday == 7 || weekday == 1 {
 			return true
 		}

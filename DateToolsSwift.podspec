@@ -20,4 +20,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'DateToolsSwift/DateTools'
   s.resources    = 'DateToolsSwift/DateTools/DateTools.bundle'
+
+  s.swift_version = '5.0'
 end

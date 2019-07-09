@@ -24,7 +24,7 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public static func timeAgo(since date:Date) -> String{
+    static func timeAgo(since date:Date) -> String{
         return date.timeAgo(since: Date(), numericDates: false, numericTimes: false)
     }
     
@@ -36,7 +36,7 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public static func shortTimeAgo(since date:Date) -> String {
+    static func shortTimeAgo(since date:Date) -> String {
         return date.shortTimeAgo(since:Date())
     }
     
@@ -46,7 +46,7 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public var timeAgoSinceNow: String {
+    var timeAgoSinceNow: String {
         return self.timeAgo(since:Date())
     }
     
@@ -56,11 +56,11 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    public var shortTimeAgoSinceNow: String {
+    var shortTimeAgoSinceNow: String {
         return self.shortTimeAgo(since:Date())
     }
     
-    public func timeAgo(since date:Date, numericDates: Bool = false, numericTimes: Bool = false) -> String {
+    func timeAgo(since date:Date, numericDates: Bool = false, numericTimes: Bool = false) -> String {
         let calendar = NSCalendar.current
         let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
         let earliest = self.earlierDate(date)
@@ -68,8 +68,8 @@ public extension Date {
         
         
         let components = calendar.dateComponents(unitFlags, from: earliest, to: latest)
-        let yesterday = date.subtract(1.days)
-        let isYesterday = yesterday.day == self.day
+        let yesterday = latest.subtract(1.days)
+        let isYesterday = yesterday.day == earliest.day
         
         //Not Yet Implemented/Optional
         //The following strings are present in the translation files but lack logic as of 2014.04.05
@@ -112,12 +112,17 @@ public extension Date {
         else if (components.day! >= 2) {
             return self.logicalLocalizedStringFromFormat(format: "%%d %@days ago", value: components.day!)
         }
-        else if (isYesterday) {
-            if (numericDates) {
-                return DateToolsLocalizedStrings("1 day ago");
+        else if (components.day! >= 1) {
+            if (isYesterday) {
+                if (numericDates) {
+                    return DateToolsLocalizedStrings("1 day ago");
+                }
+                
+                return DateToolsLocalizedStrings("Yesterday");
             }
-            
-            return DateToolsLocalizedStrings("Yesterday");
+            else {
+                return DateToolsLocalizedStrings("1 day ago")
+            }
         }
         else if (components.hour! >= 2) {
             return self.logicalLocalizedStringFromFormat(format: "%%d %@hours ago", value: components.hour!)
@@ -155,7 +160,7 @@ public extension Date {
     }
     
     
-    public func shortTimeAgo(since date:Date) -> String {
+    func shortTimeAgo(since date:Date) -> String {
         let calendar = NSCalendar.current
         let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
         let earliest = self.earlierDate(date)
@@ -200,9 +205,9 @@ public extension Date {
     
     private func logicalLocalizedStringFromFormat(format: String, value: Int) -> String{
         #if os(Linux)
-            let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)) as! CVarArg)  // this may not work, unclear!!
+        let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)) as! CVarArg)  // this may not work, unclear!!
         #else
-            let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
+        let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
         #endif
         
         return String.init(format: DateToolsLocalizedStrings(localeFormat), value)
@@ -241,9 +246,9 @@ public extension Date {
         #if os(Linux)
         // NSLocalizedString() is not available yet, see: https://github.com/apple/swift-corelibs-foundation/blob/16f83ddcd311b768e30a93637af161676b0a5f2f/Foundation/NSData.swift
         // However, a seemingly-equivalent method from NSBundle is: https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/NSBundle.swift
-            return Bundle.main.localizedString(forKey: string, value: "", table: "DateTools")
+        return Bundle.main.localizedString(forKey: string, value: "", table: "DateTools")
         #else
-            return NSLocalizedString(string, tableName: "DateTools", bundle: Bundle.dateToolsBundle(), value: "", comment: "")
+        return NSLocalizedString(string, tableName: "DateTools", bundle: Bundle.dateToolsBundle(), value: "", comment: "")
         #endif
     }
     
@@ -257,7 +262,7 @@ public extension Date {
      *
      *  - returns: The date that is earlier
      */
-    public func earlierDate(_ date:Date) -> Date{
+    func earlierDate(_ date:Date) -> Date{
         return (self.timeIntervalSince1970 <= date.timeIntervalSince1970) ? self : date
     }
     
@@ -268,7 +273,7 @@ public extension Date {
      *
      *  - returns: The date that is later
      */
-    public func laterDate(_ date:Date) -> Date{
+    func laterDate(_ date:Date) -> Date{
         return (self.timeIntervalSince1970 >= date.timeIntervalSince1970) ? self : date
     }
     
