@@ -24,7 +24,7 @@ public extension Date {
      *
      *  - returns: Represenation of the date (self) in the specified format
      */
-    public func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone, locale: Locale) -> String {
+    func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone, locale: Locale) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = dateStyle
         dateFormatter.timeZone = timeZone
@@ -41,7 +41,7 @@ public extension Date {
      *
      *  - returns String? - Represenation of the date (self) in the specified format
      */
-    public func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone) -> String {
+    func format(with dateStyle: DateFormatter.Style, timeZone: TimeZone) -> String {
         #if os(Linux)
             return format(with: dateStyle, timeZone: timeZone, locale: Locale.current)
         #else
@@ -58,7 +58,7 @@ public extension Date {
      *
      *  - returns: Represenation of the date (self) in the specified format
      */
-    public func format(with dateStyle: DateFormatter.Style, locale: Locale) -> String {
+    func format(with dateStyle: DateFormatter.Style, locale: Locale) -> String {
         return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: locale)
     }
     
@@ -70,7 +70,7 @@ public extension Date {
      *
      *  - returns: Represenation of the date (self) in the specified format
      */
-    public func format(with dateStyle: DateFormatter.Style) -> String {
+    func format(with dateStyle: DateFormatter.Style) -> String {
         #if os(Linux)
             return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.current)
         #else
@@ -90,7 +90,7 @@ public extension Date {
      *
      *  - returns: Represenation of the date (self) in the specified format
      */
-    public func format(with dateFormat: String, timeZone: TimeZone, locale: Locale) -> String {
+    func format(with dateFormat: String, timeZone: TimeZone, locale: Locale) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         dateFormatter.timeZone = timeZone
@@ -108,7 +108,7 @@ public extension Date {
      *
      *  - returns: Representation of the date (self) in the specified format
      */
-    public func format(with dateFormat: String, timeZone: TimeZone) -> String {
+    func format(with dateFormat: String, timeZone: TimeZone) -> String {
         #if os(Linux)
             return format(with: dateFormat, timeZone: timeZone, locale: Locale.current)
         #else
@@ -125,7 +125,7 @@ public extension Date {
      *
      *  - returns: Represenation of the date (self) in the specified format
      */
-    public func format(with dateFormat: String, locale: Locale) -> String {
+    func format(with dateFormat: String, locale: Locale) -> String {
         return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: locale)
     }
     
@@ -137,7 +137,7 @@ public extension Date {
      *
      *  - returns: Represenation of the date (self) in the specified format
      */
-    public func format(with dateFormat: String) -> String {
+    func format(with dateFormat: String) -> String {
         #if os(Linux)
             return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.current)
         #else
