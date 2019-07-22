@@ -60,3 +60,17 @@ Ikhsan Assaat added id Indonesian strings. http://ikhsan.me
 Marc added ca Catalan strings. http://marcboquet.com/
 
 Steffan Harries added cy Welsh strings. https://github.com/Bendihossan
+
+mjanda added es and cs short format strings https://github.com/mjanda
+
+Niklas Fahl added the de short format strings https://github.com/fahlout
+
+Vlad Cacuic added the ro short format strings https://github.com/vrcaciuc
+
+frin added sl Slovenian strings. http://github.com/frin
+
+Nikhil Nigade added hi (Hindi) and gu (Gujarati) strings. https://github.com/dezinezync
+
+Faiz Mokhtar added ms Malay strings. https://github.com/faizmokhtar
+
+Jakub Olejník (https://github.com/olejnjak) and Jakub Truhlář (https://github.com/kubatru) added sk (Slovak) strings
