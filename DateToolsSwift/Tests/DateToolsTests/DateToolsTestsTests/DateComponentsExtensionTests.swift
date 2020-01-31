@@ -36,28 +36,29 @@ class DateComponentsTests: XCTestCase {
         XCTAssertFalse(testDate.ordinality(of: .day, in: .year) == controlDate.ordinality(of: .day, in: .year))
     }
     
-    func testUnit() {
-        let testDate = self.formatter.date(from: "2014 05 26 18:15:12.000")!
-        let testDate2 = self.formatter.date(from: "2012 05 26 18:15:12.000")!
-        let testDate3 = self.formatter.date(from: "2012 02 26 18:15:12.000")!
-        XCTAssertTrue(testDate.unit(of: .month, in: .year) == 12)
-        XCTAssertTrue(testDate.unit(of: .day, in: .month) == 31)
-        XCTAssertTrue(testDate.unit(of: .day, in: .year) == 365)
-        XCTAssertTrue(testDate.unit(of: .hour, in: .year) == 365 * 24)
-        XCTAssertTrue(testDate.unit(of: .minute, in: .day) == 60 * 24)
-        XCTAssertTrue(testDate.unit(of: .day, in: .minute) == nil)
-        XCTAssertTrue(testDate.unit(of: .second, in: .minute) == 60)
-        XCTAssertTrue(testDate.unit(of: .weekday, in: .month) == nil)
-        XCTAssertTrue(testDate.unit(of: .second, in: .month) == 60 * 60 * 24 * 31)
-        XCTAssertTrue(testDate.unit(of: .second, in: .year) == 60 * 60 * 24 * 365)
-        // Leap year test
-        XCTAssertTrue(testDate2.unit(of: .day, in: .year) == 366)
-        XCTAssertTrue(testDate2.unit(of: .hour, in: .year) == 366 * 24)
-        XCTAssertTrue(testDate2.unit(of: .second, in: .year) == 60 * 60 * 24 * 366)
-        XCTAssertTrue(testDate3.unit(of: .day, in: .month) == 29)
-        // Equality test
-        XCTAssertTrue(testDate.unit(of: .day, in: .month)! == controlDate.unit(of: .day, in: .month)! + 1)
-    }
+//    func testUnit() {
+//        let testDate = self.formatter.date(from: "2014 05 26 18:15:12.000")!
+//        let testDate2 = self.formatter.date(from: "2012 05 26 18:15:12.000")!
+//        let testDate3 = self.formatter.date(from: "2012 02 26 18:15:12.000")!
+//        
+//        XCTAssertTrue(testDate.unit(of: .month, in: .year) == 12)
+//        XCTAssertTrue(testDate.unit(of: .day, in: .month) == 31)
+//        XCTAssertTrue(testDate.unit(of: .day, in: .year) == 365)
+//        XCTAssertTrue(testDate.unit(of: .hour, in: .year) == 365 * 24)
+//        XCTAssertTrue(testDate.unit(of: .minute, in: .day) == 60 * 24)
+//        XCTAssertTrue(testDate.unit(of: .day, in: .minute) == nil)
+//        XCTAssertTrue(testDate.unit(of: .second, in: .minute) == 60)
+//        XCTAssertTrue(testDate.unit(of: .weekday, in: .month) == nil)
+//        XCTAssertTrue(testDate.unit(of: .second, in: .month) == 60 * 60 * 24 * 31)
+//        XCTAssertTrue(testDate.unit(of: .second, in: .year) == 60 * 60 * 24 * 365)
+//        // Leap year test
+//        XCTAssertTrue(testDate2.unit(of: .day, in: .year) == 366)
+//        XCTAssertTrue(testDate2.unit(of: .hour, in: .year) == 366 * 24)
+//        XCTAssertTrue(testDate2.unit(of: .second, in: .year) == 60 * 60 * 24 * 366)
+//        XCTAssertTrue(testDate3.unit(of: .day, in: .month) == 29)
+//        // Equality test
+//        XCTAssertTrue(testDate.unit(of: .day, in: .month)! == controlDate.unit(of: .day, in: .month)! + 1)
+//    }
     
     
     // MARK: - Components
