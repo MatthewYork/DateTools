@@ -1,0 +1,89 @@
+/* No comment provided by engineer. */
+"%d days ago" = "%d ቀናት በፊት";
+
+/* No comment provided by engineer. */
+"%d hours ago" = "%d ሰዓታት በፊት";
+
+/* No comment provided by engineer. */
+"%d minutes ago" = "%d ደቂቃዎች በፊት";
+
+/* No comment provided by engineer. */
+"%d months ago" = "%d ወሮች በፊት";
+
+/* No comment provided by engineer. */
+"%d seconds ago" = "%d ሰከንዶች በፊት";
+
+/* No comment provided by engineer. */
+"%d weeks ago" = "%d ሳምንታት በፊት";
+
+/* No comment provided by engineer. */
+"%d years ago" = "%d አመታት በፊት";
+
+/* No comment provided by engineer. */
+"A minute ago" = "አንድ ደቂቃ በፊት";
+
+/* No comment provided by engineer. */
+"An hour ago" = "አንድ ሰዓት በፊት";
+
+/* No comment provided by engineer. */
+"Just now" = "ልክ አሁን";
+
+/* No comment provided by engineer. */
+"Last month" = "ያለፈው ወር";
+
+/* No comment provided by engineer. */
+"Last week" = "ያለፈው ሳምንት";
+
+/* No comment provided by engineer. */
+"Last year" = "ያለፈው አመት";
+
+/* No comment provided by engineer. */
+"Yesterday" = "ትናንትና";
+
+/* No comment provided by engineer. */
+"1 year ago" = "አንድ አመት በፊት";
+
+/* No comment provided by engineer. */
+"1 month ago" = "አንድ ወር በፊት";
+
+/* No comment provided by engineer. */
+"1 week ago" = "አንድ ሳምንት በፊት";
+
+/* No comment provided by engineer. */
+"1 day ago" = "አንድ ቀን በፊት";
+
+/* No comment provided by engineer. */
+"1 hour ago" = "አንድ ሰዓት በፊት";
+
+/* No comment provided by engineer. */
+"1 minute ago" = "አንድ ደቂቃ በፊት";
+
+/* No comment provided by engineer. */
+"1 second ago" = "አንድ ሰከንድ በፊት";
+
+/* No comment provided by engineer. */
+"This morning" = "ዛሬ ጠዋት";
+
+/* No comment provided by engineer. */
+"This afternoon" = "ዛሬ ከሰዓት";
+
+/* No comment provided by engineer. */
+"Today" = "ዛሬ";
+
+/* No comment provided by engineer. */
+"This week" = "በዚህ ሳምንት";
+
+/* No comment provided by engineer. */
+"This month" = "በዚህ ወር";
+
+/* No comment provided by engineer. */
+"This year" = "በዚህ አመት";
+
+/* Short format for */
+"%dy" = "%dy"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dw"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%dh"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second
