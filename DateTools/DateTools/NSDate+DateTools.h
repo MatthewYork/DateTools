@@ -122,6 +122,7 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 -(NSInteger)monthsFrom:(NSDate *)date;
 -(NSInteger)weeksFrom:(NSDate *)date;
 -(NSInteger)daysFrom:(NSDate *)date;
+-(NSInteger)calendarDaysFrom:(NSDate *)date;
 -(double)hoursFrom:(NSDate *)date;
 -(double)minutesFrom:(NSDate *)date;
 -(double)secondsFrom:(NSDate *)date;
