@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Idén";
+
+/* Short format for */
+"%dy" = "%dé"; // year
+"%dM" = "%dH"; // month
+"%dw" = "%dh"; // week
+"%dd" = "%dn"; // day
+"%dh" = "%dó"; // hour
+"%dm" = "%dp"; // minute
+"%ds" = "%dm"; // second

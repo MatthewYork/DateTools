@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Tänä vuonna";
+
+/* Short format for */
+"%dy" = "%dV"; // year
+"%dM" = "%dk"; // month
+"%dw" = "%dv"; // week
+"%dd" = "%dp"; // day
+"%dh" = "%dt"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second

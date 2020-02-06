@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "W tym roku";
+
+/* Short format for */
+"%dy" = "%dl"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dt"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%dg"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second
