@@ -42,7 +42,7 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSString *)timeAgoSinceDate:(NSDate *)date;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes;
-
+- (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes minimumHoursAgo:(NSInteger)minimumHoursAgo;
 
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date;
 - (NSString *)weekTimeAgoSinceDate:(NSDate *)date;
