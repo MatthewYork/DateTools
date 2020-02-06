@@ -8,7 +8,7 @@
 "%d minutes ago" = "Pred %d minútami";
 
 /* No comment provided by engineer. */
-"%d months ago" = "Pred %d mesiaci";
+"%d months ago" = "Pred %d mesiacmi";
 
 /* No comment provided by engineer. */
 "%d seconds ago" = "Pred %d sekundami";
@@ -69,3 +69,21 @@
 
 /* No comment provided by engineer. */
 "This year" = "Tento rok";
+
+/* Short format for */
+"%dy" = "%dr"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dt"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%dh"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second
+
+/* Week format for */
+"Mon" = "Pon";
+"Tue" = "Ut";
+"Wed" = "Str";
+"Thu" = "Štv";
+"Fri" = "Pia";
+"Sat" = "Sob";
+"Sun" = "Ne";
