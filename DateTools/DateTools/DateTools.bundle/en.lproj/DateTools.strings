@@ -79,6 +79,66 @@
 /* No comment provided by engineer. */
 "This year" = "This year";
 
+/* No comment provided by engineer. */
+"In %d days" = "In %d days";
+
+/* No comment provided by engineer. */
+"In %d hours" = "In %d hours";
+
+/* No comment provided by engineer. */
+"In %d minutes" = "In %d minutes";
+
+/* No comment provided by engineer. */
+"In %d months" = "In %d months";
+
+/* No comment provided by engineer. */
+"In %d seconds" = "In %d seconds";
+
+/* No comment provided by engineer. */
+"In %d weeks" = "In %d weeks";
+
+/* No comment provided by engineer. */
+"In %d years" = "In %d years";
+
+/* No comment provided by engineer. */
+"In a minute" = "In a minute";
+
+/* No comment provided by engineer. */
+"In an hour" = "In an hour";
+
+/* No comment provided by engineer. */
+"Next month" = "Next month";
+
+/* No comment provided by engineer. */
+"Next week" = "Next week";
+
+/* No comment provided by engineer. */
+"Next year" = "Next year";
+
+/* No comment provided by engineer. */
+"Tomorrow" = "Tomorrow";
+
+/* No comment provided by engineer. */
+"In 1 year" = "In 1 year";
+
+/* No comment provided by engineer. */
+"In 1 month" = "In 1 month";
+
+/* No comment provided by engineer. */
+"In 1 week" = "In 1 week";
+
+/* No comment provided by engineer. */
+"In 1 day" = "In 1 day";
+
+/* No comment provided by engineer. */
+"In 1 hour" = "In 1 hour";
+
+/* No comment provided by engineer. */
+"In 1 minute" = "In 1 minute";
+
+/* No comment provided by engineer. */
+"In 1 second" = "In 1 second";
+
 /* Short format for */
 "%dy" = "%dy"; // year
 "%dM" = "%dM"; // month
