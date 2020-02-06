@@ -57,6 +57,14 @@ Objective-C (Legacy)
 
 <code>pod 'DateTools'</code>
 
+**Carthage**
+
+Add this line to your Cartfile:
+
+```
+github "MatthewYork/DateTools" ~> 4.0
+```
+
 **Manual Installation**
 
 All the classes required for DateTools are located in the DateTools folder in the root of this repository. They are listed below:
