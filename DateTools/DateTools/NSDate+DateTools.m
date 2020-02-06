@@ -1096,6 +1096,28 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 /**
+ *  Returns an NSInteger representing the amount of time in days between the receiver and the provided date.
+ *  If the receiver is earlier than the provided date, the returned value will be negative.
+ *  Uses the default Gregorian calendar
+ *
+ *  @param date NSDate - The provided date for comparison
+ *
+ *  @return NSInteger - The double representation of the days between receiver and provided date
+ */
+-(NSInteger)calendarDaysFrom:(NSDate *)date{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [[self class] implicitCalendar];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate interval:NULL forDate:date];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate interval:NULL forDate:self];
+    
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference day];
+}
+
+/**
  *  Returns an NSInteger representing the amount of time in hours between the receiver and the provided date.
  *  If the receiver is earlier than the provided date, the returned value will be negative.
  *
