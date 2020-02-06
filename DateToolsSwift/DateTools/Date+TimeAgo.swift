@@ -211,7 +211,7 @@ public extension Date {
     
     private func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String{
         let localCode = Bundle.main.preferredLocalizations[0]
-        if (localCode == "ru" || localCode == "uk") {
+        if (localCode == "ru" || localCode == "uk" || localCode.contains("sr")) {
             let XY = Int(floor(value).truncatingRemainder(dividingBy: 100))
             let Y = Int(floor(value).truncatingRemainder(dividingBy: 10))
             
