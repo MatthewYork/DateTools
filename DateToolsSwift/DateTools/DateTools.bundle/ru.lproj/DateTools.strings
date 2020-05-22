@@ -123,3 +123,33 @@
 
 /* No comment provided by engineer. */
 "This year" = "В этом году";
+
+/* Short format for */
+"%dy" = "%d г."; // year
+"%d_y" = "%d г."; // year
+"%d__y" = "%d г."; // year
+
+"%dM" = "%d мес."; // month
+"%d_M" = "%d мес."; // month
+"%d__M" = "%d мес."; // month
+
+"%dw" = "%d нед."; // week
+"%d_w" = "%d нед."; // week
+"%d__w" = "%d нед."; // week
+
+"%dd" = "%d дн."; // day
+"%d_d" = "%d дн."; // day
+"%d__d" = "%d дн."; // day
+
+"%dh" = "%d ч."; // hour
+"%d_h" = "%d ч."; // hour
+"%d__h" = "%d ч."; // hour
+
+"%dm" = "%d мин."; // minute
+"%d_m" = "%d мин."; // minute
+"%d__m" = "%d мин."; // minute
+
+"%ds" = "%d сек."; // second
+"%d_s" = "%d сек."; // second
+"%d__s" = "%d сек."; // second
+
