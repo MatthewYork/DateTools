@@ -125,30 +125,31 @@
 "This year" = "В этом году";
 
 /* Short format for */
-"%dy" = "%dг"; // year
-"%d_y" = "%dг"; // year
-"%d__y" = "%dг"; // year
+"%dy" = "%d г."; // year
+"%d_y" = "%d г."; // year
+"%d__y" = "%d г."; // year
 
-"%dM" = "%dмес"; // month
-"%d_M" = "%dмес"; // month
-"%d__M" = "%dмес"; // month
+"%dM" = "%d мес."; // month
+"%d_M" = "%d мес."; // month
+"%d__M" = "%d мес."; // month
 
-"%dw" = "%dнед"; // week
-"%d_w" = "%dнед"; // week
-"%d__w" = "%dнед"; // week
+"%dw" = "%d нед."; // week
+"%d_w" = "%d нед."; // week
+"%d__w" = "%d нед."; // week
 
-"%dd" = "%dдн"; // day
-"%d_d" = "%dдн"; // day
-"%d__d" = "%dдн"; // day
+"%dd" = "%d дн."; // day
+"%d_d" = "%d дн."; // day
+"%d__d" = "%d дн."; // day
 
-"%dh" = "%dч"; // hour
-"%d_h" = "%dч"; // hour
-"%d__h" = "%dч"; // hour
+"%dh" = "%d ч."; // hour
+"%d_h" = "%d ч."; // hour
+"%d__h" = "%d ч."; // hour
 
-"%dm" = "%dмин"; // minute
-"%d_m" = "%dмин"; // minute
-"%d__m" = "%dмин"; // minute
+"%dm" = "%d мин."; // minute
+"%d_m" = "%d мин."; // minute
+"%d__m" = "%d мин."; // minute
 
-"%ds" = "%dсек"; // second
-"%d_s" = "%dсек"; // second
-"%d__s" = "%dсек"; // second
+"%ds" = "%d сек."; // second
+"%d_s" = "%d сек."; // second
+"%d__s" = "%d сек."; // second
+
