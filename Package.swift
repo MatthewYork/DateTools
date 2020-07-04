@@ -1,11 +1,11 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
     name: "DateToolsSwift",
     platforms: [
-        .macOS(.v10_10), .iOS(.v8)
+        .macOS(.v10_10), .iOS(.v8), .tvOS(.v9), .watchOS(.v2)
     ],
     products: [
         .library(
@@ -19,12 +19,21 @@ let package = Package(
             exclude: [
                 "Examples",
                 "DateToolsSwift/Examples"
+            ],
+            resources: [
+                .copy("DateTools.bundle")
             ]
         ),
         .testTarget(
             name: "DateToolsSwiftTests",
             dependencies: ["DateToolsSwift"],
-            path: "DateToolsSwift/Tests/DateToolsTests/DateToolsTestsTests"
+            path: "DateToolsSwift/Tests/DateToolsTests/DateToolsTestsTests",
+            exclude: [
+                "Info.plist"
+            ],
+            resources: [
+                .copy("DateTools.bundle")
+            ]
         )
     ]
 )
