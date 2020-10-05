@@ -1,29 +1,29 @@
 /* No comment provided by engineer. */
-"%d days ago" = "%d dögum síðan";
+"%d days ago" = "Fyrir %d dögum";
 
 /* No comment provided by engineer. */
-"%d hours ago" = "%d klst. síðan";
+"%d hours ago" = "Fyrir %d klst.";
 
 /* No comment provided by engineer. */
-"%d minutes ago" = "%d mínútum síðan";
+"%d minutes ago" = "Fyrir %d mínútum";
 
 /* No comment provided by engineer. */
-"%d months ago" = "%d mánuðum síðan";
+"%d months ago" = "Fyrir %d mánuðum";
 
 /* No comment provided by engineer. */
-"%d seconds ago" = "%d sekúndum síðan";
+"%d seconds ago" = "Fyrir %d sek";
 
 /* No comment provided by engineer. */
-"%d weeks ago" = "%d vikum síðan";
+"%d weeks ago" = "Fyrir %d vikum";
 
 /* No comment provided by engineer. */
-"%d years ago" = "%d árum síðan";
+"%d years ago" = "Fyrir %d árum";
 
 /* No comment provided by engineer. */
-"A minute ago" = "Einni mínútu síðan";
+"A minute ago" = "Fyrir einni mínútu";
 
 /* No comment provided by engineer. */
-"An hour ago" = "Einni klst. síðan";
+"An hour ago" = "Fyrir einni klst.";
 
 /* No comment provided by engineer. */
 "Just now" = "Rétt í þessu";
@@ -41,16 +41,16 @@
 "Yesterday" = "Í gær";
 
 /* No comment provided by engineer. */
-"1 year ago" = "1 ári síðan";
+"1 year ago" = "Fyrir 1 ári";
 
 /* No comment provided by engineer. */
-"1 month ago" = "1 mánuði síðan";
+"1 month ago" = "Fyrir 1 mánuði";
 
 /* No comment provided by engineer. */
-"1 week ago" = "1 viku síðan";
+"1 week ago" = "Fyrir 1 viku";
 
 /* No comment provided by engineer. */
-"1 day ago" = "1 degi síðan";
+"1 day ago" = "Fyrir 1 degi";
 
 /* No comment provided by engineer. */
 "This morning" = "Í morgun";
