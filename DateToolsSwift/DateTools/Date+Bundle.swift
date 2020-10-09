@@ -9,10 +9,25 @@
 import Foundation
 
 public extension Bundle {
-  
-  class func dateToolsBundle() -> Bundle {
-    let assetPath = Bundle(for: Constants.self).resourcePath!
-    return Bundle(path: NSString(string: assetPath).appendingPathComponent("DateTools.bundle"))!
-  }
+    
+    class func dateToolsBundle() -> Bundle {
+        let containerBundle: Bundle
+        
+        #if SWIFT_PACKAGE
+        containerBundle = Bundle.module
+        #else
+        containerBundle = Bundle(for: Constants.self)
+        #endif
+        
+        guard
+            let dateToolsBundleURL = containerBundle.url(forResource: "DateTools", withExtension: "bundle"),
+            let dateToolsBundle = Bundle(url: dateToolsBundleURL)
+        else {
+            assertionFailure("Make sure you have included DateTools.bundle in your app.")
+            return containerBundle
+        }
+        
+        return dateToolsBundle
+    }
 }
 
