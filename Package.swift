@@ -28,12 +28,6 @@ let package = Package(
                 "DateToolsSwift/Examples",
             ]
         ),
-        .testTarget(
-            name: "DateToolsSwiftTests",
-            dependencies: ["DateToolsSwift"],
-            path: "DateToolsSwift/Tests/DateToolsTests/DateToolsTestsTests",
-            exclude: []
-        ),
         .target(
             name: "DateToolsObjC",
             dependencies: [],
@@ -45,12 +39,6 @@ let package = Package(
                 "DateTools/Examples",
             ],
             publicHeadersPath: "."
-        ),
-        .testTarget(
-            name: "DateToolsObjCTests",
-            dependencies: ["DateToolsObjC"],
-            path: "DateTools/Tests/DateToolsTests/DateToolsTestsTests",
-            exclude: []
         ),
     ]
 )
