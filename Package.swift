@@ -43,7 +43,8 @@ let package = Package(
                 "Examples",
                 "DateTools/Tests",
                 "DateTools/Examples",
-            ]
+            ],
+            publicHeadersPath: "."
         ),
         .testTarget(
             name: "DateToolsObjCTests",
@@ -51,6 +52,5 @@ let package = Package(
             path: "DateTools/Tests/DateToolsTests/DateToolsTestsTests",
             exclude: []
         ),
-
     ]
 )
