@@ -19,12 +19,14 @@ let package = Package(
     targets: [
         .target(name: "DateToolsSwift",
                 path: "DateToolsSwift/DateTools",
-                exclude: ["Tests", "Examples", "doc_gen.sh", "DateTools.bundle"]),
-//        .testTarget(
-//            name: "DateToolsTests",
-//            dependencies: ["DateToolsSwift"],
-//            path: "DateToolsSwift/Tests/DateToolsTests/DateToolsTestsTests",
-//            exclude: ["DataTools", "Examples", "DateToolsTests", "doc_gen.sh", "Info.plist"]),
+                resources: [.copy("DateTools.bundle")],
+                swiftSettings: [.define("PACKAGE_MANAGER"),]
+                ),
+        .testTarget(
+            name: "DateToolsSwiftTests",
+            dependencies: ["DateToolsSwift"],
+            path: "DateToolsSwift/Tests/PackageTests",
+            exclude: ["DateToolsTestsTests", "DateToolsTests"]),
     ]
 )
     
