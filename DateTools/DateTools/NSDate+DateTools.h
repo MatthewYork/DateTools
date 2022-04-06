@@ -21,8 +21,15 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #ifndef DateToolsLocalizedStrings
+
+#ifdef SPM
+#define DateToolsLocalizedStrings(key) \
+NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[SWIFTPM_MODULE_BUNDLE resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
+#else
 #define DateToolsLocalizedStrings(key) \
 NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle bundleForClass:[DTError class]] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
+#endif
+
 #endif
 
 #import <Foundation/Foundation.h>
