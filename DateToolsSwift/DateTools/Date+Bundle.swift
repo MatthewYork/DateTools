@@ -9,10 +9,17 @@
 import Foundation
 
 public extension Bundle {
-  
-  class func dateToolsBundle() -> Bundle {
-    let assetPath = Bundle(for: Constants.self).resourcePath!
-    return Bundle(path: NSString(string: assetPath).appendingPathComponent("DateTools.bundle"))!
-  }
+    
+    class func dateToolsBundle() -> Bundle? {
+        let assetPath: String?
+#if SPM
+        assetPath = Bundle.module.resourcePath
+#else
+        assetPath = Bundle(for: Constants.self).resourcePath
+#endif
+        guard let assetPath = assetPath else { return nil }
+        return Bundle(path: NSString(string: assetPath).appendingPathComponent("DateTools.bundle"))
+    }
+    
 }
 
