@@ -1,4 +1,4 @@
-language: objective-c
+language: swift
 
 before_script: 
 - gem install xcpretty

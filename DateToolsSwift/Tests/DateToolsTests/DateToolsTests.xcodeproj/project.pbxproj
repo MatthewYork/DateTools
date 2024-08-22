@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		562371581DBA6AF50083DF30 /* Date+Manipulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562371571DBA6AF50083DF30 /* Date+Manipulations.swift */; };
+		5623715A1DBA6E810083DF30 /* Date+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562371591DBA6E810083DF30 /* Date+Bundle.swift */; };
+		5658E3801D6B559900D1465A /* TimePeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658E35B1D67782D00D1465A /* TimePeriodTests.swift */; };
+		56890C711D771BA8004E8959 /* TimePeriodCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56890C701D771BA8004E8959 /* TimePeriodCollectionTests.swift */; };
+		56890C731D771BB8004E8959 /* TimePeriodChainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56890C721D771BB8004E8959 /* TimePeriodChainTests.swift */; };
+		568CC77E1D9EC2FE000D614D /* DateManipulationsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568CC77D1D9EC2FE000D614D /* DateManipulationsExtensionTests.swift */; };
+		569181E11D708B71007244B4 /* TimePeriodGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569181E01D708B71007244B4 /* TimePeriodGroupTests.swift */; };
+		569181EF1D70C85C007244B4 /* TimeChunkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569181EE1D70C85C007244B4 /* TimeChunkTests.swift */; };
+		56D1939E1D675ADE001BD246 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193951D675ADE001BD246 /* Constants.swift */; };
+		56D1939F1D675ADE001BD246 /* Date+Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193961D675ADE001BD246 /* Date+Inits.swift */; };
+		56D193A01D675ADE001BD246 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56D193971D675ADE001BD246 /* DateTools.bundle */; };
+		56D193A21D675ADE001BD246 /* Integer+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193991D675ADE001BD246 /* Integer+DateTools.swift */; };
+		56D193A31D675ADE001BD246 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939A1D675ADE001BD246 /* TimePeriod.swift */; };
+		56D193A41D675ADE001BD246 /* TimePeriodChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */; };
+		56D193A51D675ADE001BD246 /* TimePeriodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939C1D675ADE001BD246 /* TimePeriodCollection.swift */; };
+		56D193A61D675ADE001BD246 /* TimePeriodGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1939D1D675ADE001BD246 /* TimePeriodGroup.swift */; };
+		56D193BD1D675CF2001BD246 /* TimeChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D193BC1D675CF2001BD246 /* TimeChunk.swift */; };
+		F08843151D74DFB9005E5B4C /* DateComponentsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08843141D74DFB9005E5B4C /* DateComponentsExtensionTests.swift */; };
+		F08843171D74E014005E5B4C /* DateComparatorsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08843161D74E014005E5B4C /* DateComparatorsExtensionTests.swift */; };
+		F08843191D74E03D005E5B4C /* DateInitsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08843181D74E03D005E5B4C /* DateInitsExtensionTests.swift */; };
+		F088431B1D74E04B005E5B4C /* DateFormatExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088431A1D74E04B005E5B4C /* DateFormatExtensionTests.swift */; };
+		F088431E1D74E05D005E5B4C /* DateTimeAgoExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088431D1D74E05D005E5B4C /* DateTimeAgoExtensionTests.swift */; };
+		F08843201D74E07E005E5B4C /* IntegerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088431F1D74E07E005E5B4C /* IntegerExtensionTests.swift */; };
+		F0885D041D708A07002843B5 /* Date+Comparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0885D031D708A07002843B5 /* Date+Comparators.swift */; };
+		F0885D0A1D708AD0002843B5 /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0885D091D708AD0002843B5 /* Date+Components.swift */; };
+		F0997A421D67580B00EBCF5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0997A411D67580B00EBCF5C /* AppDelegate.swift */; };
+		F0997A441D67580B00EBCF5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0997A431D67580B00EBCF5C /* ViewController.swift */; };
+		F0997A471D67580B00EBCF5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A451D67580B00EBCF5C /* Main.storyboard */; };
+		F0997A491D67580B00EBCF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0997A481D67580B00EBCF5C /* Assets.xcassets */; };
+		F0997A4C1D67580B00EBCF5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0997A4A1D67580B00EBCF5C /* LaunchScreen.storyboard */; };
+		F0D7EB7F1D70EA1F0037F330 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7EB7E1D70EA1F0037F330 /* Enums.swift */; };
+		F0E41E861D6CE82B00DF0AAB /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */; };
+		F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5658E37B1D6B556B00D1465A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0997A361D67580B00EBCF5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0997A3D1D67580B00EBCF5C;
+			remoteInfo = DateToolsTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		562371571DBA6AF50083DF30 /* Date+Manipulations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Manipulations.swift"; path = "../../../DateTools/Date+Manipulations.swift"; sourceTree = "<group>"; };
+		562371591DBA6E810083DF30 /* Date+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Bundle.swift"; path = "../../../DateTools/Date+Bundle.swift"; sourceTree = "<group>"; };
+		5658E35B1D67782D00D1465A /* TimePeriodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodTests.swift; sourceTree = "<group>"; };
+		5658E3701D6B53B000D1465A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateToolsTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5658E37A1D6B556B00D1465A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56890C701D771BA8004E8959 /* TimePeriodCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCollectionTests.swift; sourceTree = "<group>"; };
+		56890C721D771BB8004E8959 /* TimePeriodChainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodChainTests.swift; sourceTree = "<group>"; };
+		568CC77D1D9EC2FE000D614D /* DateManipulationsExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManipulationsExtensionTests.swift; sourceTree = "<group>"; };
+		569181E01D708B71007244B4 /* TimePeriodGroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodGroupTests.swift; sourceTree = "<group>"; };
+		569181EE1D70C85C007244B4 /* TimeChunkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeChunkTests.swift; sourceTree = "<group>"; };
+		56D193951D675ADE001BD246 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../DateTools/Constants.swift; sourceTree = "<group>"; };
+		56D193961D675ADE001BD246 /* Date+Inits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Inits.swift"; path = "../../../DateTools/Date+Inits.swift"; sourceTree = "<group>"; };
+		56D193971D675ADE001BD246 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		56D193991D675ADE001BD246 /* Integer+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Integer+DateTools.swift"; path = "../../../DateTools/Integer+DateTools.swift"; sourceTree = "<group>"; };
+		56D1939A1D675ADE001BD246 /* TimePeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriod.swift; path = ../../../DateTools/TimePeriod.swift; sourceTree = "<group>"; };
+		56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodChain.swift; path = ../../../DateTools/TimePeriodChain.swift; sourceTree = "<group>"; };
+		56D1939C1D675ADE001BD246 /* TimePeriodCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodCollection.swift; path = ../../../DateTools/TimePeriodCollection.swift; sourceTree = "<group>"; };
+		56D1939D1D675ADE001BD246 /* TimePeriodGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodGroup.swift; path = ../../../DateTools/TimePeriodGroup.swift; sourceTree = "<group>"; };
+		56D193BC1D675CF2001BD246 /* TimeChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeChunk.swift; path = ../../../DateTools/TimeChunk.swift; sourceTree = "<group>"; };
+		F08843141D74DFB9005E5B4C /* DateComponentsExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponentsExtensionTests.swift; sourceTree = "<group>"; };
+		F08843161D74E014005E5B4C /* DateComparatorsExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComparatorsExtensionTests.swift; sourceTree = "<group>"; };
+		F08843181D74E03D005E5B4C /* DateInitsExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateInitsExtensionTests.swift; sourceTree = "<group>"; };
+		F088431A1D74E04B005E5B4C /* DateFormatExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatExtensionTests.swift; sourceTree = "<group>"; };
+		F088431D1D74E05D005E5B4C /* DateTimeAgoExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeAgoExtensionTests.swift; sourceTree = "<group>"; };
+		F088431F1D74E07E005E5B4C /* IntegerExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerExtensionTests.swift; sourceTree = "<group>"; };
+		F0885D031D708A07002843B5 /* Date+Comparators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Comparators.swift"; path = "../../../DateTools/Date+Comparators.swift"; sourceTree = "<group>"; };
+		F0885D091D708AD0002843B5 /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Components.swift"; path = "../../../DateTools/Date+Components.swift"; sourceTree = "<group>"; };
+		F0997A3E1D67580B00EBCF5C /* DateToolsTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateToolsTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0997A411D67580B00EBCF5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0997A431D67580B00EBCF5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F0997A461D67580B00EBCF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0997A481D67580B00EBCF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F0997A4B1D67580B00EBCF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0997A4D1D67580B00EBCF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0D7EB7E1D70EA1F0037F330 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = ../../../DateTools/Enums.swift; sourceTree = "<group>"; };
+		F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Format.swift"; path = "../../../DateTools/Date+Format.swift"; sourceTree = "<group>"; };
+		F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+TimeAgo.swift"; path = "../../../DateTools/Date+TimeAgo.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5658E3731D6B556B00D1465A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0997A3B1D67580B00EBCF5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5658E36F1D6B53B000D1465A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5658E3701D6B53B000D1465A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5658E3771D6B556B00D1465A /* DateToolsTestsTests */ = {
+			isa = PBXGroup;
+			children = (
+				F08843131D74DF94005E5B4C /* Date Extension Tests */,
+				569181EE1D70C85C007244B4 /* TimeChunkTests.swift */,
+				5658E35B1D67782D00D1465A /* TimePeriodTests.swift */,
+				569181E01D708B71007244B4 /* TimePeriodGroupTests.swift */,
+				56890C701D771BA8004E8959 /* TimePeriodCollectionTests.swift */,
+				56890C721D771BB8004E8959 /* TimePeriodChainTests.swift */,
+				5658E37A1D6B556B00D1465A /* Info.plist */,
+			);
+			path = DateToolsTestsTests;
+			sourceTree = "<group>";
+		};
+		569181F01D70EC02007244B4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				562371591DBA6E810083DF30 /* Date+Bundle.swift */,
+				F0885D091D708AD0002843B5 /* Date+Components.swift */,
+				F0885D031D708A07002843B5 /* Date+Comparators.swift */,
+				F0E41E851D6CE82B00DF0AAB /* Date+Format.swift */,
+				56D193961D675ADE001BD246 /* Date+Inits.swift */,
+				562371571DBA6AF50083DF30 /* Date+Manipulations.swift */,
+				F0E41E891D6CE89400DF0AAB /* Date+TimeAgo.swift */,
+				56D193991D675ADE001BD246 /* Integer+DateTools.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		56D193941D675AC3001BD246 /* DateTools */ = {
+			isa = PBXGroup;
+			children = (
+				569181F01D70EC02007244B4 /* Extensions */,
+				56D193971D675ADE001BD246 /* DateTools.bundle */,
+				56D193951D675ADE001BD246 /* Constants.swift */,
+				F0D7EB7E1D70EA1F0037F330 /* Enums.swift */,
+				56D193BC1D675CF2001BD246 /* TimeChunk.swift */,
+				56D1939A1D675ADE001BD246 /* TimePeriod.swift */,
+				56D1939B1D675ADE001BD246 /* TimePeriodChain.swift */,
+				56D1939C1D675ADE001BD246 /* TimePeriodCollection.swift */,
+				56D1939D1D675ADE001BD246 /* TimePeriodGroup.swift */,
+			);
+			name = DateTools;
+			sourceTree = "<group>";
+		};
+		F08843131D74DF94005E5B4C /* Date Extension Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F08843141D74DFB9005E5B4C /* DateComponentsExtensionTests.swift */,
+				F08843161D74E014005E5B4C /* DateComparatorsExtensionTests.swift */,
+				568CC77D1D9EC2FE000D614D /* DateManipulationsExtensionTests.swift */,
+				F08843181D74E03D005E5B4C /* DateInitsExtensionTests.swift */,
+				F088431A1D74E04B005E5B4C /* DateFormatExtensionTests.swift */,
+				F088431D1D74E05D005E5B4C /* DateTimeAgoExtensionTests.swift */,
+				F088431F1D74E07E005E5B4C /* IntegerExtensionTests.swift */,
+			);
+			name = "Date Extension Tests";
+			sourceTree = "<group>";
+		};
+		F0997A351D67580B00EBCF5C = {
+			isa = PBXGroup;
+			children = (
+				F0997A401D67580B00EBCF5C /* DateToolsTests */,
+				5658E3771D6B556B00D1465A /* DateToolsTestsTests */,
+				F0997A3F1D67580B00EBCF5C /* Products */,
+				5658E36F1D6B53B000D1465A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F0997A3F1D67580B00EBCF5C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0997A3E1D67580B00EBCF5C /* DateToolsTests.app */,
+				5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0997A401D67580B00EBCF5C /* DateToolsTests */ = {
+			isa = PBXGroup;
+			children = (
+				56D193941D675AC3001BD246 /* DateTools */,
+				F0997A411D67580B00EBCF5C /* AppDelegate.swift */,
+				F0997A431D67580B00EBCF5C /* ViewController.swift */,
+				F0997A451D67580B00EBCF5C /* Main.storyboard */,
+				F0997A481D67580B00EBCF5C /* Assets.xcassets */,
+				F0997A4A1D67580B00EBCF5C /* LaunchScreen.storyboard */,
+				F0997A4D1D67580B00EBCF5C /* Info.plist */,
+			);
+			path = DateToolsTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5658E3751D6B556B00D1465A /* DateToolsTestsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5658E37D1D6B556B00D1465A /* Build configuration list for PBXNativeTarget "DateToolsTestsTests" */;
+			buildPhases = (
+				5658E3721D6B556B00D1465A /* Sources */,
+				5658E3731D6B556B00D1465A /* Frameworks */,
+				5658E3741D6B556B00D1465A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5658E37C1D6B556B00D1465A /* PBXTargetDependency */,
+			);
+			name = DateToolsTestsTests;
+			productName = DateToolsTestsTests;
+			productReference = 5658E3761D6B556B00D1465A /* DateToolsTestsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F0997A3D1D67580B00EBCF5C /* DateToolsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0997A5B1D67580C00EBCF5C /* Build configuration list for PBXNativeTarget "DateToolsTests" */;
+			buildPhases = (
+				F0997A3A1D67580B00EBCF5C /* Sources */,
+				F0997A3B1D67580B00EBCF5C /* Frameworks */,
+				F0997A3C1D67580B00EBCF5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DateToolsTests;
+			productName = DateToolsTests;
+			productReference = F0997A3E1D67580B00EBCF5C /* DateToolsTests.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0997A361D67580B00EBCF5C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Matthew York";
+				TargetAttributes = {
+					5658E3751D6B556B00D1465A = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 79J92XV598;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F0997A3D1D67580B00EBCF5C;
+					};
+					F0997A3D1D67580B00EBCF5C = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 79J92XV598;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F0997A391D67580B00EBCF5C /* Build configuration list for PBXProject "DateToolsTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = F0997A351D67580B00EBCF5C;
+			productRefGroup = F0997A3F1D67580B00EBCF5C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0997A3D1D67580B00EBCF5C /* DateToolsTests */,
+				5658E3751D6B556B00D1465A /* DateToolsTestsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5658E3741D6B556B00D1465A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0997A3C1D67580B00EBCF5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0997A4C1D67580B00EBCF5C /* LaunchScreen.storyboard in Resources */,
+				F0997A491D67580B00EBCF5C /* Assets.xcassets in Resources */,
+				F0997A471D67580B00EBCF5C /* Main.storyboard in Resources */,
+				56D193A01D675ADE001BD246 /* DateTools.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5658E3721D6B556B00D1465A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56890C731D771BB8004E8959 /* TimePeriodChainTests.swift in Sources */,
+				569181E11D708B71007244B4 /* TimePeriodGroupTests.swift in Sources */,
+				F088431E1D74E05D005E5B4C /* DateTimeAgoExtensionTests.swift in Sources */,
+				F08843191D74E03D005E5B4C /* DateInitsExtensionTests.swift in Sources */,
+				F08843151D74DFB9005E5B4C /* DateComponentsExtensionTests.swift in Sources */,
+				569181EF1D70C85C007244B4 /* TimeChunkTests.swift in Sources */,
+				F088431B1D74E04B005E5B4C /* DateFormatExtensionTests.swift in Sources */,
+				56890C711D771BA8004E8959 /* TimePeriodCollectionTests.swift in Sources */,
+				568CC77E1D9EC2FE000D614D /* DateManipulationsExtensionTests.swift in Sources */,
+				F08843171D74E014005E5B4C /* DateComparatorsExtensionTests.swift in Sources */,
+				F08843201D74E07E005E5B4C /* IntegerExtensionTests.swift in Sources */,
+				5658E3801D6B559900D1465A /* TimePeriodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0997A3A1D67580B00EBCF5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D193A21D675ADE001BD246 /* Integer+DateTools.swift in Sources */,
+				56D193A61D675ADE001BD246 /* TimePeriodGroup.swift in Sources */,
+				562371581DBA6AF50083DF30 /* Date+Manipulations.swift in Sources */,
+				F0E41E861D6CE82B00DF0AAB /* Date+Format.swift in Sources */,
+				56D193BD1D675CF2001BD246 /* TimeChunk.swift in Sources */,
+				56D193A31D675ADE001BD246 /* TimePeriod.swift in Sources */,
+				F0997A441D67580B00EBCF5C /* ViewController.swift in Sources */,
+				56D193A51D675ADE001BD246 /* TimePeriodCollection.swift in Sources */,
+				F0997A421D67580B00EBCF5C /* AppDelegate.swift in Sources */,
+				56D1939E1D675ADE001BD246 /* Constants.swift in Sources */,
+				5623715A1DBA6E810083DF30 /* Date+Bundle.swift in Sources */,
+				56D193A41D675ADE001BD246 /* TimePeriodChain.swift in Sources */,
+				F0885D041D708A07002843B5 /* Date+Comparators.swift in Sources */,
+				F0E41E8A1D6CE89400DF0AAB /* Date+TimeAgo.swift in Sources */,
+				56D1939F1D675ADE001BD246 /* Date+Inits.swift in Sources */,
+				F0D7EB7F1D70EA1F0037F330 /* Enums.swift in Sources */,
+				F0885D0A1D708AD0002843B5 /* Date+Components.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5658E37C1D6B556B00D1465A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0997A3D1D67580B00EBCF5C /* DateToolsTests */;
+			targetProxy = 5658E37B1D6B556B00D1465A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F0997A451D67580B00EBCF5C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0997A461D67580B00EBCF5C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F0997A4A1D67580B00EBCF5C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0997A4B1D67580B00EBCF5C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5658E37E1D6B556B00D1465A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 79J92XV598;
+				INFOPLIST_FILE = DateToolsTestsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ua.caps.DateToolsTestsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateToolsTests.app/DateToolsTests";
+			};
+			name = Debug;
+		};
+		5658E37F1D6B556B00D1465A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 79J92XV598;
+				INFOPLIST_FILE = DateToolsTestsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ua.caps.DateToolsTestsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateToolsTests.app/DateToolsTests";
+			};
+			name = Release;
+		};
+		F0997A591D67580C00EBCF5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F0997A5A1D67580C00EBCF5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0997A5C1D67580C00EBCF5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 79J92XV598;
+				INFOPLIST_FILE = DateToolsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.matthewyork.DateToolsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F0997A5D1D67580C00EBCF5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 79J92XV598;
+				INFOPLIST_FILE = DateToolsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.matthewyork.DateToolsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5658E37D1D6B556B00D1465A /* Build configuration list for PBXNativeTarget "DateToolsTestsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5658E37E1D6B556B00D1465A /* Debug */,
+				5658E37F1D6B556B00D1465A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0997A391D67580B00EBCF5C /* Build configuration list for PBXProject "DateToolsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0997A591D67580C00EBCF5C /* Debug */,
+				F0997A5A1D67580C00EBCF5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0997A5B1D67580C00EBCF5C /* Build configuration list for PBXNativeTarget "DateToolsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0997A5C1D67580C00EBCF5C /* Debug */,
+				F0997A5D1D67580C00EBCF5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0997A361D67580B00EBCF5C /* Project object */;
+}

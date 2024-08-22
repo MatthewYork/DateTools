@@ -1,13 +1,14 @@
-![Banner](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/DateToolsHeader.png)
+![Banner](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/DateToolsHeader2.png)
 
 ## DateTools
 
-DateTools was written to streamline date and time handling in Objective-C. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
+DateTools was written to streamline date and time handling in iOS. Classes and concepts from other languages served as an inspiration for DateTools, especially the [DateTime](http://msdn.microsoft.com/en-us/library/system.datetime(v=vs.110).aspx) structure and [Time Period Library](http://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) for .NET. Through these classes and others, DateTools removes the boilerplate required to access date components, handles more nuanced date comparisons, and serves as the foundation for entirely new concepts like Time Periods and their collections.
 
 [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
 [![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateTools/badge.png)](http://cocoapods.org/?q=datetools)
+[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/DateToolsSwift/badge.png)](http://cocoapods.org/?q=datetoolsswift)
 
-####Featured In
+#### Featured In
 <table>
  <tr>
   <td align="center">
@@ -23,21 +24,36 @@ DateTools was written to streamline date and time handling in Objective-C. Class
   <a href="https://itunes.apple.com/us/app/guidebook/id428713847?mt=8"><img src="http://a5.mzstatic.com/us/r30/Purple7/v4/e4/af/db/e4afdbc1-9ceb-c403-4d06-299e7e693120/icon100x100.png" /></a>
   </td>
   <td align="center">
-  <a href="https://itunes.apple.com/us/app/pitch-locator-pro/id964965940?mt=8"><img src="http://a2.mzstatic.com/us/r30/Purple7/v4/39/ed/24/39ed248b-afab-ce8d-4276-35ba0459ac60/icon100x100.png" /></a>
+  <a href="https://itunes.apple.com/us/app/youtube-music/id1017492454?mt=8"><img src="http://is1.mzstatic.com/image/thumb/Purple128/v4/e7/95/2c/e7952c89-2642-0e3c-eacc-482a95d73318/source/100x100bb.jpg" /></a>
+  </td>
+  <td align="center">
+  <a href="https://itunes.apple.com/us/app/khan-academy/id469863705?mt=8"><img src="http://is2.mzstatic.com/image/thumb/Purple118/v4/da/b2/55/dab255a6-80b5-c4fb-f5c4-b4c143b8d4a8/source/100x100bb.jpg" /></a>
   </td>
   <tr>
    <td align="center">Yahoo! Livetext</td>
    <td align="center">My Disney Experience</td>
    <td align="center">ALDI</td>
    <td align="center">Guidebook</td>
-   <td align="center">Pitch Locator Pro</td>
+   <td align="center">Youtube Music</td>
+   <td align="center">Khan Academy</td>
   </tr>
  </tr>
 </table>
 
+#### Donate
+
+<span><img width=13px src="https://i.pinimg.com/originals/c2/9e/0c/c29e0cba21b01826ab5d87187bd2c793.png" />
+</span><span><b>bitcoin:</b>     17ZEBFw5peuoUwYaEJeGkpoJwP1htViLUY </span>
+
 ## Installation
 
 **CocoaPods**
+
+Swift
+
+<code>pod 'DateToolsSwift'</code>
+
+Objective-C (Legacy)
 
 <code>pod 'DateTools'</code>
 
@@ -45,6 +61,25 @@ DateTools was written to streamline date and time handling in Objective-C. Class
 
 All the classes required for DateTools are located in the DateTools folder in the root of this repository. They are listed below:
 
+Swift (Found in DateToolsSwift/DateTools)
+* <code>Constants.swift</code>
+* <code>Date+Bundle.swift</code>
+* <code>Date+Comparators.swift</code>
+* <code>Date+Components.swift</code>
+* <code>Date+Format.swift</code>
+* <code>Date+Inits.swift</code>
+* <code>Date+Manipulations.swift</code>
+* <code>Date+TimeAgo.swift</code>
+* <code>DateTools.bundle</code>
+* <code>Enums.swift</code>
+* <code>Integer.DateTools.swift</code>
+* <code>TimeChunk.swift</code>
+* <code>TimePeriod.swift</code>
+* <code>TimePeriodChain.swift</code>
+* <code>TimePeriodCollection.swift</code>
+* <code>TimePeriodGroup.swift</code>
+
+Objective-C (Found in DateTools/DateTools)
 * <code>DateTools.h</code>
 * <code>NSDate+DateTools.{h,m}</code>
 * <code>DTConstants.h</code>
@@ -62,7 +97,7 @@ The following bundle is necessary if you would like to support internationalizat
 
 ## Table of Contents
 
-* [**NSDate+DateTools**](#nsdate-datetools)
+* [**DateTools**](#datetools)
   * [Time Ago](#time-ago)
   * [Date Components](#date-components)
   * [Date Editing](#date-editing)
@@ -80,22 +115,24 @@ The following bundle is necessary if you would like to support internationalizat
 * [**Credits**](#credits)
 * [**License**](#license)
 
-##NSDate+DateTools
+## DateTools
 
-One of the missions of DateTools was to make NSDate feel more complete. There are many other languages that allow direct access to information about dates from their date classes, but NSDate (sadly) does not. It safely works only in the Unix time offsets through the <code>timeIntervalSince...</code> methods for building dates and remains calendar agnostic. But that's not <i>always</i> what we want to do. Sometimes, we want to work with dates based on their date components (like year, month, day, etc) at a more abstract level. This is where DateTools comes in.
+**Full code documentation can be found [here](http://cocoadocs.org/docsets/DateToolsSwift/2.0.0/)**
 
-####Time Ago
+One of the missions of DateTools was to make Date feel more complete. There are many other languages that allow direct access to information about dates from their date classes, but Date (sadly) does not. It safely works only in the Unix time offsets through the <code>timeIntervalSince...</code> methods for building dates and remains calendar agnostic. But that's not <i>always</i> what we want to do. Sometimes, we want to work with dates based on their date components (like year, month, day, etc) at a more abstract level. This is where DateTools comes in.
+
+#### Time Ago
 
 No date library would be complete without the ability to quickly make an NSString based on how much earlier a date is than now. DateTools has you covered. These "time ago" strings come in a long and short form, with the latter closely resembling Twitter. You can get these strings like so:
 
-```objc
-NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:-4];
-NSLog(@"Time Ago: %@", timeAgoDate.timeAgoSinceNow);
-NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
+```swift
+let timeAgoDate = 2.days.earlier
+print("Time Ago: ", timeAgoDate.timeAgoSinceNow)
+print("Time Ago: ", timeAgoDate.shortTimeAgoSinceNow)
 
 //Output:
-//Time Ago: 4 seconds ago
-//Time Ago: 4s
+//Time Ago: 2 days ago
+//Time Ago: 2d
 ```
 
 Assuming you have added the localization to your project, `DateTools` currently supports the following languages: 
@@ -145,39 +182,31 @@ This project is user driven (by people like you). Pull requests close faster tha
 
 Thanks to Kevin Lawler for his work on [NSDate+TimeAgo](https://github.com/kevinlawler/NSDate-TimeAgo), which has been officially merged into this library.
 
-####Date Components
+#### Date Components
 
-There is a lot of boilerplate associated with getting date components from an NSDate. You have to set up a calendar, use the desired flags for the components you want, and finally extract them out of the calendar. 
+There is a lot of boilerplate associated with getting date components from an Date. You have to set up a calendar, use the desired flags for the components you want, and finally extract them out of the calendar. 
 
 With DateTools, this:
 
-```objc
+```swift
 //Create calendar
-NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit;
-NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
-
+let calendar = Calendar(identifier: .gregorian)
+let dateComponents = calendar.dateComponents(Set<Calendar.Component>([.month,.year]), from: Date())
+        
 //Get components
-NSInteger year = dateComponents.year;
-NSInteger month = dateComponents.month;
+let year = dateComponents.year!
+let month = dateComponents.month!
 ```
 
 ...becomes this:
-```objc
-NSInteger year = date.year;
-NSInteger month = date.month;
+```swift
+let year = Date().year
+let month = Date().month
 ```
 
-And if you would like to use a non-Gregorian calendar, that option is available as well.
-```objc
-NSInteger day = [date dayWithCalendar:calendar];
-```
+#### Date Editing
 
-If you would like to override the default calendar that DateTools uses, simply change it in the <code>defaultCalendar</code> method of <code>NSDate+DateTools.m</code>.
-
-####Date Editing
-
-The date editing methods in NSDate+DateTools makes it easy to shift a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year later from a given date, simply call the method <code>dateByAddingYears</code>.
+The date editing methods in DateTools makes it easy to shift a date earlier or later by adding and subtracting date components. For instance, if you would like a date that is 1 year later from a given date, simply call the method <code>dateByAddingYears</code>.
 
 With DateTools, this:
 ```objc
@@ -199,9 +228,9 @@ NSDate *newDate = [date dateByAddingYears:1];
 
 Subtraction of date components is also fully supported through the <code>dateBySubtractingYears</code>
 
-####Date Comparison
+#### Date Comparison
 
-Another mission of the DateTools category is to greatly increase the flexibility of date comparisons. NSDate gives you four basic methods:
+Another mission of the DateTools category is to greatly increase the flexibility of date comparisons. Date gives you four basic methods:
 * isEqualToDate:
 * earlierDate:
 * laterDate:
@@ -213,7 +242,7 @@ Another mission of the DateTools category is to greatly increase the flexibility
 * isLaterThan
 * isLaterThanOrEqualTo
 
-These methods are great for comparing dates in a boolean fashion, but what if we want to compare the dates and return some meaningful information about how far they are apart? NSDate comes with two methods <code>timeIntervalSinceDate:</code> and <code>timeIntervalSinceNow</code> which gives you a <code>double</code> offset representing the number of seconds between the two dates. This is great and all, but there are times when one wants to know how many years or days are between two dates. For this, DateTools goes back to the ever-trusty NSCalendar and abstracts out all the necessary code for you.
+These methods are great for comparing dates in a boolean fashion, but what if we want to compare the dates and return some meaningful information about how far they are apart? Date comes with two methods <code>timeIntervalSinceDate:</code> and <code>timeIntervalSinceNow</code> which gives you a <code>double</code> offset representing the number of seconds between the two dates. This is great and all, but there are times when one wants to know how many years or days are between two dates. For this, DateTools goes back to the ever-trusty NSCalendar and abstracts out all the necessary code for you.
 
 With Date Tools, this:
 ```objc
@@ -237,17 +266,17 @@ Methods for comparison in this category include:
 * <code>minutesFrom:</code>, <code>minutesUntil</code>, <code>minutesAgo</code>, <code>minutesEarlierThan:</code>, <code>minutesLaterThan:</code>
 * <code>secondsFrom:</code>, <code>secondsUntil</code>, <code>secondsAgo</code>, <code>secondsEarlierThan:</code>, <code>secondsLaterThan:</code>
 
-####Formatted Date Strings
+#### Formatted Date Strings
 
 Just for kicks, DateTools has a few convenience methods for quickly creating strings from dates. Those two methods are <code>formattedDateWithStyle:</code> and <code>formattedDateWithFormat:</code>. The current locale is used unless otherwise specified by additional method parameters. Again, just for kicks, really.
 
-##Time Periods
+## Time Periods
 
-Dates are important, but the real world is a little less discrete than that. Life is made up of spans of time, like an afternoon appointment or a weeklong vacation. In DateTools, time periods are represented by the DTTimePeriod class and come with a suite of initializaiton, manipulation, and comparison methods to make working with them a breeze.
+Dates are important, but the real world is a little less discrete than that. Life is made up of spans of time, like an afternoon appointment or a weeklong vacation. In DateTools, time periods are represented by the TimePeriod class and come with a suite of initializaiton, manipulation, and comparison methods to make working with them a breeze.
 
-####Initialization
+#### Initialization
 
-Time peroids consist of an NSDate start date and end date. To initialize a time period, call the init function.
+Time peroids consist of an Date start date and end date. To initialize a time period, call the init function.
 
 ```objc
 DTTimePeriod *timePeriod = [[DTTimePeriod alloc] initWithStartDate:startDate endDate:endDate];
@@ -257,15 +286,15 @@ or, if you would like to create a time period of a known length that starts or e
 DTTimePeriod *timePeriod = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeHour amount:5 startingAt:[NSDate date]];
 ```
 
-####Time Period Info
+#### Time Period Info
 
-A host of methods have been extended to give information about an instance of DTTimePeriod. A few are listed below
+A host of methods have been extended to give information about an instance of TimePeriod. A few are listed below
 * <code>hasStartDate</code> - Returns true if the period has a start date
 * <code>hasEndDate</code> - Returns true if the period has an end date
 * <code>isMoment</code> - Returns true if the period has the same start and end date
 * <code>durationIn....</code> - Returns the length of the time period in the requested units
 
-####Manipulation
+#### Manipulation
 
 Time periods may also be manipulated. They may be shifted earlier or later as well as expanded and contracted. 
 
@@ -285,9 +314,9 @@ DTTimePeriod *timePeriod  = [DTTimePeriod timePeriodWithSize:DTTimePeriodSizeMin
 ```
 This doubles a time period of duration 1 minute to duration 2 minutes. The end date of "now" is retained and only the start date is shifted 1 minute earlier.
 
-####Relationships
+#### Relationships
 
-There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions may be asked using the relationship methods of DTTimePeriod.
+There may come a need, say when you are making a scheduling app, when it might be good to know how two time periods relate to one another. Are they the same? Is one inside of another? All these questions may be asked using the relationship methods of TimePeriod.
 
 Below is a chart of all the possible relationships between two time periods:
 ![TimePeriods](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/PeriodRelations.png)
@@ -303,19 +332,19 @@ You can also check for the official relationship (like those shown in the chart)
 ```objc
 -(DTTimePeriodRelation)relationToPeriod:(DTTimePeriod *)period;
 ```
-All of the possible relationships have been enumerated in the DTTimePeriodRelation enum. 
+All of the possible relationships have been enumerated in the TimePeriodRelation enum. 
 
 **For a better grasp on how time periods relate to one another, check out the "Time Periods" tab in the example application. Here you can slide a few time periods around and watch their relationships change.**
 
 ![TimePeriods](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodsDemo.gif)
 
-##Time Period Groups
+## Time Period Groups
 
-Time period groups are the final abstraction of date and time in DateTools. Here, time periods are gathered and organized into something useful. There are two main types of time period groups,  <code>DTTimePeriodCollection</code> and <code>DTTimePeriodChain</code>. At a high level, think about a collection as a loose group where overlaps may occur and a chain a more linear, tight group where overlaps are not allowed.
+Time period groups are the final abstraction of date and time in DateTools. Here, time periods are gathered and organized into something useful. There are two main types of time period groups,  <code>TimePeriodCollection</code> and <code>TimePeriodChain</code>. At a high level, think about a collection as a loose group where overlaps may occur and a chain a more linear, tight group where overlaps are not allowed.
 
-Both collections and chains operate like an NSArray. You may add,insert and remove DTTimePeriod objects from them just as you would objects in an array. The difference is how these periods are handled under the hood.
+Both collections and chains operate like an NSArray. You may add,insert and remove TimePeriod objects from them just as you would objects in an array. The difference is how these periods are handled under the hood.
 
-###Time Period Collections
+### Time Period Collections
 Time period collections serve as loose sets of time periods. They are unorganized unless you decide to sort them, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period collections allow overlaps within their set of time periods. 
 
 ![TimePeriodCollections](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodCollection.png)
@@ -344,11 +373,11 @@ Sorting time periods in a collection is easy, just call one of the sort methods.
 * **Time Period Duration** - <code>sortByDurationAscending</code>, <code>sortByDurationDescending</code>
 
 **Operations**
-It is also possible to check an NSDate's or DTTimePeriod's relationship to the collection. For instance, if you would like to see all the time periods that intersect with a certain date, you can call the <cdoe>periodsIntersectedByDate:</code> method. The result is a new DTTimePeriodCollection with all those periods that intersect the provided date. There are a host of other methods to try out as well, including a full equality check between two collections.
+It is also possible to check an Date's or TimePeriod's relationship to the collection. For instance, if you would like to see all the time periods that intersect with a certain date, you can call the <cdoe>periodsIntersectedByDate:</code> method. The result is a new TimePeriodCollection with all those periods that intersect the provided date. There are a host of other methods to try out as well, including a full equality check between two collections.
 
 ![TimePeriodCollectionOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodCollectionOperations.png)
 
-###Time Period Chains
+### Time Period Chains
 Time period chains serve as a tightly coupled set of time periods. They are always organized by start and end date, and have their own characteristics like a StartDate and EndDate that are extrapolated from the time periods within. Time period chains do not allow overlaps within their set of time periods. This type of group is ideal for modeling schedules like sequential meetings or appointments.
 
 ![TimePeriodChains](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodChain.png)
@@ -377,10 +406,10 @@ Like collections, chains have an equality check and the ability to be shifted ea
 
 ![TimePeriodChainOperations](https://raw.githubusercontent.com/MatthewYork/Resources/master/DateTools/TimePeriodChainOperations.png)
 
-##Documentation
+## Documentation
 All methods and variables have been documented and are available for option+click inspection, just like the SDK classes. This includes an explanation of the methods as well as what their input and output parameters are for. Please raise an issue if you ever feel documentation is confusing or misleading and we will get it fixed up!
 
-##Unit Tests
+## Unit Tests
 
 Unit tests were performed on all the major classes in the library for quality assurance. You can find theses under the "Tests" folder at the top of the library. There are over 300 test cases in all!
 
@@ -388,7 +417,9 @@ If you ever find a test case that is incomplete, please open an issue so we can 
 
 Continuous integration testing is performed by Travis CI: [![Build Status](https://travis-ci.org/MatthewYork/DateTools.svg?branch=master)](https://travis-ci.org/MatthewYork/DateTools)
 
-##Credits
+## Credits
+
+Many thanks to [Grayson Webster](https://github.com/GraysonWebster) for helping rethink DateTools for Swift and crank out the necessary code!
 
 Thanks to [Kevin Lawler](https://github.com/kevinlawler) for his initial work on NSDate+TimeAgo. It laid the foundation for DateTools' timeAgo methods. You can find this great project [here](https://github.com/kevinlawler/NSDate-TimeAgo).
 
@@ -398,7 +429,7 @@ Images were first published through itenso.com through [Code Project](http://www
 
 I would also like to thank **God** through whom all things live and move and have their being. [Acts 17:28](http://www.biblegateway.com/passage/?search=Acts+17%3A16-34&version=NIV)
 
-##License
+## License
 
 The MIT License (MIT)
 
