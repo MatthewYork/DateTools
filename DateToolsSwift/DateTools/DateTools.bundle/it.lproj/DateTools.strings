@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Quest'anno";
+
+/* Short format for */
+"%dy" = "%da"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dS"; // week
+"%dd" = "%dg"; // day
+"%dh" = "%do"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second

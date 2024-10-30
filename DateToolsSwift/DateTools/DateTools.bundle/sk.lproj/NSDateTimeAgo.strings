@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Tento rok";
+
+/* Short format for */
+"%dy" = "%dr"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dt"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%dh"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second

@@ -78,3 +78,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Cette année";
+
+/* Short format for */
+"%dy" = "%da"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dS"; // week
+"%dd" = "%dj"; // day
+"%dh" = "%dh"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second

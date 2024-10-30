@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Tahun ini";
+
+/* Short format for */
+"%dy" = "%dt"; // year
+"%dM" = "%db"; // month
+"%dw" = "%dm"; // week
+"%dd" = "%dh"; // day
+"%dh" = "%dj"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%dd"; // second

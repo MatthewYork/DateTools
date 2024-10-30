@@ -69,3 +69,12 @@
 
 /* No comment provided by engineer. */
 "This year" = "Dit jaar";
+
+/* Short format for */
+"%dy" = "%dj"; // year
+"%dM" = "%dM"; // month
+"%dw" = "%dw"; // week
+"%dd" = "%dd"; // day
+"%dh" = "%du"; // hour
+"%dm" = "%dm"; // minute
+"%ds" = "%ds"; // second
