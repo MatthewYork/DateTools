@@ -133,14 +133,18 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes{
+    return [self timeAgoSinceDate:date numericDates:useNumericDates numericTimes:useNumericTimes minimumHoursAgo:1];
+}
+
+- (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes minimumHoursAgo:(NSInteger)minimumHoursAgo{
     if (useNumericDates && useNumericTimes) {
-        return [self timeAgoSinceDate:date format:DateAgoLongUsingNumericDatesAndTimes];
+        return [self timeAgoSinceDate:date format:DateAgoLongUsingNumericDatesAndTimes minimumHoursAgo:minimumHoursAgo];
     } else if (useNumericDates) {
-        return [self timeAgoSinceDate:date format:DateAgoLongUsingNumericDates];
+        return [self timeAgoSinceDate:date format:DateAgoLongUsingNumericDates minimumHoursAgo:minimumHoursAgo];
     } else if (useNumericTimes) {
-        return [self timeAgoSinceDate:date format:DateAgoLongUsingNumericDates];
+        return [self timeAgoSinceDate:date format:DateAgoLongUsingNumericDates minimumHoursAgo:minimumHoursAgo];
     } else {
-        return [self timeAgoSinceDate:date format:DateAgoLong];
+        return [self timeAgoSinceDate:date format:DateAgoLong minimumHoursAgo:minimumHoursAgo];
     }
 }
 
@@ -152,25 +156,32 @@ static NSCalendar *implicitCalendar = nil;
     return [self timeAgoSinceDate:date format:DateAgoWeek];
 }
 
-- (NSString *)timeAgoSinceDate:(NSDate *)date format:(DateAgoFormat)format {
+- (NSString *)timeAgoSinceDate:(NSDate *)date format:(DateAgoFormat)format{
+    [self timeAgoSinceDate:date format:format minimumHoursAgo:1];
+}
 
+- (NSString *)timeAgoSinceDate:(NSDate *)date format:(DateAgoFormat)format minimumHoursAgo:(NSInteger)minimumHoursAgo {
+    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *earliest = [self earlierDate:date];
     NSDate *latest = (earliest == self) ? date : self;
-
+    
     // if timeAgo < 24h => compare DateTime else compare Date only
     NSUInteger upToHours = NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour;
     NSDateComponents *difference = [calendar components:upToHours fromDate:earliest toDate:latest options:0];
     
     if (difference.hour < 24) {
-        if (difference.hour >= 1) {
-            return [self localizedStringFor:format valueType:HoursAgo value:difference.hour];
-        } else if (difference.minute >= 1) {
-            return [self localizedStringFor:format valueType:MinutesAgo value:difference.minute];
+        if(difference.hour < minimumHoursAgo){
+            upToHours = NSCalendarUnitSecond | NSCalendarUnitMinute;
+            difference = [calendar components:upToHours fromDate:earliest toDate:latest options:0];
+            if (difference.minute >= 1) {
+                return [self localizedStringFor:format valueType:MinutesAgo value:difference.minute];
+            } else {
+                return [self localizedStringFor:format valueType:SecondsAgo value:difference.second];
+            }
         } else {
-            return [self localizedStringFor:format valueType:SecondsAgo value:difference.second];
+            return [self localizedStringFor:format valueType:HoursAgo value:difference.hour];
         }
-        
     } else {
         NSUInteger bigUnits = NSCalendarUnitTimeZone | NSCalendarUnitDay | NSCalendarUnitWeekOfYear | NSCalendarUnitMonth | NSCalendarUnitYear;
         
@@ -179,7 +190,7 @@ static NSCalendar *implicitCalendar = nil;
         
         components = [calendar components:bigUnits fromDate:latest];
         latest = [calendar dateFromComponents:components];
-
+        
         difference = [calendar components:bigUnits fromDate:earliest toDate:latest options:0];
         
         if (difference.year >= 1) {
