@@ -54,7 +54,18 @@ public extension TimePeriodProtocol {
         }
         return Int.max
     }
-    
+  
+    /**
+     *  The duration of the `TimePeriod` in months.
+     *  Returns the max int if beginning or end are nil.
+     */
+    public var months: Int {
+      if self.beginning != nil && self.end != nil {
+        return self.beginning!.monthsEarlier(than: self.end!)
+      }
+      return Int.max
+    }
+  
     /**
      *  The duration of the `TimePeriod` in weeks.
      *  Returns the max int if beginning or end are nil.
