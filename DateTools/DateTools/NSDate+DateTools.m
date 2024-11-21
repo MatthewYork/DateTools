@@ -1220,7 +1220,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of years until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of years
+ *  @return NSInteger representation of years
  */
 -(NSInteger)yearsUntil{
     return [self yearsLaterThan:[NSDate date]];
@@ -1229,7 +1229,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of months until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of months
+ *  @return NSInteger representation of months
  */
 -(NSInteger)monthsUntil{
     return [self monthsLaterThan:[NSDate date]];
@@ -1238,7 +1238,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of weeks until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of weeks
+ *  @return NSInteger representation of weeks
  */
 -(NSInteger)weeksUntil{
     return [self weeksLaterThan:[NSDate date]];
@@ -1247,7 +1247,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of days until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return NSInteger representiation of days
+ *  @return NSInteger representation of days
  */
 -(NSInteger)daysUntil{
     return [self daysLaterThan:[NSDate date]];
@@ -1256,7 +1256,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of hours until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return double representiation of hours
+ *  @return double representation of hours
  */
 -(double)hoursUntil{
     return [self hoursLaterThan:[NSDate date]];
@@ -1265,7 +1265,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of minutes until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return double representiation of minutes
+ *  @return double representation of minutes
  */
 -(double)minutesUntil{
     return [self minutesLaterThan:[NSDate date]];
@@ -1274,7 +1274,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of seconds until the receiver's date. Returns 0 if the receiver is the same or earlier than now.
  *
- *  @return double representiation of seconds
+ *  @return double representation of seconds
  */
 -(double)secondsUntil{
     return [self secondsLaterThan:[NSDate date]];
@@ -1284,7 +1284,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of years the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of years
+ *  @return NSInteger representation of years
  */
 -(NSInteger)yearsAgo{
     return [self yearsEarlierThan:[NSDate date]];
@@ -1293,7 +1293,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of months the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of months
+ *  @return NSInteger representation of months
  */
 -(NSInteger)monthsAgo{
     return [self monthsEarlierThan:[NSDate date]];
@@ -1302,7 +1302,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of weeks the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of weeks
+ *  @return NSInteger representation of weeks
  */
 -(NSInteger)weeksAgo{
     return [self weeksEarlierThan:[NSDate date]];
@@ -1311,7 +1311,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of days the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return NSInteger representiation of days
+ *  @return NSInteger representation of days
  */
 -(NSInteger)daysAgo{
     return [self daysEarlierThan:[NSDate date]];
@@ -1320,7 +1320,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of hours the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return double representiation of hours
+ *  @return double representation of hours
  */
 -(double)hoursAgo{
     return [self hoursEarlierThan:[NSDate date]];
@@ -1329,7 +1329,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of minutes the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return double representiation of minutes
+ *  @return double representation of minutes
  */
 -(double)minutesAgo{
     return [self minutesEarlierThan:[NSDate date]];
@@ -1338,7 +1338,7 @@ static NSCalendar *implicitCalendar = nil;
 /**
  *  Returns the number of seconds the receiver's date is earlier than now. Returns 0 if the receiver is the same or later than now.
  *
- *  @return double representiation of seconds
+ *  @return double representation of seconds
  */
 -(double)secondsAgo{
     return [self secondsEarlierThan:[NSDate date]];
