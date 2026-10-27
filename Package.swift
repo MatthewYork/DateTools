@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
 
@@ -6,31 +6,38 @@ let package = Package(
     name: "DateToolsSwift",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v12),
-        .tvOS(.v12),
-        .macOS(.v10_13),
+        .iOS(.v15),
+        .tvOS(.v15),
+        .macOS(.v12),
+        .watchOS(.v8),
+        .visionOS(.v1)
     ],
     products: [
-        .library(name: "DateToolsSwift", targets: ["DateToolsSwift"]),
-        .library(name: "DateToolsObjc", targets: ["DateToolsObjc"])
+        .library(
+            name: "DateToolsSwift",
+            targets: ["DateToolsSwift"]
+        ),
+        .library(
+            name: "DateToolsObjc",
+            targets: ["DateToolsObjc"]
+        )
     ],
     dependencies: [
+        // Add external dependencies here if needed in the future
     ],
     targets: [
         .target(
             name: "DateToolsSwift",
             path: "DateToolsSwift/DateTools",
-            resources: [.copy("DateTools.bundle")],
+            resources: [.process("DateTools.bundle")],
             swiftSettings: [.define("SPM")]
         ),
         .target(
             name: "DateToolsObjc",
             path: "DateTools/DateTools",
-            resources: [.copy("DateTools.bundle")],
             publicHeadersPath: ".",
+            resources: [.process("DateTools.bundle")],
             cSettings: [.define("SPM")]
         )
     ]
 )
-  
-
